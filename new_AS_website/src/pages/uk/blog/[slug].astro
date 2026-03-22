@@ -47,9 +47,33 @@ if (!finalPost) {
 }
 
 const dateString = finalPost.publishedAt ? new Date(finalPost.publishedAt).toLocaleDateString('en-GB', { month: 'short', day: 'numeric', year: 'numeric' }) : "";
+
+const blogPostingSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": finalPost.title,
+  "description": finalPost.excerpt || finalPost.title,
+  "datePublished": finalPost.publishedAt || new Date().toISOString(),
+  "author": {
+    "@type": "Organization",
+    "name": "Autoflow Solutions"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Autoflow Solutions",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://autoflow-solutions.com/logo.png"
+    }
+  },
+  "areaServed": "GB"
+};
 ---
 
-<BaseLayout title={`${finalPost.title} | UK AI Automation Blog`}>
+<BaseLayout 
+    title={`${finalPost.title} | UK AI Automation Blog`}
+    schemaData={blogPostingSchema}
+>
     <header style="padding: 160px 0 60px; background-image: linear-gradient(var(--gray-light, #E5E5E5) 1px, transparent 1px), linear-gradient(90deg, var(--gray-light, #E5E5E5) 1px, transparent 1px); background-size: 40px 40px; border-bottom: 2px solid var(--black, #050505);">
         <div class="container" style="max-width: 800px; margin: 0 auto; padding: 0 20px;">
             <div style="font-weight: 800; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 1rem; color: var(--neon, #D4FF00); background: var(--black, #050505); display: inline-block; padding: 5px 12px; border-radius: 4px;">{dateString || "RECENT POST"}</div>

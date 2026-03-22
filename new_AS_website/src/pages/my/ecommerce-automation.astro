@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "E-Commerce Automation Agency Malaysia — Shopee, Lazada & Shopify";
+const description = "Automate orders, returns, and customer follow-ups for Malaysian e-commerce businesses. Shopee, Lazada, TikTok Shop, Shopify. Free audit.";
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Malaysia E-Commerce & Retail Automation",
+  "description": "Shopee, Lazada, and TikTok Shop API integrations. Automated multi-channel fulfillment for Malaysian retailers.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Autoflow Solutions"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "MY"
+  },
+  "serviceType": "E-Commerce AI Automation"
+};
+---
+
+<BaseLayout title={title} description={description} schemaData={schemaData}>
+    <header class="hero" style="min-height: 80vh;">
+        <div class="hero-left">
+            <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Vertical Focus: E-Commerce</span>
+            <h1 class="text-display">MALAYSIA E-COMMERCE<br>AUTOMATION.</h1>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Shopee, Lazada & TikTok Shop Scaling Experts</h2>
+            <p class="text-body-lg" style="margin-bottom: 2.5rem;">We help Malaysia's top online sellers automate their heavy-lifting. From multi-channel inventory syncs to automated customer support on WhatsApp.</p>
+            <div class="hero-btns" style="display: flex; gap: 1rem;">
+                <a href="/my/services#request" class="btn btn-solid">Calculate Your Savings (RM)</a>
+                <a href="https://ai-self-audit.autoflow-solutions.com/" class="btn btn-neon">Free AI Self Audit</a>
+            </div>
+        </div>
+        <div class="hero-right" style="background-color: #fff9f0;">
+            <div style="padding: 3rem; width: 100%;">
+                <div class="ui-card" style="position: relative; width: 100%; transform: none; box-shadow: 20px 20px 0 var(--black); background: #fff;">
+                    <div class="card-header">
+                        <span class="label-micro">MY_STOCK_MANAGER_v2</span>
+                        <span class="status" style="display: inline-block; width: 8px; height: 8px; background: #ff9900; border-radius: 50%;"></span>
+                    </div>
+                    <div style="margin: 1.5rem 0;">
+                        <div style="padding: 0.75rem; background: #fff; border: 1px dashed #ccc; margin-bottom: 1rem;">
+                            <p class="label-micro">Order #MY-9112 (Shopee)</p>
+                            <p style="font-size: 0.85rem;">Item: Wireless Earbuds (Black)</p>
+                        </div>
+                        <div style="text-align: center; color: var(--neon); font-size: 1.2rem;">⚡</div>
+                        <div style="padding: 0.75rem; background: var(--black); color: var(--white); border-radius: 4px;">
+                            <p class="label-micro" style="color: var(--gray-light);">Action Taken</p>
+                            <p style="font-size: 0.85rem;">TikTok Shop & Lazada Inventory -1</p>
+                            <p style="font-size: 0.85rem;">Shipment Alert Sent via WhatsApp</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="density-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="label-micro">The SEA Market</span>
+                <h2 class="text-display" style="margin-top: 1rem;">MULTI-CHANNEL<br>DOMINANCE.</h2>
+                <p class="text-body-lg" style="margin-top: 1.5rem;">Malaysian e-commerce requires presence across Shopee, Lazada, and TikTok Shop. We provide the technical backbone to keep your operations synchronized.</p>
+            </div>
+            
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <span class="cell-id">01</span>
+                    <h3 class="text-h3">Stock Reconciliation</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Automated inventory syncing across Shopee, Lazada, and Shopify. Never oversell on a flash sale again.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">02</span>
+                    <h3 class="text-h3">Omnichannel Support</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Unifying customer chats from all platforms into one AI-supported WhatsApp/Slack stream for faster response.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">03</span>
+                    <h3 class="text-h3">Dropship Automation</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Automatically pushing orders to suppliers across the region once payment is verified on your local shopfront.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">04</span>
+                    <h3 class="text-h3">Post-Laju / J&T Sync</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Automatically generating airway bills and tracking numbers, and pushing them back to the marketplace APIs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

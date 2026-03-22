@@ -72,11 +72,30 @@ const posts = sanityPosts.length > 0 ? sanityPosts.map((post: any) => ({
 
 const featuredPost = posts[0] || {};
 const gridPosts = posts.slice(1);
+
+const blogCollectionSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Autoflow Solutions AI Automation Blog",
+  "description": "Practical guides and case studies for SME automation.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Autoflow Solutions"
+  },
+  "blogPost": posts.map(post => ({
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.description,
+    "datePublished": post.date,
+    "url": `https://autoflow-solutions.com/blog/${post.slug}`
+  }))
+};
 ---
 
 <BaseLayout 
     title="AI Automation Blog — Insights for SME Operators"
     description="Practical guides, case studies, and frameworks for automating operations in logistics, healthcare, e-commerce, legal, and professional services businesses."
+    schemaData={blogCollectionSchema}
 >
     <header class="blog-header">
         <div class="container">

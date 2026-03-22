@@ -30,23 +30,23 @@ else if (isMY) regionPrefix = "/my";
                     <a href={`${regionPrefix}/process`}>Our Process</a>
                 </div>
 
-                {isUK && (
+                {(isUK || isMY) && (
                     <>
                         <div class="footer-col">
                             <span class="label-micro">Verticals</span>
-                            <a href="/uk/logistics-automation">Logistics</a>
-                            <a href="/uk/healthcare-automation">Healthcare</a>
-                            <a href="/uk/ecommerce-automation">E-Commerce</a>
-                            <a href="/uk/professional-services-automation">Prof. Services</a>
-                            <a href="/uk/legal-automation">Legal</a>
+                            <a href={`${regionPrefix}/logistics-automation`}>Logistics</a>
+                            <a href={`${regionPrefix}/healthcare-automation`}>Healthcare</a>
+                            <a href={`${regionPrefix}/ecommerce-automation`}>E-Commerce</a>
+                            <a href={`${regionPrefix}/professional-services-automation`}>Prof. Services</a>
+                            <a href={`${regionPrefix}/legal-automation`}>Legal</a>
                         </div>
                         <div class="footer-col hide-mobile-sm">
                             <span class="label-micro">Platforms</span>
-                            <a href="/uk/tools/n8n">n8n.io</a>
-                            <a href="/uk/tools/make">Make.com</a>
-                            <a href="/uk/tools/highlevel">HighLevel</a>
-                            <a href="/uk/tools/voiceflow">Voiceflow</a>
-                            <a href="/uk/tools/zoho">Zoho One</a>
+                            <a href={`${regionPrefix}/tools/n8n`}>n8n.io</a>
+                            <a href={`${regionPrefix}/tools/make`}>Make.com</a>
+                            <a href={`${regionPrefix}/tools/highlevel`}>HighLevel</a>
+                            <a href={`${regionPrefix}/tools/voiceflow`}>Voiceflow</a>
+                            <a href={`${regionPrefix}/tools/zoho`}>Zoho One</a>
                         </div>
                     </>
                 )}

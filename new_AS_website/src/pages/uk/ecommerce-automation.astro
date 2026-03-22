@@ -3,9 +3,25 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const title = "E-Commerce Automation Agency UK — Amazon, Shopify & More";
 const description = "Automate orders, returns, Royal Mail shipping and customer follow-ups for UK e-commerce businesses. Amazon UK, Shopify, WooCommerce. Free audit.";
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "UK E-Commerce & Retail Automation",
+  "description": "Amazon UK, Shopify, and Royal Mail API integrations. Automated returns and multi-channel inventory management for UK retailers.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Autoflow Solutions"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "GB"
+  },
+  "serviceType": "E-Commerce AI Automation"
+};
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} schemaData={schemaData}>
     <header class="hero" style="min-height: 80vh;">
         <div class="hero-left">
             <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Vertical Focus: E-Commerce</span>

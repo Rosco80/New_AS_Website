@@ -3,9 +3,25 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const title = "Professional Services Automation UK — Xero, MTD & Accountants";
 const description = "Automate your UK accountancy, legal or consulting firm. Xero integration, Making Tax Digital workflows, client onboarding and reporting. Free audit.";
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "UK Professional Services Automation",
+  "description": "Xero and MTD-ready automation for UK accountants, consultants, and agencies. Automated onboarding and debt recovery.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Autoflow Solutions"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "GB"
+  },
+  "serviceType": "Professional Services Automation"
+};
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} schemaData={schemaData}>
     <header class="hero" style="min-height: 80vh;">
         <div class="hero-left">
             <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Vertical Focus: Prof Services</span>
