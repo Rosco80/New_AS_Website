@@ -60,6 +60,40 @@
         </div>
     </div>
 <style>
+    .footer-links {
+        display: flex;
+        gap: var(--space-lg);
+    }
+
+    .footer-col {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+
+    .footer-col a {
+        color: var(--gray-light);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+    }
+
+    .footer-col a:hover {
+        color: var(--white);
+    }
+
+    .footer-col .label-micro {
+        color: var(--gray-dark);
+        margin-bottom: var(--space-xs);
+    }
+
+    /* Fixed hover contrast for buttons in the footer */
+    .btn-neon:hover {
+        background-color: transparent !important;
+        border-color: var(--white) !important;
+        color: var(--white) !important;
+    }
+
     .footer-bottom-content {
         display: flex;
         justify-content: space-between;
