@@ -1,0 +1,909 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+    title="Free Automation ROI Calculator | Autoflow Solutions" 
+    description="Calculate your potential annual savings, payback period, and hours recovered through custom automation. Free ROI forecaster for SMEs."
+>
+    <!-- Custom Oswald font used in the tool -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700;900&display=swap" rel="stylesheet">
+
+    <section class="hero-section" aria-label="Tool introduction">
+        <div class="container">
+            <div class="hero-inner">
+                <div class="hero-left">
+                    <div class="hero-badge">FREE TOOL — NO EMAIL REQUIRED</div>
+                    <h1 class="hero-h1">AUTOMATION <span>ROI</span> FORECASTER</h1>
+                    <p class="hero-sub">Enter your numbers. Get your real payback projection -- no sales pitch, no signup.</p>
+                </div>
+                <div class="hero-stats" aria-hidden="true">
+                    <p class="hero-stat">Result in <span>&lt;60 seconds</span></p>
+                    <p class="hero-stat">Built for <span>SME operators</span></p>
+                    <p class="hero-stat">No jargon. <span>Just ROI.</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN TOOL -->
+    <main id="main-content" role="main">
+        <div class="tool-wrapper">
+            <!-- INPUTS -->
+            <div class="inputs-column" id="inputs-column">
+                <div class="page-intro">
+                    <span class="page-intro__eyebrow">ROI FORECASTER</span>
+                    <h2 class="page-intro__title">YOUR NUMBERS</h2>
+                    <p class="page-intro__subtitle">Adjust the sliders. Your savings projection updates in real time.</p>
+                </div>
+
+                <div class="currency-switcher" role="group" aria-label="Select currency">
+                    <button class="currency-btn active" data-currency="MYR" type="button"><span class="currency-btn__flag">🇲🇾</span> MYR</button>
+                    <button class="currency-btn" data-currency="USD" type="button"><span class="currency-btn__flag">🇺🇸</span> USD</button>
+                    <button class="currency-btn" data-currency="GBP" type="button"><span class="currency-btn__flag">🇬🇧</span> GBP</button>
+                    <button class="currency-btn" data-currency="EUR" type="button"><span class="currency-btn__flag">🇪🇺</span> EUR</button>
+                </div>
+
+                <div class="progress-block">
+                    <div class="progress-bar-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progress-bar">
+                        <div class="progress-bar-fill" id="progress-fill" style="--progress-pct:0%"></div>
+                    </div>
+                    <p class="progress-label" id="progress-label" aria-live="polite">0 of 5 fields adjusted</p>
+                </div>
+
+                <!-- Card: Your Team -->
+                <section class="input-card" aria-labelledby="card-team-title">
+                    <div class="input-card__header">
+                        <div class="input-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <h3 class="input-card__title" id="card-team-title">YOUR TEAM</h3>
+                    </div>
+
+                    <div class="slider-field">
+                        <div class="slider-field__top-row">
+                            <label class="slider-field__label" for="staff-count">EMPLOYEES ON MANUAL TASKS</label>
+                            <div class="slider-field__value-group">
+                                <span class="slider-field__value" id="staff-count-display" aria-live="polite">5</span>
+                                <span class="slider-field__unit">people</span>
+                            </div>
+                        </div>
+                        <input type="range" class="slider-field__input" id="staff-count" min="1" max="50" value="5" step="1" aria-describedby="staff-count-help">
+                        <p class="slider-field__helper" id="staff-count-help">Count only the people whose time would be freed -- not your whole headcount.</p>
+                    </div>
+
+                    <div class="slider-field">
+                        <div class="slider-field__top-row">
+                            <label class="slider-field__label" for="avg-salary">AVG MONTHLY SALARY (RM)</label>
+                            <div class="slider-field__value-group">
+                                <span class="slider-field__value" id="avg-salary-display" aria-live="polite">RM 4,000</span>
+                            </div>
+                        </div>
+                        <input type="range" class="slider-field__input" id="avg-salary" min="1500" max="15000" value="4000" step="500" aria-describedby="avg-salary-help">
+                        <p class="slider-field__helper" id="avg-salary-help">Use gross salary. For freelancers, estimate equivalent monthly cost.</p>
+                    </div>
+
+                    <div class="slider-field">
+                        <div class="slider-field__top-row">
+                            <label class="slider-field__label" for="repetitive-hours">MANUAL HOURS / WEEK / PERSON</label>
+                            <div class="slider-field__value-group">
+                                <span class="slider-field__value" id="repetitive-hours-display" aria-live="polite">10</span>
+                                <span class="slider-field__unit">hrs/wk</span>
+                            </div>
+                        </div>
+                        <input type="range" class="slider-field__input" id="repetitive-hours" min="2" max="40" value="10" step="1" aria-describedby="repetitive-hours-help">
+                        <p class="slider-field__helper" id="repetitive-hours-help">Data entry, follow-ups, report building, scheduling -- anything that runs the same every time.</p>
+                    </div>
+                </section>
+
+                <!-- Card: Your Investment -->
+                <section class="input-card" aria-labelledby="card-investment-title">
+                    <div class="input-card__header">
+                        <div class="input-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>
+                            </svg>
+                        </div>
+                        <h3 class="input-card__title" id="card-investment-title">YOUR INVESTMENT</h3>
+                    </div>
+
+                    <div class="slider-field">
+                        <div class="slider-field__top-row">
+                            <label class="slider-field__label" for="setup-fee">SETUP INVESTMENT (RM)</label>
+                            <div class="slider-field__value-group">
+                                <span class="slider-field__value" id="setup-fee-display" aria-live="polite">RM 8,000</span>
+                            </div>
+                        </div>
+                        <input type="range" class="slider-field__input" id="setup-fee" min="2000" max="50000" value="8000" step="1000" aria-describedby="setup-fee-help">
+                        <p class="slider-field__helper" id="setup-fee-help">One-time build and configuration cost. Not sure? RM 6,000--15,000 covers most SME builds.</p>
+                    </div>
+
+                    <div class="slider-field">
+                        <div class="slider-field__top-row">
+                            <label class="slider-field__label" for="monthly-retainer">MONTHLY MAINTENANCE (RM)</label>
+                            <div class="slider-field__value-group">
+                                <span class="slider-field__value" id="monthly-retainer-display" aria-live="polite">RM 500</span>
+                                <span class="slider-field__unit">/mo</span>
+                            </div>
+                        </div>
+                        <input type="range" class="slider-field__input" id="monthly-retainer" min="0" max="3000" value="500" step="100" aria-describedby="monthly-retainer-help">
+                        <p class="slider-field__helper" id="monthly-retainer-help">Ongoing cost to keep automations running -- tools, subscriptions, and any support retainer.</p>
+                    </div>
+                </section>
+
+                <!-- Advanced Assumptions -->
+                <div class="assumptions-section">
+                    <button class="assumptions-toggle" id="assumptions-toggle" aria-expanded="false" aria-controls="assumptions-body" type="button">
+                        <div class="assumptions-toggle__label-group">
+                            <span class="assumptions-toggle__title">FINE-TUNE YOUR ESTIMATE</span>
+                            <span class="assumptions-toggle__subtitle">Advanced -- adjust automation assumptions</span>
+                        </div>
+                        <svg class="assumptions-toggle__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="assumptions-body" id="assumptions-body" role="region" aria-labelledby="assumptions-toggle">
+                        <div class="assumptions-body__inner">
+                            <div class="slider-field">
+                                <div class="slider-field__top-row">
+                                    <label class="slider-field__label" for="automation-rate">EFFICIENCY GAIN (%)</label>
+                                    <div class="slider-field__value-group">
+                                        <span class="slider-field__value" id="automation-rate-display" aria-live="polite">70</span>
+                                        <span class="slider-field__unit">%</span>
+                                    </div>
+                                </div>
+                                <input type="range" class="slider-field__input" id="automation-rate" min="30" max="90" value="70" step="5">
+                                <p class="slider-field__helper">Percentage of manual time the automation replaces. 70--85% is realistic for most workflows.</p>
+                            </div>
+
+                            <div class="slider-field">
+                                <div class="slider-field__top-row">
+                                    <label class="slider-field__label" for="error-reduction">ERROR REDUCTION (%)</label>
+                                    <div class="slider-field__value-group">
+                                        <span class="slider-field__value" id="error-reduction-display" aria-live="polite">40</span>
+                                        <span class="slider-field__unit">%</span>
+                                    </div>
+                                </div>
+                                <input type="range" class="slider-field__input" id="error-reduction" min="10" max="80" value="40" step="5">
+                                <p class="slider-field__helper">Estimated drop in errors and rework. Manual errors cost time to fix -- 30% reduction compounds fast.</p>
+                            </div>
+
+                            <div class="slider-field">
+                                <div class="slider-field__top-row">
+                                    <label class="slider-field__label" for="revenue-impact">PRODUCTIVITY REINVESTMENT (%)</label>
+                                    <div class="slider-field__value-group">
+                                        <span class="slider-field__value" id="revenue-impact-display" aria-live="polite">5</span>
+                                        <span class="slider-field__unit">%</span>
+                                    </div>
+                                </div>
+                                <input type="range" class="slider-field__input" id="revenue-impact" min="0" max="20" value="5" step="1">
+                                <p class="slider-field__helper">% of recovered hours redirected into revenue-generating work. Faster follow-up, fewer missed leads. Conservative: 3--8%.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#results-panel" class="mobile-see-results">
+                    SEE YOUR RESULTS
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                </a>
+            </div>
+            <!-- /inputs-column -->
+
+            <!-- RESULTS -->
+            <aside class="results-column" id="results-panel" aria-label="ROI calculation results">
+                <div id="results-live-region" aria-live="polite" aria-atomic="false" class="visually-hidden"></div>
+
+                <div id="badge-strong-roi" class="badge-strong-roi hidden">STRONG ROI</div>
+
+                <div class="results-hero">
+                    <span class="results-hero__eyebrow">ANNUAL SAVINGS</span>
+                    <p class="results-hero__value" id="result-annual-savings">RM 0</p>
+                    <p class="results-hero__subtext">Labor + error cost reduction</p>
+                </div>
+
+                <div class="results-secondary">
+                    <div class="metric-tile">
+                        <span class="metric-tile__label">PAYBACK PERIOD</span>
+                        <span class="metric-tile__value" id="result-payback">--</span>
+                        <span class="metric-tile__context">Time to recover setup cost</span>
+                    </div>
+                    <div class="metric-tile roi-tile" id="roi-tile" data-roi-tier="ok">
+                        <span class="metric-tile__label">FIRST-YEAR ROI</span>
+                        <span class="metric-tile__value" id="result-roi-pct">--%</span>
+                        <span class="metric-tile__context">Return on setup investment</span>
+                    </div>
+                </div>
+
+                <div class="results-projection">
+                    <p class="results-projection__label">3-YEAR NET BENEFIT</p>
+                    <div class="projection-bars" aria-hidden="true">
+                        <div class="projection-bar-col">
+                            <div class="projection-bar-col__track"><div class="projection-bar-col__bar" id="bar-year1" style="--bar-height:25%"></div></div>
+                            <span class="projection-bar-col__year">YR 1</span>
+                            <span class="projection-bar-col__value" id="result-year1">--</span>
+                        </div>
+                        <div class="projection-bar-col">
+                            <div class="projection-bar-col__track"><div class="projection-bar-col__bar" id="bar-year2" style="--bar-height:55%"></div></div>
+                            <span class="projection-bar-col__year">YR 2</span>
+                            <span class="projection-bar-col__value" id="result-year2">--</span>
+                        </div>
+                        <div class="projection-bar-col">
+                            <div class="projection-bar-col__track"><div class="projection-bar-col__bar" id="bar-year3" style="--bar-height:85%"></div></div>
+                            <span class="projection-bar-col__year">YR 3</span>
+                            <span class="projection-bar-col__value" id="result-year3">--</span>
+                        </div>
+                    </div>
+                    <dl class="visually-hidden">
+                        <dt>Year 1 cumulative</dt><dd id="result-year1-sr">--</dd>
+                        <dt>Year 2 cumulative</dt><dd id="result-year2-sr">--</dd>
+                        <dt>Year 3 cumulative</dt><dd id="result-year3-sr">--</dd>
+                    </dl>
+                </div>
+
+                <div class="results-hours">
+                    <div class="results-hours__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="results-hours__primary" id="result-hours-freed">0 HRS/WK FREED</p>
+                        <p class="results-hours__secondary" id="result-fte">Equivalent to 0.0 full-time staff</p>
+                    </div>
+                </div>
+
+                <p class="results-warning hidden" id="msg-payback-warning"></p>
+
+                <div class="results-cta">
+                    <h2 class="results-cta__heading">BUILD THIS PIPELINE</h2>
+                    <p class="results-cta__body">Your free strategy call is 30 minutes. We map out exactly where to start and what the build looks like for your business.</p>
+                    <a href="/services#request" class="btn-primary">BOOK YOUR FREE CALL</a>
+                    <p class="results-cta__trust">No pitch deck. No obligation. Just the numbers.</p>
+                </div>
+
+                <div class="results-actions">
+                    <button class="btn-share" id="share-btn" type="button" aria-label="Copy link to results">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                        </svg>
+                        <span id="share-btn-label">SHARE</span>
+                    </button>
+                    <button class="btn-reset" id="reset-btn" type="button">RESET</button>
+                </div>
+
+                <p class="results-disclaimer">Projections are estimates based on your inputs and standard automation benchmarks. Actual results depend on process complexity, implementation quality, and team adoption.</p>
+            </aside>
+        </div>
+    </main>
+
+    <!-- TRUST STRIP -->
+    <div class="trust-strip">
+        <div class="container">
+            <div class="trust-strip__inner">
+                <h2 class="trust-strip__headline">YOUR OPS ARE EITHER WORKING FOR YOU OR COSTING YOU.</h2>
+                <a href="#main-content" class="trust-strip__cta">RECALCULATE NOW</a>
+            </div>
+        </div>
+    </div>
+</BaseLayout>
+
+<style>
+    :root {
+        --chartreuse: #C4EF17;
+        --grey-100: #F4F4F4;
+        --grey-200: #E5E5E5;
+        --grey-400: #A3A3A3;
+        --grey-600: #525252;
+        --font-display: 'Oswald', sans-serif;
+        --t: 200ms ease;
+        --t-slow: 350ms ease;
+    }
+
+    /* Override body for this page if needed */
+    :global(body) {
+        background: var(--white);
+    }
+
+    .hero-section {
+        background: var(--black);
+        padding: 4rem 0;
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(196, 239, 23, 0.15);
+    }
+
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        background-size: 28px 28px;
+        pointer-events: none;
+    }
+
+    .hero-inner {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .hero-left {
+        max-width: 640px;
+    }
+
+    .hero-badge {
+        display: inline-flex;
+        background: var(--chartreuse);
+        color: var(--black);
+        font-weight: 700;
+        font-size: 0.6875rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 4px 12px;
+        border-radius: 4px;
+        margin-bottom: 1rem;
+    }
+
+    .hero-h1 {
+        font-family: var(--font-display);
+        font-weight: 900;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        line-height: 1;
+        text-transform: uppercase;
+        color: var(--white);
+        letter-spacing: -0.01em;
+        margin-bottom: 1rem;
+    }
+
+    .hero-h1 span {
+        color: var(--chartreuse);
+    }
+
+    .hero-sub {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.5;
+    }
+
+    .hero-stats {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-end;
+    }
+
+    .hero-stat {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 0.875rem;
+        color: rgba(255, 255, 255, 0.4);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+    }
+
+    .hero-stat span {
+        color: var(--chartreuse);
+    }
+
+    .tool-wrapper {
+        display: flex;
+        min-height: 80vh;
+        align-items: flex-start;
+    }
+
+    .inputs-column {
+        flex: 1;
+        background: #F8F8F8;
+        padding: 4rem 2rem;
+        border-right: 1px solid var(--grey-200);
+    }
+
+    .results-column {
+        width: 400px;
+        background: var(--black);
+        position: sticky;
+        top: 80px; /* Offset for navbar */
+        height: calc(100vh - 80px);
+        overflow-y: auto;
+        padding: 3rem 2rem;
+        flex-shrink: 0;
+    }
+
+    .page-intro {
+        margin-bottom: 2rem;
+    }
+
+    .page-intro__eyebrow {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--grey-400);
+        margin-bottom: 0.5rem;
+    }
+
+    .page-intro__title {
+        font-family: var(--font-display);
+        font-weight: 900;
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        line-height: 1;
+        color: var(--black);
+        margin-bottom: 1rem;
+    }
+
+    .page-intro__subtitle {
+        color: var(--grey-600);
+        font-size: 1rem;
+    }
+
+    .progress-block {
+        margin-bottom: 2rem;
+    }
+
+    .progress-bar-track {
+        height: 4px;
+        background: var(--grey-200);
+        border-radius: 2px;
+        overflow: hidden;
+        margin-bottom: 0.75rem;
+    }
+
+    .progress-bar-fill {
+        height: 100%;
+        background: var(--chartreuse);
+        width: var(--progress-pct, 0%);
+        transition: width var(--t-slow);
+    }
+
+    .progress-label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--grey-400);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    .input-card {
+        background: var(--white);
+        border: 1px solid var(--grey-200);
+        border-radius: 8px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+
+    .input-card__header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--grey-100);
+    }
+
+    .input-card__icon {
+        width: 32px;
+        height: 32px;
+        color: var(--chartreuse);
+        background: var(--black);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6px;
+    }
+
+    .input-card__title {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .slider-field {
+        margin-bottom: 2rem;
+    }
+
+    .slider-field__top-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .slider-field__label {
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        color: var(--grey-600);
+    }
+
+    .slider-field__value {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--black);
+    }
+
+    .slider-field__input {
+        width: 100%;
+        height: 6px;
+        background: var(--grey-200);
+        border-radius: 3px;
+        outline: none;
+        -webkit-appearance: none;
+        background: linear-gradient(to right, var(--chartreuse) 0%, var(--chartreuse) var(--slider-pct, 0%), var(--grey-200) var(--slider-pct, 0%), var(--grey-200) 100%);
+    }
+
+    .slider-field__input::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: var(--black);
+        border: 3px solid var(--chartreuse);
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    .slider-field__helper {
+        font-size: 0.8rem;
+        color: var(--grey-400);
+        margin-top: 0.75rem;
+        line-height: 1.4;
+    }
+
+    .currency-switcher {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .currency-btn {
+        padding: 8px 16px;
+        border: 1px solid var(--grey-200);
+        background: var(--white);
+        border-radius: 6px;
+        font-weight: 700;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .currency-btn.active {
+        background: var(--black);
+        color: var(--chartreuse);
+        border-color: var(--black);
+    }
+
+    .results-hero {
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(196, 239, 23, 0.1);
+    }
+
+    .results-hero__eyebrow {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.4);
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+
+    .results-hero__value {
+        font-family: var(--font-display);
+        font-weight: 900;
+        font-size: 4rem;
+        line-height: 1;
+        color: var(--chartreuse);
+        letter-spacing: -0.02em;
+    }
+
+    .results-secondary {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .metric-tile {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 1.5rem;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .metric-tile__label {
+        font-size: 0.65rem;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.3);
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+
+    .metric-tile__value {
+        font-family: var(--font-display);
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #fff;
+    }
+
+    .metric-tile__context {
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.2);
+        margin-top: 0.5rem;
+        display: block;
+    }
+
+    .btn-primary {
+        background: var(--chartreuse);
+        color: var(--black);
+        padding: 1rem;
+        border-radius: 6px;
+        font-weight: 800;
+        text-transform: uppercase;
+        width: 100%;
+        display: inline-block;
+        text-decoration: none;
+        text-align: center;
+        transition: transform 0.2s;
+        margin-bottom: 1rem;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+    }
+
+    .trust-strip {
+        background: var(--chartreuse);
+        padding: 5rem 0;
+    }
+
+    .trust-strip__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .trust-strip__headline {
+        font-family: var(--font-display);
+        font-weight: 900;
+        font-size: clamp(1.5rem, 4vw, 3rem);
+        text-transform: uppercase;
+        line-height: 1;
+        max-width: 800px;
+    }
+
+    .trust-strip__cta {
+        background: var(--black);
+        color: #fff;
+        padding: 1.25rem 2.5rem;
+        border-radius: 6px;
+        font-weight: 800;
+        text-transform: uppercase;
+        text-decoration: none;
+        flex-shrink: 0;
+    }
+
+    @media (max-width: 1024px) {
+        .tool-wrapper {
+            flex-direction: column;
+        }
+        .results-column {
+            width: 100%;
+            height: auto;
+            position: static;
+        }
+        .inputs-column {
+            border-right: none;
+        }
+        .trust-strip__inner {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+
+    /* Missing styles from the original HTML */
+    .assumptions-section { margin-top: 2rem; margin-bottom: 2rem; }
+    .assumptions-toggle {
+        width: 100%; display: flex; justify-content: space-between; align-items: center;
+        padding: 1rem; background: var(--grey-100); border: 1px solid var(--grey-200);
+        border-radius: 8px; cursor: pointer;
+    }
+    .assumptions-toggle__title { font-weight: 800; font-size: 0.8rem; text-transform: uppercase; }
+    .assumptions-toggle__subtitle { font-size: 0.75rem; color: var(--grey-400); }
+    .assumptions-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .assumptions-body.is-open { max-height: 1000px; }
+    .assumptions-body__inner { padding: 2rem; border: 1px solid var(--grey-200); border-top: none; border-radius: 0 0 8px 8px; background: #fff; }
+
+    .projection-bars { display: flex; align-items: flex-end; gap: 1rem; height: 120px; margin-top: 1rem; }
+    .projection-bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .projection-bar-col__track { width: 100%; height: 100px; background: rgba(255,255,255,0.05); border-radius: 4px 4px 0 0; display: flex; align-items: flex-end; }
+    .projection-bar-col__bar { width: 100%; background: var(--chartreuse); height: var(--bar-height, 0%); border-radius: 4px 4px 0 0; transition: height 0.6s ease; opacity: 0.8; }
+    .projection-bar-col__year { font-size: 0.7rem; color: rgba(255,255,255,0.4); font-weight: 700; }
+    .projection-bar-col__value { font-family: var(--font-display); font-size: 0.8rem; color: #fff; }
+
+    .results-hours { display: flex; gap: 1rem; padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 2rem; }
+    .results-hours__icon { width: 32px; height: 32px; color: var(--chartreuse); }
+    .results-hours__primary { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: #fff; }
+    .results-hours__secondary { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
+
+    .results-actions { display: flex; gap: 1rem; margin: 2rem 0; }
+    .btn-share, .btn-reset { flex: 1; padding: 0.75rem; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-weight: 700; font-size: 0.75rem; cursor: pointer; }
+    .btn-reset { color: rgba(255,255,255,0.5); }
+    .results-disclaimer { font-size: 0.7rem; color: rgba(255,255,255,0.3); line-height: 1.5; }
+
+    .hidden { display: none !important; }
+    .badge-strong-roi { display: inline-block; background: var(--chartreuse); color: #000; padding: 4px 8px; font-size: 0.65rem; font-weight: 800; border-radius: 2px; margin-bottom: 1rem; }
+</style>
+
+<script>
+    // PORT THE INTERACTIVE LOGIC
+    (function () {
+        'use strict';
+
+        var CURRENCIES = {
+            MYR: {
+                symbol: 'RM ', locale: 'en-MY',
+                salary: { min: 1500, max: 15000, default: 4000, step: 500 },
+                setup: { min: 2000, max: 50000, default: 8000, step: 1000 },
+                retainer: { min: 0, max: 3000, default: 500, step: 100 }
+            },
+            USD: {
+                symbol: '$', locale: 'en-US',
+                salary: { min: 2000, max: 12000, default: 4500, step: 500 },
+                setup: { min: 2000, max: 60000, default: 10000, step: 1000 },
+                retainer: { min: 0, max: 3000, default: 500, step: 100 }
+            },
+            GBP: {
+                symbol: '£', locale: 'en-GB',
+                salary: { min: 1500, max: 8000, default: 2800, step: 250 },
+                setup: { min: 1500, max: 50000, default: 6000, step: 500 },
+                retainer: { min: 0, max: 2000, default: 350, step: 50 }
+            },
+            EUR: {
+                symbol: '€', locale: 'de-DE',
+                salary: { min: 1500, max: 8000, default: 2500, step: 250 },
+                setup: { min: 1500, max: 50000, default: 6000, step: 500 },
+                retainer: { min: 0, max: 2000, default: 350, step: 50 }
+            }
+        };
+
+        var activeCurrency = 'MYR';
+        var MONEY_SLIDERS = ['avg-salary', 'setup-fee', 'monthly-retainer'];
+        var ANIM_MS = 400;
+
+        function get(id) { return document.getElementById(id); }
+        function gv(id) { return parseFloat(get(id).value) || 0; }
+
+        function fmt(v, short) {
+            var cfg = CURRENCIES[activeCurrency];
+            if (short && Math.abs(v) >= 1000) return cfg.symbol + (v / 1000).toFixed(1) + 'k';
+            return cfg.symbol + Math.round(v).toLocaleString(cfg.locale);
+        }
+
+        function calc() {
+            var staff = gv('staff-count');
+            var salary = gv('avg-salary');
+            var hrs = gv('repetitive-hours');
+            var setup = Math.max(1, gv('setup-fee'));
+            var monthly = gv('monthly-retainer');
+            var autoRate = gv('automation-rate') / 100;
+            var errRate = gv('error-reduction') / 100;
+            var revRate = gv('revenue-impact') / 100;
+
+            var hourly = salary / 160;
+            var annualLabor = staff * hourly * hrs * 52;
+            var netAnnual = (annualLabor * autoRate) + (annualLabor * errRate * 0.25) + (annualLabor * revRate) - (monthly * 12);
+            
+            var roi = (netAnnual / setup) * 100;
+            var payback = netAnnual > 0 ? setup / (netAnnual / 12) : Infinity;
+            
+            return {
+                netAnnual: netAnnual, 
+                roi: roi, 
+                payback: payback,
+                yr1: netAnnual - setup,
+                yr2: (netAnnual * 2) - setup,
+                yr3: (netAnnual * 3) - setup,
+                hoursFreed: staff * hrs * autoRate,
+                fte: (staff * hrs * autoRate) / 40
+            };
+        }
+
+        function updateUI() {
+            var r = calc();
+            get('result-annual-savings').textContent = fmt(r.netAnnual);
+            get('result-payback').textContent = r.payback === Infinity ? '--' : Math.ceil(r.payback) + ' mo';
+            get('result-roi-pct').textContent = Math.round(r.roi) + '%';
+            get('result-hours-freed').textContent = r.hoursFreed.toFixed(1) + ' HRS/WK FREED';
+            get('result-fte').textContent = 'Equivalent to ' + r.fte.toFixed(1) + ' full-time staff';
+
+            var maxV = Math.max(r.yr3, 1);
+            get('bar-year1').style.setProperty('--bar-height', Math.max(5, (r.yr1 / maxV) * 100) + '%');
+            get('bar-year2').style.setProperty('--bar-height', Math.max(5, (r.yr2 / maxV) * 100) + '%');
+            get('bar-year3').style.setProperty('--bar-height', Math.max(5, (r.yr3 / maxV) * 100) + '%');
+            
+            get('result-year1').textContent = fmt(r.yr1, true);
+            get('result-year2').textContent = fmt(r.yr2, true);
+            get('result-year3').textContent = fmt(r.yr3, true);
+
+            get('badge-strong-roi').classList.toggle('hidden', r.roi < 200);
+        }
+
+        function updateSlider(id) {
+            var el = get(id);
+            var pct = ((el.value - el.min) / (el.max - el.min)) * 100;
+            el.style.setProperty('--slider-pct', pct + '%');
+            
+            var dis = get(id + '-display');
+            if (MONEY_SLIDERS.indexOf(id) !== -1) {
+                dis.textContent = CURRENCIES[activeCurrency].symbol + parseFloat(el.value).toLocaleString(CURRENCIES[activeCurrency].locale);
+            } else {
+                dis.textContent = el.value;
+            }
+        }
+
+        // Event Listeners
+        document.querySelectorAll('input[type="range"]').forEach(function (input) {
+            input.addEventListener('input', function () {
+                updateSlider(this.id);
+                updateUI();
+                
+                // Progress Label
+                var adjusted = document.querySelectorAll('input[type="range"]').length; // Simple for now
+                get('progress-fill').style.setProperty('--progress-pct', '100%');
+                get('progress-label').textContent = 'Ready to SCALE';
+            });
+            updateSlider(input.id);
+        });
+
+        document.querySelectorAll('.currency-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.currency-btn').forEach(function (b) { b.classList.remove('active'); });
+                this.classList.add('active');
+                activeCurrency = this.dataset.currency;
+                
+                var cfg = CURRENCIES[activeCurrency];
+                MONEY_SLIDERS.forEach(function (id) {
+                    var el = get(id);
+                    // Adjust ranges
+                    if (id === 'avg-salary') { el.min = cfg.salary.min; el.max = cfg.salary.max; el.value = cfg.salary.default; el.step = cfg.salary.step; }
+                    if (id === 'setup-fee') { el.min = cfg.setup.min; el.max = cfg.setup.max; el.value = cfg.setup.default; el.step = cfg.setup.step; }
+                    if (id === 'monthly-retainer') { el.min = cfg.retainer.min; el.max = cfg.retainer.max; el.value = cfg.retainer.default; el.step = cfg.retainer.step; }
+                    updateSlider(id);
+                });
+                updateUI();
+            });
+        });
+
+        get('assumptions-toggle').addEventListener('click', function () {
+            var expanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !expanded);
+            get('assumptions-body').classList.toggle('is-open');
+        });
+
+        get('reset-btn').addEventListener('click', function() {
+            window.location.reload();
+        });
+
+        updateUI();
+
+    })();
+</script>

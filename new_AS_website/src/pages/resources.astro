@@ -32,6 +32,7 @@ const fallbackResources = [
         description: "Input your labor costs and manual hours to see exactly how much an AI pipeline saves you.",
         meta: "Interactive",
         linkText: "CALCULATE →",
+        url: "/tools/automation-roi-calculator",
         isCalculator: true
     },
     {
@@ -366,7 +367,7 @@ const resources = sanityResources.length > 0 ? sanityResources.map((res: any) =>
         document.addEventListener('DOMContentLoaded', () => {
             const searchInput = document.getElementById('resource-search') as HTMLInputElement;
             const verticalTags = document.querySelectorAll('.filter-group:nth-of-type(1) .filter-tag');
-            const typeTags = document.querySelectorAll('.filter-group:nth-of-type(3) .filter-tag');
+            const typeTags = document.querySelectorAll('.filter-group:nth-of-type(2) .filter-tag');
             const cards = document.querySelectorAll('.resource-card') as NodeListOf<HTMLElement>;
 
             let activeVertical = 'all';
