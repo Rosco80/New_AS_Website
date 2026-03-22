@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/tools/ai-self-audit",
+      "destination": "https://ai-self-audit.autoflow-solutions.com/"
+    },
+    {
+      "source": "/tools/ai-self-audit/:path*",
+      "destination": "https://ai-self-audit.autoflow-solutions.com/:path*"
+    }
+  ]
+}
