@@ -1,0 +1,108 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+    title: string;
+    effectiveDate?: string;
+}
+
+const { title, effectiveDate } = Astro.props;
+---
+
+<BaseLayout title={title}>
+    <main class="legal-page">
+        <div class="container container-narrow">
+            <header class="legal-header">
+                <span class="label-micro">LEGAL_DOC_v1.0</span>
+                <h1 class="text-display-small">{title}</h1>
+                {effectiveDate && <p class="effective-date">Effective Date: {effectiveDate}</p>}
+            </header>
+            
+            <div class="legal-content">
+                <slot />
+            </div>
+            
+            <div class="legal-footer">
+                <p>If you have any questions regarding this document, please reach out to us at <a href="mailto:info@autoflow-solutions.com">info@autoflow-solutions.com</a></p>
+            </div>
+        </div>
+    </main>
+</BaseLayout>
+
+<style>
+    .legal-page {
+        padding: var(--space-xl) 0;
+        background-color: var(--white);
+    }
+
+    .container-narrow {
+        max-width: 800px;
+    }
+
+    .legal-header {
+        margin-bottom: var(--space-lg);
+        padding-bottom: var(--space-md);
+        border-bottom: 2px solid var(--black);
+    }
+
+    .text-display-small {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: -0.04em;
+        line-height: 1;
+        margin: 1rem 0;
+    }
+
+    .effective-date {
+        font-family: monospace;
+        font-weight: 700;
+        color: var(--gray-dark);
+    }
+
+    .legal-content {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: var(--black);
+    }
+
+    .legal-content :global(h2) {
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+        border-left: 4px solid var(--neon);
+        padding-left: 1rem;
+    }
+
+    .legal-content :global(p) {
+        margin-bottom: 1.5rem;
+    }
+
+    .legal-content :global(ul) {
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+    }
+
+    .legal-content :global(li) {
+        margin-bottom: 0.5rem;
+    }
+
+    .legal-footer {
+        margin-top: var(--space-xl);
+        padding-top: var(--space-lg);
+        border-top: 1px solid var(--gray-light);
+        font-size: 0.9rem;
+        color: var(--gray-dark);
+    }
+
+    .legal-footer a {
+        color: var(--black);
+        font-weight: 700;
+        text-decoration: underline;
+        text-decoration-color: var(--neon);
+        text-decoration-thickness: 2px;
+    }
+</style>
