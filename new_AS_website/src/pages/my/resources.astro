@@ -179,7 +179,7 @@ const resources = sanityResources.length > 0 ? sanityResources.map((res: any) =>
     <style>
         .resource-hero {
             background-color: var(--neon);
-            padding: var(--space-lg) 0;
+            padding: calc(80px + var(--space-md)) 0 var(--space-lg) 0;
             border-bottom: 2px solid var(--black);
         }
 
@@ -194,7 +194,8 @@ const resources = sanityResources.length > 0 ? sanityResources.map((res: any) =>
         .search-bar {
             margin-top: var(--space-md);
             display: flex;
-            max-width: 100%;
+            width: 100%;
+            max-width: 500px;
             border: 2px solid var(--black);
             background: var(--white);
             border-radius: var(--radius-sm);
