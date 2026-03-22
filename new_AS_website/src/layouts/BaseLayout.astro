@@ -1,4 +1,5 @@
 ---
+import Analytics from '@vercel/analytics/astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/variant.css';
@@ -62,6 +63,7 @@ const breadcrumbSchema = {
 		<title>{title} | Autoflow Solutions</title>
 		<meta name="description" content={description} />
 		<link rel="canonical" href={canonicalURL} />
+		<Analytics />
 		
 		<!-- Regional Targeting (hreflang) -->
 		<link rel="alternate" hreflang="en-my" href={urlMy} />
