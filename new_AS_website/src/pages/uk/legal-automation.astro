@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Legal Automation for UK Law Firms — Conveyancing & Document Workflows";
+const description = "Automate conveyancing admin, legal document drafting and UK GDPR data workflows for UK solicitors and law firms. SRA-conscious. Free audit.";
+---
+
+<BaseLayout title={title} description={description}>
+    <header class="hero" style="min-height: 80vh;">
+        <div class="hero-left">
+            <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Vertical Focus: Legal</span>
+            <h1 class="text-display">UK LEGAL<br>AUTOMATION.</h1>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Conveyancing & Document Workflow Specialists</h2>
+            <p class="text-body-lg" style="margin-bottom: 2.5rem;">We help UK solicitors and law firms automate the repetitive admin of conveyancing and GDPR compliance.</p>
+            <div class="hero-btns" style="display: flex; gap: 1rem;">
+                <a href="/services#request" class="btn btn-solid">Request a Firm Audit (£)</a>
+                <a href="https://ai-self-audit.autoflow-solutions.com/" class="btn btn-neon">Free AI Self Audit</a>
+            </div>
+        </div>
+        <div class="hero-right" style="background-color: #f8f8f8;">
+            <div style="padding: 3rem; width: 100%;">
+                <div class="ui-card" style="position: relative; width: 100%; transform: none; box-shadow: 20px 20px 0 var(--black); background: #fff;">
+                    <div class="card-header">
+                        <span class="label-micro">CONVEYANCING_AUTO_PACK</span>
+                        <div style="display: flex; gap: 4px;">
+                            <span class="status" style="width: 8px; height: 8px; background: #888; border-radius: 50%;"></span>
+                            <span class="status" style="width: 8px; height: 8px; background: #888; border-radius: 50%;"></span>
+                            <span class="status" style="width: 8px; height: 8px; background: var(--neon); border-radius: 50%;"></span>
+                        </div>
+                    </div>
+                    <div style="margin: 1.5rem 0;">
+                        <p class="label-micro">In Progress: Purchase Transaction #LON-221</p>
+                        <div style="margin-top: 1rem;">
+                            <div style="font-size: 0.85rem; padding: 4px 0; display: flex; justify-content: space-between; border-bottom: 1px solid #eee;">
+                                <span>ID Verification</span>
+                                <span style="color: green;">✓ Done</span>
+                            </div>
+                            <div style="font-size: 0.85rem; padding: 4px 0; display: flex; justify-content: space-between; border-bottom: 1px solid #eee;">
+                                <span>Land Registry Search</span>
+                                <span style="color: green;">✓ Ordered</span>
+                            </div>
+                            <div style="font-size: 0.85rem; padding: 4px 0; display: flex; justify-content: space-between;">
+                                <span>Drafting Contract Pack</span>
+                                <span style="color: blue;">⚡ AI Generating...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="density-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="label-micro">The SRA Context</span>
+                <h2 class="text-display" style="margin-top: 1rem;">COMPLIANT<br>EFFICIENCY.</h2>
+                <p class="text-body-lg" style="margin-top: 1.5rem;">UK law firms operate under strict SRA rules. Our automation is built to enhance the accuracy of your expert staff, not replace their oversight.</p>
+            </div>
+            
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <span class="cell-id">01</span>
+                    <h3 class="text-h3">Conveyancing Admin</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Automated document pack assembly, Land Registry query ordering, and automated client status updates.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">02</span>
+                    <h3 class="text-h3">UK GDPR / SARs</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Automating the identification and extraction of data for Subject Access Requests within the legal 30-day window.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">03</span>
+                    <h3 class="text-h3">Drafting Support</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Using our Execution Engine to draft standard NDAs, engagement letters, and standard contract clauses for final review.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">04</span>
+                    <h3 class="text-h3">Practice Management</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Syncing lead intake data from your website directly into your specific legal case management software.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

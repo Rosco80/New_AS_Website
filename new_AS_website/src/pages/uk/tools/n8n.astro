@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "n8n Automation Agency UK — Workflow Scaling Experts";
+const description = "Authorized n8n automation experts for UK businesses. Custom workflow design, API integrations, and self-hosted n8n infrastructure. Book a free audit.";
+---
+
+<BaseLayout title={title} description={description}>
+    <header class="hero" style="min-height: 80vh;">
+        <div class="hero-left">
+            <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Tool Focus: n8n.io</span>
+            <h1 class="text-display">n8n AGENCY<br>UNITED KINGDOM.</h1>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Fair-Code Automation for High-Leverage UK SMEs</h2>
+            <p class="text-body-lg" style="margin-bottom: 2.5rem;">We build enterprise-grade workflows using n8n, the most flexible automation engine on the market. Secure, scalable, and British-English optimized.</p>
+            <div class="hero-btns" style="display: flex; gap: 1rem;">
+                <a href="/services#request" class="btn btn-solid">Discuss Your Workflow (£)</a>
+                <a href="https://ai-self-audit.autoflow-solutions.com/" class="btn btn-neon">Free AI Self Audit</a>
+            </div>
+        </div>
+        <div class="hero-right" style="background-color: #fafafa;">
+             <div style="padding: 3rem; width: 100%;">
+                <div class="ui-card" style="position: relative; width: 100%; transform: none; box-shadow: 20px 20px 0 var(--black); background: #fff;">
+                    <div class="card-header">
+                        <span class="label-micro">N8N_WORKFLOW_0X1</span>
+                        <div style="display: flex; gap: 4px;">
+                            <div style="width: 12px; height: 12px; background: #ff6d5a; border-radius: 2px;"></div>
+                            <div style="width: 12px; height: 12px; background: #ff6d5a; border-radius: 2px;"></div>
+                        </div>
+                    </div>
+                    <div style="margin: 1.5rem 0;">
+                        <p style="font-size: 0.9rem; font-weight: 700;">Client: UK Freight Forwarder</p>
+                        <p class="label-micro" style="color: var(--gray-dark); margin-bottom: 1rem;">Nodes: 14 | Status: Active</p>
+                        <div style="padding: 0.75rem; background: #f0f0f0; border-radius: 4px; font-family: monospace; font-size: 0.8rem;">
+                            Webhook -> AI Morph -> Postgres -> Gmail
+                        </div>
+                    </div>
+                    <p class="label-micro" style="color: var(--gray-dark);">Saved: 18.5 hours/week • Cost: < £50/mo</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="density-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="label-micro">The Technical Edge</span>
+                <h2 class="text-display" style="margin-top: 1rem;">WHY n8n FOR<br>UK BUSINESS?</h2>
+                <p class="text-body-lg" style="margin-top: 1.5rem;">Unlike traditional SaaS automation tools, n8n allows for deep custom coding and self-hosting, keeping your sensitive UK data under your control.</p>
+            </div>
+            
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <span class="cell-id">01</span>
+                    <h3 class="text-h3">Data Sovereignty</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Hosting n8n on UK-based servers (AWS, DigitalOcean LON1) ensures full UK GDPR compliance for sensitive client data.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">02</span>
+                    <h3 class="text-h3">Complex Logic</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Built-in JavaScript nodes allow us to handle complex UK business rules (e.g., VAT calculations, MTD quarterly logic).</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">03</span>
+                    <h3 class="text-h3">Cost Efficiency</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Switching from "pay-per-task" tools like Zapier can save UK SMEs hundreds of pounds per month in subscription fees.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">04</span>
+                    <h3 class="text-h3">Self-Healing</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Advanced error handling ensures your critical UK operations (e.g. shipping labels, invoicing) rarely fail and self-correct when they do.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

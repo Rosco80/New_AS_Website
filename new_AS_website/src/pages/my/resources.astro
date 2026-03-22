@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 import { sanityClient } from "sanity:client";
 
@@ -82,15 +82,15 @@ const resources = sanityResources.length > 0 ? sanityResources.map((res: any) =>
 ---
 
 <BaseLayout 
-    title="Free Automation Resources — Guides, Blueprints, Calculators"
-    description="Download free AI automation guides, vertical-specific blueprints, ROI calculators, and webinars built for logistics, healthcare, e-commerce, legal, and professional service businesses."
+    title="Free Automation Resources for Malaysian SMEs — Guides, Blueprints, Calculators"
+    description="Download free AI automation guides, vertical-specific blueprints, ROI calculators, and webinars built for Malaysian logistics, healthcare, e-commerce, legal, and professional service businesses."
 >
     <header class="resource-hero">
         <div class="container">
             <span class="label-micro" style="margin-bottom: 1rem;">The Knowledge Base</span>
             <h1 class="text-display">Resource<br>Library.</h1>
             <p style="font-size: 1.25rem; font-weight: 500; max-width: 500px; margin-top: 1.5rem;">
-                Free automation frameworks, AI implementation guides, and ROI calculators for SME operators across Logistics, Healthcare, E-Commerce, Professional Services, and Legal.
+                Free automation frameworks, AI implementation guides, and ROI calculators for Malaysian SME operators across Logistics, Healthcare, E-Commerce, Professional Services, and Legal.
             </p>
             <div class="search-bar">
                 <input type="text" id="resource-search" placeholder="Search by topic (e.g. CRM Sync, Invoicing)...">

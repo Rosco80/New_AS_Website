@@ -1,10 +1,18 @@
 ---
+const pathname = Astro.url.pathname;
+const isUK = pathname.startsWith('/uk/');
+const isMY = pathname.startsWith('/my/');
+
+let regionPrefix = "";
+if (isUK) regionPrefix = "/uk";
+else if (isMY) regionPrefix = "/my";
+const currentPath = pathname.replace(/^\/(uk|my)/, '').slice(1);
 ---
 <footer>
     <div class="container">
         <div class="footer-top">
             <div style="max-width: 400px;">
-                <a href="/" class="logo" style="color: var(--white); margin-bottom: var(--space-md); display: inline-flex; align-items: center; gap: 10px;">
+                <a href={regionPrefix || "/"} class="logo" style="color: var(--white); margin-bottom: var(--space-md); display: inline-flex; align-items: center; gap: 10px;">
                     <img src="/AS%20logos/logo-square-dark-initials-removebg-preview.png" alt="Autoflow Solutions Logo" style="height: 48px; width: auto;" />
                     Autoflow Solutions
                 </a>
@@ -16,15 +24,15 @@
             <div class="footer-links">
                 <div class="footer-col">
                     <span class="label-micro">Company</span>
-                    <a href="/about">About us</a>
-                    <a href="/services">Services</a>
-                    <a href="/careers">Career</a>
-                    <a href="/process">Our Process</a>
+                    <a href={`${regionPrefix}/about`}>About us</a>
+                    <a href={`${regionPrefix}/services`}>Services</a>
+                    <a href={`${regionPrefix}/careers`}>Career</a>
+                    <a href={`${regionPrefix}/process`}>Our Process</a>
                 </div>
                 <div class="footer-col">
                     <span class="label-micro">Resources</span>
-                    <a href="/resources">Resources</a>
-                    <a href="/blog">Blogs</a>
+                    <a href={`${regionPrefix}/resources`}>Resources</a>
+                    <a href={`${regionPrefix}/blog`}>Blogs</a>
                     <a href="https://ai-self-audit.autoflow-solutions.com/" target="_blank" rel="noopener noreferrer">FREE AI self Audit</a>
                     <a href="https://seo-audit.autoflow-solutions.com/" target="_blank" rel="noopener noreferrer">FREE SEO Report</a>
                 </div>

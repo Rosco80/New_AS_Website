@@ -8,7 +8,27 @@ interface Props {
 	description?: string;
 }
 
-const { title, description = "AI Automation for SMEs and Professional Services" } = Astro.props;
+const { 
+	title, 
+	description = "AI Automation for SMEs and Professional Services",
+	image = "/og-image.png", // Default OG image
+	canonicalURL = new URL(Astro.url.pathname, Astro.site)
+} = Astro.props;
+
+const pathname = Astro.url.pathname;
+const isUK = pathname.startsWith('/uk/');
+const isMY = pathname.startsWith('/my/');
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://autoflow-solutions.com';
+
+// Generate reciprocal hreflang URLs
+let cleanPath = pathname;
+if (isUK) cleanPath = pathname.replace(/^\/uk/, '') || '/';
+if (isMY) cleanPath = pathname.replace(/^\/my/, '') || '/';
+if (cleanPath === '') cleanPath = '/';
+
+const urlInt = `${siteUrl}${cleanPath.replace(/\/$/, '') || '/'}`;
+const urlMy = `${siteUrl}/my${cleanPath.replace(/\/$/, '') || '/'}`;
+const urlUk = `${siteUrl}/uk${cleanPath.replace(/\/$/, '') || '/'}`;
 ---
 
 <!doctype html>
@@ -20,6 +40,26 @@ const { title, description = "AI Automation for SMEs and Professional Services" 
 		<meta name="generator" content={Astro.generator} />
 		<title>{title} | Autoflow Solutions</title>
 		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+		
+		<!-- Regional Targeting (hreflang) -->
+		<link rel="alternate" hreflang="en-my" href={urlMy} />
+		<link rel="alternate" hreflang="en-gb" href={urlUk} />
+		<link rel="alternate" hreflang="x-default" href={urlInt} />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL(image, Astro.url)} />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={Astro.url} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={new URL(image, Astro.url)} />
 		
 		<!-- Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,6 +70,21 @@ const { title, description = "AI Automation for SMEs and Professional Services" 
 		<Navbar />
 		<slot />
 		<Footer />
+		<!-- JSON-LD Structured Data -->
+		<script type="application/ld+json" is:inline>
+			{
+				"@context": "https://schema.org",
+				"@type": "Organization",
+				"name": "Autoflow Solutions",
+				"url": "https://autoflow-solutions.com",
+				"logo": "https://autoflow-solutions.com/favicon.svg",
+				"description": "AI Automation Agency specializing in done-for-you AI agents, back-office automation, and AI voice agents for SMEs and professional services.",
+				"sameAs": [
+					"https://www.linkedin.com/company/autoflow-solutions"
+				]
+			}
+		</script>
+		
 		<!-- Cal.com embed -->
 		<script is:inline>
 			(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = cal.ns[namespace] || api) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");

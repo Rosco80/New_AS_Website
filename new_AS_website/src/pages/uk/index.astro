@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "AI Automation Agency for UK SMEs";
+const description = "Done-for-you AI automation for UK small businesses. Logistics, healthcare, e-commerce, professional services and legal. Free AI Self Audit.";
+---
+
+<BaseLayout title={title} description={description}>
+    <header class="hero">
+        <div class="hero-left">
+            <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">For UK SME Owners</span>
+            <h1 class="text-display">AI AUTOMATION<br>FOR UK SMEs.</h1>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Done For You, Built to Deliver ROI</h2>
+            <p class="text-body-lg" style="margin-bottom: 2.5rem;">We deploy custom AI agents and automation pipelines that handle your repetitive tasks, giving you the output of a 10-person team without the overhead.</p>
+            <div class="hero-btns" style="display: flex; gap: 1rem;">
+                <a href="/services#request" class="btn btn-solid">Get an Estimate (£)</a>
+                <a href="https://ai-self-audit.autoflow-solutions.com/" class="btn btn-neon">Free AI Self Audit</a>
+            </div>
+            
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(0,0,0,0.1);">
+                <p class="label-micro" style="margin-bottom: 1rem;">UK COMPLIANCE READY</p>
+                <div style="display: flex; gap: 2rem; opacity: 0.7;">
+                    <div style="font-size: 0.8rem; font-weight: 600;">✓ UK GDPR Compliant</div>
+                    <div style="font-size: 0.8rem; font-weight: 600;">✓ MTD Prepared</div>
+                    <div style="font-size: 0.8rem; font-weight: 600;">✓ CQC Support</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-right">
+            <!-- Reuse the cluster for consistency, but we could customize it for UK later -->
+            <div class="cluster-wrapper">
+                <div class="ui-card card-1">
+                    <div class="card-header">
+                        <span class="label-micro">UK_LOGISTICS_HUB</span>
+                        <div class="status"></div>
+                    </div>
+                    <p class="text-body" style="font-weight: 600;">Customs Declaration Automated</p>
+                    <p class="label-micro" style="margin-top: 4px; color: var(--gray-dark);">CDS API Sync Active</p>
+                </div>
+                <div class="ui-card card-2">
+                    <div class="card-header">
+                        <span class="label-micro">FINANCE_ENGINE</span>
+                    </div>
+                    <p class="text-body" style="font-weight: 600;">MTD Filing Scheduled</p>
+                    <p class="label-micro" style="margin-top: 4px;">Next Submission: April 6</p>
+                </div>
+                <div class="ui-card card-3">
+                    <div class="card-header">
+                        <span class="label-micro">CLIENT_ONBOARDING</span>
+                    </div>
+                    <p class="text-body" style="font-weight: 600;">Drafting Engagement Letter</p>
+                    <p class="label-micro" style="margin-top: 4px; color: var(--black);">SRA-Conscious Workflow</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="density-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="label-micro">Vertical Expertise</span>
+                <h2 class="text-display" style="margin-top: 1rem;">UK SECTOR<br>SOLUTIONS.</h2>
+                <p class="text-body-lg" style="margin-top: 1.5rem;">Purpose-built automation for the British economy. We solve the specific operational bottlenecks found in UK SMEs.</p>
+            </div>
+            
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <span class="cell-id">UK_01</span>
+                    <div class="icon-box">🚚</div>
+                    <h3 class="text-h3">Logistics & Freight</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Automating Post-Brexit customs documentation and HMRC CDS digital submissions.</p>
+                    <a href="/uk/logistics-automation" class="label-micro" style="margin-top: 2rem; color: var(--black); text-decoration: underline;">Explore Logistics →</a>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">UK_02</span>
+                    <div class="icon-box">⚕️</div>
+                    <h3 class="text-h3">Private Healthcare</h3>
+                    <p class="text-body" style="margin-top: 1rem;">CQC-ready admin automation for private GPs, dental clinics, and specialist practices.</p>
+                    <a href="/uk/healthcare-automation" class="label-micro" style="margin-top: 2rem; color: var(--black); text-decoration: underline;">Explore Healthcare →</a>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">UK_03</span>
+                    <div class="icon-box">📦</div>
+                    <h3 class="text-h3">E-Commerce</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Scaling Amazon UK and Shopify operations with Royal Mail & DPD API integrations.</p>
+                    <a href="/uk/ecommerce-automation" class="label-micro" style="margin-top: 2rem; color: var(--black); text-decoration: underline;">Explore E-Commerce →</a>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">UK_04</span>
+                    <div class="icon-box">⚖️</div>
+                    <h3 class="text-h3">Legal & Prof Services</h3>
+                    <p class="text-body" style="margin-top: 1rem;">MTD-compliant workflows for accountants and conveyancing automation for solicitors.</p>
+                    <a href="/uk/legal-automation" class="label-micro" style="margin-top: 2rem; color: var(--black); text-decoration: underline;">Explore Professional →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: var(--black); color: var(--white); padding: var(--space-xl) 0;">
+        <div class="container">
+            <div class="grid-2" style="gap: var(--space-xl); align-items: center;">
+                <div>
+                    <span class="label-micro" style="color: var(--neon); border-color: var(--neon);">The Timeline</span>
+                    <h2 class="text-display" style="color: var(--white); margin-top: 1rem;">HOW WE WORK<br>WITH UK CLIENTS.</h2>
+                </div>
+                <div>
+                    <p class="text-body-lg" style="color: var(--gray-light); margin-bottom: 2rem;">Operating from Kuala Lumpur allows us to provide a high-leverage "follow the sun" model. We work while you sleep, ensuring builds are ready for your morning reviews.</p>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 1.5rem;">
+                        <li style="display: flex; gap: 1rem;">
+                            <span style="color: var(--neon); font-weight: 900;">01</span>
+                            <div>
+                                <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem;">Timezone Overlap</h4>
+                                <p style="font-size: 0.9rem; color: var(--gray-light);">Live reviews scheduled during UK mornings (GMT 8am-12pm).</p>
+                            </div>
+                        </li>
+                        <li style="display: flex; gap: 1rem;">
+                            <span style="color: var(--neon); font-weight: 900;">02</span>
+                            <div>
+                                <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem;">Async Delivery</h4>
+                                <p style="font-size: 0.9rem; color: var(--gray-light);">Constant updates via Slack and Loom for seamless collaboration.</p>
+                            </div>
+                        </li>
+                        <li style="display: flex; gap: 1rem;">
+                            <span style="color: var(--neon); font-weight: 900;">03</span>
+                            <div>
+                                <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem;">UK Phone Support</h4>
+                                <p style="font-size: 0.9rem; color: var(--gray-light);">Direct access via our +44 virtual support line.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="trust-bar" style="border-top: 2px solid var(--black);">
+        <div class="container" style="text-align: center; padding: var(--space-lg) 0;">
+            <p class="label-micro">READY TO AUTOMATE YOUR UK OPERATIONS?</p>
+            <h2 class="text-display" style="margin: 2rem 0;">LET'S START WITH<br><span class="text-gradient">YOUR AUDIT.</span></h2>
+            <a href="https://ai-self-audit.autoflow-solutions.com/" class="btn btn-solid" style="padding: 1.5rem 3rem; font-size: 1.25rem;">UK SME AI Audit →</a>
+        </div>
+    </section>
+</BaseLayout>
+
+<style>
+    .text-gradient {
+        background: linear-gradient(90deg, #000 0%, #333 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    @media (max-width: 1024px) {
+        .grid-2 { grid-template-columns: 1fr; }
+    }
+</style>

@@ -1,10 +1,17 @@
 ---
-const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname.slice(1); // remove the leading slash
+const pathname = Astro.url.pathname;
+const isUK = pathname.startsWith('/uk/');
+const isMY = pathname.startsWith('/my/');
+
+let regionPrefix = "";
+if (isUK) regionPrefix = "/uk";
+else if (isMY) regionPrefix = "/my";
+
+const currentPath = pathname.replace(/^\/(uk|my)/, '').slice(1); // remove prefix and leading slash
 ---
 <nav>
     <div class="container flex-between" style="height: 100%;">
-        <a href="/" class="logo" style="z-index: 101;">
+        <a href={regionPrefix || "/"} class="logo" style="z-index: 101;">
             <img src="/AS%20logos/logo-square-light-initials-removebg-preview.png" alt="Autoflow Solutions Logo" style="height: 48px; width: auto;" />
             Autoflow Solutions
         </a>
@@ -19,11 +26,11 @@ const currentPath = pathname.slice(1); // remove the leading slash
 
         <div class="nav-menu">
             <div class="nav-links">
-                <a href="/services" class={currentPath === "services" ? "active" : ""}>Services</a>
-                <a href="/case-studies" class={currentPath === "case-studies" ? "active" : ""}>Case Studies</a>
-                <a href="/resources" class={currentPath === "resources" ? "active" : ""}>Resources</a>
-                <a href="/about" class={currentPath === "about" ? "active" : ""}>About</a>
-                <a href="/blog" class={currentPath === "blog" ? "active" : ""}>Blog</a>
+                <a href={`${regionPrefix}/services`} class={currentPath === "services" ? "active" : ""}>Services</a>
+                <a href={`${regionPrefix}/case-studies`} class={currentPath === "case-studies" ? "active" : ""}>Case Studies</a>
+                <a href={`${regionPrefix}/resources`} class={currentPath === "resources" ? "active" : ""}>Resources</a>
+                <a href={`${regionPrefix}/about`} class={currentPath === "about" ? "active" : ""}>About</a>
+                <a href={`${regionPrefix}/blog`} class={currentPath === "blog" ? "active" : ""}>Blog</a>
             </div>
             <a href="https://ai-self-audit.autoflow-solutions.com/" target="_blank" class="btn btn-solid nav-cta">Start Free AI Audit</a>
         </div>
