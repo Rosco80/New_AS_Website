@@ -107,10 +107,10 @@ const breadcrumbSchema = {
 		</script>
 		
 		<!-- JSON-LD: Breadcrumb (auto-generated for all sub-pages) -->
-		{showBreadcrumb && <script type="application/ld+json" set:text={JSON.stringify(breadcrumbSchema)} />}
+		{showBreadcrumb && <Fragment set:html={`<script type="application/ld+json">${JSON.stringify(breadcrumbSchema)}</script>`} />}
 		
 		<!-- JSON-LD: Page-specific schemas (Service, FAQ, etc.) -->
-		{schemaData && <script type="application/ld+json" set:text={JSON.stringify(Array.isArray(schemaData) ? schemaData : [schemaData])} />}
+		{schemaData && <Fragment set:html={`<script type="application/ld+json">${JSON.stringify(Array.isArray(schemaData) ? schemaData : [schemaData])}</script>`} />}
 		
 		<!-- Cal.com embed -->
 		<script is:inline>
