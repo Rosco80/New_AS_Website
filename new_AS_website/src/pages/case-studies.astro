@@ -116,13 +116,15 @@ const cases = [
         }
 
         .header-title {
-            font-size: clamp(5rem, 10vw, 10rem);
+            font-size: clamp(3.5rem, 10vw, 10rem);
             margin-bottom: 2.5rem;
             font-weight: 900;
             font-family: 'Barlow Condensed', sans-serif;
             text-transform: uppercase;
             line-height: 0.95;
             letter-spacing: -0.01em;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .graphic-box {
@@ -131,6 +133,7 @@ const cases = [
             padding: 0.05em 0.3em;
             background: var(--color-white, #fff);
             transform: rotate(-1deg);
+            max-width: 100%;
         }
 
         .graphic-box.fill {
@@ -268,11 +271,14 @@ const cases = [
         
         @media (max-width: 600px) {
             .page-header { padding: 6rem var(--space-md) 3rem; }
+            .header-title { font-size: 3.2rem; }
             .case-image-container { height: 300px; }
             .case-content { padding: 2rem var(--space-md); }
             .case-headline { font-size: 2.2rem; margin-bottom: 1.5rem; }
             .stats-grid { grid-template-columns: 1fr; gap: 1.5rem; padding-top: 1.5rem; }
             .stat-value { font-size: 3.5rem; }
+            
+            section h2 { font-size: 2.8rem !important; margin-bottom: 2rem !important; }
         }
     </style>
 </BaseLayout>

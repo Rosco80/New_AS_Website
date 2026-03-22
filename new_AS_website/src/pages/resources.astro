@@ -181,7 +181,7 @@ const resources = sanityResources.length > 0 ? sanityResources.map((res: any) =>
         }
 
         .text-display { 
-            font-size: clamp(3.5rem, 8vw, 5rem); 
+            font-size: clamp(2.5rem, 8vw, 5rem); 
             font-weight: 900; 
             letter-spacing: -0.04em; 
             text-transform: uppercase; 
@@ -191,7 +191,7 @@ const resources = sanityResources.length > 0 ? sanityResources.map((res: any) =>
         .search-bar {
             margin-top: var(--space-md);
             display: flex;
-            max-width: 600px;
+            max-width: 100%;
             border: 2px solid var(--black);
             background: var(--white);
             border-radius: var(--radius-sm);
@@ -221,6 +221,8 @@ const resources = sanityResources.length > 0 ? sanityResources.map((res: any) =>
             padding: var(--space-md) 0;
             border-bottom: 1px solid var(--gray-light);
             background: #fafafa;
+            width: 100%;
+            overflow: hidden;
         }
 
         .filter-group {
@@ -359,6 +361,13 @@ const resources = sanityResources.length > 0 ? sanityResources.map((res: any) =>
 
         @media (max-width: 1024px) {
             .vertical-label { display: none; }
+            .container { padding: 0 1rem; }
+        }
+
+        @media (max-width: 600px) {
+            .search-bar button { padding: 0 1rem; font-size: 0.8rem; }
+            .search-bar input { padding: 1rem; font-size: 1rem; }
+            .text-display { font-size: 3rem; }
         }
     </style>
 
