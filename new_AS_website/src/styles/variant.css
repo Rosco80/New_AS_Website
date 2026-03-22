@@ -434,7 +434,10 @@ footer {
     .footer-top { flex-direction: column; align-items: flex-start; gap: var(--space-lg); }
 }
 
+.hero-btns { display: flex; gap: 1rem; }
 @media (max-width: 600px) {
+    .hero-btns { flex-direction: column; width: 100%; margin-top: var(--space-md); }
+    .hero-btns .btn { width: 100%; white-space: nowrap; }
     .text-display { font-size: clamp(2.5rem, 10vw, 3.5rem); }
     .text-h2 { font-size: clamp(1.8rem, 8vw, 2.5rem); }
     .container { padding: 0 var(--space-sm); }
@@ -443,7 +446,7 @@ footer {
     .btn { padding: 0.8rem 1.5rem; font-size: 0.9rem; }
     .blueprint-grid { grid-template-columns: 1fr; }
     .blueprint-cell { border-right: none; padding: var(--space-md); }
-    .cluster-wrapper { transform: scale(0.6); transform-origin: top left; }
+    .cluster-wrapper { transform: scale(0.6); transform-origin: top center; margin: 0 auto; }
     .footer-huge-text { font-size: clamp(3rem, 15vw, 5rem); }
     .footer-bottom { flex-direction: column; align-items: flex-start; gap: var(--space-sm); }
 }
