@@ -49,7 +49,7 @@ const steps = [
                                 <div class="step-line"></div>
                             </div>
                             <div class="step-content-box">
-                                <span class="label-micro" style="color: var(--neon);">{step.tag}</span>
+                                <span class="label-micro process-tag">{step.tag}</span>
                                 <h3 class="text-h2" style="margin: 1rem 0;">{step.title}</h3>
                                 <p class="text-body-lg" style="color: var(--gray-dark);">{step.description}</p>
                             </div>
@@ -149,6 +149,14 @@ const steps = [
 
     .step-content-box {
         padding-bottom: var(--space-xl);
+    }
+
+    .process-tag {
+        background: var(--black);
+        color: var(--white);
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-family: monospace;
     }
 
     .why-section {
