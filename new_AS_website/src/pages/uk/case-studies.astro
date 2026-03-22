@@ -1,0 +1,285 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const cases = [
+    {
+        tag: "Marketing Ops",
+        client: "Yap Chan Kor (MY)",
+        headline: "Cutting campaign optimization time by 94% with autonomous data analysis.",
+        image: "/case-1.png",
+        stats: [
+            { label: "Before", value: "3 Hrs", bottomLabel: "Weekly Manual Effort", opacity: true },
+            { label: "After", value: "10 Min", bottomLabel: "AI-Powered Weekly Effort" }
+        ]
+    },
+    {
+        tag: "Operations",
+        client: "WePatrol (UK)",
+        headline: "Eliminating messy paperwork and saving 40 hours a month with a WhatsApp AI bot.",
+        image: "/case-2.png",
+        stats: [
+            { label: "Before", value: "High", bottomLabel: "Errors & Admin Delays", opacity: true },
+            { label: "After", value: "40 Hrs", bottomLabel: "Saved Every Month" }
+        ]
+    },
+    {
+        tag: "Customer Service",
+        client: "Le Gourmandin (MY)",
+        headline: "Capturing thousands in lost revenue with a 24/7 voice and text booking agent.",
+        image: "/case-3.png",
+        stats: [
+            { label: "Before", value: "Lost", bottomLabel: "Unanswered Peak Calls", opacity: true },
+            { label: "After", value: "+20%", bottomLabel: "Increase in Reservations" }
+        ]
+    },
+    {
+        tag: "Enterprise Automation",
+        client: "Studio Giovanni Carnevale (IT)",
+        headline: "Replacing fragile workflows with self-healing AI agents that never break.",
+        image: "/case-4.png",
+        stats: [
+            { label: "Before", value: "12%", bottomLabel: "Legacy Automation Success", opacity: true },
+            { label: "After", value: "100%", bottomLabel: "Autonomous Task Completion" }
+        ]
+    }
+];
+---
+
+<BaseLayout title="AI Results & Case Studies — UK SME Deployments">
+    <header class="page-header">
+        <div class="header-content">
+            <h1 class="header-title">
+                PROVEN <br>
+                <span class="graphic-box">DEPLOYMENTS</span> <br>
+                <span class="graphic-box fill">RESULTS // 01-04</span>
+            </h1>
+            <p style="max-width: 550px; font-size: 1.35rem; font-weight: 500; line-height: 1.5;">
+                Real efficiency gains from UK and international companies. No theories, just systems that work 24/7 without needing a coffee break.
+            </p>
+        </div>
+    </header>
+
+    <main class="case-grid">
+        {cases.map((cs) => (
+            <article class="case-study">
+                <div class="case-image-container">
+                    <span class="case-tag">{cs.tag}</span>
+                    <img src={cs.image} class="case-image" alt={cs.client}>
+                    <div class="case-overlay"></div>
+                </div>
+                <div class="case-content">
+                    <div class="case-client">Client: {cs.client}</div>
+                    <h3 class="case-headline">{cs.headline}</h3>
+                    <div class="stats-grid">
+                        {cs.stats.map((stat) => (
+                            <div class="stat-item">
+                                <span class="stat-label">{stat.label}</span>
+                                <span class="stat-value" style={stat.opacity ? "opacity: 0.5;" : ""}>{stat.value}</span>
+                                <span class="stat-label">{stat.bottomLabel}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </article>
+        ))}
+    </main>
+
+    <section style="padding: 12vw 4vw; text-align: center; border-bottom: var(--border-heavy);">
+        <h2 style="font-size: 5rem; margin-bottom: 4rem; font-weight: 900; line-height: 0.9;">READY TO BE THE NEXT <br><span class="graphic-box fill">SUCCESS STORY?</span></h2>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="https://ai-self-audit.autoflow-solutions.com/" target="_blank" class="btn btn-solid">Start Free UK AI Audit</a>
+            <button data-cal-link="autoflow-solutions/book-a-discovery-call" data-cal-config='{"layout":"month_view"}' class="btn btn-outline">Book a Free Discovery Call</button>
+        </div>
+    </section>
+
+    <style>
+        .page-header {
+            padding: 12rem 4vw 5rem;
+            background-color: var(--color-light-gray, #f4f4f4);
+            border-bottom: var(--border-heavy, 3px solid #000);
+            position: relative;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(#d0d0d0 1px, transparent 1px);
+            background-size: 15px 15px;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+        }
+
+        .header-title {
+            font-size: clamp(3.5rem, 10vw, 10rem);
+            margin-bottom: 2.5rem;
+            font-weight: 900;
+            font-family: 'Barlow Condensed', sans-serif;
+            text-transform: uppercase;
+            line-height: 0.95;
+            letter-spacing: -0.01em;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            overflow: hidden;
+        }
+
+        .graphic-box {
+            display: inline-block;
+            border: var(--border-heavy, 3px solid #000);
+            padding: 0.05em 0.3em;
+            background: var(--color-white, #fff);
+            transform: rotate(-1deg);
+            max-width: 100%;
+        }
+
+        .graphic-box.fill {
+            background: var(--neon, #c4ef17);
+            transform: rotate(0.8deg);
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            border-bottom: var(--border-heavy, 3px solid #000);
+        }
+
+        .case-study {
+            border-right: var(--border-heavy, 3px solid #000);
+            border-bottom: var(--border-heavy, 3px solid #000);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .case-study:nth-child(even) {
+            border-right: none;
+        }
+
+        .case-image-container {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            border-bottom: var(--border-heavy, 3px solid #000);
+        }
+
+        .case-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.15);
+            transition: transform 0.4s ease;
+        }
+
+        .case-study:hover .case-image {
+            transform: scale(1.05);
+        }
+
+        .case-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--neon, #c4ef17);
+            mix-blend-mode: multiply;
+            opacity: 0.25;
+        }
+
+        .case-tag {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            background: var(--black, #000);
+            color: var(--white, #fff);
+            padding: 0.6rem 1.2rem;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            z-index: 5;
+        }
+
+        .case-content {
+            padding: 3.5rem 4vw;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .case-client {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .case-headline {
+            font-family: 'Barlow Condensed', sans-serif;
+            text-transform: uppercase;
+            line-height: 0.95;
+            letter-spacing: -0.01em;
+            font-size: 3.5rem;
+            margin-bottom: 2.5rem;
+            max-width: 95%;
+            font-weight: 700;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 2.5rem;
+            margin-top: auto;
+            border-top: 1px solid rgba(10, 10, 10, 0.2);
+            padding-top: 2.5rem;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-value {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: var(--black, #000);
+            line-height: 0.85;
+            text-transform: uppercase;
+        }
+
+        .stat-label {
+            font-family: 'Barlow Condensed', sans-serif;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-top: 0.75rem;
+            letter-spacing: 0.08em;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 1024px) {
+            .case-grid { grid-template-columns: 1fr; }
+            .case-study { border-right: none; }
+        }
+        
+        @media (max-width: 600px) {
+            .page-header { padding: 6rem var(--space-md) 3rem; }
+            .header-title { font-size: 3.2rem; }
+            .case-image-container { height: 300px; }
+            .case-content { padding: 2rem var(--space-md); }
+            .case-headline { font-size: 2.2rem; margin-bottom: 1.5rem; }
+            .stats-grid { grid-template-columns: 1fr; gap: 1.5rem; padding-top: 1.5rem; }
+            .stat-value { font-size: 3.5rem; }
+            
+            section h2 { font-size: 2.8rem !important; margin-bottom: 2rem !important; }
+        }
+    </style>
+</BaseLayout>
