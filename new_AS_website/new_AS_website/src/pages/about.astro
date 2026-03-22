@@ -1,0 +1,283 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const values = [
+    {
+        num: "01",
+        title: "Results > Hype",
+        body: "We don't ship \"AI experiments.\" We ship hardened production pipelines that produce measurable ROI from day one."
+    },
+    {
+        num: "02",
+        title: "Default to Open",
+        body: "No black boxes. We build systems you own and understand, ensuring your business stays agile and independent."
+    },
+    {
+        num: "03",
+        title: "Radical Empathy",
+        body: "We study your friction as if it were our own. We aren't just vendors; we're your outsourced automation department."
+    }
+];
+
+const reviews = [
+    {
+        client: "Firmin Rieu",
+        title: "Owner / Chef, Le Gourmandin",
+        location: "Malaysia",
+        text: "Since implementing Autoflow Solution's AI Chatbot, we've seen a remarkable increase in customer satisfaction and a significant reduction in manual workload. As well as an increase in our online bookings"
+    },
+    {
+        client: "Matteo Rossi",
+        title: "Operations Manager, We Patrol",
+        location: "London, UK",
+        text: "AI handles our monthly roster in minutes instead of hours. Automatically catches conflicts and finds shift coverage. Reduced admin time by 70%"
+    },
+    {
+        client: "YT Yap",
+        title: "Owner, Yap Chan Kor",
+        location: "Malaysia",
+        text: "Our AI assistant handles bookings, answers treatment questions, and sends reminders. Reduced no-shows by 40% and freed up front desk staff completely"
+    },
+    {
+        client: "Giovanni Carnevale",
+        title: "Founder, Studio Giovanni Carnevale",
+        location: "Italy",
+        text: "AI now handles invoice processing, data entry, and compliance checks automatically. We've cut manual tasks by 60% and can focus on strategic advisory work."
+    },
+    {
+        client: "Michael Boken",
+        title: "Founder",
+        location: "Colombia",
+        text: "Automated reciprocator testing now analyzes vibration patterns and wear indicators in real-time. Detection accuracy improved 85%, saving weeks of manual inspection time."
+    },
+    {
+        client: "Adrianne Carter",
+        title: "CEO & Founder",
+        location: "England",
+        text: "AI generates weekly sales reports, financial summaries, and performance dashboards automatically. I've reclaimed 15+ hours monthly to focus on strategy and client relationships."
+    }
+];
+---
+
+<BaseLayout title="About Us">
+    <main>
+        <section class="origin-hero">
+            <div class="hero-content">
+                <span class="label-micro" style="margin-bottom: 1.5rem;">Our Origin Story</span>
+                <h1 class="text-display" style="margin-bottom: 2rem;">Born from<br>Friction.</h1>
+                <p class="text-body-lg" style="max-width: 650px; margin-bottom: 1rem;">
+                    In 2021, we watched brilliant SME owners drowning in spreadsheets while the "AI Revolution" only served Silicon Valley giants.
+                </p>
+                <p class="text-body-lg" style="max-width: 650px;">
+                    Autoflow Solutions was founded to bridge that gap—turning elite automation into accessible infrastructure for the businesses that actually power the economy.
+                </p>
+
+                <div class="manifesto-card">
+                    <div style="border-bottom: 2px solid var(--black); padding-bottom: 12px; margin-bottom: 16px; display: flex; justify-content: space-between;">
+                        <span class="label-micro">INTERNAL_MEMO.EXE</span>
+                        <div style="width: 10px; height: 10px; background: var(--black); border-radius: 50%;"></div>
+                    </div>
+                    <h3 class="text-h3" style="margin-bottom: 1rem;">The Human Leverage Philosophy</h3>
+                    <p class="text-body" style="color: var(--black);">
+                        We don't believe in replacing people. We believe in replacing <strong>repetitive motions</strong>. When you remove the robotic tasks from a human's day, you unlock the creative and strategic potential that actually grows a company.
+                    </p>
+                    <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--gray-light);">
+                        <span class="label-micro">Status: Mission Driven</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="values-section">
+            <div class="container">
+                <div style="max-width: 600px;">
+                    <span class="label-micro" style="color: var(--neon);">The Syntax Code</span>
+                    <h2 class="text-h2" style="margin-top: 1rem;">Core Values.</h2>
+                </div>
+
+                <div class="values-grid">
+                    {values.map((v) => (
+                        <div class="value-cell">
+                            <div class="num">{v.num}</div>
+                            <h4 class="text-h3" style="color: var(--white); margin-bottom: 1rem;">{v.title}</h4>
+                            <p class="text-body" style="color: var(--gray-light);">{v.body}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <section class="reviews-section">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: var(--space-xl);">
+                    <h2 class="text-h2" style="font-size: 3rem; margin-bottom: 10px;">Trusted by SME's around the world</h2>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: 700; font-size: 1.25rem;">
+                        4.9/5 
+                        <span style="color: #FACC15; font-size: 1.5rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                    </div>
+                </div>
+
+                <div class="reviews-grid">
+                    {reviews.map((review) => {
+                        const initials = review.client.split(' ').map(n => n[0]).join('').substring(0, 2);
+                        return (
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <div class="review-avatar">{initials}</div>
+                                    <div class="review-meta">
+                                        <strong>{review.client}</strong>
+                                        <span>{review.title}</span>
+                                        <span>{review.location}</span>
+                                    </div>
+                                </div>
+                                <div class="review-quote">"{review.text}"</div>
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <style>
+        .origin-hero {
+            position: relative;
+            min-height: 100vh;
+            padding-top: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--neon);
+            background-image: radial-gradient(var(--black) 1.5px, transparent 1.5px);
+            background-size: 36px 36px;
+            border-bottom: 2px solid var(--black);
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 900px;
+            padding: var(--space-xl) var(--space-md);
+            z-index: 2;
+        }
+
+        .manifesto-card {
+            background: var(--white);
+            border: 2px solid var(--black);
+            padding: var(--space-md);
+            box-shadow: 16px 16px 0 var(--black);
+            max-width: 500px;
+            margin-top: var(--space-lg);
+            transform: rotate(1deg);
+        }
+
+        .values-section {
+            padding: var(--space-xl) 0;
+            background-color: var(--black);
+            color: var(--white);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background-color: var(--gray-dark);
+            border: 1px solid var(--gray-dark);
+            margin-top: var(--space-lg);
+        }
+
+        .value-cell {
+            background-color: var(--black);
+            padding: var(--space-lg) var(--space-md);
+            transition: background 0.3s ease;
+        }
+
+        .value-cell:hover { background-color: #111; }
+        .value-cell .num { font-size: 4rem; font-weight: 900; color: var(--neon); line-height: 1; margin-bottom: var(--space-sm); opacity: 0.5; }
+
+        .reviews-section {
+            padding: var(--space-xl) 0;
+            background-image: 
+                linear-gradient(var(--gray-light) 1px, transparent 1px),
+                linear-gradient(90deg, var(--gray-light) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-lg);
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: var(--white);
+            border: 2px solid var(--black);
+            padding: var(--space-lg);
+            box-shadow: 12px 12px 0 var(--black);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .review-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 16px 16px 0 #c4ef17;
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border-bottom: 2px solid var(--black);
+            padding-bottom: var(--space-sm);
+        }
+
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--black);
+            color: var(--neon);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .review-meta {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .review-meta strong {
+            font-size: 1.1rem;
+        }
+
+        .review-meta span {
+            font-size: 0.85rem;
+            color: var(--gray-dark);
+            font-weight: 600;
+        }
+
+        .review-quote {
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.5;
+            color: var(--black);
+        }
+
+        @media (max-width: 1024px) {
+            .values-grid { grid-template-columns: 1fr; }
+            .reviews-grid { grid-template-columns: repeat(2, 1fr); padding: 0 var(--space-md); }
+        }
+
+        @media (max-width: 768px) {
+            .reviews-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</BaseLayout>

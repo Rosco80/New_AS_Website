@@ -1,0 +1,519 @@
+<html lang="en" vid="0"><head vid="1">
+    <meta charset="UTF-8" vid="2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" vid="3">
+    <title vid="4">Resources Hub | SyntaxAI</title>
+    <style vid="5">
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&display=swap');
+
+        :root {
+            --neon: #D4FF00;
+            --black: #050505;
+            --white: #FFFFFF;
+            --gray-dark: #333333;
+            --gray-light: #E5E5E5;
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+            --space-xl: 8rem;
+            --radius-pill: 999px;
+            --radius-sm: 4px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--white);
+            color: var(--black);
+            line-height: 1.5;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        
+        .text-display { font-size: 5rem; font-weight: 900; letter-spacing: -0.04em; text-transform: uppercase; line-height: 0.9; }
+        .text-h3 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; }
+        .label-micro {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 800;
+            color: var(--gray-dark);
+            display: inline-block;
+            border: 1px solid var(--black);
+            padding: 4px 10px;
+            border-radius: var(--radius-pill);
+        }
+
+        
+        nav {
+            height: 80px;
+            background: var(--white);
+            border-bottom: 2px solid var(--black);
+            display: flex;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 900;
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: var(--black);
+        }
+
+        .logo-mark { width: 32px; height: 32px; position: relative; }
+        .logo-circle { position: absolute; width: 12px; height: 12px; background: var(--black); border-radius: 50%; }
+        .logo-circle:nth-child(1) { top: 0; left: 10px; }
+        .logo-circle:nth-child(2) { top: 18px; left: 10px; }
+        .logo-circle:nth-child(3) { top: 9px; left: 0; }
+        .logo-circle:nth-child(4) { top: 9px; left: 20px; }
+
+        .nav-links { display: flex; gap: var(--space-md); margin-left: auto; margin-right: var(--space-md); }
+        .nav-links a { text-decoration: none; color: var(--black); font-weight: 600; font-size: 0.9rem; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-pill);
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.2s;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .btn-solid { background: var(--black); color: var(--white); border: 2px solid var(--black); }
+        .btn-neon { background: var(--neon); color: var(--black); border: 2px solid var(--black); }
+
+        
+        .resource-hero {
+            background-color: var(--neon);
+            padding: var(--space-lg) 0;
+            border-bottom: 2px solid var(--black);
+        }
+
+        .search-bar {
+            margin-top: var(--space-md);
+            display: flex;
+            max-width: 600px;
+            border: 2px solid var(--black);
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            box-shadow: 6px 6px 0 var(--black);
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 1.25rem;
+            border: none;
+            outline: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .search-bar button {
+            background: var(--black);
+            color: var(--white);
+            border: none;
+            padding: 0 2rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        
+        .filter-section {
+            padding: var(--space-md) 0;
+            border-bottom: 1px solid var(--gray-light);
+            display: flex;
+            gap: var(--space-md);
+            align-items: center;
+            background: #fafafa;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .filter-tag {
+            padding: 6px 14px;
+            border: 1px solid var(--black);
+            border-radius: var(--radius-pill);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            background: var(--white);
+        }
+
+        .filter-tag.active {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background: var(--black);
+            border-bottom: 2px solid var(--black);
+        }
+
+        .resource-card {
+            background: var(--white);
+            padding: var(--space-md);
+            display: flex;
+            flex-direction: column;
+            transition: background 0.2s;
+            min-height: 420px;
+        }
+
+        .resource-card:hover {
+            background: #fdfdfd;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-md);
+        }
+
+        .card-visual {
+            width: 100%;
+            height: 200px;
+            background-image: 
+                linear-gradient(var(--gray-light) 1px, transparent 1px),
+                linear-gradient(90deg, var(--gray-light) 1px, transparent 1px);
+            background-size: 20px 20px;
+            border: 1px solid var(--gray-light);
+            margin-bottom: var(--space-md);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-tag {
+            background: var(--black);
+            color: var(--neon);
+            padding: 2px 8px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .card-content h3 {
+            margin-bottom: var(--space-sm);
+            line-height: 1.2;
+        }
+
+        .card-content p {
+            color: var(--gray-dark);
+            font-size: 0.95rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .card-footer {
+            margin-top: auto;
+            padding-top: var(--space-sm);
+            border-top: 1px solid var(--gray-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .arrow-link {
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--black);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        
+        .vertical-label {
+            position: fixed;
+            left: 20px;
+            bottom: 100px;
+            transform: rotate(-90deg);
+            transform-origin: left bottom;
+            font-family: monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: var(--gray-light);
+            pointer-events: none;
+        }
+
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: var(--space-xl) 0 var(--space-md);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+
+        .footer-title {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--neon);
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: var(--space-sm);
+        }
+    </style>
+</head>
+<body vid="6">
+
+    <nav vid="7">
+        <div class="container" style="display: flex; align-items: center; width: 100%;" vid="8">
+            <a href="/" class="logo" vid="9">
+                <div class="logo-mark" vid="10">
+                    <div class="logo-circle" vid="11"></div><div class="logo-circle" vid="12"></div>
+                    <div class="logo-circle" vid="13"></div><div class="logo-circle" vid="14"></div>
+                </div>
+                SyntaxAI
+            </a>
+            <div class="nav-links" vid="15">
+                <a href="#" vid="16">Capabilities</a>
+                <a href="#" vid="17">Case Studies</a>
+                <a href="#" vid="18">Resources</a>
+                <a href="#" vid="19">Pricing</a>
+            </div>
+            <a href="#" class="btn btn-solid" vid="20">Audit My Business</a>
+        </div>
+    </nav>
+
+    <header class="resource-hero" vid="21">
+        <div class="container" vid="22">
+            <span class="label-micro" style="margin-bottom: 1rem;" vid="23">The Knowledge Base</span>
+            <h1 class="text-display" vid="24">Resource<br vid="25">Library.</h1>
+            <p style="font-size: 1.25rem; font-weight: 500; max-width: 500px; margin-top: 1.5rem;" vid="26">
+                Free frameworks, technical guides, and automation blueprints to help you scale without adding headcount.
+            </p>
+            <div class="search-bar" vid="27">
+                <input type="text" placeholder="Search by topic (e.g. CRM Sync, Invoicing)..." vid="28">
+                <button vid="29">SEARCH</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="filter-section" vid="30">
+        <div class="container" style="display: flex; gap: 2rem; align-items: center;" vid="31">
+            <div class="filter-group" vid="32">
+                <span class="label-micro" style="border:none; padding:0" vid="33">Verticals:</span>
+                <div class="filter-tag active" vid="34">All</div>
+                <div class="filter-tag" vid="35">Logistics</div>
+                <div class="filter-tag" vid="36">Healthcare</div>
+                <div class="filter-tag" vid="37">E-Commerce</div>
+                <div class="filter-tag" vid="38">Professional Services</div>
+            </div>
+            <div style="width: 1px; height: 24px; background: var(--gray-light);" vid="39"></div>
+            <div class="filter-group" vid="40">
+                <span class="label-micro" style="border:none; padding:0" vid="41">Type:</span>
+                <div class="filter-tag" vid="42">E-Books</div>
+                <div class="filter-tag" vid="43">Blueprints</div>
+                <div class="filter-tag" vid="44">Webinars</div>
+                <div class="filter-tag" vid="45">ROI Calculators</div>
+            </div>
+        </div>
+    </section>
+
+    <main class="resource-grid" vid="46">
+        
+        <div class="resource-card" vid="47">
+            <div class="card-meta" vid="48">
+                <span class="label-micro" vid="49">Logistics</span>
+                <span class="card-tag" vid="50">E-Book</span>
+            </div>
+            <div class="card-visual" vid="51">
+                <div style="background: var(--black); width: 120px; height: 160px; box-shadow: 8px 8px 0 var(--neon); display: flex; align-items: flex-end; padding: 12px;" vid="52">
+                    <span style="color: var(--white); font-weight: 900; font-size: 0.8rem; line-height: 1;" vid="53">SUPPLY CHAIN AI v1.0</span>
+                </div>
+            </div>
+            <div class="card-content" vid="54">
+                <h3 class="text-h3" vid="55">The 2024 Guide to Automated Warehousing</h3>
+                <p vid="56">Learn how to reduce manual data entry in freight forwarding by 85% using OCR and LLMs.</p>
+            </div>
+            <div class="card-footer" vid="57">
+                <span class="label-micro" style="border:none; padding:0" vid="58">12 Min Read</span>
+                <a href="#" class="arrow-link" vid="59">DOWNLOAD →</a>
+            </div>
+        </div>
+
+        
+        <div class="resource-card" vid="60">
+            <div class="card-meta" vid="61">
+                <span class="label-micro" vid="62">E-Commerce</span>
+                <span class="card-tag" vid="63">Blueprint</span>
+            </div>
+            <div class="card-visual" vid="64">
+                <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.5" vid="65">
+                    <rect x="2" y="2" width="20" height="20" rx="2" vid="66"></rect>
+                    <path d="M7 8h10M7 12h10M7 16h6" vid="67"></path>
+                </svg>
+            </div>
+            <div class="card-content" vid="68">
+                <h3 class="text-h3" vid="69">Omni-channel Inventory Sync Framework</h3>
+                <p vid="70">A technical blueprint for syncing Shopify, Amazon, and ERP systems in real-time.</p>
+            </div>
+            <div class="card-footer" vid="71">
+                <span class="label-micro" style="border:none; padding:0" vid="72">Technical</span>
+                <a href="#" class="arrow-link" vid="73">GET ACCESS →</a>
+            </div>
+        </div>
+
+        
+        <div class="resource-card" vid="74">
+            <div class="card-meta" vid="75">
+                <span class="label-micro" vid="76">General</span>
+                <span class="card-tag" vid="77">Calculator</span>
+            </div>
+            <div class="card-visual" style="background: var(--black);" vid="78">
+                <span style="color: var(--neon); font-size: 3rem; font-weight: 900;" vid="79">$0.00</span>
+            </div>
+            <div class="card-content" vid="80">
+                <h3 class="text-h3" vid="81">Automation ROI Forecaster</h3>
+                <p vid="82">Input your labor costs and manual hours to see exactly how much an AI pipeline saves you.</p>
+            </div>
+            <div class="card-footer" vid="83">
+                <span class="label-micro" style="border:none; padding:0" vid="84">Interactive</span>
+                <a href="#" class="arrow-link" vid="85">CALCULATE →</a>
+            </div>
+        </div>
+
+        
+        <div class="resource-card" vid="86">
+            <div class="card-meta" vid="87">
+                <span class="label-micro" vid="88">Healthcare</span>
+                <span class="card-tag" vid="89">Webinar</span>
+            </div>
+            <div class="card-visual" vid="90">
+                <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--neon); border: 2px solid var(--black); display: flex; align-items: center; justify-content: center;" vid="91">
+                    <div style="width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 15px solid var(--black); margin-left: 5px;" vid="92"></div>
+                </div>
+            </div>
+            <div class="card-content" vid="93">
+                <h3 class="text-h3" vid="94">HIPAA-Compliant AI Implementation</h3>
+                <p vid="95">Watch our lead engineer discuss the security protocols for automating patient intake.</p>
+            </div>
+            <div class="card-footer" vid="96">
+                <span class="label-micro" style="border:none; padding:0" vid="97">45 Minutes</span>
+                <a href="#" class="arrow-link" vid="98">WATCH NOW →</a>
+            </div>
+        </div>
+
+        
+        <div class="resource-card" vid="99">
+            <div class="card-meta" vid="100">
+                <span class="label-micro" vid="101">Legal</span>
+                <span class="card-tag" vid="102">E-Book</span>
+            </div>
+            <div class="card-visual" vid="103">
+                <div style="padding: 20px; border: 2px dashed var(--black); font-family: monospace; font-size: 0.7rem;" vid="104">
+                    [DOCUMENT_ANALYSIS]<br vid="105">
+                    SCANNING...<br vid="106">
+                    MATCH_FOUND: 98%
+                </div>
+            </div>
+            <div class="card-content" vid="107">
+                <h3 class="text-h3" vid="108">Automating Contract Review</h3>
+                <p vid="109">How mid-sized law firms are using private LLMs to speed up discovery and review.</p>
+            </div>
+            <div class="card-footer" vid="110">
+                <span class="label-micro" style="border:none; padding:0" vid="111">8 Min Read</span>
+                <a href="#" class="arrow-link" vid="112">DOWNLOAD →</a>
+            </div>
+        </div>
+
+        
+        <div class="resource-card" vid="113">
+            <div class="card-meta" vid="114">
+                <span class="label-micro" vid="115">SaaS</span>
+                <span class="card-tag" vid="116">Case Study</span>
+            </div>
+            <div class="card-visual" style="overflow: hidden;" vid="117">
+                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 6rem; opacity: 0.1; letter-spacing: -0.1em;" vid="118">RESULTS</div>
+            </div>
+            <div class="card-content" vid="119">
+                <h3 class="text-h3" vid="120">Scale to $10M ARR with 5 Employees</h3>
+                <p vid="121">The automation stack used by a leading FinTech to manage 50k users with a tiny team.</p>
+            </div>
+            <div class="card-footer" vid="122">
+                <span class="label-micro" style="border:none; padding:0" vid="123">New Release</span>
+                <a href="#" class="arrow-link" vid="124">READ STORY →</a>
+            </div>
+        </div>
+    </main>
+
+    <div class="vertical-label" vid="125">SYNTAX_RESOURCES_V4.02</div>
+
+    <footer vid="126">
+        <div class="container" vid="127">
+            <div class="footer-grid" vid="128">
+                <div vid="129">
+                    <h2 class="footer-title" vid="130">Let's Build.</h2>
+                    <p style="color: var(--gray-light); max-width: 300px; margin-bottom: 2rem;" vid="131">Stop hiring for tasks that shouldn't exist. Automate the grunt work.</p>
+                    <a href="#" class="btn btn-neon" vid="132">Start a Project</a>
+                </div>
+                <div vid="133">
+                    <span class="label-micro" style="color: var(--gray-dark); border-color: var(--gray-dark); margin-bottom: 1rem;" vid="134">Navigation</span>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;" vid="135">
+                        <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem;" vid="136">Capabilities</a>
+                        <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem;" vid="137">Case Studies</a>
+                        <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem;" vid="138">Pricing</a>
+                    </div>
+                </div>
+                <div vid="139">
+                    <span class="label-micro" style="color: var(--gray-dark); border-color: var(--gray-dark); margin-bottom: 1rem;" vid="140">Industry</span>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;" vid="141">
+                        <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem;" vid="142">Logistics</a>
+                        <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem;" vid="143">Healthcare</a>
+                        <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem;" vid="144">FinTech</a>
+                    </div>
+                </div>
+                <div vid="145">
+                    <span class="label-micro" style="color: var(--gray-dark); border-color: var(--gray-dark); margin-bottom: 1rem;" vid="146">Connect</span>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;" vid="147">
+                        <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem;" vid="148">LinkedIn</a>
+                        <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem;" vid="149">X / Twitter</a>
+                        <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem;" vid="150">Email Support</a>
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; border-top: 1px solid var(--gray-dark); padding-top: 2rem; font-size: 0.8rem; color: var(--gray-dark);" vid="151">
+                <span vid="152">© 2024 SyntaxAI Agency. Built for Leverage.</span>
+                <span vid="153">SYS_STABLE // 127.0.0.1</span>
+            </div>
+        </div>
+    </footer>
+
+
+</body></html>

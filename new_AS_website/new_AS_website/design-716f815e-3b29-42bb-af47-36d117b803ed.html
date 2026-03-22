@@ -1,0 +1,525 @@
+<html lang="en" vid="0"><head vid="1">
+    <meta charset="UTF-8" vid="2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" vid="3">
+    <title vid="4">Services | SyntaxAI - SME Automation</title>
+    <style vid="5">
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&display=swap');
+
+        :root {
+            --neon: #D4FF00;
+            --black: #050505;
+            --white: #FFFFFF;
+            --gray-dark: #333333;
+            --gray-light: #E5E5E5;
+            --gray-bg: #F9F9F9;
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+            --space-xl: 8rem;
+            --radius-pill: 999px;
+            --radius-sm: 4px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--white);
+            color: var(--black);
+            line-height: 1.5;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            text-transform: uppercase;
+        }
+
+        .text-display { font-size: clamp(3rem, 5vw, 5rem); }
+        .text-body-lg { font-size: 1.25rem; font-weight: 500; color: var(--gray-dark); }
+        
+        .label-micro {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 800;
+            color: var(--black);
+            display: inline-block;
+            border: 1px solid var(--black);
+            padding: 4px 12px;
+            border-radius: var(--radius-pill);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .flex-between { display: flex; align-items: center; justify-content: space-between; }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 900;
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: var(--black);
+        }
+
+        .logo-mark { width: 32px; height: 32px; position: relative; }
+        .logo-circle { position: absolute; width: 12px; height: 12px; background: var(--black); border-radius: 50%; }
+        .logo-circle:nth-child(1) { top: 0; left: 10px; }
+        .logo-circle:nth-child(2) { top: 18px; left: 18px; }
+        .logo-circle:nth-child(3) { top: 18px; left: 2px; }
+
+        .nav-links { display: flex; gap: var(--space-md); }
+        .nav-links a { text-decoration: none; color: var(--black); font-weight: 600; font-size: 0.9rem; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--radius-pill);
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.2s;
+            cursor: pointer;
+            border: 2px solid var(--black);
+        }
+
+        .btn-solid { background: var(--black); color: var(--white); }
+
+        .services-hero {
+            padding: 160px 0 60px;
+            background-image: radial-gradient(var(--gray-light) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            margin-bottom: var(--space-xl);
+            border-left: 1px solid var(--gray-light);
+            border-right: 1px solid var(--gray-light);
+        }
+
+        .service-card {
+            border: 1px solid var(--gray-light);
+            padding: var(--space-md);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 600px;
+            background: var(--white);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .neon-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--neon);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: left;
+        }
+
+        .service-card:hover {
+            background: var(--gray-bg);
+            z-index: 2;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        .service-card:hover .neon-bar {
+            transform: scaleX(1);
+        }
+
+        .service-id-large {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: var(--space-md);
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+            color: #C4ef17;
+            text-shadow: 0 0 20px rgba(196, 239, 23, 0.3);
+        }
+
+        .service-card:hover .service-id-large {
+            opacity: 1;
+        }
+        
+        .service-title { 
+            font-size: 1.5rem; 
+            margin-bottom: 1rem; 
+            letter-spacing: -0.01em;
+        }
+
+        .service-price { 
+            font-weight: 800; 
+            font-size: 0.75rem; 
+            color: var(--gray-dark);
+            margin-bottom: var(--space-md);
+            display: block;
+            border-top: 1px solid var(--gray-light);
+            padding-top: 1rem;
+        }
+
+        .stat-box {
+            padding-top: 1.5rem;
+            margin-top: auto;
+        }
+
+        .stat-label { font-size: 0.6rem; font-weight: 800; text-transform: uppercase; margin-bottom: 0.5rem; display: block; color: var(--gray-dark); }
+        .stat-value { font-size: 1.25rem; font-weight: 900; line-height: 1; }
+
+        .card-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--black);
+            color: var(--white);
+            padding: var(--space-md);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .service-card:hover .card-overlay {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .capability-list { list-style: none; }
+        .capability-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--gray-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .capability-list li::before { content: ""; width: 4px; height: 4px; background: var(--neon); }
+
+        .request-section {
+            padding: var(--space-xl) 0;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .request-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: var(--space-xl);
+        }
+
+        .form-card {
+            background: var(--white);
+            padding: var(--space-lg);
+            border: 2px solid var(--neon);
+            box-shadow: 15px 15px 0 var(--neon);
+            color: var(--black);
+        }
+
+        .input-group { margin-bottom: 1.5rem; }
+        .input-group label { display: block; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-bottom: 8px; }
+        .input-group input, .input-group select, .input-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--black);
+            font-family: inherit;
+            font-weight: 600;
+        }
+
+        .marquee-footer {
+            background: var(--neon);
+            border-top: 2px solid var(--black);
+            border-bottom: 2px solid var(--black);
+            padding: 1rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-text {
+            display: inline-block;
+            animation: scroll 30s linear infinite;
+            font-weight: 900;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        footer { background: var(--black); color: var(--white); padding: 60px 0 20px; }
+        .cursor-follower {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(196, 239, 23, 0.15) 0%, rgba(196, 239, 23, 0.05) 40%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            transition: transform 0.15s ease-out;
+            filter: blur(40px);
+        }
+        .cursor-follower {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(196, 239, 23, 0.15) 0%, rgba(196, 239, 23, 0.05) 40%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            transition: transform 0.15s ease-out;
+            filter: blur(40px);
+        }
+    </style>
+</head>
+<body vid="6">
+    <div class="cursor-follower" id="cursorFollower" vid="7"></div>
+    <script vid="8">
+        const follower = document.getElementById('cursorFollower');
+        let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+        let currentX = mouseX, currentY = mouseY;
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+        
+        function animate() {
+            currentX += (mouseX - currentX) * 0.08;
+            currentY += (mouseY - currentY) * 0.08;
+            follower.style.left = currentX + 'px';
+            follower.style.top = currentY + 'px';
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+    <div class="cursor-follower" id="cursorFollower" vid="9"></div>
+    <script vid="10">
+        const follower = document.getElementById('cursorFollower');
+        let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+        let currentX = mouseX, currentY = mouseY;
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+        
+        function animate() {
+            currentX += (mouseX - currentX) * 0.08;
+            currentY += (mouseY - currentY) * 0.08;
+            follower.style.left = currentX + 'px';
+            follower.style.top = currentY + 'px';
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+
+    <nav vid="11">
+        <div class="container flex-between" style="height: 100%;" vid="12">
+            <a href="/" class="logo" vid="13">
+                <div class="logo-mark" vid="14">
+                    <div class="logo-circle" vid="15"></div><div class="logo-circle" vid="16"></div><div class="logo-circle" vid="17"></div>
+                </div>
+                SyntaxAI
+            </a>
+            <div class="nav-links" vid="18">
+                <a href="#" vid="19">Capabilities</a>
+                <a href="#" vid="20">Case Studies</a>
+                <a href="#" vid="21">Pricing</a>
+            </div>
+            <a href="#request" class="btn btn-solid" vid="22">Audit My Business</a>
+        </div>
+    </nav>
+
+    <header class="services-hero" vid="23">
+        <div class="container" vid="24">
+            <span class="label-micro" style="margin-bottom: 1rem;" vid="25">OUR ARSENAL</span>
+            <h1 class="text-display" style="margin-bottom: 2rem;" vid="26">APPLIED<br vid="27">LEVERAGE.</h1>
+            <p class="text-body-lg" style="max-width: 600px;" vid="28">We don't sell software. We install systems that replace manual overhead with autonomous reliability.</p>
+        </div>
+    </header>
+
+    <section class="services-list" vid="29">
+        <div class="container" vid="30">
+            <div class="services-grid" vid="31">
+                
+                <div class="service-card" vid="32">
+                    <div class="neon-bar" vid="33"></div>
+                    <div class="service-id-large" vid="34">01</div>
+                    <h2 class="service-title" vid="35">Data Extraction</h2>
+                    <span class="service-price" vid="36">FROM $1,500/mo</span>
+                    <p style="font-size: 0.85rem; color: var(--gray-dark); margin-bottom: 2rem;" vid="37">Neural engines parsing semi-structured data from any source with 99.9% accuracy.</p>
+                    <div class="stat-box" vid="38">
+                        <span class="stat-label" vid="39">Typical ROI</span>
+                        <div class="stat-value" vid="40">12h / week</div>
+                    </div>
+                    <div class="card-overlay" vid="41">
+                        <span class="label-micro" style="border-color: var(--neon); color: var(--neon); margin-bottom: 1rem; font-size: 0.6rem;" vid="42">Core Features</span>
+                        <ul class="capability-list" vid="43">
+                            <li vid="44">PDF &amp; OCR</li>
+                            <li vid="45">Email Parsing</li>
+                            <li vid="46">DB Scrapers</li>
+                            <li vid="47">Verification</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card" vid="48">
+                    <div class="neon-bar" vid="49"></div>
+                    <div class="service-id-large" vid="50">02</div>
+                    <h2 class="service-title" vid="51">API Orchestration</h2>
+                    <span class="service-price" vid="52">FROM $2,200/mo</span>
+                    <p style="font-size: 0.85rem; color: var(--gray-dark); margin-bottom: 2rem;" vid="53">Connecting your CRM, ERP, and specialized tools into a single, unified organism.</p>
+                    <div class="stat-box" vid="54">
+                        <span class="stat-label" vid="55">System Health</span>
+                        <div class="stat-value" vid="56">0ms Latency</div>
+                    </div>
+                    <div class="card-overlay" vid="57">
+                        <span class="label-micro" style="border-color: var(--neon); color: var(--neon); margin-bottom: 1rem; font-size: 0.6rem;" vid="58">Core Features</span>
+                        <ul class="capability-list" vid="59">
+                            <li vid="60">CRM Syncing</li>
+                            <li vid="61">Webhooks</li>
+                            <li vid="62">Reporting</li>
+                            <li vid="63">Middleware</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card" vid="64">
+                    <div class="neon-bar" vid="65"></div>
+                    <div class="service-id-large" vid="66">03</div>
+                    <h2 class="service-title" vid="67">Intelligent Triage</h2>
+                    <span class="service-price" vid="68">FROM $3,500/mo</span>
+                    <p style="font-size: 0.85rem; color: var(--gray-dark); margin-bottom: 2rem;" vid="69">Automated classification and routing of tickets or leads with context-aware AI.</p>
+                    <div class="stat-box" vid="70">
+                        <span class="stat-label" vid="71">Efficiency Gain</span>
+                        <div class="stat-value" vid="72">85% Auto</div>
+                    </div>
+                    <div class="card-overlay" vid="73">
+                        <span class="label-micro" style="border-color: var(--neon); color: var(--neon); margin-bottom: 1rem; font-size: 0.6rem;" vid="74">Core Features</span>
+                        <ul class="capability-list" vid="75">
+                            <li vid="76">Ticket Routing</li>
+                            <li vid="77">Lead Scoring</li>
+                            <li vid="78">Anomaly Detection</li>
+                            <li vid="79">Auto-Response</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card" vid="80">
+                    <div class="neon-bar" vid="81"></div>
+                    <div class="service-id-large" vid="82">04</div>
+                    <h2 class="service-title" vid="83">Custom Reporting</h2>
+                    <span class="service-price" vid="84">FROM $1,800/mo</span>
+                    <p style="font-size: 0.85rem; color: var(--gray-dark); margin-bottom: 2rem;" vid="85">Aggregating data from every pipeline into a high-fidelity owner's dashboard.</p>
+                    <div class="stat-box" vid="86">
+                        <span class="stat-label" vid="87">Visual Logic</span>
+                        <div class="stat-value" vid="88">100% Live</div>
+                    </div>
+                    <div class="card-overlay" vid="89">
+                        <span class="label-micro" style="border-color: var(--neon); color: var(--neon); margin-bottom: 1rem; font-size: 0.6rem;" vid="90">Core Features</span>
+                        <ul class="capability-list" vid="91">
+                            <li vid="92">Dashboards</li>
+                            <li vid="93">Leak Maps</li>
+                            <li vid="94">Weekly Digests</li>
+                            <li vid="95">Forecasting</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="request" class="request-section" vid="96">
+        <div class="container request-container" vid="97">
+            <div vid="98">
+                <span class="label-micro" style="color: var(--neon); border-color: var(--neon); margin-bottom: 2rem;" vid="99">Get Started</span>
+                <h2 style="font-size: 3rem; margin-bottom: 2rem;" vid="100">Request<br vid="101">Service Build.</h2>
+                <p class="text-body-lg" style="color: var(--gray-light);" vid="102">Fill out the brief. Our engineering team will review your current tech stack and provide a implementation roadmap within 48 hours.</p>
+            </div>
+            
+            <div class="form-card" vid="103">
+                <form vid="104">
+                    <div class="input-group" vid="105">
+                        <label vid="106">Target Service</label>
+                        <select vid="107">
+                            <option vid="108">Select a capability...</option>
+                            <option vid="109">Data Extraction (CAP.01)</option>
+                            <option vid="110">API Orchestration (CAP.02)</option>
+                            <option vid="111">Intelligent Triage (CAP.03)</option>
+                            <option vid="112">Custom Reporting (CAP.04)</option>
+                        </select>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;" vid="113">
+                        <div class="input-group" vid="114">
+                            <label vid="115">Full Name</label>
+                            <input type="text" placeholder="John Doe" vid="116">
+                        </div>
+                        <div class="input-group" vid="117">
+                            <label vid="118">Work Email</label>
+                            <input type="email" placeholder="john@company.com" vid="119">
+                        </div>
+                    </div>
+                    <div class="input-group" vid="120">
+                        <label vid="121">Primary Bottleneck</label>
+                        <textarea rows="3" placeholder="Describe the manual task you want to kill..." vid="122"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-solid" style="width: 100%;" vid="123">Initialize Assessment</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <div class="marquee-footer" vid="124">
+        <div class="marquee-text" vid="125">
+            READY TO SCALE? • CONTACT SALES • NO VAPORWARE • BUILT TO LAST • READY TO SCALE? • CONTACT SALES • NO VAPORWARE • BUILT TO LAST •
+        </div>
+    </div>
+
+    <footer vid="126">
+        <div class="container flex-between" vid="127">
+            <span style="font-size: 0.8rem; opacity: 0.6;" vid="128">© 2024 SYNTAXAI AGENCY • ALL PIPELINES OPTIMAL</span>
+            <div class="nav-links" vid="129">
+                <a href="#" style="color: white;" vid="130">Terms</a>
+                <a href="#" style="color: white;" vid="131">Privacy</a>
+                <a href="#" style="color: white;" vid="132">API Status</a>
+            </div>
+        </div>
+    </footer>
+
+</body></html>

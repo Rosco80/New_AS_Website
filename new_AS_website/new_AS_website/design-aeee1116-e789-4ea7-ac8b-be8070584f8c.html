@@ -1,0 +1,425 @@
+<html lang="en" vid="0"><head vid="1">
+    <meta charset="UTF-8" vid="2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" vid="3">
+    <title vid="4">Insights | SyntaxAI Blog</title>
+    
+    <style vid="5">
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&display=swap');
+
+        :root {
+            --neon: #D4FF00;
+            --black: #050505;
+            --white: #FFFFFF;
+            --gray-dark: #333333;
+            --gray-light: #E5E5E5;
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --radius-pill: 999px;
+            --radius-sm: 4px;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+            --space-xl: 8rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--white);
+            color: var(--black);
+            line-height: 1.5;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        
+        .text-display { font-size: 6rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.04em; line-height: 0.9; }
+        .text-h2 { font-size: 3rem; font-weight: 900; letter-spacing: -0.03em; }
+        .text-h3 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; }
+        .label-micro {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 800;
+            padding: 4px 10px;
+            border: 1px solid var(--black);
+            border-radius: var(--radius-pill);
+            display: inline-block;
+        }
+
+        
+        nav {
+            height: 80px;
+            background: var(--white);
+            border-bottom: 2px solid var(--black);
+            display: flex;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 900;
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: var(--black);
+        }
+
+        .logo-mark { width: 32px; height: 32px; position: relative; }
+        .logo-circle { position: absolute; width: 12px; height: 12px; background: var(--black); border-radius: 50%; }
+        .logo-circle:nth-child(1) { top: 0; left: 10px; }
+        .logo-circle:nth-child(2) { top: 10px; left: 20px; }
+        .logo-circle:nth-child(3) { top: 20px; left: 10px; }
+        .logo-circle:nth-child(4) { top: 10px; left: 0; }
+
+        .nav-links { display: flex; gap: var(--space-md); margin-left: auto; margin-right: var(--space-md); }
+        .nav-links a { text-decoration: none; color: var(--black); font-weight: 600; font-size: 0.9rem; }
+
+        .btn {
+            display: inline-flex;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--radius-pill);
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.2s;
+            border: 2px solid var(--black);
+        }
+        .btn-solid { background: var(--black); color: var(--white); }
+        .btn-solid:hover { background: var(--neon); color: var(--black); }
+
+        
+        .blog-header {
+            padding: var(--space-lg) 0;
+            background-image: linear-gradient(var(--gray-light) 1px, transparent 1px), linear-gradient(90deg, var(--gray-light) 1px, transparent 1px);
+            background-size: 40px 40px;
+            border-bottom: 2px solid var(--black);
+        }
+
+        .category-nav {
+            display: flex;
+            gap: var(--space-sm);
+            margin-top: var(--space-md);
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+        .cat-chip {
+            padding: 8px 20px;
+            border: 2px solid var(--black);
+            border-radius: var(--radius-pill);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: var(--black);
+            white-space: nowrap;
+        }
+        .cat-chip.active { background: var(--neon); }
+        .cat-chip:hover:not(.active) { background: var(--black); color: var(--white); }
+
+        
+        .featured-article {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            border-bottom: 2px solid var(--black);
+        }
+        .featured-image {
+            background: var(--neon);
+            border-right: 2px solid var(--black);
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .featured-image::after {
+            content: "FEATURED";
+            position: absolute;
+            font-weight: 900;
+            font-size: 12rem;
+            color: rgba(0,0,0,0.05);
+            bottom: -20px;
+            right: -20px;
+        }
+        .featured-content {
+            padding: var(--space-lg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-bottom: 2px solid var(--black);
+        }
+        .article-card {
+            border-right: 1px solid var(--black);
+            border-bottom: 1px solid var(--black);
+            padding: var(--space-md);
+            transition: background 0.2s;
+            text-decoration: none;
+            color: var(--black);
+            display: flex;
+            flex-direction: column;
+        }
+        .article-card:nth-child(3n) { border-right: none; }
+        .article-card:hover { background: #fafafa; }
+        .article-card:hover .text-h3 { text-decoration: underline; text-decoration-thickness: 3px; text-decoration-color: var(--neon); }
+        
+        .card-thumb {
+            aspect-ratio: 16/9;
+            background: var(--gray-light);
+            margin-bottom: var(--space-md);
+            border: 2px solid var(--black);
+            position: relative;
+        }
+        .card-thumb.ai-visual { background: var(--black); }
+
+        
+        .newsletter-section {
+            background: var(--neon);
+            padding: var(--space-xl) 0;
+            text-align: center;
+            border-bottom: 2px solid var(--black);
+        }
+        .newsletter-form {
+            max-width: 600px;
+            margin: var(--space-md) auto 0;
+            display: flex;
+            gap: 10px;
+        }
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--black);
+            border-radius: var(--radius-pill);
+            font-family: var(--font-sans);
+            font-weight: 600;
+            outline: none;
+        }
+
+        
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: var(--space-lg) 0;
+        }
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .decoration-box {
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--black);
+            margin: 20px;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 12px 12px 0 var(--black);
+        }
+
+        @media (max-width: 1024px) {
+            .featured-article { grid-template-columns: 1fr; }
+            .article-grid { grid-template-columns: 1fr 1fr; }
+            .text-display { font-size: 4rem; }
+        }
+    </style>
+</head>
+<body vid="6">
+
+    <nav vid="7">
+        <div class="container flex-between" style="display:flex; width:100%; align-items:center;" vid="8">
+            <a href="/" class="logo" vid="9">
+                <div class="logo-mark" vid="10">
+                    <div class="logo-circle" vid="11"></div><div class="logo-circle" vid="12"></div>
+                    <div class="logo-circle" vid="13"></div><div class="logo-circle" vid="14"></div>
+                </div>
+                SyntaxAI
+            </a>
+            <div class="nav-links" vid="15">
+                <a href="#" vid="16">Capabilities</a>
+                <a href="#" vid="17">Case Studies</a>
+                <a href="#" vid="18" style="color: var(--gray-dark); border-bottom: 2px solid var(--neon);">Insights</a>
+            </div>
+            <a href="#" class="btn btn-solid" vid="19">Audit My Business</a>
+        </div>
+    </nav>
+
+    <header class="blog-header" vid="20">
+        <div class="container" vid="21">
+            <h1 class="text-display" vid="22">Operational<br vid="23">Insights.</h1>
+            <div class="category-nav" vid="24">
+                <a href="#" class="cat-chip active" vid="25">All Posts</a>
+                <a href="#" class="cat-chip" vid="26">AI Strategy</a>
+                <a href="#" class="cat-chip" vid="27">Automation Pipelines</a>
+                <a href="#" class="cat-chip" vid="28">Case Studies</a>
+                <a href="#" class="cat-chip" vid="29">SME Growth</a>
+                <a href="#" class="cat-chip" vid="30">Engineering</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="featured-article" vid="31">
+        <div class="featured-image" vid="32">
+            <div class="decoration-box" style="width: 80%; height: 70%;" vid="33">
+                <div style="font-family: monospace; font-weight: 800; font-size: 1.2rem;" vid="34">
+                    [SYSTEM_VISUAL_01]
+                    <div style="width: 200px; height: 4px; background: var(--black); margin-top: 10px;" vid="35"></div>
+                    <div style="width: 140px; height: 4px; background: var(--neon); margin-top: 6px; border: 1px solid black" vid="36"></div>
+                </div>
+            </div>
+        </div>
+        <div class="featured-content" vid="37">
+            <span class="label-micro" style="margin-bottom: var(--space-sm); align-self: flex-start;" vid="38">Featured Article</span>
+            <h2 class="text-h2" style="margin-bottom: var(--space-sm);" vid="39">The ROI of Automation in 2024: A Framework for SMEs.</h2>
+            <p style="font-size: 1.2rem; color: var(--gray-dark); margin-bottom: var(--space-md);" vid="40">How to identify which manual processes are costing you the most and how to calculate the true value of reclaimed time.</p>
+            <div style="display: flex; align-items: center; gap: 1rem;" vid="41">
+                <a href="#" class="btn btn-solid" vid="42">Read Article</a>
+                <span style="font-weight: 700; font-size: 0.9rem;" vid="43">12 min read</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-grid" vid="44">
+        
+        <a href="#" class="article-card" vid="45">
+            <div class="card-thumb ai-visual" vid="46">
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--neon); font-family: monospace;" vid="47">01011001</div>
+            </div>
+            <span class="label-micro" style="margin-bottom: 12px; align-self: flex-start;" vid="48">Engineering</span>
+            <h3 class="text-h3" style="margin-bottom: 12px;" vid="49">Building Resilient Data Ingestion Pipelines.</h3>
+            <p style="font-size: 0.95rem; color: var(--gray-dark); flex-grow: 1;" vid="50">A technical deep dive into handling messy PDF data with high accuracy rates.</p>
+            <div style="margin-top: 20px; font-weight: 800; font-size: 0.8rem; text-transform: uppercase;" vid="51">March 14, 2024</div>
+        </a>
+
+        
+        <a href="#" class="article-card" vid="52">
+            <div class="card-thumb" style="background: var(--neon);" vid="53">
+                <div style="position: absolute; bottom: 10px; right: 10px; font-weight: 900; font-size: 4rem; opacity: 0.2;" vid="54">CRM</div>
+            </div>
+            <span class="label-micro" style="margin-bottom: 12px; align-self: flex-start;" vid="55">Strategy</span>
+            <h3 class="text-h3" style="margin-bottom: 12px;" vid="56">Why your CRM is actually a data graveyard.</h3>
+            <p style="font-size: 0.95rem; color: var(--gray-dark); flex-grow: 1;" vid="57">Why manual entry kills data integrity and how to fix it with automated sync layers.</p>
+            <div style="margin-top: 20px; font-weight: 800; font-size: 0.8rem; text-transform: uppercase;" vid="58">March 10, 2024</div>
+        </a>
+
+        
+        <a href="#" class="article-card" vid="59">
+            <div class="card-thumb" vid="60">
+                <div style="padding: 20px;" vid="61">
+                    <div style="width: 100%; height: 2px; background: black; margin-bottom: 10px;" vid="62"></div>
+                    <div style="width: 80%; height: 2px; background: black; margin-bottom: 10px;" vid="63"></div>
+                    <div style="width: 90%; height: 2px; background: black;" vid="64"></div>
+                </div>
+            </div>
+            <span class="label-micro" style="margin-bottom: 12px; align-self: flex-start;" vid="65">Case Study</span>
+            <h3 class="text-h3" style="margin-bottom: 12px;" vid="66">Saving 40 Hours a Week for a Logistics Firm.</h3>
+            <p style="font-size: 0.95rem; color: var(--gray-dark); flex-grow: 1;" vid="67">How we automated invoice reconciliation for a regional shipping company.</p>
+            <div style="margin-top: 20px; font-weight: 800; font-size: 0.8rem; text-transform: uppercase;" vid="68">Feb 28, 2024</div>
+        </a>
+
+        
+        <a href="#" class="article-card" vid="69">
+            <div class="card-thumb ai-visual" vid="70">
+                <svg width="100%" height="100%" viewBox="0 0 100 100" vid="71">
+                    <circle cx="50" cy="50" r="20" stroke="var(--neon)" fill="none" stroke-width="0.5" vid="72"></circle>
+                    <circle cx="50" cy="50" r="30" stroke="var(--neon)" fill="none" stroke-width="0.5" vid="73"></circle>
+                </svg>
+            </div>
+            <span class="label-micro" style="margin-bottom: 12px; align-self: flex-start;" vid="74">AI Strategy</span>
+            <h3 class="text-h3" style="margin-bottom: 12px;" vid="75">LLMs are not a strategy. Pipelines are.</h3>
+            <p style="font-size: 0.95rem; color: var(--gray-dark); flex-grow: 1;" vid="76">Stop thinking about "buying AI" and start thinking about building workflows.</p>
+            <div style="margin-top: 20px; font-weight: 800; font-size: 0.8rem; text-transform: uppercase;" vid="77">Feb 15, 2024</div>
+        </a>
+
+        
+        <a href="#" class="article-card" vid="78">
+            <div class="card-thumb" style="background: var(--black);" vid="79">
+                <div style="width: 40px; height: 40px; border: 2px solid var(--neon); margin: 20px;" vid="80"></div>
+            </div>
+            <span class="label-micro" style="margin-bottom: 12px; align-self: flex-start;" vid="81">SME Growth</span>
+            <h3 class="text-h3" style="margin-bottom: 12px;" vid="82">When is your business too small for automation?</h3>
+            <p style="font-size: 0.95rem; color: var(--gray-dark); flex-grow: 1;" vid="83">The "threshold of leverage" and why early automation saves millions in technical debt.</p>
+            <div style="margin-top: 20px; font-weight: 800; font-size: 0.8rem; text-transform: uppercase;" vid="84">Jan 22, 2024</div>
+        </a>
+
+        
+        <div class="article-card" style="background: var(--gray-light); justify-content: center; align-items: center; border-right: none;" vid="85">
+            <div style="text-align: center;" vid="86">
+                <div style="font-size: 3rem; font-weight: 900; margin-bottom: 1rem;" vid="87">07</div>
+                <p class="text-h3" vid="88">Next Page</p>
+                <div style="width: 40px; height: 2px; background: black; margin: 10px auto;" vid="89"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter-section" vid="90">
+        <div class="container" vid="91">
+            <h2 class="text-h2" vid="92">Don't miss a sprint.</h2>
+            <p style="font-weight: 600; font-size: 1.25rem; margin-top: 10px;" vid="93">Get our bi-weekly breakdown of automation wins and AI implementation tactics.</p>
+            <form class="newsletter-form" vid="94">
+                <input type="email" placeholder="Enter your business email" vid="95">
+                <button type="submit" class="btn btn-solid" style="white-space: nowrap;" vid="96">Subscribe Now</button>
+            </form>
+            <p style="font-size: 0.8rem; margin-top: 1.5rem; font-weight: 600;" vid="97">Join 2,400+ SME owners and operators.</p>
+        </div>
+    </section>
+
+    <footer vid="98">
+        <div class="container" vid="99">
+            <div class="footer-grid" vid="100">
+                <div style="max-width: 400px;" vid="101">
+                    <a href="/" class="logo" style="color: var(--white); margin-bottom: 2rem;" vid="102">
+                        <div class="logo-mark" vid="103">
+                            <div class="logo-circle" style="background: var(--neon);" vid="104"></div>
+                            <div class="logo-circle" style="background: var(--neon);" vid="105"></div>
+                            <div class="logo-circle" style="background: var(--neon);" vid="106"></div>
+                            <div class="logo-circle" style="background: var(--neon);" vid="107"></div>
+                        </div>
+                        SyntaxAI
+                    </a>
+                    <p style="color: var(--gray-light);" vid="108">Building leverage for small and medium enterprises through applied automation.</p>
+                </div>
+                <div style="display: flex; gap: 4rem;" vid="109">
+                    <div style="display: flex; flex-direction: column; gap: 10px;" vid="110">
+                        <span class="label-micro" style="border-color: var(--gray-dark); color: var(--gray-dark); margin-bottom: 10px;" vid="111">Navigation</span>
+                        <a href="#" style="color: white; text-decoration: none;" vid="112">Capabilities</a>
+                        <a href="#" style="color: white; text-decoration: none;" vid="113">Case Studies</a>
+                        <a href="#" style="color: var(--neon); text-decoration: none;" vid="114">Insights</a>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 10px;" vid="115">
+                        <span class="label-micro" style="border-color: var(--gray-dark); color: var(--gray-dark); margin-bottom: 10px;" vid="116">Connect</span>
+                        <a href="#" style="color: white; text-decoration: none;" vid="117">LinkedIn</a>
+                        <a href="#" style="color: white; text-decoration: none;" vid="118">Twitter / X</a>
+                        <a href="#" style="color: white; text-decoration: none;" vid="119">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div style="border-top: 1px solid var(--gray-dark); margin-top: 4rem; padding-top: 2rem; display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--gray-dark);" vid="120">
+                <span vid="121">© 2024 SyntaxAI Agency. All rights reserved.</span>
+                <span style="font-family: monospace;" vid="122">SYS_STATUS: OPTIMAL</span>
+            </div>
+        </div>
+    </footer>
+
+</body></html>

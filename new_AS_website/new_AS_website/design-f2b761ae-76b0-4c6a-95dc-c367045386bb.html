@@ -1,0 +1,459 @@
+<html lang="en" vid="0"><head vid="1">
+    <meta charset="UTF-8" vid="2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" vid="3">
+    <title vid="4">Case Studies | AUTO/MATE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" vid="5">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" vid="6">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Barlow+Condensed:wght@600;700;900&amp;display=swap" rel="stylesheet" vid="7">
+    
+    <style vid="8">
+        :root {
+            --color-black: #0a0a0a;
+            --color-white: #ffffff;
+            --color-light-gray: #f4f4f4;
+            --color-neon: #c4ef17;
+            --font-display: 'Barlow Condensed', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --border-heavy: 3px solid var(--color-black);
+            --border-light: 1px solid rgba(10, 10, 10, 0.2);
+            --spacing-section: 6vw;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-black);
+            background-color: var(--color-white);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            line-height: 0.95;
+            letter-spacing: -0.01em;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 4vw;
+            background: var(--color-white);
+            border-bottom: var(--border-heavy);
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 1.8rem;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            color: var(--color-black);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            font-family: var(--font-display);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-links a {
+            color: var(--color-black);
+            text-decoration: none;
+        }
+
+        .page-header {
+            padding: 12rem 4vw 5rem;
+            background-color: var(--color-light-gray);
+            border-bottom: var(--border-heavy);
+            position: relative;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(#d0d0d0 1px, transparent 1px);
+            background-size: 15px 15px;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+        }
+
+        .header-title {
+            font-size: clamp(5rem, 10vw, 10rem);
+            margin-bottom: 2.5rem;
+            font-weight: 900;
+        }
+
+        .graphic-box {
+            display: inline-block;
+            border: var(--border-heavy);
+            padding: 0.05em 0.3em;
+            background: var(--color-white);
+            transform: rotate(-1deg);
+        }
+
+        .graphic-box.fill {
+            background: var(--color-neon);
+            transform: rotate(0.8deg);
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            border-bottom: var(--border-heavy);
+        }
+
+        .case-study {
+            border-right: var(--border-heavy);
+            border-bottom: var(--border-heavy);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .case-study:nth-child(even) {
+            border-right: none;
+        }
+
+        .case-image-container {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            border-bottom: var(--border-heavy);
+        }
+
+        .case-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.15);
+            transition: transform 0.4s ease;
+        }
+
+        .case-study:hover .case-image {
+            transform: scale(1.05);
+        }
+
+        .case-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-neon);
+            mix-blend-mode: multiply;
+            opacity: 0.25;
+        }
+
+        .case-tag {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            background: var(--color-black);
+            color: var(--color-white);
+            padding: 0.6rem 1.2rem;
+            font-family: var(--font-display);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            z-index: 5;
+        }
+
+        .case-content {
+            padding: 3.5rem 4vw;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .case-client {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .case-headline {
+            font-size: 3.5rem;
+            margin-bottom: 2.5rem;
+            max-width: 95%;
+            font-weight: 700;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 2.5rem;
+            margin-top: auto;
+            border-top: var(--border-light);
+            padding-top: 2.5rem;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-value {
+            font-family: var(--font-display);
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: var(--color-black);
+            line-height: 0.85;
+        }
+
+        .stat-label {
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-top: 0.75rem;
+            letter-spacing: 0.08em;
+            opacity: 0.8;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 1.4rem 2.8rem;
+            border: var(--border-heavy);
+            background: var(--color-white);
+            color: var(--color-black);
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.15s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+        }
+
+        .btn:hover {
+            background: var(--color-neon);
+            box-shadow: 8px 8px 0 var(--color-black);
+            transform: translate(-4px, -4px);
+        }
+
+        .btn-solid {
+            background: var(--color-black);
+            color: var(--color-white);
+        }
+
+        .btn-solid:hover {
+            background: var(--color-neon);
+            color: var(--color-black);
+        }
+
+        footer {
+            background: var(--color-black);
+            color: var(--color-white);
+            padding: 8rem 4vw 3vw;
+            text-align: center;
+        }
+
+        .footer-title {
+            font-size: clamp(4rem, 10vw, 10rem);
+            color: var(--color-neon);
+            line-height: 0.9;
+            margin-bottom: 4rem;
+            font-weight: 900;
+        }
+
+        .footer-title span {
+            display: block;
+            -webkit-text-stroke: 2px var(--color-white);
+            color: transparent;
+        }
+
+        .footer-bottom {
+            margin-top: 8rem;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            padding-top: 2.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .case-grid { grid-template-columns: 1fr; }
+            .case-study { border-right: none; }
+        }
+    </style>
+</head>
+<body vid="9">
+
+    <nav vid="10">
+        <a href="/" class="logo" vid="11">Auto/Mate</a>
+        <div class="nav-links" vid="12">
+            <a href="#" vid="13">Capabilities</a>
+            <a href="#" vid="14" style="text-decoration: underline; text-underline-offset: 10px; text-decoration-thickness: 3px;">Case Studies</a>
+            <a href="#" vid="15">Contact</a>
+        </div>
+    </nav>
+
+    <header class="page-header" vid="16">
+        <div class="header-content" vid="17">
+            <h1 class="header-title" vid="18">
+                PROVEN <br vid="19">
+                <span class="graphic-box" vid="20">DEPLOYMENTS</span> <br vid="21">
+                <span class="graphic-box fill" vid="22">RESULTS // 01-04</span>
+            </h1>
+            <p style="max-width: 550px; font-size: 1.35rem; font-weight: 500; line-height: 1.5;" vid="23">
+                Real efficiency gains from real companies. No theories, just systems that work 24/7 without needing a coffee break.
+            </p>
+        </div>
+    </header>
+
+    <main class="case-grid" vid="24">
+        
+        <article class="case-study" vid="25">
+            <div class="case-image-container" vid="26">
+                <span class="case-tag" vid="27">Sales Ops</span>
+                <img src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" class="case-image" alt="Client Team" vid="28">
+                <div class="case-overlay" vid="29"></div>
+            </div>
+            <div class="case-content" vid="30">
+                <div class="case-client" vid="31">Client: Nexus Logistics Group</div>
+                <h3 class="case-headline" vid="32">Automating 400+ weekly shipping quotes with 0% human touch.</h3>
+                <div class="stats-grid" vid="33">
+                    <div class="stat-item" vid="34">
+                        <span class="stat-label" vid="35">Before</span>
+                        <span class="stat-value" vid="36" style="opacity: 0.5;">24h</span>
+                        <span class="stat-label" vid="37">Response Time</span>
+                    </div>
+                    <div class="stat-item" vid="38">
+                        <span class="stat-label" vid="39">After</span>
+                        <span class="stat-value" vid="40">2min</span>
+                        <span class="stat-label" vid="41">Response Time</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        
+        <article class="case-study" vid="42">
+            <div class="case-image-container" vid="43">
+                <span class="case-tag" vid="44">Customer Support</span>
+                <img src="https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" class="case-image" alt="Support Agent" vid="45">
+                <div class="case-overlay" vid="46"></div>
+            </div>
+            <div class="case-content" vid="47">
+                <div class="case-client" vid="48">Client: Bloom Retail Co.</div>
+                <h3 class="case-headline" vid="49">AI Support Agent resolving 82% of tickets instantly in 14 languages.</h3>
+                <div class="stats-grid" vid="50">
+                    <div class="stat-item" vid="51">
+                        <span class="stat-label" vid="52">Old Cost</span>
+                        <span class="stat-value" vid="53" style="opacity: 0.5;">$12k</span>
+                        <span class="stat-label" vid="54">Monthly Opex</span>
+                    </div>
+                    <div class="stat-item" vid="55">
+                        <span class="stat-label" vid="56">New Cost</span>
+                        <span class="stat-value" vid="57">$450</span>
+                        <span class="stat-label" vid="58">Monthly Opex</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        
+        <article class="case-study" vid="59">
+            <div class="case-image-container" vid="60">
+                <span class="case-tag" vid="61">Lead Gen</span>
+                <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" class="case-image" alt="Strategy Meeting" vid="62">
+                <div class="case-overlay" vid="63"></div>
+            </div>
+            <div class="case-content" vid="64">
+                <div class="case-client" vid="65">Client: Summit Real Estate</div>
+                <h3 class="case-headline" vid="66">LinkedIn Agent generating 15 qualified appointments per week.</h3>
+                <div class="stats-grid" vid="67">
+                    <div class="stat-item" vid="68">
+                        <span class="stat-label" vid="69">Pipeline</span>
+                        <span class="stat-value" vid="70" style="opacity: 0.5;">3x</span>
+                        <span class="stat-label" vid="71">Growth Rate</span>
+                    </div>
+                    <div class="stat-item" vid="72">
+                        <span class="stat-label" vid="73">Volume</span>
+                        <span class="stat-value" vid="74">+240%</span>
+                        <span class="stat-label" vid="75">Meetings Booked</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        
+        <article class="case-study" vid="76">
+            <div class="case-image-container" vid="77">
+                <span class="case-tag" vid="78">Compliance</span>
+                <img src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" class="case-image" alt="Analysis" vid="79">
+                <div class="case-overlay" vid="80"></div>
+            </div>
+            <div class="case-content" vid="81">
+                <div class="case-client" vid="82">Client: FinPath Advisory</div>
+                <h3 class="case-headline" vid="83">Automated KYC document review reducing human labor by 95%.</h3>
+                <div class="stats-grid" vid="84">
+                    <div class="stat-item" vid="85">
+                        <span class="stat-label" vid="86">Error Rate</span>
+                        <span class="stat-value" vid="87" style="opacity: 0.5;">4.2%</span>
+                        <span class="stat-label" vid="88">Manual Entry</span>
+                    </div>
+                    <div class="stat-item" vid="89">
+                        <span class="stat-label" vid="90">Accuracy</span>
+                        <span class="stat-value" vid="91">99.9%</span>
+                        <span class="stat-label" vid="92">AI Extraction</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <section style="padding: 12vw 4vw; text-align: center; border-bottom: var(--border-heavy);" vid="93">
+        <h2 style="font-size: 5rem; margin-bottom: 4rem; font-weight: 900;" vid="94">READY TO BE THE NEXT <br vid="95"><span class="graphic-box fill" vid="96">SUCCESS STORY?</span></h2>
+        <a href="#" class="btn btn-solid" vid="97">Book Your Audit</a>
+    </section>
+
+    <footer vid="98">
+        <div class="footer-content" vid="99">
+            <h2 class="footer-title" vid="100">
+                JOIN THE
+                <span vid="101">UPGRADE</span>
+            </h2>
+            <a href="#" class="btn" vid="102">Contact Sales</a>
+        </div>
+        <div class="footer-bottom" vid="103">
+            <div vid="104">© 2024 AUTO/MATE AGENCY</div>
+            <div vid="105">[ CASE STUDIES / ARCHIVE ]</div>
+        </div>
+    </footer>
+
+</body></html>

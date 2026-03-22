@@ -1,0 +1,404 @@
+<html lang="en" vid="0"><head vid="1">
+    <meta charset="UTF-8" vid="2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" vid="3">
+    <title vid="4">About Us | SyntaxAI</title>
+    
+    <style vid="5">
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&display=swap');
+
+        :root {
+            --neon: #D4FF00;
+            --black: #050505;
+            --white: #FFFFFF;
+            --gray-dark: #333333;
+            --gray-light: #E5E5E5;
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+            --space-xl: 8rem;
+            --radius-pill: 999px;
+            --radius-sm: 4px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--white);
+            color: var(--black);
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+        }
+
+        .text-display { font-size: clamp(3.5rem, 8vw, 7.5rem); text-transform: uppercase; text-align: center; }
+        .text-h2 { font-size: clamp(2rem, 4vw, 4rem); }
+        .text-h3 { font-size: 1.5rem; letter-spacing: -0.01em; font-weight: 800; }
+        .text-body-lg { font-size: 1.25rem; font-weight: 500; color: var(--black); letter-spacing: -0.01em; text-align: center; }
+        .text-body { font-size: 1rem; color: var(--gray-dark); }
+        
+        .label-micro {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 800;
+            color: var(--black);
+            display: inline-block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .flex-between { display: flex; align-items: center; justify-content: space-between; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-pill);
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+
+        .btn-solid { background-color: var(--black); color: var(--white); border: 2px solid var(--black); }
+        .btn-solid:hover { background-color: transparent; color: var(--black); }
+        .btn-neon { background-color: var(--neon); color: var(--black); border: 2px solid var(--neon); }
+
+        .logo { display: flex; align-items: center; gap: 12px; font-weight: 900; font-size: 1.5rem; letter-spacing: -0.04em; text-decoration: none; color: var(--black); }
+        .logo-mark { width: 40px; height: 40px; position: relative; }
+        .logo-circle { position: absolute; width: 16px; height: 16px; background-color: var(--black); border-radius: 50%; }
+        .logo-circle:nth-child(1) { top: 0; left: 12px; }
+        .logo-circle:nth-child(2) { top: 6px; left: 24px; }
+        .logo-circle:nth-child(3) { top: 18px; left: 24px; }
+        .logo-circle:nth-child(4) { top: 24px; left: 12px; }
+        .logo-circle:nth-child(5) { top: 18px; left: 0; }
+        .logo-circle:nth-child(6) { top: 6px; left: 0; }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 2px solid var(--black);
+        }
+
+        .nav-links { display: flex; gap: var(--space-md); }
+        .nav-links a { text-decoration: none; color: var(--black); font-weight: 600; font-size: 0.9rem; }
+
+        .origin-hero {
+            position: relative;
+            min-height: 100vh;
+            padding-top: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--neon);
+            background-image: radial-gradient(var(--black) 1.5px, transparent 1.5px);
+            background-size: 36px 36px;
+            border-bottom: 2px solid var(--black);
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 900px;
+            padding: var(--space-xl) var(--space-md);
+            z-index: 2;
+        }
+
+        .manifesto-card {
+            background: var(--white);
+            border: 2px solid var(--black);
+            padding: var(--space-md);
+            box-shadow: 16px 16px 0 var(--black);
+            max-width: 500px;
+            margin-top: var(--space-lg);
+            transform: rotate(1deg);
+        }
+
+        .values-section {
+            padding: var(--space-xl) 0;
+            background-color: var(--black);
+            color: var(--white);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background-color: var(--gray-dark);
+            border: 1px solid var(--gray-dark);
+            margin-top: var(--space-lg);
+        }
+
+        .value-cell {
+            background-color: var(--black);
+            padding: var(--space-lg) var(--space-md);
+            transition: background 0.3s ease;
+        }
+
+        .value-cell:hover { background-color: #111; }
+        .value-cell .num { font-size: 4rem; font-weight: 900; color: var(--neon); line-height: 1; margin-bottom: var(--space-sm); opacity: 0.5; }
+
+        .timeline-section {
+            padding: var(--space-xl) 0;
+            background-image: 
+                linear-gradient(var(--gray-light) 1px, transparent 1px),
+                linear-gradient(90deg, var(--gray-light) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .timeline-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            padding: var(--space-lg) 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--black);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: var(--space-xl);
+            position: relative;
+        }
+
+        .timeline-content {
+            width: 42%;
+            background: var(--white);
+            border: 2px solid var(--black);
+            padding: var(--space-md);
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) { flex-direction: row-reverse; }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background: var(--neon);
+            border: 2px solid var(--black);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .timeline-year {
+            font-weight: 900;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        footer { background-color: var(--black); color: var(--white); padding: var(--space-xl) var(--space-md) var(--space-md); }
+        .footer-top { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: var(--space-xl); border-bottom: 1px solid var(--gray-dark); padding-bottom: var(--space-lg); }
+        .footer-links { display: flex; gap: var(--space-lg); }
+        .footer-col { display: flex; flex-direction: column; gap: var(--space-sm); }
+        .footer-col a { color: var(--gray-light); text-decoration: none; font-size: 0.9rem; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--gray-dark); }
+
+        @media (max-width: 1024px) {
+            .values-grid { grid-template-columns: 1fr; }
+            .timeline-content { width: 85%; }
+            .timeline-line { left: 0; }
+            .timeline-dot { left: 0; }
+            .timeline-item { justify-content: flex-end; }
+            .timeline-item:nth-child(even) { flex-direction: row; }
+        }
+    </style>
+</head>
+<body vid="6">
+
+    <nav vid="7">
+        <div class="container flex-between" style="height: 100%;" vid="8">
+            <a href="/" class="logo" vid="9">
+                <div class="logo-mark" vid="10">
+                    <div class="logo-circle" vid="11"></div><div class="logo-circle" vid="12"></div><div class="logo-circle" vid="13"></div>
+                    <div class="logo-circle" vid="14"></div><div class="logo-circle" vid="15"></div><div class="logo-circle" vid="16"></div>
+                </div>
+                SyntaxAI
+            </a>
+            <div class="nav-links" vid="17">
+                <a href="#" vid="18">Capabilities</a>
+                <a href="#" vid="19">Case Studies</a>
+                <a href="#" vid="20">Pricing</a>
+            </div>
+            <a href="#" class="btn btn-solid" vid="21">Audit My Business</a>
+        </div>
+    </nav>
+
+    <main vid="22">
+        <section class="origin-hero" vid="23">
+            <div class="hero-content" vid="24">
+                <span class="label-micro" style="margin-bottom: 1.5rem;" vid="25">Our Origin Story</span>
+                <h1 class="text-display" style="margin-bottom: 2rem;" vid="26">Born from<br vid="27">Friction.</h1>
+                <p class="text-body-lg" style="max-width: 650px; margin-bottom: 1rem;" vid="28">
+                    In 2021, we watched brilliant SME owners drowning in spreadsheets while the "AI Revolution" only served Silicon Valley giants.
+                </p>
+                <p class="text-body-lg" style="max-width: 650px;" vid="29">
+                    SyntaxAI was founded to bridge that gap—turning elite automation into accessible infrastructure for the businesses that actually power the economy.
+                </p>
+
+                <div class="manifesto-card" vid="30">
+                    <div style="border-bottom: 2px solid var(--black); padding-bottom: 12px; margin-bottom: 16px; display: flex; justify-content: space-between;" vid="31">
+                        <span class="label-micro" vid="32">INTERNAL_MEMO.EXE</span>
+                        <div style="width: 10px; height: 10px; background: var(--black); border-radius: 50%;" vid="33"></div>
+                    </div>
+                    <h3 class="text-h3" style="margin-bottom: 1rem;" vid="34">The Human Leverage Philosophy</h3>
+                    <p class="text-body" style="color: var(--black);" vid="35">
+                        We don't believe in replacing people. We believe in replacing <strong vid="36">repetitive motions</strong>. When you remove the robotic tasks from a human's day, you unlock the creative and strategic potential that actually grows a company.
+                    </p>
+                    <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--gray-light);" vid="37">
+                        <span class="label-micro" vid="38">Status: Mission Driven</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="values-section" vid="39">
+            <div class="container" vid="40">
+                <div style="max-width: 600px;" vid="41">
+                    <span class="label-micro" style="color: var(--neon);" vid="42">The Syntax Code</span>
+                    <h2 class="text-h2" style="margin-top: 1rem;" vid="43">Core Values.</h2>
+                </div>
+
+                <div class="values-grid" vid="44">
+                    <div class="value-cell" vid="45">
+                        <div class="num" vid="46">01</div>
+                        <h4 class="text-h3" style="color: var(--white); margin-bottom: 1rem;" vid="47">Results &gt; Hype</h4>
+                        <p class="text-body" style="color: var(--gray-light);" vid="48">We don't ship "AI experiments." We ship hardened production pipelines that produce measurable ROI from day one.</p>
+                    </div>
+                    <div class="value-cell" vid="49">
+                        <div class="num" vid="50">02</div>
+                        <h4 class="text-h3" style="color: var(--white); margin-bottom: 1rem;" vid="51">Default to Open</h4>
+                        <p class="text-body" style="color: var(--gray-light);" vid="52">No black boxes. We build systems you own and understand, ensuring your business stays agile and independent.</p>
+                    </div>
+                    <div class="value-cell" vid="53">
+                        <div class="num" vid="54">03</div>
+                        <h4 class="text-h3" style="color: var(--white); margin-bottom: 1rem;" vid="55">Radical Empathy</h4>
+                        <p class="text-body" style="color: var(--gray-light);" vid="56">We study your friction as if it were our own. We aren't just vendors; we're your outsourced automation department.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="timeline-section" vid="57">
+            <div class="container" vid="58">
+                <div style="text-align: center; margin-bottom: var(--space-xl);" vid="59">
+                    <span class="label-micro" vid="60">Our Evolution</span>
+                    <h2 class="text-h2" vid="61">Milestones.</h2>
+                </div>
+
+                <div class="timeline-container" vid="62">
+                    <div class="timeline-line" vid="63"></div>
+                    
+                    <div class="timeline-item" vid="64">
+                        <div class="timeline-dot" vid="65"></div>
+                        <div class="timeline-content" vid="66">
+                            <span class="timeline-year" vid="67">2021: The Spark</span>
+                            <p class="text-body" vid="68">SyntaxAI founded in a small London garage with a single mission: automate the mundane for local manufacturers.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" vid="69">
+                        <div class="timeline-dot" vid="70"></div>
+                        <div class="timeline-content" vid="71">
+                            <span class="timeline-year" vid="72">2022: Scaling Up</span>
+                            <p class="text-body" vid="73">Deployed our 100th custom pipeline. Expanded operations to serve the wider European SME market.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" vid="74">
+                        <div class="timeline-dot" vid="75"></div>
+                        <div class="timeline-content" vid="76" style="background: var(--neon);">
+                            <span class="timeline-year" vid="77">2023: LLM Integration</span>
+                            <p class="text-body" style="color: var(--black);" vid="78">Pioneered the integration of Large Language Models into legacy ERP systems, reducing data entry by 90% for clients.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" vid="79">
+                        <div class="timeline-dot" vid="80"></div>
+                        <div class="timeline-content" vid="81">
+                            <span class="timeline-year" vid="82">2024: Today</span>
+                            <p class="text-body" vid="83">Now a team of 25 automation engineers and strategists. Saving our clients a collective 500,000+ hours annually.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer vid="84">
+        <div class="container" vid="85">
+            <div class="footer-top" vid="86">
+                <div style="max-width: 400px;" vid="87">
+                    <a href="/" class="logo" style="color: var(--white); margin-bottom: var(--space-md); display: inline-flex;" vid="88">
+                        <div class="logo-mark" vid="89">
+                            <div class="logo-circle" style="background-color: var(--neon);" vid="90"></div><div class="logo-circle" style="background-color: var(--neon);" vid="91"></div><div class="logo-circle" style="background-color: var(--neon);" vid="92"></div>
+                            <div class="logo-circle" style="background-color: var(--neon);" vid="93"></div><div class="logo-circle" style="background-color: var(--neon);" vid="94"></div><div class="logo-circle" style="background-color: var(--neon);" vid="95"></div>
+                        </div>
+                        SyntaxAI
+                    </a>
+                    <p class="text-body" style="color: var(--gray-light);" vid="96">Building leverage for small and medium enterprises through applied automation.</p>
+                    <a href="#" class="btn btn-neon" style="margin-top: var(--space-md);" vid="97">Start a Project</a>
+                </div>
+
+                <div class="footer-links" vid="98">
+                    <div class="footer-col" vid="99">
+                        <span class="label-micro" style="color: var(--white);" vid="100">Company</span>
+                        <a href="#" vid="101">About Us</a>
+                        <a href="#" vid="102">Our Process</a>
+                        <a href="#" vid="103">Careers</a>
+                    </div>
+                    <div class="footer-col" vid="104">
+                        <span class="label-micro" style="color: var(--white);" vid="105">Resources</span>
+                        <a href="#" vid="106">Case Studies</a>
+                        <a href="#" vid="107">ROI Calculator</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom" vid="108">
+                <span vid="109">© 2024 SyntaxAI Agency. All rights reserved.</span>
+                <span style="font-family: monospace; font-size: 0.75rem;" vid="110">BUILD_ID: 2024.08.12</span>
+            </div>
+        </div>
+    </footer>
+</body></html>

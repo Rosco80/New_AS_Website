@@ -1,0 +1,419 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import { sanityClient } from "sanity:client";
+
+const query = `*[_type == "resource"] | order(_createdAt desc)`;
+const sanityResources = await sanityClient.fetch(query).catch(() => []);
+
+const fallbackResources = [
+    {
+        category: "Logistics",
+        type: "E-Book",
+        title: "The 2024 Guide to Automated Warehousing",
+        description: "Learn how to reduce manual data entry in freight forwarding by 85% using OCR and LLMs.",
+        meta: "12 Min Read",
+        linkText: "DOWNLOAD →",
+        visual: "SUPPLY CHAIN AI v1.0"
+    },
+    {
+        category: "E-Commerce",
+        type: "Blueprint",
+        title: "Omni-channel Inventory Sync Framework",
+        description: "A technical blueprint for syncing Shopify, Amazon, and ERP systems in real-time.",
+        meta: "Technical",
+        linkText: "GET ACCESS →",
+        isSvg: true
+    },
+    {
+        category: "General",
+        type: "Calculator",
+        title: "Automation ROI Forecaster",
+        description: "Input your labor costs and manual hours to see exactly how much an AI pipeline saves you.",
+        meta: "Interactive",
+        linkText: "CALCULATE →",
+        isCalculator: true
+    },
+    {
+        category: "Healthcare",
+        type: "Webinar",
+        title: "HIPAA-Compliant AI Implementation",
+        description: "Watch our lead engineer discuss the security protocols for automating patient intake.",
+        meta: "45 Minutes",
+        linkText: "WATCH NOW →",
+        isWebinar: true
+    },
+    {
+        category: "Legal",
+        type: "E-Book",
+        title: "Automating Contract Review",
+        description: "How mid-sized law firms are using private LLMs to speed up discovery and review.",
+        meta: "8 Min Read",
+        linkText: "DOWNLOAD →",
+        isCode: true
+    },
+    {
+        category: "SaaS",
+        type: "Case Study",
+        title: "Scale to $10M ARR with 5 Employees",
+        description: "The automation stack used by a leading FinTech to manage 50k users with a tiny team.",
+        meta: "New Release",
+        linkText: "READ STORY →",
+        isResults: true
+    }
+];
+
+// Use data from Sanity if it exists, otherwise use the placeholders to showcase the design
+const resources = sanityResources.length > 0 ? sanityResources.map((res: any) => ({
+    category: res.category,
+    type: res.type,
+    title: res.title,
+    description: res.description,
+    meta: res.meta,
+    linkText: res.linkText,
+    isSvg: res.visualType === 'svg',
+    isCalculator: res.visualType === 'calculator',
+    isWebinar: res.visualType === 'webinar',
+    isCode: res.visualType === 'code',
+    isResults: res.visualType === 'results',
+    visual: res.visualType === 'text' ? res.visualText : null,
+    url: res.url || '#'
+})) : fallbackResources;
+---
+
+<BaseLayout title="Resources Hub">
+    <header class="resource-hero">
+        <div class="container">
+            <span class="label-micro" style="margin-bottom: 1rem;">The Knowledge Base</span>
+            <h1 class="text-display">Resource<br>Library.</h1>
+            <p style="font-size: 1.25rem; font-weight: 500; max-width: 500px; margin-top: 1.5rem;">
+                Free frameworks, technical guides, and automation blueprints to help you scale without adding headcount.
+            </p>
+            <div class="search-bar">
+                <input type="text" id="resource-search" placeholder="Search by topic (e.g. CRM Sync, Invoicing)...">
+                <button>SEARCH</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="filter-section">
+        <div class="container" style="display: flex; gap: 2rem; align-items: center; overflow-x: auto; padding-bottom: 1rem;">
+            <div class="filter-group">
+                <span class="label-micro" style="border:none; padding:0">Verticals:</span>
+                <div class="filter-tag active" data-filter="all">All</div>
+                <div class="filter-tag" data-filter="logistics">Logistics</div>
+                <div class="filter-tag" data-filter="healthcare">Healthcare</div>
+                <div class="filter-tag" data-filter="e-commerce">E-Commerce</div>
+                <div class="filter-tag" data-filter="professional services">Professional Services</div>
+            </div>
+            <div style="width: 1px; height: 24px; background: var(--gray-light); flex-shrink: 0;"></div>
+            <div class="filter-group">
+                <span class="label-micro" style="border:none; padding:0">Type:</span>
+                <div class="filter-tag active" data-filter="all">All</div>
+                <div class="filter-tag" data-filter="e-book">E-Books</div>
+                <div class="filter-tag" data-filter="blueprint">Blueprints</div>
+                <div class="filter-tag" data-filter="webinar">Webinars</div>
+                <div class="filter-tag" data-filter="calculator">ROI Calculators</div>
+            </div>
+        </div>
+    </section>
+
+    <main class="resource-grid">
+        {resources.map((res) => (
+            <div class="resource-card" data-category={res.category?.toLowerCase() || ''} data-type={res.type?.toLowerCase() || ''}>
+                <div class="card-meta">
+                    <span class="label-micro" style="border-radius: 999px;">{res.category}</span>
+                    <span class="card-tag">{res.type}</span>
+                </div>
+                
+                <div class="card-visual" style={res.isCalculator ? "background: var(--black);" : ""}>
+                    {res.visual && (
+                        <div style="background: var(--black); width: 120px; height: 160px; box-shadow: 8px 8px 0 var(--neon); display: flex; align-items: flex-end; padding: 12px;">
+                            <span style="color: var(--white); font-weight: 900; font-size: 0.8rem; line-height: 1;">{res.visual}</span>
+                        </div>
+                    )}
+                    {res.isSvg && (
+                        <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.5">
+                            <rect x="2" y="2" width="20" height="20" rx="2"></rect>
+                            <path d="M7 8h10M7 12h10M7 16h6"></path>
+                        </svg>
+                    )}
+                    {res.isCalculator && (
+                        <span style="color: var(--neon); font-size: 3rem; font-weight: 900;">$0.00</span>
+                    )}
+                    {res.isWebinar && (
+                        <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--neon); border: 2px solid var(--black); display: flex; align-items: center; justify-content: center;">
+                            <div style="width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 15px solid var(--black); margin-left: 5px;"></div>
+                        </div>
+                    )}
+                    {res.isCode && (
+                        <div style="padding: 20px; border: 2px dashed var(--black); font-family: monospace; font-size: 0.7rem;">
+                            [DOCUMENT_ANALYSIS]<br>
+                            SCANNING...<br>
+                            MATCH_FOUND: 98%
+                        </div>
+                    )}
+                    {res.isResults && (
+                        <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 6rem; opacity: 0.1; letter-spacing: -0.1em;">RESULTS</div>
+                    )}
+                </div>
+
+                <div class="card-content">
+                    <h3 class="text-h3">{res.title}</h3>
+                    <p>{res.description}</p>
+                </div>
+
+                <div class="card-footer">
+                    <span class="label-micro" style="border:none; padding:0">{res.meta}</span>
+                    <a href={res.url} class="arrow-link">{res.linkText}</a>
+                </div>
+            </div>
+        ))}
+    </main>
+
+    <div class="vertical-label">SYNTAX_RESOURCES_V4.02</div>
+
+    <style>
+        .resource-hero {
+            background-color: var(--neon);
+            padding: var(--space-lg) 0;
+            border-bottom: 2px solid var(--black);
+        }
+
+        .text-display { 
+            font-size: clamp(3.5rem, 8vw, 5rem); 
+            font-weight: 900; 
+            letter-spacing: -0.04em; 
+            text-transform: uppercase; 
+            line-height: 0.9; 
+        }
+
+        .search-bar {
+            margin-top: var(--space-md);
+            display: flex;
+            max-width: 600px;
+            border: 2px solid var(--black);
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            box-shadow: 6px 6px 0 var(--black);
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 1.25rem;
+            border: none;
+            outline: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .search-bar button {
+            background: var(--black);
+            color: var(--white);
+            border: none;
+            padding: 0 2rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .filter-section {
+            padding: var(--space-md) 0;
+            border-bottom: 1px solid var(--gray-light);
+            background: #fafafa;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .filter-tag {
+            padding: 6px 14px;
+            border: 1px solid var(--black);
+            border-radius: var(--radius-pill);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            background: var(--white);
+            white-space: nowrap;
+        }
+
+        .filter-tag.active {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 2px;
+            background: var(--black);
+            border-bottom: 2px solid var(--black);
+        }
+
+        @media (max-width: 768px) {
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .resource-card {
+            background: var(--white);
+            padding: var(--space-md);
+            display: flex;
+            flex-direction: column;
+            transition: background 0.2s;
+            min-height: 420px;
+            gap: var(--space-sm);
+        }
+
+        .resource-card:hover {
+            background: #fdfdfd;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-md);
+        }
+
+        .card-visual {
+            width: 100%;
+            height: 160px;
+            background-image: 
+                linear-gradient(var(--gray-light) 1px, transparent 1px),
+                linear-gradient(90deg, var(--gray-light) 1px, transparent 1px);
+            background-size: 20px 20px;
+            border: 1px solid var(--gray-light);
+            margin-bottom: var(--space-md);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-tag {
+            background: var(--black);
+            color: var(--neon);
+            padding: 2px 8px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .text-h3 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; }
+
+        .card-content h3 {
+            margin-bottom: var(--space-sm);
+            line-height: 1.2;
+        }
+
+        .card-content p {
+            color: var(--gray-dark);
+            font-size: 0.95rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .card-footer {
+            margin-top: auto;
+            padding-top: var(--space-sm);
+            border-top: 1px solid var(--gray-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-width: 0;
+            gap: 1rem;
+        }
+
+        .arrow-link {
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--black);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            word-break: break-all;
+            overflow-wrap: break-word;
+            min-width: 0;
+            text-align: right;
+        }
+
+        .vertical-label {
+            position: fixed;
+            left: 20px;
+            bottom: 100px;
+            transform: rotate(-90deg);
+            transform-origin: left bottom;
+            font-family: monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: var(--gray-light);
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        @media (max-width: 1024px) {
+            .vertical-label { display: none; }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('resource-search') as HTMLInputElement;
+            const verticalTags = document.querySelectorAll('.filter-group:nth-of-type(1) .filter-tag');
+            const typeTags = document.querySelectorAll('.filter-group:nth-of-type(3) .filter-tag');
+            const cards = document.querySelectorAll('.resource-card') as NodeListOf<HTMLElement>;
+
+            let activeVertical = 'all';
+            let activeType = 'all';
+            let searchQuery = '';
+
+            function filterCards() {
+                cards.forEach(card => {
+                    const category = card.getAttribute('data-category') || '';
+                    const type = card.getAttribute('data-type') || '';
+                    const title = card.querySelector('.text-h3')?.textContent?.toLowerCase() || '';
+                    const desc = card.querySelector('p')?.textContent?.toLowerCase() || '';
+                    
+                    const matchVertical = activeVertical === 'all' || category === activeVertical;
+                    const matchType = activeType === 'all' || type === activeType;
+                    const matchSearch = searchQuery === '' || title.includes(searchQuery) || desc.includes(searchQuery);
+
+                    if (matchVertical && matchType && matchSearch) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            searchInput?.addEventListener('input', (e) => {
+                searchQuery = (e.target as HTMLInputElement).value.toLowerCase();
+                filterCards();
+            });
+
+            verticalTags.forEach(tag => {
+                tag.addEventListener('click', () => {
+                    verticalTags.forEach(t => t.classList.remove('active'));
+                    tag.classList.add('active');
+                    activeVertical = tag.getAttribute('data-filter') || 'all';
+                    filterCards();
+                });
+            });
+
+            typeTags.forEach(tag => {
+                tag.addEventListener('click', () => {
+                    typeTags.forEach(t => t.classList.remove('active'));
+                    tag.classList.add('active');
+                    activeType = tag.getAttribute('data-filter') || 'all';
+                    filterCards();
+                });
+            });
+        });
+    </script>
+</BaseLayout>
