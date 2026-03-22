@@ -1,0 +1,218 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const positions = [
+    {
+        title: "AI Solutions Engineer",
+        focus: "LLM Orchestration & RAG Pipelines",
+        description: "Building production-grade AI agents that don't just chat, but execute complex business workflows with 99% reliability."
+    },
+    {
+        title: "Automation Architect",
+        focus: "Make.com / Zapier / Custom API Middleware",
+        description: "The glue that holds everything together. Designing high-throughput data pipelines that eliminate manual entry across the stack."
+    },
+    {
+        title: "Growth & Strategy lead",
+        focus: "SME Operations & ROI Analysis",
+        description: "Translating business friction into technical requirements. You aren't selling tools; you're selling reclaimed time."
+    }
+];
+---
+
+<BaseLayout title="Careers">
+    <main>
+        <!-- Hero Section -->
+        <section class="careers-hero">
+            <div class="container hero-container">
+                <span class="label-micro" style="color: var(--black); margin-bottom: 1.5rem;">Join the Workforce of the Future</span>
+                <h1 class="text-display" style="color: var(--black); margin-bottom: 2rem;">Build the<br>Leverage.</h1>
+                <p class="text-body-lg" style="max-width: 650px; color: var(--black); font-weight: 500;">
+                    We don't just build chatbots. We build the autonomous infrastructure that allows human creativity to thrive by removing the robotic tasks of today.
+                </p>
+                
+                <div class="status-ticker">
+                    <span class="label-micro">HIRING_STATUS: PASSIVE_ACQUISITION</span>
+                    <div class="pulse"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What We Do Section -->
+        <section class="careers-intro">
+            <div class="container grid-2">
+                <div>
+                    <h2 class="text-h2">What We Build.</h2>
+                    <p class="text-body-lg" style="margin-top: 1.5rem; color: var(--gray-dark);">
+                        Autoflow Solutions is a lean, high-output automation agency. We focus on SMEs and Professional Services—the backbone of the economy that is often left behind by big-tech. We bring enterprise-grade AI to the local clinic, the boutique law firm, and the growing e-commerce brand.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 class="text-h3">Our Vibe</h3>
+                    <ul class="vibe-list">
+                        <li><strong>Remote First:</strong> We hire for talent, not zip codes.</li>
+                        <li><strong>Ship Fast, Break Nothing:</strong> We value hardened reliability over experimental "cool" factor.</li>
+                        <li><strong>Radical Ownership:</strong> You own the outcome, not just the ticket.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Positions Section -->
+        <section class="positions-section">
+            <div class="container">
+                <div style="margin-bottom: var(--space-xl);">
+                    <span class="label-micro" style="color: var(--neon);">THE SQUAD</span>
+                    <h2 class="text-h2" style="color: var(--white); margin-top: 1rem;">Who We Look For.</h2>
+                    <p class="text-body" style="color: var(--gray-light); max-width: 600px; margin-top: 1rem;">
+                        Even when we aren't actively filling a seat, we are always looking for the top 1% of automation talent. If you live and breathe efficiency, we want to know you.
+                    </p>
+                </div>
+
+                <div class="positions-grid">
+                    {positions.map((p) => (
+                        <div class="position-card">
+                            <span class="label-micro" style="color: var(--neon);">{p.focus}</span>
+                            <h3 class="text-h3" style="color: var(--white); margin: 1rem 0;">{p.title}</h3>
+                            <p class="text-body" style="color: var(--gray-light);">{p.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="apply-section">
+            <div class="container">
+                <div class="apply-box">
+                    <h2 class="text-h2">Future-Proof Your Career.</h2>
+                    <p class="text-body-lg" style="margin: 2rem 0;">
+                        Think you have what it takes to join the Autoflow roster? Send your resume, portfolio, or a link to your most impressive automation build to our inbox.
+                    </p>
+                    <a href="mailto:info@autoflow-solutions.com" class="btn btn-black">info@autoflow-solutions.com</a>
+                    
+                    <p style="margin-top: 3rem; font-size: 0.85rem; color: var(--gray-dark); font-weight: 600;">
+                        *Note: We aren't currently filling specific seats, but we review every high-quality application for future project-based and full-time roles.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+</BaseLayout>
+
+<style>
+    .careers-hero {
+        background-color: var(--neon);
+        padding: 160px 0 100px;
+        border-bottom: 2px solid var(--black);
+    }
+
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .status-ticker {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: var(--black);
+        color: var(--white);
+        padding: 8px 16px;
+        margin-top: 3rem;
+        border-radius: 4px;
+    }
+
+    .pulse {
+        width: 8px;
+        height: 8px;
+        background: #FACC15;
+        border-radius: 50%;
+        box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.7);
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.7); }
+        70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(250, 204, 21, 0); }
+        100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(250, 204, 21, 0); }
+    }
+
+    .careers-intro {
+        padding: var(--space-xl) 0;
+        background: var(--white);
+    }
+
+    .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-xl);
+        align-items: center;
+    }
+
+    .info-card {
+        background: var(--gray-light);
+        padding: var(--space-lg);
+        border: 2px solid var(--black);
+        box-shadow: 12px 12px 0 var(--black);
+    }
+
+    .vibe-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 1.5rem;
+    }
+
+    .vibe-list li {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .vibe-list li::before {
+        content: '>';
+        position: absolute;
+        left: 0;
+        color: var(--black);
+        font-weight: 900;
+    }
+
+    .positions-section {
+        padding: var(--space-xl) 0;
+        background: var(--black);
+    }
+
+    .positions-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-lg);
+    }
+
+    .position-card {
+        border: 1px solid var(--gray-dark);
+        padding: var(--space-lg);
+        transition: border-color 0.3s ease;
+    }
+
+    .position-card:hover {
+        border-color: var(--neon);
+    }
+
+    .apply-section {
+        padding: var(--space-xl) 0;
+        background-color: var(--neon);
+        text-align: center;
+    }
+
+    .apply-box {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+        .grid-2 { grid-template-columns: 1fr; }
+        .positions-grid { grid-template-columns: 1fr; }
+        .careers-hero { padding-top: 120px; }
+    }
+</style>

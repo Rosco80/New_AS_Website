@@ -1,0 +1,187 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const steps = [
+    {
+        title: "The Friction Audit",
+        tag: "STAGE_01",
+        description: "We don't guess. We shadow your team, mapping every spreadsheet, manual email, and redundant data entry point to identify where AI can buy you the most time."
+    },
+    {
+        title: "The Blueprint",
+        tag: "STAGE_02",
+        description: "We design a custom automation architecture. This isn't just a list of tools—it's a technical roadmap ensuring your systems talk to each other seamlessly."
+    },
+    {
+        title: "The High-Leverage Build",
+        tag: "STAGE_03",
+        description: "Our engineers build your agents and pipelines. We prioritize hardened production environments over fragile experiments, ensuring day-one reliability."
+    },
+    {
+        title: "Continuous Tuning",
+        tag: "STAGE_04",
+        description: "Post-launch, we monitor and optimize. As your business scales, we tune the models and workflows to handle the new load without adding headcount."
+    }
+];
+---
+
+<BaseLayout title="Our Process">
+    <main>
+        <!-- Hero Section -->
+        <section class="process-hero">
+            <div class="container">
+                <span class="label-micro" style="color: var(--neon);">Operational Excellence</span>
+                <h1 class="text-display" style="color: var(--white); margin: 1.5rem 0;">From Chaos<br>to Autopilot.</h1>
+                <p class="text-body-lg" style="max-width: 600px; color: var(--gray-light);">
+                    Most agencies sell hours. We sell outcomes. Here is exactly how we transform legacy workflows into high-performance autonomous systems.
+                </p>
+            </div>
+        </section>
+
+        <!-- Process Steps -->
+        <section class="steps-section">
+            <div class="container">
+                <div class="steps-vertical">
+                    {steps.map((step, index) => (
+                        <div class="step-row">
+                            <div class="step-num-col">
+                                <div class="step-num">{index + 1}</div>
+                                <div class="step-line"></div>
+                            </div>
+                            <div class="step-content-box">
+                                <span class="label-micro" style="color: var(--neon);">{step.tag}</span>
+                                <h3 class="text-h2" style="margin: 1rem 0;">{step.title}</h3>
+                                <p class="text-body-lg" style="color: var(--gray-dark);">{step.description}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- Values/Why Section -->
+        <section class="why-section">
+            <div class="container grid-3">
+                <div class="why-card">
+                    <span class="label-micro">01</span>
+                    <h4 class="text-h3">Ownership</h4>
+                    <p class="text-body">We build on your stack. You own the code, the prompts, and the data. Forever.</p>
+                </div>
+                <div class="why-card">
+                    <span class="label-micro">02</span>
+                    <h4 class="text-h3">Security First</h4>
+                    <p class="text-body">SOC2-compliant principles applied to every RAG pipeline and automation we ship.</p>
+                </div>
+                <div class="why-card">
+                    <span class="label-micro">03</span>
+                    <h4 class="text-h3">ROI Bound</h4>
+                    <p class="text-body">If it doesn't save at least 10 hours a week or $2k in overhead, we won't build it.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="process-cta">
+            <div class="container" style="text-align: center;">
+                <h2 class="text-h2" style="margin-bottom: 2rem;">Ready to automate?</h2>
+                <a href="/#contact" class="btn btn-neon">Book Your Friction Audit</a>
+            </div>
+        </section>
+    </main>
+</BaseLayout>
+
+<style>
+    .process-hero {
+        background-color: var(--black);
+        padding: 160px 0 100px;
+        border-bottom: 2px solid var(--neon);
+    }
+
+    .steps-section {
+        padding: var(--space-xl) 0;
+        background: var(--white);
+    }
+
+    .steps-vertical {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .step-row {
+        display: flex;
+        gap: var(--space-lg);
+        min-height: 250px;
+    }
+
+    .step-num-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 60px;
+    }
+
+    .step-num {
+        width: 60px;
+        height: 60px;
+        background: var(--black);
+        color: var(--neon);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        font-size: 1.5rem;
+        flex-shrink: 0;
+    }
+
+    .step-line {
+        width: 4px;
+        background: var(--black);
+        flex-grow: 1;
+        margin: 10px 0;
+    }
+
+    .step-row:last-child .step-line {
+        display: none;
+    }
+
+    .step-content-box {
+        padding-bottom: var(--space-xl);
+    }
+
+    .why-section {
+        padding: var(--space-xl) 0;
+        background: var(--gray-light);
+    }
+
+    .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-lg);
+    }
+
+    .why-card {
+        background: var(--white);
+        padding: var(--space-lg);
+        border-top: 4px solid var(--neon);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .why-card .label-micro {
+        color: var(--gray-dark);
+        opacity: 0.5;
+    }
+
+    .process-cta {
+        padding: var(--space-xl) 0;
+        background: var(--black);
+        color: var(--white);
+    }
+
+    @media (max-width: 768px) {
+        .grid-3 { grid-template-columns: 1fr; }
+        .step-row { min-height: auto; }
+    }
+</style>
