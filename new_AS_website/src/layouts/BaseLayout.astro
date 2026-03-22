@@ -6,13 +6,17 @@ import '../styles/variant.css';
 interface Props {
 	title: string;
 	description?: string;
+	image?: string;
+	canonicalURL?: URL;
+	schemaData?: object | object[]; // Page-specific JSON-LD schemas (Service, FAQ, etc.)
 }
 
 const { 
 	title, 
 	description = "AI Automation for SMEs and Professional Services",
-	image = "/og-image.png", // Default OG image
-	canonicalURL = new URL(Astro.url.pathname, Astro.site)
+	image = "/og-image.png",
+	canonicalURL = new URL(Astro.url.pathname, Astro.site),
+	schemaData
 } = Astro.props;
 
 const pathname = Astro.url.pathname;
@@ -29,6 +33,23 @@ if (cleanPath === '') cleanPath = '/';
 const urlInt = `${siteUrl}${cleanPath.replace(/\/$/, '') || '/'}`;
 const urlMy = `${siteUrl}/my${cleanPath.replace(/\/$/, '') || '/'}`;
 const urlUk = `${siteUrl}/uk${cleanPath.replace(/\/$/, '') || '/'}`;
+
+// Build Breadcrumb schema from pathname
+const pathParts = pathname.replace(/\/$/, '').split('/').filter(Boolean);
+const breadcrumbItems = [
+	{ "@type": "ListItem", position: 1, name: "Home", item: siteUrl + '/' }
+];
+pathParts.forEach((part, i) => {
+	const label = part.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+	const url = siteUrl + '/' + pathParts.slice(0, i + 1).join('/') + '/';
+	breadcrumbItems.push({ "@type": "ListItem", position: i + 2, name: label, item: url });
+});
+const showBreadcrumb = pathParts.length > 0;
+const breadcrumbSchema = {
+	"@context": "https://schema.org",
+	"@type": "BreadcrumbList",
+	itemListElement: breadcrumbItems
+};
 ---
 
 <!doctype html>
@@ -70,7 +91,7 @@ const urlUk = `${siteUrl}/uk${cleanPath.replace(/\/$/, '') || '/'}`;
 		<Navbar />
 		<slot />
 		<Footer />
-		<!-- JSON-LD Structured Data -->
+		<!-- JSON-LD: Organization -->
 		<script type="application/ld+json" is:inline>
 			{
 				"@context": "https://schema.org",
@@ -84,6 +105,12 @@ const urlUk = `${siteUrl}/uk${cleanPath.replace(/\/$/, '') || '/'}`;
 				]
 			}
 		</script>
+		
+		<!-- JSON-LD: Breadcrumb (auto-generated for all sub-pages) -->
+		{showBreadcrumb && <script type="application/ld+json" set:text={JSON.stringify(breadcrumbSchema)} />}
+		
+		<!-- JSON-LD: Page-specific schemas (Service, FAQ, etc.) -->
+		{schemaData && <script type="application/ld+json" set:text={JSON.stringify(Array.isArray(schemaData) ? schemaData : [schemaData])} />}
 		
 		<!-- Cal.com embed -->
 		<script is:inline>

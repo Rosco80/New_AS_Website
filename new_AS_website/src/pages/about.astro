@@ -57,11 +57,32 @@ const reviews = [
         text: "AI generates weekly sales reports, financial summaries, and performance dashboards automatically. I've reclaimed 15+ hours monthly to focus on strategy and client relationships."
     }
 ];
+
+const reviewSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Autoflow Solutions",
+    "url": "https://autoflow-solutions.com",
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": String(reviews.length),
+        "bestRating": "5",
+        "worstRating": "1"
+    },
+    "review": reviews.map(r => ({
+        "@type": "Review",
+        "author": { "@type": "Person", "name": r.client },
+        "reviewBody": r.text,
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+    }))
+};
 ---
 
 <BaseLayout 
     title="About Autoflow Solutions — AI Automation Agency"
     description="We bring enterprise-grade automation to modern SMEs. Learn about our Human Leverage Philosophy and the team behind the four Engines."
+    schemaData={reviewSchema}
 >
     <main>
         <section class="origin-hero">

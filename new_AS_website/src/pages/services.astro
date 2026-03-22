@@ -39,11 +39,81 @@ const services = [
         capabilities: ["Multi-Step Reasoning", "Web & Database Scraping", "Autonomous Tool Execution", "Auto-Verification & Correction"]
     }
 ];
+
+const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "AI Automation Services by Autoflow Solutions",
+    "description": "Four purpose-built AI automation engines for SMEs and professional services.",
+    "itemListElement": services.map((s, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "item": {
+            "@type": "Service",
+            "name": s.title,
+            "description": s.description,
+            "provider": {
+                "@type": "Organization",
+                "name": "Autoflow Solutions",
+                "url": "https://autoflow-solutions.com"
+            }
+        }
+    }))
+};
+
+const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "How long does it take to implement an AI automation system?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Most projects go from brief submission to production deployment in 2–4 weeks. You'll receive a full implementation roadmap within 48 hours of your initial brief."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Do I need technical knowledge to use your automation systems?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Our systems are built and maintained by us. You interface with dashboards and simple workflows — no code required on your end."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "What tools and platforms do your automations integrate with?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We integrate with most business software including Salesforce, HubSpot, Zoho, Google Workspace, Notion, Slack, WhatsApp, and many more via Make.com, n8n, and custom API middleware."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "What is the Engagement Engine?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The Engagement Engine is our AI-powered lead capture system. It turns website visitors into qualified leads and booked appointments 24/7, with sub-3-second response times and context-aware, multi-lingual AI."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "What is the Operations Engine?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The Operations Engine eliminates manual data entry and automates your back-office. It connects your CRM, apps, and databases through intelligent API orchestration, typically saving 20+ hours per week."
+            }
+        }
+    ]
+};
 ---
+
 
 <BaseLayout 
     title="AI Automation Services — The Four Engines"
     description="Four purpose-built automation systems: AI lead capture, back-office automation, voice agents, and autonomous task execution. Done-for-you. Specializing in high-leverage SME workflows."
+    schemaData={[serviceSchema, faqSchema]}
 >
     <div class="cursor-follower" id="cursorFollower">
         <div class="cursor-core"></div>

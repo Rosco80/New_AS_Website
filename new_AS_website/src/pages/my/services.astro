@@ -41,9 +41,56 @@ const services = [
 ];
 ---
 
+const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "AI Automation Services by Autoflow Solutions — Malaysia",
+    "description": "Four purpose-built AI automation engines for Malaysian SMEs.",
+    "itemListElement": services.map((s, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "item": {
+            "@type": "Service",
+            "name": s.title,
+            "description": s.description,
+            "areaServed": "MY",
+            "provider": {
+                "@type": "Organization",
+                "name": "Autoflow Solutions",
+                "url": "https://autoflow-solutions.com"
+            }
+        }
+    }))
+};
+
+const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "Berapa lama masa yang diperlukan untuk melaksanakan sistem automasi AI?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Most projects go from brief to production deployment in 2–4 weeks. You'll receive a full implementation roadmap within 48 hours of your initial brief." }
+        },
+        {
+            "@type": "Question",
+            "name": "Do I need technical knowledge to use your automation systems?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. Our systems are built and maintained by us. You interface with dashboards and simple workflows — no code required on your end." }
+        },
+        {
+            "@type": "Question",
+            "name": "What tools and platforms do your automations integrate with?",
+            "acceptedAnswer": { "@type": "Answer", "text": "We integrate with Salesforce, HubSpot, Zoho, Google Workspace, WhatsApp Business, and many more via Make.com, n8n, and custom API middleware." }
+        }
+    ]
+};
+
+---
+
 <BaseLayout 
     title="AI Automation Services Malaysia — The Four Engines"
     description="Four purpose-built automation systems: AI lead capture, back-office automation, voice agents, and autonomous task execution. Done-for-you. Malaysian SME specialists."
+    schemaData={[serviceSchema, faqSchema]}
 >
     <div class="cursor-follower" id="cursorFollower">
         <div class="cursor-core"></div>
@@ -110,42 +157,7 @@ const services = [
         </div>
     </section>
 
-    <!-- Service Schema -->
-    <script type="application/ld+json" is:inline>
-        {
-            "@context": "https://schema.org",
-            "@graph": [
-                {
-                    "@type": "Service",
-                    "name": "The Engagement Engine",
-                    "description": "Zero Missed Inquiries & 24/7 Lead Capture for Malaysian SMEs. Context-aware, multi-lingual AI agents.",
-                    "provider": { "@type": "Organization", "name": "Autoflow Solutions" },
-                    "areaServed": "MY"
-                },
-                {
-                    "@type": "Service",
-                    "name": "The Operations Engine",
-                    "description": "Back-office automation and CRM syncing. Eliminate manual data entry and unify software workflows.",
-                    "provider": { "@type": "Organization", "name": "Autoflow Solutions" },
-                    "areaServed": "MY"
-                },
-                {
-                    "@type": "Service",
-                    "name": "The Voice Engine",
-                    "description": "Natural-sounding AI voice assistants for inbound call handling and appointment booking.",
-                    "provider": { "@type": "Organization", "name": "Autoflow Solutions" },
-                    "areaServed": "MY"
-                },
-                {
-                    "@type": "Service",
-                    "name": "The Execution Engine",
-                    "description": "Autonomous digital workers for multi-step processes, data extraction, and complex research.",
-                    "provider": { "@type": "Organization", "name": "Autoflow Solutions" },
-                    "areaServed": "MY"
-                }
-            ]
-        }
-    </script>
+
 
     <section class="trust-bar">
         <div class="container" style="text-align: center; width: 100%; margin: 0 auto; margin-bottom: var(--space-xl); position: relative; z-index: 3;">
