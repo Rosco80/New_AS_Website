@@ -154,10 +154,13 @@ const gridPosts = posts.slice(1);
         <div class="container">
             <h2 class="text-h2">Don't miss a sprint.</h2>
             <p style="font-weight: 600; font-size: 1.25rem; margin-top: 10px;">Get our bi-weekly breakdown of automation wins and AI implementation tactics.</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Enter your business email">
+            <form class="newsletter-form" id="newsletter-form">
+                <input type="email" name="email" placeholder="Enter your business email" required>
                 <button type="submit" class="btn btn-solid-accent">Subscribe Now</button>
             </form>
+            <div id="newsletter-success" style="display: none; margin-top: 1.5rem; background: var(--black); color: var(--neon); padding: 1rem; border-radius: 99px; font-weight: 800;">
+                ✓ You're on the list! Talk soon.
+            </div>
             <p style="font-size: 0.8rem; margin-top: 1.5rem; font-weight: 600;">Join 2,400+ SME owners and operators.</p>
         </div>
     </section>
@@ -364,6 +367,39 @@ const gridPosts = posts.slice(1);
                     }
                 });
             });
+            // Newsletter Submission
+            const newsletterForm = document.getElementById('newsletter-form');
+            const newsletterSuccess = document.getElementById('newsletter-success');
+            
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const formData = new FormData(newsletterForm);
+                    const submitBtn = newsletterForm.querySelector('button');
+                    if (submitBtn) {
+                        submitBtn.textContent = 'Joining...';
+                        submitBtn.disabled = true;
+                    }
+                    
+                    try {
+                        const response = await fetch('https://script.google.com/macros/s/AKfycbywia_SFpTLhBUb8fs3T-lXHaGN-9Ht-iSvReQiaVWpTfVAqMJHWMHDvGKk3gtQALf9sQ/exec', {
+                            method: 'POST',
+                            body: formData,
+                            mode: 'no-cors' // Use no-cors for Google Apps Script Web Apps
+                        });
+                        
+                        // We assume success since no-cors doesn't return response details
+                        newsletterForm.style.display = 'none';
+                        if (newsletterSuccess) newsletterSuccess.style.display = 'block';
+                    } catch (error) {
+                        console.error('Newsletter Error:', error);
+                        if (submitBtn) {
+                            submitBtn.textContent = 'Subscribe Now';
+                            submitBtn.disabled = false;
+                        }
+                    }
+                });
+            }
         });
     </script>
 </BaseLayout>
