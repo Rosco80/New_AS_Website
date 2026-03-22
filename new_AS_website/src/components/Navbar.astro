@@ -1,13 +1,13 @@
 ---
-const pathname = Astro.url.pathname;
-const isUK = pathname.startsWith('/uk/');
-const isMY = pathname.startsWith('/my/');
+const pathname = Astro.url.pathname.replace(/\/$/, ""); // Normalize: remove trailing slash for comparison
+const isUK = pathname === "/uk" || pathname.startsWith("/uk/");
+const isMY = pathname === "/my" || pathname.startsWith("/my/");
 
 let regionPrefix = "";
 if (isUK) regionPrefix = "/uk";
 else if (isMY) regionPrefix = "/my";
 
-const currentPath = pathname.replace(/^\/(uk|my)/, '').slice(1); // remove prefix and leading slash
+const currentPath = pathname.replace(/^\/(uk|my)/, '').replace(/^\//, ''); // Clean path without prefix or leading slash
 ---
 <nav>
     <div class="container flex-between" style="height: 100%;">

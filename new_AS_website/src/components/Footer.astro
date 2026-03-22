@@ -1,12 +1,11 @@
 ---
-const pathname = Astro.url.pathname;
-const isUK = pathname.startsWith('/uk/');
-const isMY = pathname.startsWith('/my/');
+const pathname = Astro.url.pathname.replace(/\/$/, ""); // Normalize: remove trailing slash for comparison
+const isUK = pathname === "/uk" || pathname.startsWith("/uk/");
+const isMY = pathname === "/my" || pathname.startsWith("/my/");
 
 let regionPrefix = "";
 if (isUK) regionPrefix = "/uk";
 else if (isMY) regionPrefix = "/my";
-const currentPath = pathname.replace(/^\/(uk|my)/, '').slice(1);
 ---
 <footer>
     <div class="container">
@@ -18,7 +17,7 @@ const currentPath = pathname.replace(/^\/(uk|my)/, '').slice(1);
                 </a>
                 <p class="text-body" style="color: var(--gray-light); font-weight: 500;">Simplify. Automate. Thrive.</p>
                 <p class="text-body" style="color: var(--gray-light); margin-top: 10px; font-size: 0.9rem;">Building leverage for professional services through applied automation.</p>
-                <a href="#" class="btn btn-neon" style="margin-top: var(--space-md);">Start a Project</a>
+                <a href={`${regionPrefix}/services#request`} class="btn btn-neon" style="margin-top: var(--space-md);">Start a Project</a>
             </div>
 
             <div class="footer-links">
@@ -29,19 +28,42 @@ const currentPath = pathname.replace(/^\/(uk|my)/, '').slice(1);
                     <a href={`${regionPrefix}/careers`}>Career</a>
                     <a href={`${regionPrefix}/process`}>Our Process</a>
                 </div>
+
+                {isUK && (
+                    <>
+                        <div class="footer-col">
+                            <span class="label-micro">Verticals</span>
+                            <a href="/uk/logistics-automation">Logistics</a>
+                            <a href="/uk/healthcare-automation">Healthcare</a>
+                            <a href="/uk/ecommerce-automation">E-Commerce</a>
+                            <a href="/uk/professional-services-automation">Prof. Services</a>
+                            <a href="/uk/legal-automation">Legal</a>
+                        </div>
+                        <div class="footer-col hide-mobile-sm">
+                            <span class="label-micro">Platforms</span>
+                            <a href="/uk/tools/n8n">n8n.io</a>
+                            <a href="/uk/tools/make">Make.com</a>
+                            <a href="/uk/tools/highlevel">HighLevel</a>
+                            <a href="/uk/tools/voiceflow">Voiceflow</a>
+                            <a href="/uk/tools/zoho">Zoho One</a>
+                        </div>
+                    </>
+                )}
+
                 <div class="footer-col">
                     <span class="label-micro">Resources</span>
                     <a href={`${regionPrefix}/resources`}>Resources</a>
                     <a href={`${regionPrefix}/blog`}>Blogs</a>
-                    <a href="https://ai-self-audit.autoflow-solutions.com/" target="_blank" rel="noopener noreferrer">FREE AI self Audit</a>
-                    <a href="https://seo-audit.autoflow-solutions.com/" target="_blank" rel="noopener noreferrer">FREE SEO Report</a>
+                    <a href="https://ai-self-audit.autoflow-solutions.com/" target="_blank" rel="noopener noreferrer">Free AI Audit</a>
+                    <a href="https://seo-audit.autoflow-solutions.com/" target="_blank" rel="noopener noreferrer">Free SEO Report</a>
                 </div>
+
                 <div class="footer-col">
                     <span class="label-micro">Legal</span>
-                    <a href="/privacy">Privacy Policy</a>
-                    <a href="/terms">Terms of Service</a>
-                    <a href="/disclaimer">Disclaimer</a>
-                    <a href="/cookies">Cookie Policy</a>
+                    <a href={`${regionPrefix}/privacy`}>Privacy Policy</a>
+                    <a href={`${regionPrefix}/terms`}>Terms of Service</a>
+                    <a href={`${regionPrefix}/disclaimer`}>Disclaimer</a>
+                    <a href={`${regionPrefix}/cookies`}>Cookie Policy</a>
                 </div>
             </div>
         </div>
