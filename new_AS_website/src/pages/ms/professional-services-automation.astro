@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Automasi Perkhidmatan Profesional Malaysia — PKS, Agensi & Perundingan";
+const description = "Automasikan perniagaan perakaunan, perundingan atau agensi Malaysia anda. Pendaftaran pelanggan, pelaporan pelbagai bahasa, dan penyelarasan pejabat belakang. Audit percuma.";
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Automasi Perkhidmatan Profesional Malaysia",
+  "description": "Automasi setempat untuk firma perunding, agensi, dan PKS di Malaysia. Pendaftaran automatik dan penginvoisan RM.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Autoflow Solutions"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "MY"
+  },
+  "serviceType": "Automasi Perkhidmatan Profesional"
+};
+---
+
+<BaseLayout title={title} description={description} schemaData={schemaData}>
+    <header class="hero" style="min-height: 80vh;">
+        <div class="hero-left">
+            <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Fokus Industri: Perkhidmatan Prof</span>
+            <h1 class="text-display">AUTOMASI<br>PERNIAGAAN MALAYSIA.</h1>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Menskalakan Aliran Kerja Profesional di Asia Tenggara</h2>
+            <p class="text-body-lg" style="margin-bottom: 2.5rem;">Kami membantu perunding, agensi, dan PKS di Malaysia mengautomasikan pendaftaran pelanggan dan aliran kerja operasi harian mereka.</p>
+            <div class="hero-btns" style="display: flex; gap: 1rem;">
+                <a href="/ms/services#request" class="btn btn-solid">Dapatkan Anggaran (RM)</a>
+                <a href="https://ai-self-audit.autoflow-solutions.com/" class="btn btn-neon">Audit Kendiri AI Percuma</a>
+            </div>
+        </div>
+        <div class="hero-right" style="background-color: #f5f5f5;">
+            <div style="padding: 3rem; width: 100%;">
+                <div class="ui-card" style="position: relative; width: 100%; transform: none; box-shadow: 20px 20px 0 var(--black); background: #fff;">
+                    <div class="card-header">
+                        <span class="label-micro">PENYELARASAN_KEWANGAN_MY</span>
+                        <span class="status" style="display: inline-block; width: 8px; height: 8px; background: #33b5e5; border-radius: 50%;"></span>
+                    </div>
+                    <div style="margin: 1.5rem 0; font-family: monospace; font-size: 0.8rem;">
+                        <p style="color: green;">> [SISTEM] Memulakan Semakan Bulanan...</p>
+                        <p style="color: #666;">> Menyelaraskan entri Xero / QuickBooks: OK</p>
+                        <p style="color: #666;">> Mengumpul Data Jualan dari 3 Saluran...</p>
+                        <div style="margin: 0.5rem 0; padding: 0.5rem; background: #eee;">
+                            Jumlah: RM 88,421.00 | Varians: 0.00
+                        </div>
+                        <p style="color: green;">> Laporan Prestasi Dijana & Dihantar melalui Emel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="density-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="label-micro">Kepantasan Pasaran</span>
+                <h2 class="text-display" style="margin-top: 1rem;">MENGUKUHKAN<br>KELEBIHAN PROFESIONAL ANDA.</h2>
+                <p class="text-body-lg" style="margin-top: 1.5rem;">Sektor perkhidmatan profesional di Malaysia bergerak pantas. Kami membina jambatan antara pengurusan pelanggan dan pasukan pelaksana anda untuk memastikan anda sentiasa di hadapan.</p>
+            </div>
+            
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <span class="cell-id">01</span>
+                    <h3 class="text-h3">Pendaftaran</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Urutan pendaftaran pelanggan automatik — daripada pertanyaan awal WhatsApp sehingga cadangan yang ditandatangani dan penjanaan invois.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">02</span>
+                    <h3 class="text-h3">Pelaporan Bersepadu</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Mengumpul data secara automatik daripada pelbagai sumber (Sosial, Perbelanjaan Iklan, Jualan) ke dalam satu papan pemuka yang bersih dalam denominasi RM.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">03</span>
+                    <h3 class="text-h3">Pengurusan Hutang</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Pengejar invois pelbagai saluran automatik (Emel/WhatsApp) yang hanya berhenti apabila perisian kewangan menandakan entri tersebut sebagai 'Dibayar'.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">04</span>
+                    <h3 class="text-h3">Pengagihan Tugasan</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Menyelaraskan data pendaftaran terus ke dalam alatan pengurusan projek anda (Asana, ClickUp, Notion) dengan templat yang telah diisi sebelumnya.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

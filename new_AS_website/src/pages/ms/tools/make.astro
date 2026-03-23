@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const title = "Agensi Automasi Make.com Malaysia — Integrasi Pakar";
+const description = "Agensi Make.com (dahulunya Integromat) profesional untuk perniagaan kecil Malaysia. Reka bentuk aliran kerja kompleks, integrasi API, dan pengoptimuman berterusan. Tempah audit percuma.";
+
+const schemaData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Agensi Automasi Make.com Malaysia",
+    "description": "Automasi aliran kerja visual dan integrasi API menggunakan Make.com untuk perniagaan Malaysia.",
+    "provider": { "@type": "Organization", "name": "Autoflow Solutions" },
+    "areaServed": { "@type": "Country", "name": "MY" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Adakah Make.com menyokong pengiraan SST Malaysia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sudah tentu. Kami membina logik tersuai dalam senario Make untuk mengendalikan pengiraan SST dan menyelaraskan data sedia cukai ke perisian perakaunan tempatan anda."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Make.com",
+    "operatingSystem": "Semua",
+    "applicationCategory": "AplikasiPerniagaan",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "MYR"
+    }
+  }
+];
+---
+
+<BaseLayout title={title} description={description} schemaData={schemaData}>
+    <header class="hero" style="min-height: 80vh;">
+        <div class="hero-left">
+            <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Fokus Alatan: Make.com</span>
+            <h1 class="text-display">AGENSI MAKE<br>MALAYSIA.</h1>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Automasi Aliran Kerja Visual untuk PKS Malaysia Moden</h2>
+            <p class="text-body-lg" style="margin-bottom: 2.5rem;">Kami mengubah aplikasi yang terpisah menjadi satu ekosistem tunggal yang automatik menggunakan Make.com. Standard untuk automasi visual dalam pasaran Malaysia.</p>
+            <div class="hero-btns" style="display: flex; gap: 1rem;">
+                <a href="/ms/services#request" class="btn btn-solid">Mohon Audit Make.com (RM)</a>
+                <a href="https://ai-self-audit.autoflow-solutions.com/" target="_blank" class="btn btn-neon">Audit Kendiri AI Percuma</a>
+            </div>
+        </div>
+        <div class="hero-right" style="background-color: #f0f4ff;">
+            <div style="padding: 3rem; width: 100%;">
+                <div class="ui-card" style="position: relative; width: 100%; transform: none; box-shadow: 20px 20px 0 var(--black); background: #fff;">
+                    <div class="card-header">
+                        <span class="label-micro">SENARIO_MAKE_MY_01</span>
+                        <div class="status" style="width: 8px; height: 8px; background: #6aabff; border-radius: 50%;"></div>
+                    </div>
+                    <div style="margin: 1.5rem 0; display: flex; align-items: center; justify-content: center; position: relative; height: 100px;">
+                        <div style="width: 40px; height: 40px; background: #eee; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">🛒</div>
+                        <div style="flex: 1; height: 2px; background: #ccc; margin: 0 10px; z-index: 1;"></div>
+                        <div style="width: 40px; height: 40px; background: #eee; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">🏗️</div>
+                        <div style="flex: 1; height: 2px; background: #ccc; margin: 0 10px; z-index: 1;"></div>
+                        <div style="width: 40px; height: 40px; background: var(--neon); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; border: 1px solid #000;">💸</div>
+                    </div>
+                    <p class="label-micro" style="text-align: center; color: var(--gray-dark);">Pesanan Shopee -> Penyelarasan Gudang -> Penggajian (KWSP/PERKESO)</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="density-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="label-micro">Kelebihan Visual</span>
+                <h2 class="text-display" style="margin-top: 1rem;">MENSKALAKAN<br>EKOSISTEM MALAYSIA ANDA.</h2>
+                <p class="text-body-lg" style="margin-top: 1.5rem;">Make.com menyediakan pembina visual yang paling intuitif di dunia untuk proses perniagaan. Kami menyediakan kepakaran untuk memastikan operasi Malaysia anda menggunakan kuasanya sepenuhnya.</p>
+            </div>
+            
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <span class="cell-id">01</span>
+                    <h3 class="text-h3">6,000+ Integrasi</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Daripada Xero dan SQL Account sehingga Slack dan Google Workspace — sambungkan semua aplikasi perniagaan Malaysia anda dengan lancar.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">02</span>
+                    <h3 class="text-h3">Logik Kompleks</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Mengendalikan pencabangan bersyarat, pengendalian ralat, dan pemetaan data untuk peraturan perniagaan spesifik Malaysia yang canggih.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">03</span>
+                    <h3 class="text-h3">Penyelarasan Masa Nyata</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Hapuskan kelewatan dalam operasi MY anda. Daripada kemas kini stok sehingga pemberitahuan pelanggan melalui WhatsApp, semuanya bergerak sepantas perniagaan anda.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">04</span>
+                    <h3 class="text-h3">ROI yang Telus</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Kami membina senario yang memberikan pulangan modal dalam masa 90 hari, memfokuskan pada aliran kerja dengan kos buruh manual tertinggi dalam RM.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

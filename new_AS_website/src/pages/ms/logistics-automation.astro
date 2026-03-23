@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Automasi Logistik untuk Syarikat Fret & 3PL Malaysia";
+const description = "Automasikan dokumentasi kastam, aliran kerja penghantaran fret dan operasi gudang untuk PKS logistik Malaysia. Sedia untuk Jabatan Kastam Diraja Malaysia (JKDM). Tempah audit percuma.";
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Automasi Logistik & Fret Malaysia",
+  "description": "Automasi kastam JKDM, integrasi DagangNet, dan automasi manifes untuk penghantar fret dan 3PL Malaysia.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Autoflow Solutions"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "MY"
+  },
+  "serviceType": "Automasi AI & Aliran Kerja"
+};
+---
+
+<BaseLayout title={title} description={description} schemaData={schemaData}>
+    <header class="hero" style="min-height: 80vh;">
+        <div class="hero-left">
+            <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Fokus Industri: Logistik</span>
+            <h1 class="text-display">AUTOMASI<br>LOGISTIK MALAYSIA.</h1>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Pakar Aliran Kerja Kastam & K1/K2</h2>
+            <p class="text-body-lg" style="margin-bottom: 2.5rem;">Kami membantu penghantar fret, 3PL, dan pengusaha gudang di Malaysia menghapuskan kemasukan data manual dalam pengisytiharan kastam dan pengurusan pengangkutan.</p>
+            <div class="hero-btns" style="display: flex; gap: 1rem;">
+                <a href="/ms/services#request" class="btn btn-solid">Kira ROI Anda (RM)</a>
+                <a href="https://ai-self-audit.autoflow-solutions.com/" class="btn btn-neon">Audit AI Logistik</a>
+            </div>
+        </div>
+        <div class="hero-right" style="background-color: #f8f8f8;">
+            <div style="padding: 3rem; width: 100%;">
+                <div class="ui-card" style="position: relative; width: 100%; transform: none; box-shadow: 20px 20px 0 var(--black);">
+                    <div class="card-header">
+                        <span class="label-micro">MODUL_SENYAP_JKDM</span>
+                        <span class="status" style="display: inline-block; width: 8px; height: 8px; background: var(--neon); border-radius: 50%;"></span>
+                    </div>
+                    <div style="margin: 1.5rem 0;">
+                        <div style="margin-bottom: 1rem; padding: 1rem; background: #f0f0f0; border-radius: 4px;">
+                            <p class="label-micro">Manifes Masuk</p>
+                            <p style="font-size: 0.9rem; font-weight: 700;">Port_Klang_Inbound_8842.pdf</p>
+                        </div>
+                        <div style="text-align: center; margin: 1rem 0;">⬇️</div>
+                        <div style="padding: 1rem; background: var(--neon); border-radius: 4px; border: 1px solid var(--black);">
+                            <p class="label-micro">Kemasukan Kastam Automatik</p>
+                            <p style="font-size: 0.9rem; font-weight: 700;">Kemasukan Dicipta: Pengisytiharan K1</p>
+                        </div>
+                    </div>
+                    <p class="text-body" style="font-size: 0.85rem; color: var(--gray-dark);">18 item diekstrak. 0 suntingan manual diperlukan. Penghantaran DagangNet Menunggu.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="density-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="label-micro">Peluang Keemasan</span>
+                <h2 class="text-display" style="margin-top: 1rem;">MENGAPA AUTOMASIKAN<br>FRET?</h2>
+                <p class="text-body-lg" style="margin-top: 1.5rem;">Memandangkan hab logistik Malaysia semakin berkembang, beban pentadbiran borang K1/K2 dan dokumentasi Port Klang/PTP telah meningkat. Kami mengautomasikannya untuk anda.</p>
+            </div>
+            
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <span class="cell-id">01</span>
+                    <h3 class="text-h3">Kemasukan Data Kastam</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Pengekstrakan data automatik daripada invois komersial dan senarai pembungkusan terus ke dalam perisian kastam (DagangNet).</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">02</span>
+                    <h3 class="text-h3">Tempahan Pembawa</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Menyelaraskan data pesanan merentas pelbagai portal penghantaran, API NinjaVan, Grab, dan Lalamove.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">03</span>
+                    <h3 class="text-h3">Kemas kini Status</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Kemas kini penjejakan dipacu AI 24/7 dihantar kepada pelanggan melalui WhatsApp (paling popular di MY) tanpa campur tangan manusia.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">04</span>
+                    <h3 class="text-h3">Penginvoisan & Penyelarasan</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Penyelarasan automatik invois pembawa terhadap manifes dalaman anda untuk mengesan caj berlebihan dalam RM.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: var(--space-xl) 0; background: var(--white);">
+        <div class="container">
+            <div style="max-width: 800px;">
+                <h2 class="text-h2" style="margin-bottom: 2rem;">Dokumentasi kompleks adalah penghalang kecekapan. Kami adalah penyelesaiannya.</h2>
+                <p class="text-body-lg">Bagi 3PL dan penghantar fret di Malaysia, kecekapan adalah kunci kepada keuntungan dalam pasaran serantau yang kompetitif. <b>Enjin Pelaksanaan</b> kami mengendalikan tugasan berat bagi penghantaran K1, K2, dan DagangNet, membolehkan pasukan anda fokus pada pemindahan kargo, bukan kertas kerja.</p>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { sanityClient } from "sanity:client";
+import { PortableText } from "@portabletext/react";
+
+export const prerender = false;
+
+const { slug } = Astro.params;
+
+const query = `*[_type == "post" && slug.current == $slug][0]`;
+const post = await sanityClient.fetch(query, { slug }).catch(() => null);
+
+if (!post && slug !== 'membina-rangkaian-pengambilan-data-yang-berdaya-tahan') {
+    return Astro.redirect('/ms/blog');
+}
+
+// Fallback content for the demo post if Sanity is not connected
+const fallbackPost = {
+    title: "Membina Rangkaian Pengambilan Data yang Berdaya Tahan.",
+    publishedAt: "2024-03-14",
+    excerpt: "Kupasan teknikal yang mendalam tentang pengendalian data PDF yang berserakan dengan kadar ketepatan yang tinggi.",
+    body: [
+        {
+            _type: 'block',
+            children: [{ _type: 'span', text: "Pengambilan data adalah pembunuh senyap bagi ROI automasi. Apabila anda berurusan dengan jutaan PDF lama, malah kadar ralat 1% pun boleh mewujudkan penghalang manual yang membatalkan kepantasan AI. Dalam siaran ini, kami meneroka bagaimana kami membina rangkaian kerja swasembuh untuk pembekal logistik Malaysia menggunakan n8n dan perisian tengah Python tersuai." }]
+        }
+    ]
+};
+
+const currentPost = post || fallbackPost;
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": currentPost.title,
+  "description": currentPost.excerpt || currentPost.title,
+  "datePublished": currentPost.publishedAt || new Date().toISOString(),
+  "author": {
+    "@type": "Organization",
+    "name": "Autoflow Solutions"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Autoflow Solutions",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://autoflow-solutions.com/logo.png"
+    }
+  },
+  "areaServed": "MY"
+};
+---
+
+<BaseLayout 
+    title={`${currentPost.title} — Blog Autoflow (Malaysia)`}
+    description={currentPost.excerpt || currentPost.title}
+    schemaData={blogSchema}
+>
+    <article class="post-container">
+        <header class="post-header">
+            <div class="container">
+                <a href="/ms/blog" class="back-link">← Kembali ke Wawasan</a>
+                <h1 class="text-display" style="font-size: 4rem; margin-top: 2rem; line-height: 1.1;">{currentPost.title}</h1>
+                <div class="post-meta">
+                    <span>{new Date(currentPost.publishedAt || '').toLocaleDateString('ms-MY', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+                    <span class="dot"></span>
+                    <span>Bacaan 12 minit</span>
+                </div>
+            </div>
+        </header>
+
+        <section class="post-content">
+            <div class="container narrow">
+                {post ? (
+                    <div class="portable-text">
+                        <p>{post.excerpt}</p>
+                    </div>
+                ) : (
+                    <div class="fallback-body">
+                        <p class="lead">{fallbackPost.excerpt}</p>
+                        <p>Pengambilan data adalah pembunuh senyap bagi ROI automasi. Apabila anda berurusan dengan jutaan PDF lama, malah kadar ralat 1% pun boleh mewujudkan penghalang manual yang membatalkan kepantasan AI.</p>
+                        <p>Dalam siaran ini, kami meneroka bagaimana kami membina rangkaian kerja swasembuh (self-healing) untuk pembekal logistik Malaysia menggunakan n8n dan perisian tengah (middleware) Python tersuai. Matlamatnya adalah mudah: ketepatan 99.9% atau sistem akan menandakannya untuk semakan manusia sebelum ia sampai ke CRM.</p>
+                        
+                        <h2 class="text-h2">Penghalang: Kekacauan Tidak Terstruktur</h2>
+                        <p>Kebanyakan PKS di Malaysia masih bergantung pada dokumen separa terstruktur. Invois daripada vendor yang berbeza, nota tulisan tangan pada pesanan penghantaran, dan borang eksport yang tidak standard. OCR tradisional gagal di sini kerana ia kekurangan konteks.</p>
+                        
+                        <div class="code-block-mock">
+                            <code>[LOG] Memulakan Lapisan OCR...<br/>[ERR] Keyakinan < 85% pada Medan 'TaxID'<br/>[ACT] Melencongkan ke nod Vision-LLM...</code>
+                        </div>
+
+                        <p>Dengan melaksanakan logik "Pengesahan Berbilang Peringkat", kami mengurangkan penyelarasan manual daripada 40 jam seminggu kepada hanya 2 jam untuk kelulusan kes-kes terpencil (edge-case).</p>
+                    </div>
+                )}
+            </div>
+        </section>
+    </article>
+
+    <style>
+        .post-container { padding-bottom: var(--space-xl); }
+        .post-header {
+            padding: 120px 0 60px;
+            background: var(--neon);
+            border-bottom: 2px solid var(--black);
+        }
+        .back-link {
+            font-weight: 800;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--black);
+            font-size: 0.9rem;
+        }
+        .post-meta {
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        .dot { width: 6px; height: 6px; background: var(--black); border-radius: 50%; }
+        
+        .post-content { padding: 80px 0; }
+        .container.narrow { max-width: 800px; margin: 0 auto; padding: 0 var(--space-md); }
+        
+        .lead { font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; line-height: 1.3; }
+        p { font-size: 1.15rem; line-height: 1.7; margin-bottom: 1.5rem; color: var(--gray-dark); }
+        
+        .code-block-mock {
+            background: var(--black);
+            color: var(--neon);
+            padding: 2rem;
+            font-family: monospace;
+            border-radius: 8px;
+            margin: 2rem 0;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 768px) {
+            .text-display { font-size: 2.5rem !important; }
+        }
+    </style>
+</BaseLayout>

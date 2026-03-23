@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const title = "Agensi Automasi n8n Malaysia — Pakar Penskalaan Aliran Kerja";
+const description = "Pakar automasi n8n yang sah untuk perniagaan Malaysia. Reka bentuk aliran kerja tersuai, integrasi API, dan infrastruktur n8n pengehosan sendiri. Tempah audit percuma.";
+
+const schemaData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Konsultasi Automasi n8n Malaysia",
+    "description": "Reka bentuk aliran kerja n8n pakar dan infrastruktur pengehosan sendiri untuk PKS Malaysia.",
+    "provider": { "@type": "Organization", "name": "Autoflow Solutions" },
+    "areaServed": { "@type": "Country", "name": "MY" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Adakah n8n mematuhi PDPA Malaysia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ya, dengan mengehos n8n sendiri pada pelayan serantau (cth., Singapura/Malaysia), anda mengekalkan kawalan penuh ke atas data anda, memastikan penyelarasan dengan keperluan kedaulatan data PDPA."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "n8n",
+    "operatingSystem": "Semua",
+    "applicationCategory": "AplikasiPerniagaan",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "MYR"
+    }
+  }
+];
+---
+
+<BaseLayout title={title} description={description} schemaData={schemaData}>
+    <header class="hero" style="min-height: 80vh;">
+        <div class="hero-left">
+            <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Fokus Alatan: n8n.io</span>
+            <h1 class="text-display">AGENSI n8n<br>MALAYSIA.</h1>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Automasi Kod Adil (Fair-Code) untuk PKS Malaysia yang Berleveraj Tinggi</h2>
+            <p class="text-body-lg" style="margin-bottom: 2.5rem;">Kami membina aliran kerja gred enterprise menggunakan n8n, enjin automasi yang paling fleksibel di pasaran. Selamat, boleh skala, dan disesuaikan untuk Malaysia.</p>
+            <div class="hero-btns" style="display: flex; gap: 1rem;">
+                <a href="/ms/services#request" class="btn btn-solid">Bincangkan Aliran Kerja Anda (RM)</a>
+                <a href="https://ai-self-audit.autoflow-solutions.com/" target="_blank" class="btn btn-neon">Audit Kendiri AI Percuma</a>
+            </div>
+        </div>
+        <div class="hero-right" style="background-color: #fafafa;">
+            <div style="padding: 3rem; width: 100%;">
+                <div class="ui-card" style="position: relative; width: 100%; transform: none; box-shadow: 20px 20px 0 var(--black); background: #fff;">
+                    <div class="card-header">
+                        <span class="label-micro">ALIRAN_KERJA_N8N_MY_0X1</span>
+                        <div style="display: flex; gap: 4px;">
+                            <div style="width: 12px; height: 12px; background: #ff6d5a; border-radius: 2px;"></div>
+                            <div style="width: 12px; height: 12px; background: #ff6d5a; border-radius: 2px;"></div>
+                        </div>
+                    </div>
+                    <div style="margin: 1.5rem 0;">
+                        <p style="font-size: 0.9rem; font-weight: 700;">Pelanggan: PKS Logistik KL</p>
+                        <p class="label-micro" style="color: var(--gray-dark); margin-bottom: 1rem;">Nod: 18 | Status: Aktif</p>
+                        <div style="padding: 0.75rem; background: #f0f0f0; border-radius: 4px; font-family: monospace; font-size: 0.8rem;">
+                            Webhook -> AI Morph -> MySQL -> WhatsApp API
+                        </div>
+                    </div>
+                    <p class="label-micro" style="color: var(--gray-dark);">Dijimatkan: 22 jam/minggu • Kos: < RM 250/sebulan</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="density-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="label-micro">Kelebihan Teknikal</span>
+                <h2 class="text-display" style="margin-top: 1rem;">MENGAPA n8n UNTUK<br>PERNIAGAAN SAYA?</h2>
+                <p class="text-body-lg" style="margin-top: 1.5rem;">Berbeza dengan alatan automasi SaaS tradisional, n8n membolehkan pengkodan tersuai yang mendalam dan pengehosan sendiri, memastikan data sensitif Malaysia anda kekal di bawah kawalan anda.</p>
+            </div>
+            
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <span class="cell-id">01</span>
+                    <h3 class="text-h3">Kedaulatan Data</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Mengehos n8n pada pelayan tempatan atau serantau (Awan Singapura/Malaysia) memastikan pematuhan PDPA sepenuhnya untuk data pelanggan yang sensitif.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">02</span>
+                    <h3 class="text-h3">Logik Kompleks</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Nod JavaScript terbina dalam membolehkan kami mengendalikan peraturan perniagaan Malaysia yang kompleks (cth., pengiraan SST, penyelarasan penggajian).</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">03</span>
+                    <h3 class="text-h3">Kecekapan Kos</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Sukar beralih daripada alatan "bayar mengikut tugasan" seperti Zapier boleh menjimatkan ribuan Ringgit setahun bagi PKS Malaysia dalam yuran langganan.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">04</span>
+                    <h3 class="text-h3">Sifat Swasembuh</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Pengendalian ralat lanjutan memastikan operasi MY anda yang kritikal (cth. label penghantaran, penginvoisan) jarang gagal dan membetulkan diri sendiri apabila ia berlaku.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

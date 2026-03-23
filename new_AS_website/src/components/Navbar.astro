@@ -1,10 +1,35 @@
 ---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
 const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname.slice(1); // remove the leading slash
+const currentPath = pathname; 
+
+// Determine the language prefix
+const getLangPrefix = (path) => {
+    if (path.startsWith('/my')) return '/my';
+    if (path.startsWith('/ms')) return '/ms';
+    if (path.startsWith('/uk')) return '/uk';
+    return '';
+};
+
+const langPrefix = getLangPrefix(currentPath);
+
+// Helper to prefix links
+const localizePath = (path) => {
+    // Avoid double prefixing if the path already starts with it
+    if (path.startsWith(langPrefix) && langPrefix !== '') return path;
+    return `${langPrefix}${path.startsWith('/') ? path : '/' + path}`;
+};
+
+// Check if a path is active
+const isActive = (path) => {
+    const localized = localizePath(path);
+    return currentPath === localized || (localized === '/' && currentPath === '');
+};
 ---
 <nav>
     <div class="container flex-between" style="height: 100%;">
-        <a href="/" class="logo" style="z-index: 101;">
+        <a href={localizePath('/')} class="logo" style="z-index: 101;">
             <img src="/AS%20logos/logo-square-light-initials-removebg-preview.png" alt="Autoflow Solutions Logo" style="height: 48px; width: auto;" />
             Autoflow Solutions
         </a>
@@ -19,13 +44,16 @@ const currentPath = pathname.slice(1); // remove the leading slash
 
         <div class="nav-menu">
             <div class="nav-links">
-                <a href="/services" class={currentPath === "services" ? "active" : ""}>Services</a>
-                <a href="/case-studies" class={currentPath === "case-studies" ? "active" : ""}>Case Studies</a>
-                <a href="/resources" class={currentPath === "resources" ? "active" : ""}>Resources</a>
-                <a href="/about" class={currentPath === "about" ? "active" : ""}>About</a>
-                <a href="/blog" class={currentPath === "blog" ? "active" : ""}>Blog</a>
+                <a href={localizePath('/services')} class={isActive('/services') ? "active" : ""}>Services</a>
+                <a href={localizePath('/case-studies')} class={isActive('/case-studies') ? "active" : ""}>Case Studies</a>
+                <a href={localizePath('/resources')} class={isActive('/resources') ? "active" : ""}>Resources</a>
+                <a href={localizePath('/about')} class={isActive('/about') ? "active" : ""}>About</a>
+                <a href={localizePath('/blog')} class={isActive('/blog') ? "active" : ""}>Blog</a>
             </div>
-            <a href="https://ai-self-audit.autoflow-solutions.com/" target="_blank" class="btn btn-solid nav-cta">Start Free AI Audit</a>
+            <div class="nav-actions">
+                <a href="https://ai-self-audit.autoflow-solutions.com/" target="_blank" class="btn btn-solid nav-cta">Start Free AI Audit</a>
+                <LanguageSwitcher currentPath={currentPath} />
+            </div>
         </div>
     </div>
 </nav>
@@ -54,6 +82,12 @@ const currentPath = pathname.slice(1); // remove the leading slash
         display: flex;
         align-items: center;
         gap: var(--space-md);
+    }
+
+    .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
     }
 
     @media (max-width: 1024px) {

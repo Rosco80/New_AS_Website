@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const title = "Agensi Automasi Zoho Malaysia — Pengoptimuman ERP & CRM";
+const description = "Rakan kongsi Zoho yang sah untuk perniagaan Malaysia. Pakar dalam automasi Zoho One, CRM, Books, dan Inventori untuk PKS. Tempah audit percuma.";
+
+const schemaData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Agensi Pelaksanaan Zoho One Malaysia",
+    "description": "Pengoptimuman Zoho One pakar dan skrip Deluge untuk perkhidmatan profesional Malaysia.",
+    "provider": { "@type": "Organization", "name": "Autoflow Solutions" },
+    "areaServed": { "@type": "Country", "name": "MY" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Adakah Zoho Books mematuhi SST Malaysia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ya, kami membantu PKS Malaysia mengkonfigurasi Zoho Books untuk pematuhan SST sepenuhnya, termasuk penginvoisan sedia cukai dan laporan suku tahunan untuk JKDM."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Zoho One",
+    "operatingSystem": "Semua",
+    "applicationCategory": "AplikasiPerniagaan",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "MYR"
+    }
+  }
+];
+---
+
+<BaseLayout title={title} description={description} schemaData={schemaData}>
+    <header class="hero" style="min-height: 80vh;">
+        <div class="hero-left">
+            <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Fokus Alatan: Zoho One</span>
+            <h1 class="text-display">AGENSI ZOHO<br>MALAYSIA.</h1>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Menyatukan Perniagaan Malaysia Anda dengan Zoho</h2>
+            <p class="text-body-lg" style="margin-bottom: 2.5rem;">Kami membantu PKS di Malaysia memanfaatkan sepenuhnya kuasa Zoho. Pelaksanaan profesional, penghijrahan, dan skrip Deluge tersuai untuk pasaran tempatan.</p>
+            <div class="hero-btns" style="display: flex; gap: 1rem;">
+                <a href="/ms/services#request" class="btn btn-solid">Audit Zoho Anda (RM)</a>
+                <a href="https://ai-self-audit.autoflow-solutions.com/" target="_blank" class="btn btn-neon">Audit Kendiri AI Percuma</a>
+            </div>
+        </div>
+        <div class="hero-right" style="background-color: #fff0f0;">
+            <div style="padding: 3rem; width: 100%;">
+                <div class="ui-card" style="position: relative; width: 100%; transform: none; box-shadow: 20px 20px 0 var(--black); background: #fff;">
+                    <div class="card-header">
+                        <span class="label-micro">PENYELARASAN_ZOHO_BOOKS_MY</span>
+                        <div class="status" style="width: 8px; height: 8px; background: #ff4242; border-radius: 50%;"></div>
+                    </div>
+                    <div style="margin: 1.5rem 0;">
+                        <p style="font-size: 0.9rem; font-weight: 700;">Penghantaran Invois Automatik</p>
+                        <p class="label-micro" style="color: var(--gray-dark);">Kadar SST: Standard MY (6% / 10%)</p>
+                        <div style="margin-top: 10px; padding: 0.5rem; background: #eee; border-radius: 4px;">
+                            <p style="font-size: 0.8rem;">Status: Sedia Cukai • Sedia LHDN ✓</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="density-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="label-micro">Kelebihan Perusahaan</span>
+                <h2 class="text-display" style="margin-top: 1rem;">ZOHO UNTUK<br>EKONOMI MALAYSIA.</h2>
+                <p class="text-body-lg" style="margin-top: 1.5rem;">Zoho One menyediakan sistem pengendalian "semua-dalam-satu" yang paling kukuh untuk perniagaan Malaysia. Kami menyediakan kepakaran untuk memastikan ia dibina untuk aliran kerja tempatan khusus anda.</p>
+            </div>
+            
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <span class="cell-id">01</span>
+                    <h3 class="text-h3">CRM & Jualan</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Menyesuaikan Zoho CRM untuk kitaran jualan Malaysia, memastikan pematuhan PDPA dan pemarkahan petunjuk standard tempatan.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">02</span>
+                    <h3 class="text-h3">Zoho Books (SST)</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Mengkonfigurasi Zoho Books untuk mengendalikan SST Malaysia dan pelaporan suku tahunan secara automatik.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">03</span>
+                    <h3 class="text-h3">Penyelarasan Inventori</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Mengautomasikan pergerakan stok antara Zoho Inventory, Shopee, Lazada, dan Shopify untuk pusat pemenuhan yang berpangkalan di Malaysia.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">04</span>
+                    <h3 class="text-h3">Deluge Tersuai</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Skrip pakar untuk peraturan perniagaan Malaysia yang "mustahil" yang tidak dapat dikendalikan oleh integrasi sedia ada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

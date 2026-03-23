@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Automasi Klinik Swasta Malaysia — Am, Pergigian & Pakar";
+const description = "Automasi AI untuk klinik swasta dan PKS penjagaan kesihatan Malaysia. Tempahan janji temu, aliran kerja admin, sokongan patuh KKM. Mula dengan audit percuma.";
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Automasi Penjagaan Kesihatan & Klinik Swasta Malaysia",
+  "description": "Automasi perjalanan pesakit patuh KKM, resepsi AI, dan aliran kerja admin untuk amalan perubatan Malaysia.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Autoflow Solutions"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "MY"
+  },
+  "serviceType": "Automasi AI Penjagaan Kesihatan"
+};
+---
+
+<BaseLayout title={title} description={description} schemaData={schemaData}>
+    <header class="hero" style="min-height: 80vh;">
+        <div class="hero-left">
+            <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Fokus Industri: Penjagaan Kesihatan</span>
+            <h1 class="text-display">AUTOMASI<br>KLINIK SWASTA.</h1>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Aliran Kerja AI & Admin Patuh KKM</h2>
+            <p class="text-body-lg" style="margin-bottom: 2.5rem;">Kami membantu amalan perubatan swasta, klinik pergigian, dan pakar estetik di Malaysia mengurangkan ketidakhadiran janji temu dan mengautomasikan pentadbiran pesakit.</p>
+            <div class="hero-btns" style="display: flex; gap: 1rem;">
+                <a href="/ms/services#request" class="btn btn-solid">Mohon Audit Klinik (RM)</a>
+                <a href="https://ai-self-audit.autoflow-solutions.com/" class="btn btn-neon">Audit Kendiri AI Percuma</a>
+            </div>
+        </div>
+        <div class="hero-right" style="background-color: #f0f7ff;">
+            <div style="padding: 3rem; width: 100%;">
+                <div class="ui-card" style="position: relative; width: 100%; transform: none; box-shadow: 20px 20px 0 var(--black); background: #fff;">
+                    <div class="card-header">
+                        <span class="label-micro">AI_PERJALANAN_PESAKIT_MY</span>
+                        <span class="status" style="display: inline-block; width: 8px; height: 8px; background: #4287f5; border-radius: 50%;"></span>
+                    </div>
+                    <div style="margin: 1.5rem 0;">
+                        <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem;">
+                            <div style="width: 40px; height: 40px; background: #eee; border-radius: 50%; display: flex; align-items: center; justify-content: center;">👤</div>
+                            <div>
+                                <p style="font-size: 0.8rem; font-weight: 700;">Pertanyaan Baharu: Pusat Estetik KL</p>
+                                <p class="label-micro" style="color: var(--gray-dark);">Jenis: Pengesahan Slot</p>
+                            </div>
+                        </div>
+                        <div style="padding: 1rem; border-left: 3px solid var(--neon); background: #f9f9f9; border-radius: 0 4px 4px 0;">
+                            <p style="font-size: 0.85rem; font-style: italic;">"Ejen AI: Helo! Kami mempunyai slot Rabu ini pada jam 3 petang di cawangan Bangsar. Patutkah saya menempahnya?"</p>
+                        </div>
+                    </div>
+                    <p class="label-micro" style="color: var(--gray-dark);">✓ Slot Ditempah dalam API Plato • Pengesahan WhatsApp Dihantar</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="density-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="label-micro">Faktor Kepercayaan</span>
+                <h2 class="text-display" style="margin-top: 1rem;">SEDIA KKM<br>SECARA REKA BENTUK.</h2>
+                <p class="text-body-lg" style="margin-top: 1.5rem;">Penjagaan kesihatan di Malaysia dikawal ketat oleh Kementerian Kesihatan Malaysia (KKM). Kami membina automasi yang menyokong beban pentadbiran anda tanpa menggantikan pertimbangan klinikal.</p>
+            </div>
+            
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <span class="cell-id">01</span>
+                    <h3 class="text-h3">Admin & Pra-Rawatan</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Borang pendaftaran digital automatik, pengambilan persetujuan PDPA, dan penyelarasan sejarah perubatan dengan PMS anda (Plato, Kreloses).</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">02</span>
+                    <h3 class="text-h3">Resepsi AI 24/7</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Ejen WhatsApp dan suara yang peka konteks untuk mengendalikan tempahan dan soalan lazim (FAQ) dalam Bahasa Inggeris, BM, dan Mandarin.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">03</span>
+                    <h3 class="text-h3">Kepatuhan PDPA</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Memastikan semua pengumpulan data pesakit dan susulan automatik mematuhi sepenuhnya Akta Perlindungan Data Peribadi Malaysia.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">04</span>
+                    <h3 class="text-h3">Rawatan Susulan</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Arahan penjagaan selepas rawatan automatik, tinjauan maklum balas, dan peringatan tempahan semula melalui integrasi WhatsApp/SMS.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

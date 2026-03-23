@@ -2,15 +2,13 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const categories = [
-    { name: "All Posts", active: true },
-    { name: "AI Strategy", active: false },
-    { name: "Automation Pipelines", active: false },
-    { name: "Case Studies", active: false },
-    { name: "SME Growth", active: false },
-    { name: "Engineering", active: false }
+    { name: "Semua Artikel", active: true },
+    { name: "Strategi AI", active: false },
+    { name: "Rangkaian Automasi", active: false },
+    { name: "Kajian Kes", active: false },
+    { name: "Pertumbuhan PKS", active: false },
+    { name: "Kejuruteraan", active: false }
 ];
-
-
 
 import { sanityClient } from "sanity:client";
 
@@ -22,40 +20,40 @@ const sanityPosts = await sanityClient.fetch(query).catch(() => []);
 
 const fallbackPosts = [
     {
-        title: "Building Resilient Data Ingestion Pipelines.",
-        description: "A technical deep dive into handling messy PDF data with high accuracy rates.",
-        category: "Engineering",
-        date: "March 14, 2024",
+        title: "Membina Rangkaian Pengambilan Data yang Berdaya Tahan.",
+        description: "Kupasan teknikal yang mendalam tentang pengendalian data PDF yang berserakan dengan kadar ketepatan yang tinggi.",
+        category: "Kejuruteraan",
+        date: "14 Mac 2024",
         type: "ai-visual",
         visualText: "01011001"
     },
     {
-        title: "Why your CRM is actually a data graveyard.",
-        description: "Why manual entry kills data integrity and how to fix it with automated sync layers.",
-        category: "Strategy",
-        date: "March 10, 2024",
+        title: "Mengapa CRM anda sebenarnya adalah perkuburan data.",
+        description: "Sebab kemasukan manual menjejaskan integriti data dan cara memperbaikinya dengan lapisan penyelarasan automatik.",
+        category: "Strategi",
+        date: "10 Mac 2024",
         type: "accent",
         visualText: "CRM"
     },
     {
-        title: "Saving 40 Hours a Week for a Logistics Firm.",
-        description: "How we automated invoice reconciliation for a regional shipping company.",
-        category: "Case Study",
-        date: "Feb 28, 2024",
+        title: "Menjimatkan 40 Jam Seminggu untuk Firma Logistik.",
+        description: "Bagaimana kami mengautomasikan penyelarasan invois untuk syarikat penghantaran serantau.",
+        category: "Kajian Kes",
+        date: "28 Feb 2024",
         type: "lines"
     },
     {
-        title: "LLMs are not a strategy. Pipelines are.",
-        description: "Stop thinking about 'buying AI' and start thinking about building workflows.",
-        category: "AI Strategy",
-        date: "Feb 15, 2024",
+        title: "LLM bukan satu strategi. Rangkaian kerja adalah strateginya.",
+        description: "Berhenti memikirkan tentang 'membeli AI' dan mula memikirkan tentang membina aliran kerja.",
+        category: "Strategi AI",
+        date: "15 Feb 2024",
         type: "svg-circles"
     },
     {
-        title: "When is your business too small for automation?",
-        description: "The 'threshold of leverage' and why early automation saves millions in technical debt.",
-        category: "SME Growth",
-        date: "Jan 22, 2024",
+        title: "Bila perniagaan anda dianggap terlalu kecil untuk automasi?",
+        description: "Tahap 'leveraj' dan mengapa automasi awal menjimatkan jutaan ringgit dalam beban teknikal (technical debt).",
+        category: "Pertumbuhan PKS",
+        date: "22 Jan 2024",
         type: "box"
     }
 ];
@@ -63,8 +61,8 @@ const fallbackPosts = [
 const posts = sanityPosts.length > 0 ? sanityPosts.map((post: any) => ({
     title: post.title,
     description: post.excerpt || "",
-    category: post.category || "Blog Post",
-    date: post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : "",
+    category: post.category || "Artikel Blog",
+    date: post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('ms-MY', { day: 'numeric', month: 'long', year: 'numeric' }) : "",
     type: post.visualType || "box",
     visualText: post.visualText || "",
     slug: post.slug?.current || ""
@@ -76,8 +74,8 @@ const gridPosts = posts.slice(1);
 const blogCollectionSchema = {
   "@context": "https://schema.org",
   "@type": "Blog",
-  "name": "Autoflow Solutions Malaysia Blog",
-  "description": "Malaysian SME automation insights, case studies and PDPA guides.",
+  "name": "Blog Autoflow Solutions Malaysia",
+  "description": "Wawasan automasi PKS Malaysia, kajian kes, dan panduan PDPA.",
   "publisher": {
     "@type": "Organization",
     "name": "Autoflow Solutions"
@@ -88,19 +86,19 @@ const blogCollectionSchema = {
     "headline": post.title,
     "description": post.description,
     "datePublished": post.date,
-    "url": `https://autoflow-solutions.com/my/blog/${post.slug}`
+    "url": `https://autoflow-solutions.com/ms/blog/${post.slug}`
   }))
 };
 ---
 
 <BaseLayout 
-    title="AI Automation Blog — Insights for Malaysian SME Operators"
-    description="Practical guides, case studies, and frameworks for automating operations in Malaysian logistics, healthcare, e-commerce, legal, and professional services businesses."
+    title="Blog Automasi AI — Wawasan untuk Pengusaha PKS Malaysia"
+    description="Panduan praktikal, kajian kes, dan rangka kerja untuk mengeautomasikan operasi perniagaan logistik, penjagaan kesihatan, e-dagang, perundangan, dan perkhidmatan profesional di Malaysia."
     schemaData={blogCollectionSchema}
 >
     <header class="blog-header">
         <div class="container">
-            <h1 class="text-display">Operational<br>Insights.</h1>
+            <h1 class="text-display">Wawasan<br>Operasi.</h1>
             <div class="category-nav">
                 {categories.map((cat) => (
                     <a href="#" class={`cat-chip ${cat.active ? 'active' : ''}`} data-category={cat.name}>{cat.name}</a>
@@ -113,26 +111,26 @@ const blogCollectionSchema = {
         <div class="featured-image">
             <div class="decoration-box" style="width: 80%; height: 70%;">
                 <div style="font-family: monospace; font-weight: 800; font-size: 1.2rem;">
-                    [SYSTEM_VISUAL_01]
+                    [SISTEM_VISUAL_01]
                     <div style="width: 200px; height: 4px; background: var(--black); margin-top: 10px;"></div>
                     <div style="width: 140px; height: 4px; background: var(--neon); margin-top: 6px; border: 1px solid black"></div>
                 </div>
             </div>
         </div>
         <div class="featured-content">
-            <span class="label-micro" style="margin-bottom: var(--space-sm); align-self: flex-start;">Featured Article</span>
+            <span class="label-micro" style="margin-bottom: var(--space-sm); align-self: flex-start;">Artikel Pilihan</span>
             <h2 class="text-h2" style="margin-bottom: var(--space-sm);">{featuredPost.title}</h2>
             <p style="font-size: 1.2rem; color: var(--gray-dark); margin-bottom: var(--space-md);">{featuredPost.description}</p>
             <div style="display: flex; align-items: center; gap: 1rem;">
-                <a href={`/my/blog/${featuredPost.slug}`} class="btn btn-solid-accent">Read Article</a>
-                <span style="font-weight: 700; font-size: 0.9rem;">12 min read</span>
+                <a href={`/ms/blog/${featuredPost.slug}`} class="btn btn-solid-accent">Baca Artikel</a>
+                <span style="font-weight: 700; font-size: 0.9rem;">Bacaan 12 minit</span>
             </div>
         </div>
     </section>
 
     <section class="article-grid" id="blog-grid">
         {gridPosts.map((post) => (
-            <a href={`/my/blog/${post.slug}`} class="article-card" data-post-category={post.category}>
+            <a href={`/ms/blog/${post.slug}`} class="article-card" data-post-category={post.category}>
                 <div class={`card-thumb ${post.type === 'ai-visual' ? 'ai-visual' : ''}`} style={post.type === 'accent' ? "background: var(--neon);" : post.type === 'box' ? "background: var(--black);" : ""}>
                     {post.type === 'ai-visual' && (
                         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--neon); font-family: monospace;">{post.visualText}</div>
@@ -167,7 +165,7 @@ const blogCollectionSchema = {
         <div class="article-card next-page-card">
             <div style="text-align: center;">
                 <div style="font-size: 3rem; font-weight: 900; margin-bottom: 1rem;">07</div>
-                <p class="text-h3">Next Page</p>
+                <p class="text-h3">Seterusnya</p>
                 <div style="width: 40px; height: 2px; background: black; margin: 10px auto;"></div>
             </div>
         </div>
@@ -175,20 +173,21 @@ const blogCollectionSchema = {
 
     <section class="newsletter-section">
         <div class="container">
-            <h2 class="text-h2">Don't miss a sprint.</h2>
-            <p style="font-weight: 600; font-size: 1.25rem; margin-top: 10px;">Get our bi-weekly breakdown of automation wins and AI implementation tactics.</p>
+            <h2 class="text-h2">Jangan terlepas perkembangan terkini.</h2>
+            <p style="font-weight: 600; font-size: 1.25rem; margin-top: 10px;">Dapatkan kupasan dwi-mingguan kami mengenai kejayaan automasi dan taktik pelaksanaan AI.</p>
             <form class="newsletter-form" id="newsletter-form">
-                <input type="email" name="email" placeholder="Enter your business email" required>
-                <button type="submit" class="btn btn-solid-accent">Subscribe Now</button>
+                <input type="email" name="email" placeholder="Masukkan emel perniagaan anda" required>
+                <button type="submit" class="btn btn-solid-accent">Langgan Sekarang</button>
             </form>
             <div id="newsletter-success" style="display: none; margin-top: 1.5rem; background: var(--black); color: var(--neon); padding: 1rem; border-radius: 99px; font-weight: 800;">
-                ✓ You're on the list! Talk soon.
+                ✓ Anda telah tersenarai! Jumpa lagi.
             </div>
-            <p style="font-size: 0.8rem; margin-top: 1.5rem; font-weight: 600;">Join 2,400+ SME owners and operators.</p>
+            <p style="font-size: 0.8rem; margin-top: 1.5rem; font-weight: 600;">Sertai 2,400+ pemilik dan pengusaha PKS.</p>
         </div>
     </section>
 
     <style>
+        /* CSS remains the same as English version to maintain consistency */
         .blog-header {
             padding: var(--space-lg) 0;
             background-image: linear-gradient(var(--gray-light, #E5E5E5) 1px, transparent 1px), linear-gradient(90deg, var(--gray-light, #E5E5E5) 1px, transparent 1px);
@@ -375,7 +374,7 @@ const blogCollectionSchema = {
                     
                     const selectedCategory = e.currentTarget.getAttribute('data-category');
                     
-                    if (selectedCategory === "All Posts") {
+                    if (selectedCategory === "Semua Artikel") {
                         if(featuredSection) featuredSection.style.display = 'grid';
                         cards.forEach(card => card.style.display = 'flex');
                     } else {
@@ -400,7 +399,7 @@ const blogCollectionSchema = {
                     const formData = new FormData(newsletterForm);
                     const submitBtn = newsletterForm.querySelector('button');
                     if (submitBtn) {
-                        submitBtn.textContent = 'Joining...';
+                        submitBtn.textContent = 'Menyertai...';
                         submitBtn.disabled = true;
                     }
                     
@@ -417,7 +416,7 @@ const blogCollectionSchema = {
                     } catch (error) {
                         console.error('Newsletter Error:', error);
                         if (submitBtn) {
-                            submitBtn.textContent = 'Subscribe Now';
+                            submitBtn.textContent = 'Langgan Sekarang';
                             submitBtn.disabled = false;
                         }
                     }

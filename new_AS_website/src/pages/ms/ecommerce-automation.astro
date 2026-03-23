@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Agensi Automasi E-Dagang Malaysia — Shopee, Lazada & Shopify";
+const description = "Automasikan pesanan, pemulangan, dan susulan pelanggan untuk perniagaan e-dagang Malaysia. Shopee, Lazada, TikTok Shop, Shopify. Audit percuma.";
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Automasi E-Dagang & Runcit Malaysia",
+  "description": "Integrasi API Shopee, Lazada, dan TikTok Shop. Pemenuhan pelbagai saluran automatik untuk peruncit Malaysia.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Autoflow Solutions"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "MY"
+  },
+  "serviceType": "Automasi AI E-Dagang"
+};
+---
+
+<BaseLayout title={title} description={description} schemaData={schemaData}>
+    <header class="hero" style="min-height: 80vh;">
+        <div class="hero-left">
+            <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Fokus Industri: E-Dagang</span>
+            <h1 class="text-display">AUTOMASI<br>E-DAGANG MALAYSIA.</h1>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Pakar Penskalaan Shopee, Lazada & TikTok Shop</h2>
+            <p class="text-body-lg" style="margin-bottom: 2.5rem;">Kami membantu penjual dalam talian terkemuka di Malaysia mengautomasikan tugasan berat mereka. Daripada penyelarasan inventori pelbagai saluran sehingga sokongan pelanggan automatik di WhatsApp.</p>
+            <div class="hero-btns" style="display: flex; gap: 1rem;">
+                <a href="/ms/services#request" class="btn btn-solid">Kira Penjimatan Anda (RM)</a>
+                <a href="https://ai-self-audit.autoflow-solutions.com/" class="btn btn-neon">Audit Kendiri AI Percuma</a>
+            </div>
+        </div>
+        <div class="hero-right" style="background-color: #fff9f0;">
+            <div style="padding: 3rem; width: 100%;">
+                <div class="ui-card" style="position: relative; width: 100%; transform: none; box-shadow: 20px 20px 0 var(--black); background: #fff;">
+                    <div class="card-header">
+                        <span class="label-micro">PENGURUS_STOK_MY_v2</span>
+                        <span class="status" style="display: inline-block; width: 8px; height: 8px; background: #ff9900; border-radius: 50%;"></span>
+                    </div>
+                    <div style="margin: 1.5rem 0;">
+                        <div style="padding: 0.75rem; background: #fff; border: 1px dashed #ccc; margin-bottom: 1rem;">
+                            <p class="label-micro">Pesanan #MY-9112 (Shopee)</p>
+                            <p style="font-size: 0.85rem;">Item: Fon Telinga Tanpa Wayar (Hitam)</p>
+                        </div>
+                        <div style="text-align: center; color: var(--neon); font-size: 1.2rem;">⚡</div>
+                        <div style="padding: 0.75rem; background: var(--black); color: var(--white); border-radius: 4px;">
+                            <p class="label-micro" style="color: var(--gray-light);">Tindakan Diambil</p>
+                            <p style="font-size: 0.85rem;">Inventori TikTok Shop & Lazada -1</p>
+                            <p style="font-size: 0.85rem;">Amaran Penghantaran Dihantar melalui WhatsApp</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="density-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="label-micro">Pasaran Asia Tenggara</span>
+                <h2 class="text-display" style="margin-top: 1rem;">DOMINASI<br>PELBAGAI SALURAN.</h2>
+                <p class="text-body-lg" style="margin-top: 1.5rem;">E-dagang Malaysia memerlukan kehadiran di Shopee, Lazada, dan TikTok Shop. Kami menyediakan tunjang teknikal untuk memastikan operasi anda sentiasa selaras.</p>
+            </div>
+            
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <span class="cell-id">01</span>
+                    <h3 class="text-h3">Penyelarasan Stok</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Penyelarasan inventori automatik di Shopee, Lazada, dan Shopify. Jangan biarkan stok berlebihan dijual lagi semasa jualan kilat (flash sale).</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">02</span>
+                    <h3 class="text-h3">Sokongan Pelbagai Saluran</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Menyatukan sembang pelanggan dari semua platform ke dalam satu aliran WhatsApp/Slack yang disokong AI untuk maklum balas yang lebih pantas.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">03</span>
+                    <h3 class="text-h3">Automasi Dropship</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Menghantar pesanan secara automatik kepada pembekal di seluruh rantau ini sebaik sahaja pembayaran disahkan di kedai tempatan anda.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">04</span>
+                    <h3 class="text-h3">Penyelarasan Pos Laju / J&T</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Menjana bil laluan udara (AWB) dan nombor penjejakan secara automatik, serta memasukkannya kembali ke API pasaran (marketplace).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

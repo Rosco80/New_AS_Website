@@ -2,58 +2,58 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const cases = [
     {
-        tag: "Marketing Ops",
+        tag: "Ops Pemasaran",
         client: "Yap Chan Kor (MY)",
-        headline: "Cutting campaign optimization time by 94% with autonomous data analysis.",
+        headline: "Mengurangkan masa pengoptimuman kempen sebanyak 94% dengan analisis data autonomi.",
         image: "/case-1.png",
         stats: [
-            { label: "Before", value: "3 Hrs", bottomLabel: "Weekly Manual Effort", opacity: true },
-            { label: "After", value: "10 Min", bottomLabel: "AI-Powered Weekly Effort" }
+            { label: "Sebelum", value: "3 Jam", bottomLabel: "Usaha Manual Mingguan", opacity: true },
+            { label: "Selepas", value: "10 Minit", bottomLabel: "Usaha Mingguan Dikuasakan AI" }
         ]
     },
     {
-        tag: "Operations",
+        tag: "Operasi",
         client: "WePatrol (UK)",
-        headline: "Eliminating messy paperwork and saving 40 hours a month with a WhatsApp AI bot.",
+        headline: "Menghapuskan kerja kertas yang berserakan dan menjimatkan 40 jam sebulan dengan bot AI WhatsApp.",
         image: "/case-2.png",
         stats: [
-            { label: "Before", value: "High", bottomLabel: "Errors & Admin Delays", opacity: true },
-            { label: "After", value: "40 Hrs", bottomLabel: "Saved Every Month" }
+            { label: "Sebelum", value: "Tinggi", bottomLabel: "Ralat & Kelewatan Admin", opacity: true },
+            { label: "Selepas", value: "40 Jam", bottomLabel: "Dijimatkan Setiap Bulan" }
         ]
     },
     {
-        tag: "Customer Service",
+        tag: "Khidmat Pelanggan",
         client: "Le Gourmandin (MY)",
-        headline: "Capturing thousands in lost revenue with a 24/7 voice and text booking agent.",
+        headline: "Menangkap ribuan hasil yang terlepas dengan ejen tempahan suara dan teks 24/7.",
         image: "/case-3.png",
         stats: [
-            { label: "Before", value: "Lost", bottomLabel: "Unanswered Peak Calls", opacity: true },
-            { label: "After", value: "+20%", bottomLabel: "Increase in Reservations" }
+            { label: "Sebelum", value: "Terlepas", bottomLabel: "Panggilan Waktu Puncak Tak Berjawab", opacity: true },
+            { label: "Selepas", value: "+20%", bottomLabel: "Peningkatan Tempahan" }
         ]
     },
     {
-        tag: "Enterprise Automation",
+        tag: "Automasi Perusahaan",
         client: "Studio Giovanni Carnevale (IT)",
-        headline: "Replacing fragile workflows with self-healing AI agents that never break.",
+        headline: "Menggantikan aliran kerja yang rapuh dengan ejen AI berdikari yang tidak pernah gagal.",
         image: "/case-4.png",
         stats: [
-            { label: "Before", value: "12%", bottomLabel: "Legacy Automation Success", opacity: true },
-            { label: "After", value: "100%", bottomLabel: "Autonomous Task Completion" }
+            { label: "Sebelum", value: "12%", bottomLabel: "Kejayaan Automasi Tradisional", opacity: true },
+            { label: "Selepas", value: "100%", bottomLabel: "Penyelesaian Tugasan Autonomi" }
         ]
     }
 ];
 ---
 
-<BaseLayout title="Case Studies">
+<BaseLayout title="Kajian Kes">
     <header class="page-header">
         <div class="header-content">
             <h1 class="header-title">
-                PROVEN <br>
-                <span class="graphic-box">DEPLOYMENTS</span> <br>
-                <span class="graphic-box fill">RESULTS // 01-04</span>
+                PENGGUNAAN <br>
+                <span class="graphic-box">TERBUKTI</span> <br>
+                <span class="graphic-box fill">HASIL // 01-04</span>
             </h1>
             <p style="max-width: 550px; font-size: 1.35rem; font-weight: 500; line-height: 1.5;">
-                Real efficiency gains from real companies. No theories, just systems that work 24/7 without needing a coffee break.
+                Peningkatan kecekapan sebenar daripada syarikat sebenar. Bukan sekadar teori, tetapi sistem yang bekerja 24/7 tanpa perlu berehat.
             </p>
         </div>
     </header>
@@ -67,7 +67,7 @@ const cases = [
                     <div class="case-overlay"></div>
                 </div>
                 <div class="case-content">
-                    <div class="case-client">Client: {cs.client}</div>
+                    <div class="case-client">Pelanggan: {cs.client}</div>
                     <h3 class="case-headline">{cs.headline}</h3>
                     <div class="stats-grid">
                         {cs.stats.map((stat) => (
@@ -84,10 +84,10 @@ const cases = [
     </main>
 
     <section style="padding: 12vw 4vw; text-align: center; border-bottom: var(--border-heavy);">
-        <h2 style="font-size: 5rem; margin-bottom: 4rem; font-weight: 900; line-height: 0.9;">READY TO BE THE NEXT <br><span class="graphic-box fill">SUCCESS STORY?</span></h2>
+        <h2 style="font-size: 5rem; margin-bottom: 4rem; font-weight: 900; line-height: 0.9;">SEDIA MENJADI KISAH <br><span class="graphic-box fill">KEJAYAAN SETERUSNYA?</span></h2>
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-            <a href="/my/tools/ai-self-audit" target="_blank" class="btn btn-solid">Start Free AI Audit</a>
-            <button data-cal-link="autoflow-solutions/book-a-discovery-call" data-cal-config='{"layout":"month_view"}' class="btn btn-outline">Book a Free discovery call</button>
+            <a href="https://ai-self-audit.autoflow-solutions.com/" target="_blank" class="btn btn-solid">Mula Audit AI Percuma</a>
+            <button data-cal-link="autoflow-solutions/book-a-discovery-call" data-cal-config='{"layout":"month_view"}' class="btn btn-outline">Tempah Sesi Konsultasi Percuma</button>
         </div>
     </section>
 

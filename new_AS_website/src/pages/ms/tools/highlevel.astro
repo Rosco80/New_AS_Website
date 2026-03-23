@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const title = "Agensi Automasi HighLevel Malaysia — Pakar Pengumpulan Petunjuk & CRM";
+const description = "Pakar automasi HighLevel (GHL) untuk agensi dan PKS Malaysia. Persediaan CRM, rangkaian pengumpulan petunjuk, dan susulan pelanggan automatik. Audit percuma.";
+
+const schemaData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Agensi HighLevel (GHL) Malaysia",
+    "description": "Persediaan CRM dan automasi rangkaian jualan untuk agensi dan perkhidmatan profesional Malaysia menggunakan HighLevel.",
+    "provider": { "@type": "Organization", "name": "Autoflow Solutions" },
+    "areaServed": { "@type": "Country", "name": "MY" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Bolehkah saya menggunakan HighLevel dengan nombor WhatsApp Malaysia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ya, kami pakar dalam mengintegrasikan nombor WhatsApp Business Malaysia (+60) dengan rangkaian HighLevel untuk susulan pelanggan automatik."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "HighLevel",
+    "operatingSystem": "Semua",
+    "applicationCategory": "AplikasiPerniagaan",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "MYR"
+    }
+  }
+];
+---
+
+<BaseLayout title={title} description={description} schemaData={schemaData}>
+    <header class="hero" style="min-height: 80vh;">
+        <div class="hero-left">
+            <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Fokus Alatan: HighLevel</span>
+            <h1 class="text-display">AGENSI HIGHLEVEL<br>MALAYSIA.</h1>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Jualan Automatik & CRM untuk PKS Malaysia</h2>
+            <p class="text-body-lg" style="margin-bottom: 2.5rem;">Kami menjadikan HighLevel (GHL) sebuah mesin penjana petunjuk (leads) untuk perniagaan Malaysia anda. Persediaan profesional, 'snapshots' tersuai, dan automasi tempatan yang mendalam.</p>
+            <div class="hero-btns" style="display: flex; gap: 1rem;">
+                <a href="/ms/services#request" class="btn btn-solid">Optimumkan GHL Anda (RM)</a>
+                <a href="https://ai-self-audit.autoflow-solutions.com/" target="_blank" class="btn btn-neon">Audit Kendiri AI Percuma</a>
+            </div>
+        </div>
+        <div class="hero-right" style="background-color: #f7f0ff;">
+            <div style="padding: 3rem; width: 100%;">
+                <div class="ui-card" style="position: relative; width: 100%; transform: none; box-shadow: 20px 20px 0 var(--black); background: #fff;">
+                    <div class="card-header">
+                        <span class="label-micro">RANGKAIAN_PETUNJUK_GHL_MY</span>
+                        <div class="status" style="width: 8px; height: 8px; background: #ab6aff; border-radius: 50%;"></div>
+                    </div>
+                    <div style="margin: 1.5rem 0;">
+                        <div style="padding: 0.5rem; background: #f9f9f9; border-left: 2px solid var(--neon); margin-bottom: 0.5rem;">
+                            <p style="font-size: 0.8rem; font-weight: 700;">Tahap: Lawatan Tapak Ditempah</p>
+                            <p class="label-micro">Pelanggan: Kediaman Mont Kiara</p>
+                        </div>
+                        <p style="font-size: 0.85rem; font-weight: 700; color: green;">⚡ Susulan AI: WhatsApp Dihantar (Nombor +60)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="density-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="label-micro">Enjin Jualan</span>
+                <h2 class="text-display" style="margin-top: 1rem;">MENYATUKAN PETUNJUK<br>MALAYSIA ANDA.</h2>
+                <p class="text-body-lg" style="margin-top: 1.5rem;">HighLevel ialah platform jualan semua-dalam-satu yang terkemuka di dunia. Kami memastikan ia dikonfigurasi untuk pasaran Malaysia — daripada borang patuh PDPA sehingga integrasi WhatsApp tempatan.</p>
+            </div>
+            
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <span class="cell-id">01</span>
+                    <h3 class="text-h3">Persediaan Rangkaian</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Rangkaian jualan (sales pipeline) yang dibina khas mengikut proses perniagaan Malaysia anda, daripada "Sentuhan Pertama" sehingga "Deposit Dibayar."</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">02</span>
+                    <h3 class="text-h3">Bot Tempahan AI</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Melaksanakan ejen AI di dalam GHL yang mengendalikan pertanyaan petunjuk Malaysia dan menempah janji temu terus ke dalam kalendar anda.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">03</span>
+                    <h3 class="text-h3">Kepatuhan PDPA</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Memastikan semua borang pengumpulan maklumat dan kempen automatik mematuhi sepenuhnya undang-undang perlindungan data Malaysia.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">04</span>
+                    <h3 class="text-h3">Automasi Reputasi</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Permintaan ulasan Profil Perniagaan Google secara automatik untuk membina autoriti SEO tempatan Malaysia anda tanpa usaha manual.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

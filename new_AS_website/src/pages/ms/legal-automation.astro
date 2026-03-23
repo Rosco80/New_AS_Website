@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Automasi Perundangan untuk Firma Guaman Malaysia — Urusan Pindah Milik & Dokumentasi";
+const description = "Automasikan admin pindah milik (conveyancing), draf dokumen undang-undang dan kepatuhan PDPA untuk firma Malaysia. Memahami Akta Profesion Undang-undang. Audit percuma.";
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Automasi Perundangan & Firma Guaman Malaysia",
+  "description": "Automasi patuh PDPA untuk firma guaman Malaysia. Aliran kerja pindah milik, draf automatik, dan pendaftaran pelanggan.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Autoflow Solutions"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "MY"
+  },
+  "serviceType": "Automasi Aliran Kerja Perundangan"
+};
+---
+
+<BaseLayout title={title} description={description} schemaData={schemaData}>
+    <header class="hero" style="min-height: 80vh;">
+        <div class="hero-left">
+            <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Fokus Industri: Perundangan</span>
+            <h1 class="text-display">AUTOMASI<br>PERUNDANGAN MALAYSIA.</h1>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Pakar Aliran Kerja Pindah Milik & Dokumentasi</h2>
+            <p class="text-body-lg" style="margin-bottom: 2.5rem;">Kami membantu peguam cara dan firma guaman di Malaysia mengautomasikan pentadbiran berulang bagi urusan pindah milik, draf korporat, dan kepatuhan PDPA.</p>
+            <div class="hero-btns" style="display: flex; gap: 1rem;">
+                <a href="/ms/services#request" class="btn btn-solid">Mohon Audit Firma (RM)</a>
+                <a href="https://ai-self-audit.autoflow-solutions.com/" class="btn btn-neon">Audit Kendiri AI Percuma</a>
+            </div>
+        </div>
+        <div class="hero-right" style="background-color: #f8f8f8;">
+            <div style="padding: 3rem; width: 100%;">
+                <div class="ui-card" style="position: relative; width: 100%; transform: none; box-shadow: 20px 20px 0 var(--black); background: #fff;">
+                    <div class="card-header">
+                        <span class="label-micro">AUTO_PEK_SPA_MY</span>
+                        <div style="display: flex; gap: 4px;">
+                            <span class="status" style="width: 8px; height: 8px; background: #888; border-radius: 50%;"></span>
+                            <span class="status" style="width: 8px; height: 8px; background: #888; border-radius: 50%;"></span>
+                            <span class="status" style="width: 8px; height: 8px; background: var(--neon); border-radius: 50%;"></span>
+                        </div>
+                    </div>
+                    <div style="margin: 1.5rem 0;">
+                        <p class="label-micro">Sedang Diproses: Trans Pembelian Kondo #KL-882</p>
+                        <div style="margin-top: 1rem;">
+                            <div style="font-size: 0.85rem; padding: 4px 0; display: flex; justify-content: space-between; border-bottom: 1px solid #eee;">
+                                <span>Pengesahan ID Pembeli</span>
+                                <span style="color: green;">✓ Selesai</span>
+                            </div>
+                            <div style="font-size: 0.85rem; padding: 4px 0; display: flex; justify-content: space-between; border-bottom: 1px solid #eee;">
+                                <span>Carian Pejabat Tanah</span>
+                                <span style="color: green;">✓ Keputusan Diterima</span>
+                            </div>
+                            <div style="font-size: 0.85rem; padding: 4px 0; display: flex; justify-content: space-between;">
+                                <span>Mendraf Pek SPA</span>
+                                <span style="color: blue;">⚡ AI Sedang Menjana...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="density-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="label-micro">Konteks Kawal Selia</span>
+                <h2 class="text-display" style="margin-top: 1rem;">KECEKAPAN<br>PATUH SYARAT.</h2>
+                <p class="text-body-lg" style="margin-top: 1.5rem;">Firma Malaysia beroperasi di bawah Akta Profesion Undang-undang dan peraturan Majlis Peguam. Automasi kami dibina untuk meningkatkan ketepatan kakitangan pakar anda, bukan menggantikan pengawasan mereka.</p>
+            </div>
+            
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <span class="cell-id">01</span>
+                    <h3 class="text-h3">Admin Pindah Milik</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Pengumpulan pek SPA automatik, penjejakan carian pejabat tanah, dan kemas kini status pelanggan automatik melalui WhatsApp.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">02</span>
+                    <h3 class="text-h3">Kepatuhan PDPA</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Mengautomasikan pengecaman dan pengekstrakan data untuk penyimpanan rekod dan jejak audit yang diperlukan di bawah undang-undang data Malaysia.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">03</span>
+                    <h3 class="text-h3">Mendraf Korporat</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Menggunakan Enjin Pelaksanaan kami untuk mendraf NDA standard, resolusi pengarah, dan perjanjian penyewaan standard untuk semakan akhir.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">04</span>
+                    <h3 class="text-h3">Pendaftaran & CRM</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Menyelaraskan pendaftaran petunjuk daripada laman web atau iklan media sosial anda terus ke dalam perisian pengurusan kes atau pangkalan data firma anda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

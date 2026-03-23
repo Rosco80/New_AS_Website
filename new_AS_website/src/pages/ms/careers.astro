@@ -1,0 +1,217 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const positions = [
+    {
+        title: "Jurutera Penyelesaian AI",
+        focus: "Orkestrasi LLM & Rangkaian RAG",
+        description: "Membina ejen AI gred produksi yang bukan sekadar berbual, tetapi melaksanakan aliran kerja perniagaan yang kompleks dengan kebolehpercayaan 99%."
+    },
+    {
+        title: "Arkitek Automasi",
+        focus: "Make.com / Zapier / Middleware API Kustom",
+        description: "Penyambung yang menyatukan segalanya. Mereka bentuk rangkaian data berkapasiti tinggi yang menghapuskan kemasukan manual di seluruh sistem."
+    },
+    {
+        title: "Ketua Pertumbuhan & Strategi",
+        focus: "Operasi PKS & Analisis ROI",
+        description: "Menterjemah kekangan perniagaan kepada keperluan teknikal. Anda bukan menjual alatan; anda menjual masa yang dijimatkan."
+    }
+];
+---
+
+<BaseLayout title="Kerjaya">
+    <main>
+        <!-- Hero Section -->
+        <section class="careers-hero">
+            <div class="container hero-container">
+                <span class="label-micro" style="color: var(--black); margin-bottom: 1.5rem;">Sertai Tenaga Kerja Masa Depan</span>
+                <h1 class="text-display" style="color: var(--black); margin-bottom: 2rem;">Bina<br>Leveraj.</h1>
+                <p class="text-body-lg" style="max-width: 650px; color: var(--black); font-weight: 500;">
+                    Kami bukan sekadar membina chatbot. Kami membina infrastruktur autonomi yang membolehkan kreativiti manusia berkembang dengan menghapuskan tugasan robotik masa kini.
+                </p>
+                
+                <div class="status-ticker">
+                    <span class="label-micro">STATUS_PENGGAJIAN: PENGAMBILAN_PASIF</span>
+                    <div class="pulse"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What We Do Section -->
+        <section class="careers-intro">
+            <div class="container grid-2">
+                <div>
+                    <h2 class="text-h2">Apa Yang Kami Bina.</h2>
+                    <p class="text-body-lg" style="margin-top: 1.5rem; color: var(--gray-dark);">
+                        Autoflow Solutions adalah agensi automasi yang cemerlang dan berimpak tinggi. Kami fokus pada PKS dan Perkhidmatan Profesional—tunjang ekonomi yang sering diabaikan oleh syarikat teknologi besar. Kami membawakan AI gred perusahaan kepada klinik tempatan, firma guaman butik, dan jenama e-dagang yang sedang berkembang.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 class="text-h3">Budaya Kami</h3>
+                    <ul class="vibe-list">
+                        <li><strong>Utamakan Kerja Jarak Jauh:</strong> Kami mengambil pekerja berdasarkan bakat, bukan lokasi geografi.</li>
+                        <li><strong>Lancar Pantas, Tanpa Gangguan:</strong> Kami mengutamakan kebolehpercayaan yang kukuh berbanding faktor "menarik" yang sekadar eksperimen.</li>
+                        <li><strong>Pemilikan Radikal:</strong> Anda bertanggungjawab ke atas hasil, bukan sekadar menyelesaikan tiket tugasan.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Positions Section -->
+        <section class="positions-section">
+            <div class="container">
+                <div style="margin-bottom: var(--space-xl);">
+                    <span class="label-micro" style="color: var(--neon);">SKUAD KAMI</span>
+                    <h2 class="text-h2" style="color: var(--white); margin-top: 1rem;">Siapa Yang Kami Cari.</h2>
+                    <p class="text-body" style="color: var(--gray-light); max-width: 600px; margin-top: 1rem;">
+                        Walaupun kami tidak sedang mencari pekerja secara aktif, kami sentiasa mencari 1% bakat automasi terbaik. Jika anda sangat mementingkan kecekapan, kami ingin mengenali anda.
+                    </p>
+                </div>
+
+                <div class="positions-grid">
+                    {positions.map((p) => (
+                        <div class="position-card">
+                            <span class="label-micro" style="color: var(--neon);">{p.focus}</span>
+                            <h3 class="text-h3" style="color: var(--white); margin: 1rem 0;">{p.title}</h3>
+                            <p class="text-body" style="color: var(--gray-light);">{p.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="apply-section">
+            <div class="container">
+                <div class="apply-box">
+                    <h2 class="text-h2">Pastikan Kerjaya Anda Kalis Masa Depan.</h2>
+                    <p class="text-body-lg" style="margin: 2rem 0;">
+                        Rasa anda mempunyai apa yang diperlukan untuk menyertai barisan Autoflow Solutions? Hantarkan resume, portfolio, atau pautan ke binaan automasi anda yang paling mengagumkan ke peti masuk kami.
+                    </p>
+                    <a href="mailto:info@autoflow-solutions.com" class="btn btn-black">info@autoflow-solutions.com</a>
+                </div>
+            </div>
+        </section>
+    </main>
+</BaseLayout>
+
+<style>
+    .careers-hero {
+        background-color: var(--neon);
+        padding: 160px 0 100px;
+        border-bottom: 2px solid var(--black);
+    }
+
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .status-ticker {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: var(--black);
+        padding: 8px 16px;
+        margin-top: 3rem;
+        border-radius: 4px;
+    }
+
+    .status-ticker .label-micro {
+        color: var(--white);
+    }
+
+    .pulse {
+        width: 8px;
+        height: 8px;
+        background: #FACC15;
+        border-radius: 50%;
+        box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.7);
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.7); }
+        70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(250, 204, 21, 0); }
+        100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(250, 204, 21, 0); }
+    }
+
+    .careers-intro {
+        padding: var(--space-xl) 0;
+        background: var(--white);
+    }
+
+    .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-xl);
+        align-items: center;
+    }
+
+    .info-card {
+        background: var(--gray-light);
+        padding: var(--space-lg);
+        border: 2px solid var(--black);
+        box-shadow: 12px 12px 0 var(--black);
+    }
+
+    .vibe-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 1.5rem;
+    }
+
+    .vibe-list li {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .vibe-list li::before {
+        content: '>';
+        position: absolute;
+        left: 0;
+        color: var(--black);
+        font-weight: 900;
+    }
+
+    .positions-section {
+        padding: var(--space-xl) 0;
+        background: var(--black);
+    }
+
+    .positions-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-lg);
+    }
+
+    .position-card {
+        border: 1px solid var(--gray-dark);
+        padding: var(--space-lg);
+        transition: border-color 0.3s ease;
+    }
+
+    .position-card:hover {
+        border-color: var(--neon);
+    }
+
+    .apply-section {
+        padding: var(--space-xl) 0;
+        background-color: var(--neon);
+        text-align: center;
+    }
+
+    .apply-box {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+        .grid-2 { grid-template-columns: 1fr; }
+        .positions-grid { grid-template-columns: 1fr; }
+        .careers-hero { padding-top: 120px; }
+    }
+</style>

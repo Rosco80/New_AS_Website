@@ -1,45 +1,84 @@
 ---
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname;
+
+const getLangPrefix = (path) => {
+    if (path.startsWith('/my')) return '/my';
+    if (path.startsWith('/ms')) return '/ms';
+    if (path.startsWith('/uk')) return '/uk';
+    return '';
+};
+
+const langPrefix = getLangPrefix(currentPath);
+const isMalay = langPrefix === '/ms';
+
+const localizePath = (path) => {
+    if (path.startsWith(langPrefix) && langPrefix !== '') return path;
+    return `${langPrefix}${path.startsWith('/') ? path : '/' + path}`;
+};
+
+const labels = {
+    company: isMalay ? "Syarikat" : "Company",
+    about: isMalay ? "Tentang Kami" : "About Us",
+    process: isMalay ? "Proses Kami" : "Our Process",
+    careers: isMalay ? "Kerjaya" : "Careers",
+    services: isMalay ? "Perkhidmatan" : "Services",
+    resourcesLabel: isMalay ? "Sumber" : "Resources",
+    resources: isMalay ? "Sumber" : "Resources",
+    seoReport: isMalay ? "Laporan SEO Percuma" : "Free SEO Report",
+    aiAudit: isMalay ? "Audit Kendiri AI Percuma" : "Free AI Self Audit",
+    roiCalculator: isMalay ? "Kalkulator ROI Percuma" : "Free ROI Calculator",
+    legal: isMalay ? "Undang-undang" : "Legal",
+    privacy: isMalay ? "Dasar Privasi" : "Privacy Policy",
+    terms: isMalay ? "Syarat Perkhidmatan" : "Terms of Service",
+    disclaimer: isMalay ? "Penafian" : "Disclaimer",
+    cookies: isMalay ? "Dasar Kuki" : "Cookie Policy",
+    startProject: isMalay ? "Mulakan Projek" : "Start a Project",
+    allRights: isMalay ? "Hak cipta terpelihara." : "All rights reserved."
+};
 ---
 <footer>
     <div class="container">
         <div class="footer-top">
             <div style="max-width: 400px;">
-                <a href="/" class="logo" style="color: var(--white); margin-bottom: var(--space-md); display: inline-flex; align-items: center; gap: 10px;">
+                <a href={localizePath('/')} class="logo" style="color: var(--white); margin-bottom: var(--space-md); display: inline-flex; align-items: center; gap: 10px;">
                     <img src="/AS%20logos/logo-square-dark-initials-removebg-preview.png" alt="Autoflow Solutions Logo" style="height: 48px; width: auto;" />
                     Autoflow Solutions
                 </a>
                 <p class="text-body" style="color: var(--gray-light); font-weight: 500;">Simplify. Automate. Thrive.</p>
-                <p class="text-body" style="color: var(--gray-light); margin-top: 10px; font-size: 0.9rem;">Building leverage for professional services through applied automation.</p>
-                <a href="#" class="btn btn-neon" style="margin-top: var(--space-md);">Start a Project</a>
+                <p class="text-body" style="color: var(--gray-light); margin-top: 10px; font-size: 0.9rem;">
+                    {isMalay ? "Membina daya leveraj untuk perkhidmatan profesional melalui automasi gunaan." : "Building leverage for professional services through applied automation."}
+                </p>
+                <a href={localizePath('/services#request')} class="btn btn-neon" style="margin-top: var(--space-md);">{labels.startProject}</a>
             </div>
 
             <div class="footer-links">
                 <div class="footer-col">
-                    <span class="label-micro">Company</span>
-                    <a href="/about">About Us</a>
-                    <a href="/process">Our Process</a>
-                    <a href="/careers">Careers</a>
-                    <a href="/services">Services</a>
+                    <span class="label-micro">{labels.company}</span>
+                    <a href={localizePath('/about')}>{labels.about}</a>
+                    <a href={localizePath('/process')}>{labels.process}</a>
+                    <a href={localizePath('/careers')}>{labels.careers}</a>
+                    <a href={localizePath('/services')}>{labels.services}</a>
                 </div>
                 <div class="footer-col">
-                    <span class="label-micro">Resources</span>
-                    <a href="/resources">Resources</a>
-                    <a href="https://seo-audit.autoflow-solutions.com/" target="_blank" rel="noopener">Free SEO Report</a>
-                    <a href="https://ai-self-audit.autoflow-solutions.com/" target="_blank" rel="noopener">Free AI Self Audit</a>
-                    <a href="/tools/automation-roi-calculator">Free ROI Calculator</a>
+                    <span class="label-micro">{labels.resourcesLabel}</span>
+                    <a href={localizePath('/resources')}>{labels.resources}</a>
+                    <a href="https://seo-audit.autoflow-solutions.com/" target="_blank" rel="noopener">{labels.seoReport}</a>
+                    <a href="https://ai-self-audit.autoflow-solutions.com/" target="_blank" rel="noopener">{labels.aiAudit}</a>
+                    <a href={localizePath('/tools/automation-roi-calculator')}>{labels.roiCalculator}</a>
                 </div>
                 <div class="footer-col">
-                    <span class="label-micro">Legal</span>
-                    <a href="/privacy">Privacy Policy</a>
-                    <a href="/terms">Terms of Service</a>
-                    <a href="/disclaimer">Disclaimer</a>
-                    <a href="/cookies">Cookie Policy</a>
+                    <span class="label-micro">{labels.legal}</span>
+                    <a href={localizePath('/privacy')}>{labels.privacy}</a>
+                    <a href={localizePath('/terms')}>{labels.terms}</a>
+                    <a href={localizePath('/disclaimer')}>{labels.disclaimer}</a>
+                    <a href={localizePath('/cookies')}>{labels.cookies}</a>
                 </div>
             </div>
         </div>
         
         <div class="footer-bottom">
-            <span>© {new Date().getFullYear()} Autoflow Solutions. All rights reserved.</span>
+            <span>© {new Date().getFullYear()} Autoflow Solutions. {labels.allRights}</span>
             <span style="font-family: monospace; font-size: 0.75rem;">SYS_STATUS: OPTIMAL</span>
         </div>
     </div>

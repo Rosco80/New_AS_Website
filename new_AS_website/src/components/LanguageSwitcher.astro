@@ -1,0 +1,80 @@
+---
+const { currentPath } = Astro.props;
+
+// Determine if we are on a Malaysia-related page
+const isMalaysiaPage = currentPath.startsWith('/my') || currentPath.startsWith('/ms');
+
+// Helper to switch the prefix
+const togglePath = (toLang) => {
+    if (toLang === 'ms') {
+        return currentPath.replace(/^\/my/, '/ms');
+    }
+    return currentPath.replace(/^\/ms/, '/my');
+};
+
+const isMalay = currentPath.startsWith('/ms');
+---
+
+{isMalaysiaPage && (
+    <div class="lang-switcher">
+        <a 
+            href={isMalay ? togglePath('en') : '#'} 
+            class={`lang-link ${!isMalay ? 'active' : ''}`}
+        >
+            EN
+        </a>
+        <span class="separator">|</span>
+        <a 
+            href={!isMalay ? togglePath('ms') : '#'} 
+            class={`lang-link ${isMalay ? 'active' : ''}`}
+        >
+            MS
+        </a>
+    </div>
+)}
+
+<style>
+    .lang-switcher {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        padding: 4px 12px;
+        background: var(--white);
+        border: 1px solid var(--gray-light);
+        border-radius: 100px;
+        margin-left: 1rem;
+    }
+
+    .lang-link {
+        color: var(--gray-dark);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .lang-link:hover {
+        color: var(--black);
+    }
+
+    .lang-link.active {
+        color: var(--black);
+        pointer-events: none;
+    }
+
+    .separator {
+        color: var(--gray-light);
+        font-weight: 400;
+    }
+
+    /* Mobile adjustments inside the hamburger menu */
+    @media (max-width: 768px) {
+        .lang-switcher {
+            margin-left: 0;
+            margin-top: 1rem;
+            width: fit-content;
+        }
+    }
+</style>

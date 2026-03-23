@@ -4,65 +4,65 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const values = [
     {
         num: "01",
-        title: "Results > Hype",
-        body: "We don't ship \"AI experiments.\" We ship hardened production pipelines that produce measurable ROI for UK businesses from day one."
+        title: "Hasil > Publisiti",
+        body: "Kami tidak membina \"eksperimen AI.\" Kami membina saluran produksi yang kukuh dan memberikan ROI yang boleh diukur dari hari pertama."
     },
     {
         num: "02",
-        title: "Default to Open",
-        body: "No black boxes. We build systems you own and understand, ensuring your business stays agile and independent."
+        title: "Ketelusan secara Lalai",
+        body: "Tiada sistem tersembunyi. Kami membina sistem yang anda miliki dan fahami sepenuhnya, memastikan perniagaan anda kekal tangkas dan bebas."
     },
     {
         num: "03",
-        title: "Radical Empathy",
-        body: "We study your friction as if it were our own. We aren't just vendors; we're your outsourced automation department."
+        title: "Empati Radikal",
+        body: "Kami mengkaji kekangan anda seolah-olah ia milik kami sendiri. Kami bukan sekadar vendor; kami adalah jabatan automasi luaran anda."
     }
 ];
 
 const reviews = [
     {
-        client: "Matteo Rossi",
-        title: "Operations Manager, We Patrol",
-        location: "London, UK",
-        text: "AI handles our monthly roster in minutes instead of hours. Automatically catches conflicts and finds shift coverage. Reduced admin time by 70%"
-    },
-    {
-        client: "Adrianne Carter",
-        title: "CEO & Founder",
-        location: "England",
-        text: "AI generates weekly sales reports, financial summaries, and performance dashboards automatically. I've reclaimed 15+ hours monthly to focus on strategy and client relationships."
-    },
-    {
         client: "Firmin Rieu",
-        title: "Owner / Chef, Le Gourmandin",
+        title: "Pemilik / Chef, Le Gourmandin",
         location: "Malaysia",
-        text: "Since implementing Autoflow Solutions' AI Chatbot, we've seen a remarkable increase in customer satisfaction and a significant reduction in manual workload. As well as an increase in our online bookings"
+        text: "Sejak menggunakan Chatbot AI Autoflow Solutions, kami melihat peningkatan ketara dalam kepuasan pelanggan dan pengurangan beban kerja manual yang besar. Selain itu, tempahan dalam talian kami juga meningkat."
+    },
+    {
+        client: "Matteo Rossi",
+        title: "Pengurus Operasi, We Patrol",
+        location: "London, UK",
+        text: "AI mengendalikan jadual bulanan kami dalam beberapa minit berbanding berjam-jam. Ia mengesan percanggahan secara automatik dan mencari pengganti syif. Mengurangkan masa pentadbiran sebanyak 70%."
     },
     {
         client: "YT Yap",
-        title: "Owner, Yap Chan Kor",
+        title: "Pemilik, Yap Chan Kor",
         location: "Malaysia",
-        text: "Our AI assistant handles bookings, answers treatment questions, and sends reminders. Reduced no-shows by 40% and freed up front desk staff completely"
+        text: "Pembantu AI kami mengendalikan tempahan, menjawab soalan rawatan, dan menghantar peringatan. Mengurangkan ketidakhadiran sebanyak 40% dan membebaskan kakitangan kaunter hadapan sepenuhnya."
     },
     {
         client: "Giovanni Carnevale",
-        title: "Founder, Studio Giovanni Carnevale",
-        location: "Italy",
-        text: "AI now handles invoice processing, data entry, and compliance checks automatically. We've cut manual tasks by 60% and can focus on strategic advisory work."
+        title: "Pengasas, Studio Giovanni Carnevale",
+        location: "Itali",
+        text: "AI kini mengendalikan pemprosesan invois, kemasukan data, dan semakan pematuhan secara automatik. Kami telah mengurangkan tugasan manual sebanyak 60% dan boleh fokus pada kerja penasihat strategik."
     },
     {
         client: "Michael Boken",
-        title: "Founder",
+        title: "Pengasas",
         location: "Colombia",
-        text: "Automated reciprocator testing now analyzes vibration patterns and wear indicators in real-time. Detection accuracy improved 85%, saving weeks of manual inspection time."
+        text: "Ujian reciprocator automatik kini menganalisis corak getaran dan petunjuk haus dalam masa nyata. Ketepatan pengesanan meningkat 85%, menjimatkan masa pemeriksaan manual selama berminggu-minggu."
+    },
+    {
+        client: "Adrianne Carter",
+        title: "CEO & Pengasas",
+        location: "England",
+        text: "AI menjana laporan jualan mingguan, ringkasan kewangan, dan papan pemuka prestasi secara automatik. Saya telah menjimatkan 15+ jam setiap bulan untuk fokus pada strategi dan perhubungan pelanggan."
     }
 ];
 
 const reviewSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Autoflow Solutions UK",
-    "url": "https://autoflow-solutions.com/uk",
+    "name": "Autoflow Solutions Malaysia",
+    "url": "https://autoflow-solutions.com/ms",
     "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.9",
@@ -80,33 +80,33 @@ const reviewSchema = {
 ---
 
 <BaseLayout 
-    title="About Autoflow Solutions — AI Automation for UK Businesses"
-    description="We bring enterprise-grade automation to modern UK SMEs. Learn about our Human Leverage Philosophy and the team behind the four Engines."
+    title="Mengenai Autoflow Solutions — Agensi Automasi AI Ditubuhkan di Malaysia, 2021"
+    description="Ditubuhkan pada 2021 untuk membawa automasi gred korporat kepada PKS Malaysia. Ketahui tentang Falsafah Leveraj Manusia dan pasukan di sebalik empat Enjin utama."
     schemaData={reviewSchema}
 >
     <main>
         <section class="origin-hero">
             <div class="hero-content">
-                <span class="label-micro" style="margin-bottom: 1.5rem;">Our Origin Story</span>
-                <h1 class="text-display" style="margin-bottom: 2rem;">Born from<br>Friction.</h1>
+                <span class="label-micro" style="margin-bottom: 1.5rem;">Kisah Asal-Usul Kami</span>
+                <h1 class="text-display" style="margin-bottom: 2rem;">Lahir daripada<br>Kekangan.</h1>
                 <p class="text-body-lg" style="max-width: 650px; margin-bottom: 1rem;">
-                    In 2021, we watched brilliant business owners drowning in spreadsheets while the "AI Revolution" only served Silicon Valley giants.
+                    Pada tahun 2021, kami melihat pemilik PKS yang hebat tenggelam dalam hamparan kerja (spreadsheet) sementara \"Revolusi AI\" hanya berkhidmat untuk gergasi Silicon Valley.
                 </p>
                 <p class="text-body-lg" style="max-width: 650px;">
-                    Autoflow Solutions was founded to bridge that gap—turning elite automation into accessible infrastructure for the UK businesses that actually power the economy.
+                    Autoflow Solutions ditubuhkan untuk merapatkan jurang tersebut—menukar automasi elit menjadi infrastruktur yang boleh dicapai oleh perniagaan yang sebenarnya memacu ekonomi.
                 </p>
 
                 <div class="manifesto-card">
                     <div style="border-bottom: 2px solid var(--black); padding-bottom: 12px; margin-bottom: 16px; display: flex; justify-content: space-between;">
-                        <span class="label-micro">UK_DEPLOYMENT_MEMO.EXE</span>
+                        <span class="label-micro">MEMO_DALAMAN.EXE</span>
                         <div style="width: 10px; height: 10px; background: var(--black); border-radius: 50%;"></div>
                     </div>
-                    <h3 class="text-h3" style="margin-bottom: 1rem;">The Human Leverage Philosophy</h3>
+                    <h3 class="text-h3" style="margin-bottom: 1rem;">Falsafah Leveraj Manusia</h3>
                     <p class="text-body" style="color: var(--black);">
-                        We don't believe in replacing people. We believe in replacing <strong>repetitive motions</strong>. When you remove the robotic tasks from a human's day, you unlock the creative and strategic potential that actually grows a company.
+                        Kami tidak percaya pada menggantikan manusia. Kami percaya pada menggantikan <strong>pergerakan berulang</strong>. Apabila anda membuang tugasan robotik daripada hari seseorang manusia, anda membuka potensi kreatif dan strategik yang sebenarnya memajukan syarikat.
                     </p>
                     <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--gray-light);">
-                        <span class="label-micro">Status: UK Operations Active</span>
+                        <span class="label-micro">Status: Dipacu Misi</span>
                     </div>
                 </div>
             </div>
@@ -115,8 +115,8 @@ const reviewSchema = {
         <section class="values-section">
             <div class="container">
                 <div style="max-width: 600px;">
-                    <span class="label-micro" style="color: var(--neon);">The Syntax Code</span>
-                    <h2 class="text-h2" style="margin-top: 1rem;">Core Values.</h2>
+                    <span class="label-micro" style="color: var(--neon);">Kod Sintaks</span>
+                    <h2 class="text-h2" style="margin-top: 1rem;">Nilai Teras.</h2>
                 </div>
 
                 <div class="values-grid">
@@ -134,7 +134,7 @@ const reviewSchema = {
         <section class="reviews-section">
             <div class="container">
                 <div style="text-align: center; margin-bottom: var(--space-xl);">
-                    <h2 class="text-h2" style="font-size: 3rem; margin-bottom: 10px;">Trusted by UK SMEs</h2>
+                    <h2 class="text-h2" style="font-size: 3rem; margin-bottom: 10px;">Dipercayai oleh PKS di seluruh dunia</h2>
                     <div style="display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: 700; font-size: 1.25rem;">
                         4.9/5 
                         <span style="color: #FACC15; font-size: 1.5rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>

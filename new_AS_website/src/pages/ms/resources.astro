@@ -8,58 +8,58 @@ const sanityResources = await sanityClient.fetch(query).catch(() => []);
 
 const fallbackResources = [
     {
-        category: "Logistics",
-        type: "E-Book",
-        title: "The 2024 Guide to Automated Warehousing",
-        description: "Learn how to reduce manual data entry in freight forwarding by 85% using OCR and LLMs.",
-        meta: "12 Min Read",
-        linkText: "DOWNLOAD →",
-        visual: "SUPPLY CHAIN AI v1.0"
+        category: "Logistik",
+        type: "E-Buku",
+        title: "Panduan 2024 untuk Pergudangan Automatik",
+        description: "Ketahui cara mengurangkan kemasukan data manual dalam penghantaran fret sebanyak 85% menggunakan OCR dan LLM.",
+        meta: "Bacaan 12 Minit",
+        linkText: "MUAT TURUN →",
+        visual: "AI RANTAIAN BEKALAN v1.0"
     },
     {
-        category: "E-Commerce",
-        type: "Blueprint",
-        title: "Omni-channel Inventory Sync Framework",
-        description: "A technical blueprint for syncing Shopify, Amazon, and ERP systems in real-time.",
-        meta: "Technical",
-        linkText: "GET ACCESS →",
+        category: "E-Dagang",
+        type: "Rangka Tindakan",
+        title: "Kerangka Penyelarasan Inventori Omni-saluran",
+        description: "Rangka tindakan teknikal untuk menyelaraskan sistem Shopify, Amazon, dan ERP dalam masa nyata.",
+        meta: "Teknikal",
+        linkText: "DAPATKAN AKSES →",
         isSvg: true
     },
     {
-        category: "General",
-        type: "Calculator",
-        title: "Automation ROI Forecaster",
-        description: "Input your labor costs and manual hours to see exactly how much an AI pipeline saves you.",
-        meta: "Interactive",
-        linkText: "CALCULATE →",
+        category: "Umum",
+        type: "Kalkulator",
+        title: "Peramal ROI Automasi",
+        description: "Masukkan kos buruh dan jam manual anda untuk melihat jumlah penjimatan yang diberikan oleh rangkaian AI.",
+        meta: "Interaktif",
+        linkText: "KIRA SEKARANG →",
         isCalculator: true,
-        url: "/my/tools/automation-roi-calculator"
+        url: "/ms/tools/automation-roi-calculator"
     },
     {
-        category: "Healthcare",
+        category: "Penjagaan Kesihatan",
         type: "Webinar",
-        title: "HIPAA-Compliant AI Implementation",
-        description: "Watch our lead engineer discuss the security protocols for automating patient intake.",
-        meta: "45 Minutes",
-        linkText: "WATCH NOW →",
+        title: "Pelaksanaan AI yang Patuh HIPAA",
+        description: "Tonton ketua jurutera kami membincangkan protokol keselamatan untuk mengautomasikan pendaftaran pesakit.",
+        meta: "45 Minit",
+        linkText: "TONTON SEKARANG →",
         isWebinar: true
     },
     {
-        category: "Legal",
-        type: "E-Book",
-        title: "Automating Contract Review",
-        description: "How mid-sized law firms are using private LLMs to speed up discovery and review.",
-        meta: "8 Min Read",
-        linkText: "DOWNLOAD →",
+        category: "Undang-undang",
+        type: "E-Buku",
+        title: "Mengautomasikan Semakan Kontrak",
+        description: "Bagaimana firma guaman bersaiz sederhana menggunakan LLM peribadi untuk mempercepatkan proses penemuan dan semakan.",
+        meta: "Bacaan 8 Minit",
+        linkText: "MUAT TURUN →",
         isCode: true
     },
     {
         category: "SaaS",
-        type: "Case Study",
-        title: "Scale to $10M ARR with 5 Employees",
-        description: "The automation stack used by a leading FinTech to manage 50k users with a tiny team.",
-        meta: "New Release",
-        linkText: "READ STORY →",
+        type: "Kajian Kes",
+        title: "Skala ke ARR $10J dengan 5 Pekerja",
+        description: "Susunan automasi yang digunakan oleh syarikat FinTech terkemuka untuk mengurus 50 ribu pengguna dengan pasukan kecil.",
+        meta: "Keluaran Baharu",
+        linkText: "BACA KISAH →",
         isResults: true
     }
 ];
@@ -83,19 +83,19 @@ const resources = sanityResources.length > 0 ? sanityResources.map((res: any) =>
 ---
 
 <BaseLayout 
-    title="Free Automation Resources for Malaysian SMEs — Guides, Blueprints, Calculators"
-    description="Download free AI automation guides, vertical-specific blueprints, ROI calculators, and webinars built for Malaysian logistics, healthcare, e-commerce, legal, and professional service businesses."
+    title="Sumber Automasi Percuma untuk PKS Malaysia — Panduan, Rangka Tindakan, Kalkulator"
+    description="Muat turun panduan automasi AI percuma, rangka tindakan khusus industri, kalkulator ROI, dan webinar yang dibina untuk logistik, penjagaan kesihatan, e-dagang, undang-undang, dan perniagaan perkhidmatan profesional di Malaysia."
 >
     <header class="resource-hero">
         <div class="container">
-            <span class="label-micro" style="margin-bottom: 1rem;">The Knowledge Base</span>
-            <h1 class="text-display">Resource<br>Library.</h1>
+            <span class="label-micro" style="margin-bottom: 1rem;">Pangkalan Pengetahuan</span>
+            <h1 class="text-display">Perpustakaan<br>Sumber.</h1>
             <p style="font-size: 1.25rem; font-weight: 500; max-width: 500px; margin-top: 1.5rem;">
-                Free automation frameworks, AI implementation guides, and ROI calculators for Malaysian SME operators across Logistics, Healthcare, E-Commerce, Professional Services, and Legal.
+                Kerangka automasi percuma, panduan pelaksanaan AI, dan kalkulator ROI untuk pengusaha PKS Malaysia dalam bidang Logistik, Penjagaan Kesihatan, E-Dagang, Perkhidmatan Profesional, dan Undang-undang.
             </p>
             <div class="search-bar">
-                <input type="text" id="resource-search" placeholder="Search by topic (e.g. CRM Sync, Invoicing)...">
-                <button>SEARCH</button>
+                <input type="text" id="resource-search" placeholder="Cari mengikut topik (cth: Penyelarasan CRM, Penginvoisan)...">
+                <button>CARI</button>
             </div>
         </div>
     </header>
@@ -103,21 +103,21 @@ const resources = sanityResources.length > 0 ? sanityResources.map((res: any) =>
     <section class="filter-section">
         <div class="container" style="display: flex; gap: 2rem; align-items: center; overflow-x: auto; padding-bottom: 1rem;">
             <div class="filter-group">
-                <span class="label-micro" style="border:none; padding:0">Verticals:</span>
-                <div class="filter-tag active" data-filter="all">All</div>
-                <div class="filter-tag" data-filter="logistics">Logistics</div>
-                <div class="filter-tag" data-filter="healthcare">Healthcare</div>
-                <div class="filter-tag" data-filter="e-commerce">E-Commerce</div>
-                <div class="filter-tag" data-filter="professional services">Professional Services</div>
+                <span class="label-micro" style="border:none; padding:0">Industri:</span>
+                <div class="filter-tag active" data-filter="all">Semua</div>
+                <div class="filter-tag" data-filter="logistik">Logistik</div>
+                <div class="filter-tag" data-filter="penjagaan kesihatan">Penjagaan Kesihatan</div>
+                <div class="filter-tag" data-filter="e-dagang">E-Dagang</div>
+                <div class="filter-tag" data-filter="perkhidmatan profesional">Perkhidmatan Profesional</div>
             </div>
             <div style="width: 1px; height: 24px; background: var(--gray-light); flex-shrink: 0;"></div>
             <div class="filter-group">
-                <span class="label-micro" style="border:none; padding:0">Type:</span>
-                <div class="filter-tag active" data-filter="all">All</div>
-                <div class="filter-tag" data-filter="e-book">E-Books</div>
-                <div class="filter-tag" data-filter="blueprint">Blueprints</div>
-                <div class="filter-tag" data-filter="webinar">Webinars</div>
-                <div class="filter-tag" data-filter="calculator">ROI Calculators</div>
+                <span class="label-micro" style="border:none; padding:0">Jenis:</span>
+                <div class="filter-tag active" data-filter="all">Semua</div>
+                <div class="filter-tag" data-filter="e-buku">E-Buku</div>
+                <div class="filter-tag" data-filter="rangka tindakan">Rangka Tindakan</div>
+                <div class="filter-tag" data-filter="webinar">Webinar</div>
+                <div class="filter-tag" data-filter="kalkulator">Kalkulator ROI</div>
             </div>
         </div>
     </section>
@@ -152,13 +152,13 @@ const resources = sanityResources.length > 0 ? sanityResources.map((res: any) =>
                     )}
                     {res.isCode && (
                         <div style="padding: 20px; border: 2px dashed var(--black); font-family: monospace; font-size: 0.7rem;">
-                            [DOCUMENT_ANALYSIS]<br>
-                            SCANNING...<br>
-                            MATCH_FOUND: 98%
+                            [ANALISIS_DOKUMEN]<br>
+                            MENGIMBAS...<br>
+                            PADANAN_DITEMUI: 98%
                         </div>
                     )}
                     {res.isResults && (
-                        <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 6rem; opacity: 0.1; letter-spacing: -0.1em;">RESULTS</div>
+                        <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 6rem; opacity: 0.1; letter-spacing: -0.1em;">HASIL</div>
                     )}
                 </div>
 
@@ -175,7 +175,7 @@ const resources = sanityResources.length > 0 ? sanityResources.map((res: any) =>
         ))}
     </main>
 
-    <div class="vertical-label">SYNTAX_RESOURCES_V4.02</div>
+    <div class="vertical-label">SUMBER_SINTAKS_V4.02</div>
 
     <style>
         .resource-hero {
