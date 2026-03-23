@@ -421,10 +421,12 @@ footer {
 @media (max-width: 1024px) {
     .hero { grid-template-columns: 1fr; }
     .hero-left { border-right: none; border-bottom: 2px solid var(--black); padding: var(--space-xl) var(--space-md); }
+    .hero-right { min-height: 400px; }
     .blueprint-grid { grid-template-columns: repeat(2, 1fr); }
     .blueprint-cell { border-bottom: 1px solid var(--gray-light); }
     .blueprint-cell:nth-child(even) { border-right: none; }
     .footer-top { flex-direction: column; align-items: flex-start; gap: var(--space-lg); }
+    .footer-links { flex-wrap: wrap; gap: var(--space-md); }
 }
 
 @media (max-width: 600px) {
@@ -436,7 +438,11 @@ footer {
     .btn { padding: 0.8rem 1.5rem; font-size: 0.9rem; }
     .blueprint-grid { grid-template-columns: 1fr; }
     .blueprint-cell { border-right: none; padding: var(--space-md); }
-    .cluster-wrapper { transform: scale(0.6); transform-origin: top left; }
+    /* Fix: center cards on mobile instead of anchoring to top-left */
+    .hero-right { padding: var(--space-lg) var(--space-md); justify-content: center; overflow: visible; }
+    .cluster-wrapper { transform: scale(0.65); transform-origin: center center; width: 420px; height: 420px; }
     .footer-huge-text { font-size: clamp(3rem, 15vw, 5rem); }
     .footer-bottom { flex-direction: column; align-items: flex-start; gap: var(--space-sm); }
+    /* Fix: prevent resources page right overflow */
+    .resources-grid, .filter-bar { max-width: 100%; overflow-x: hidden; }
 }

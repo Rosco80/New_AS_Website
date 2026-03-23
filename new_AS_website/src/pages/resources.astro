@@ -361,6 +361,30 @@ const resources = sanityResources.length > 0 ? sanityResources.map((res: any) =>
         @media (max-width: 1024px) {
             .vertical-label { display: none; }
         }
+
+        @media (max-width: 600px) {
+            .filter-section .container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                overflow-x: hidden;
+                padding-bottom: 0.5rem;
+            }
+            .filter-group {
+                flex-wrap: wrap;
+                max-width: 100%;
+            }
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+            .search-bar {
+                flex-direction: column;
+            }
+            .search-bar input, .search-bar button {
+                width: 100%;
+                padding: 1rem;
+            }
+        }
     </style>
 
     <script>
