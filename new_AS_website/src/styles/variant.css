@@ -65,6 +65,11 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
 body {
     font-family: var(--font-sans);
     background-color: var(--white);
@@ -439,8 +444,8 @@ footer {
     .blueprint-grid { grid-template-columns: 1fr; }
     .blueprint-cell { border-right: none; padding: var(--space-md); }
     /* Fix: center cards on mobile instead of anchoring to top-left */
-    .hero-right { padding: var(--space-lg) var(--space-md); justify-content: center; overflow: visible; }
-    .cluster-wrapper { transform: scale(0.65); transform-origin: center center; width: 420px; height: 420px; }
+    .hero-right { padding: var(--space-lg) var(--space-md); justify-content: center; overflow: hidden; }
+    .cluster-wrapper { transform: scale(0.65); transform-origin: center center; width: min(420px, 100%); height: min(420px, 100%); }
     .footer-huge-text { font-size: clamp(3rem, 15vw, 5rem); }
     .footer-bottom { flex-direction: column; align-items: flex-start; gap: var(--space-sm); }
     /* Fix: prevent resources page right overflow */
