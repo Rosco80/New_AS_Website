@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Legal Automation for Malaysian Law Firms — Conveyancing & Documentation";
+const description = "Automate conveyancing admin, legal document drafting and PDPA compliance for Malaysian firms. Legal Profession Act conscious. Free audit.";
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Malaysia Legal & Law Firm Automation",
+  "description": "PDPA-compliant automation for Malaysian law firms. Conveyancing workflows, automated drafting, and client onboarding.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Autoflow Solutions"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "MY"
+  },
+  "serviceType": "Legal Workflow Automation"
+};
+---
+
+<BaseLayout title={title} description={description} schemaData={schemaData}>
+    <header class="hero" style="min-height: 80vh;">
+        <div class="hero-left">
+            <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Vertical Focus: Legal</span>
+            <h1 class="text-display">MALAYSIA LEGAL<br>AUTOMATION.</h1>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Conveyancing & Document Workflow Specialists</h2>
+            <p class="text-body-lg" style="margin-bottom: 2.5rem;">We help Malaysian solicitors and law firms automate the repetitive admin of conveyancing, corporate drafting, and PDPA compliance.</p>
+            <div class="hero-btns" style="display: flex; gap: 1rem;">
+                <a href="/my/services#request" class="btn btn-solid">Request a Firm Audit (RM)</a>
+                <a href="/tools/ai-self-audit" class="btn btn-neon">Free AI Self Audit</a>
+            </div>
+        </div>
+        <div class="hero-right" style="background-color: #f8f8f8;">
+            <div style="padding: 3rem; width: 100%;">
+                <div class="ui-card" style="position: relative; width: 100%; transform: none; box-shadow: 20px 20px 0 var(--black); background: #fff;">
+                    <div class="card-header">
+                        <span class="label-micro">SPA_AUTO_PACK_MY</span>
+                        <div style="display: flex; gap: 4px;">
+                            <span class="status" style="width: 8px; height: 8px; background: #888; border-radius: 50%;"></span>
+                            <span class="status" style="width: 8px; height: 8px; background: #888; border-radius: 50%;"></span>
+                            <span class="status" style="width: 8px; height: 8px; background: var(--neon); border-radius: 50%;"></span>
+                        </div>
+                    </div>
+                    <div style="margin: 1.5rem 0;">
+                        <p class="label-micro">In Progress: Condo Purchase Trans #KL-882</p>
+                        <div style="margin-top: 1rem;">
+                            <div style="font-size: 0.85rem; padding: 4px 0; display: flex; justify-content: space-between; border-bottom: 1px solid #eee;">
+                                <span>Buyer ID Verification</span>
+                                <span style="color: green;">✓ Done</span>
+                            </div>
+                            <div style="font-size: 0.85rem; padding: 4px 0; display: flex; justify-content: space-between; border-bottom: 1px solid #eee;">
+                                <span>Land Office Search</span>
+                                <span style="color: green;">✓ Result Recieved</span>
+                            </div>
+                            <div style="font-size: 0.85rem; padding: 4px 0; display: flex; justify-content: space-between;">
+                                <span>Drafting SPA Pack</span>
+                                <span style="color: blue;">⚡ AI Generating...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="density-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="label-micro">Regulatory Context</span>
+                <h2 class="text-display" style="margin-top: 1rem;">COMPLIANT<br>EFFICIENCY.</h2>
+                <p class="text-body-lg" style="margin-top: 1.5rem;">Malaysian firms operate under the Legal Profession Act and Bar Council rules. Our automation is built to enhance the accuracy of your expert staff, not replace their oversight.</p>
+            </div>
+            
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <span class="cell-id">01</span>
+                    <h3 class="text-h3">Conveyancing Admin</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Automated SPA pack assembly, land office search tracking, and automated client status updates via WhatsApp.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">02</span>
+                    <h3 class="text-h3">PDPA Compliance</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Automating the identification and extraction of data for record-keeping and audit trails required under Malaysian data law.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">03</span>
+                    <h3 class="text-h3">Corporate Drafting</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Using our Execution Engine to draft standard NDAs, director resolutions, and standard tenancy agreements for final review.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">04</span>
+                    <h3 class="text-h3">Intake & CRM</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Syncing lead intake from your website or social media ads directly into your firm's case management software or database.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

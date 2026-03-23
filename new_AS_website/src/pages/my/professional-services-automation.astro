@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Professional Services Automation Malaysia — SMEs, Agencies & Consulting";
+const description = "Automate your Malaysian accountancy, consulting or agency business. Client onboarding, multi-lingual reporting, and back-office sync. Free audit.";
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Malaysia Professional Services Automation",
+  "description": "Localized automation for Malaysian consulting firms, agencies, and SMEs. Automated onboarding and RM invoicing.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Autoflow Solutions"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "MY"
+  },
+  "serviceType": "Professional Services Automation"
+};
+---
+
+<BaseLayout title={title} description={description} schemaData={schemaData}>
+    <header class="hero" style="min-height: 80vh;">
+        <div class="hero-left">
+            <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Vertical Focus: Prof Services</span>
+            <h1 class="text-display">MALAYSIA BUSINESS<br>AUTOMATION.</h1>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Scaling Professional Workflows in SEA</h2>
+            <p class="text-body-lg" style="margin-bottom: 2.5rem;">We help Malaysian consultants, agencies, and SMEs automate their client onboarding and daily operational workflows.</p>
+            <div class="hero-btns" style="display: flex; gap: 1rem;">
+                <a href="/my/services#request" class="btn btn-solid">Get an Estimate (RM)</a>
+                <a href="/tools/ai-self-audit" class="btn btn-neon">Free AI Self Audit</a>
+            </div>
+        </div>
+        <div class="hero-right" style="background-color: #f5f5f5;">
+            <div style="padding: 3rem; width: 100%;">
+                <div class="ui-card" style="position: relative; width: 100%; transform: none; box-shadow: 20px 20px 0 var(--black); background: #fff;">
+                    <div class="card-header">
+                        <span class="label-micro">MY_FINANCE_SYNC</span>
+                        <span class="status" style="display: inline-block; width: 8px; height: 8px; background: #33b5e5; border-radius: 50%;"></span>
+                    </div>
+                    <div style="margin: 1.5rem 0; font-family: monospace; font-size: 0.8rem;">
+                        <p style="color: green;">> [SYSTEM] Initiating Monthly Review...</p>
+                        <p style="color: #666;">> Syncing Xero / QuickBooks entries: OK</p>
+                        <p style="color: #666;">> Pulling Sales Data from 3 Channels...</p>
+                        <div style="margin: 0.5rem 0; padding: 0.5rem; background: #eee;">
+                            Total: RM 88,421.00 | Variance: 0.00
+                        </div>
+                        <p style="color: green;">> Performance Report Generated & Emailed.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="density-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="label-micro">The Market Pace</span>
+                <h2 class="text-display" style="margin-top: 1rem;">SCALING YOUR<br>PROFESSIONAL EDGE.</h2>
+                <p class="text-body-lg" style="margin-top: 1.5rem;">Malaysia's professional service sector is high-speed. We build the bridges between your client management and your delivery team to keep you ahead.</p>
+            </div>
+            
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <span class="cell-id">01</span>
+                    <h3 class="text-h3">Onboarding</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Automated client onboarding sequences — from initial WhatsApp inquiry to signed proposal and invoice generation.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">02</span>
+                    <h3 class="text-h3">Unified Reporting</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Automatically pulling data from multiple sources (Social, Ad Spend, Sales) into one clean RM-denominated dashboard.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">03</span>
+                    <h3 class="text-h3">Debt Management</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Automated multi-channel invoice chasers (Email/WhatsApp) that stop only when financial software marks the entry as 'Paid'.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">04</span>
+                    <h3 class="text-h3">Task Allocation</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Syncing intake data directly into your project management tool (Asana, ClickUp, Notion) with pre-filled templates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

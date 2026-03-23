@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const title = "Voiceflow Development Agency UK — Custom AI Agent Experts";
+const description = "Professional Voiceflow development for UK SMEs. Custom AI voice agents, context-aware chatbots, and deep platform integrations. Book a free audit.";
+
+const schemaData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Voiceflow AI Agent Development UK",
+    "description": "Custom AI chatbots and voice agents built with Voiceflow for UK customer service teams.",
+    "provider": { "@type": "Organization", "name": "Autoflow Solutions" },
+    "areaServed": { "@type": "Country", "name": "GB" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can Voiceflow agents handle British English nuances?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. We tune our AI agents to understand UK linguistic nuances, local business hours, and British consumer expectations."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Voiceflow",
+    "operatingSystem": "All",
+    "applicationCategory": "BusinessApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "GBP"
+    }
+  }
+];
+---
+
+<BaseLayout title={title} description={description} schemaData={schemaData}>
+    <header class="hero" style="min-height: 80vh;">
+        <div class="hero-left">
+            <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Tool Focus: Voiceflow</span>
+            <h1 class="text-display">VOICEFLOW AGENCY<br>UNITED KINGDOM.</h1>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Advanced AI Agents for British Businesses</h2>
+            <p class="text-body-lg" style="margin-bottom: 2.5rem;">We build the UK's most sophisticated AI agents using Voiceflow. Context-aware, guardrailed, and integrated into your core business stack.</p>
+            <div class="hero-btns" style="display: flex; gap: 1rem;">
+                <a href="/uk/services#request" class="btn btn-solid">Discuss Your AI Agent (£)</a>
+                <a href="/tools/ai-self-audit" class="btn btn-neon">Free AI Self Audit</a>
+            </div>
+        </div>
+        <div class="hero-right" style="background-color: #f0fff4;">
+             <div style="padding: 3rem; width: 100%;">
+                <div class="ui-card" style="position: relative; width: 100%; transform: none; box-shadow: 20px 20px 0 var(--black); background: #fff;">
+                    <div class="card-header">
+                        <span class="label-micro">VOICEFLOW_AGENT_v4_UK</span>
+                        <div class="status" style="width: 8px; height: 8px; background: #6aff8d; border-radius: 50%;"></div>
+                    </div>
+                    <div style="margin: 1.5rem 0;">
+                        <p class="label-micro" style="color: var(--gray-dark);">Prompt: "Act as a UK Medical Receptionist..."</p>
+                        <div style="padding: 1rem; background: #f9f9f9; border-radius: 4px; margin-top: 10px;">
+                            <p style="font-size: 0.85rem; color: #444;">"Yes, we can handle that under Bupa coverage. Would you like me to check the clinician's availability?"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="density-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="label-micro">The Conversational Edge</span>
+                <h2 class="text-display" style="margin-top: 1rem;">AI THAT SOUNDS<br>BRITISH.</h2>
+                <p class="text-body-lg" style="margin-top: 1.5rem;">Context is everything. We build AI agents that understand UK-specific questions — from VAT rates and NHS local info to British spelling and colloquialisms.</p>
+            </div>
+            
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <span class="cell-id">01</span>
+                    <h3 class="text-h3">Context-Aware</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Agents trained on your specific UK business documents to provide accurate, brand-safe answers every time.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">02</span>
+                    <h3 class="text-h3">Multi-Channel</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Deploy the same intelligence across your UK website, WhatsApp Business, and LinkedIn messaging.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">03</span>
+                    <h3 class="text-h3">Seamless Handover</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Agents that know when to pass the conversation to a human teammate on your UK customer service team.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">04</span>
+                    <h3 class="text-h3">API Deep Sync</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Your AI agents won't just talk — they'll act. From checking UK inventory in Shopify to updating your UK CRM live.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

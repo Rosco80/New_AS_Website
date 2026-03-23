@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Logistics Automation for Malaysian Freight & 3PL Companies";
+const description = "Automate customs documentation, freight forwarding workflows and warehouse operations for Malaysian logistics SMEs. Royal Malaysian Customs (RMCD) ready. Book a free audit.";
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Malaysia Logistics & Freight Automation",
+  "description": "RMCD customs automation, DagangNet integrations, and manifest automation for Malaysian freight forwarders and 3PLs.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Autoflow Solutions"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "MY"
+  },
+  "serviceType": "AI & Workflow Automation"
+};
+---
+
+<BaseLayout title={title} description={description} schemaData={schemaData}>
+    <header class="hero" style="min-height: 80vh;">
+        <div class="hero-left">
+            <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Vertical Focus: Logistics</span>
+            <h1 class="text-display">MALAYSIA LOGISTICS<br>AUTOMATION.</h1>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Customs & K1/K2 Workflow Experts</h2>
+            <p class="text-body-lg" style="margin-bottom: 2.5rem;">We help Malaysian freight forwarders, 3PLs, and warehouse operators eliminate manual data entry in customs declarations and transport management.</p>
+            <div class="hero-btns" style="display: flex; gap: 1rem;">
+                <a href="/my/services#request" class="btn btn-solid">Calculate Your ROI (RM)</a>
+                <a href="/tools/ai-self-audit" class="btn btn-neon">Logistics AI Audit</a>
+            </div>
+        </div>
+        <div class="hero-right" style="background-color: #f8f8f8;">
+            <div style="padding: 3rem; width: 100%;">
+                <div class="ui-card" style="position: relative; width: 100%; transform: none; box-shadow: 20px 20px 0 var(--black);">
+                    <div class="card-header">
+                        <span class="label-micro">RMCD_SYNC_MODULE</span>
+                        <span class="status" style="display: inline-block; width: 8px; height: 8px; background: var(--neon); border-radius: 50%;"></span>
+                    </div>
+                    <div style="margin: 1.5rem 0;">
+                        <div style="margin-bottom: 1rem; padding: 1rem; background: #f0f0f0; border-radius: 4px;">
+                            <p class="label-micro">Incoming Manifest</p>
+                            <p style="font-size: 0.9rem; font-weight: 700;">Port_Klang_Inbound_8842.pdf</p>
+                        </div>
+                        <div style="text-align: center; margin: 1rem 0;">⬇️</div>
+                        <div style="padding: 1rem; background: var(--neon); border-radius: 4px; border: 1px solid var(--black);">
+                            <p class="label-micro">Automated Customs Entry</p>
+                            <p style="font-size: 0.9rem; font-weight: 700;">Entry Created: K1 Declaration</p>
+                        </div>
+                    </div>
+                    <p class="text-body" style="font-size: 0.85rem; color: var(--gray-dark);">18 items extracted. 0 manual edits required. DagangNet Submission Pending.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="density-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="label-micro">The Opportunity</span>
+                <h2 class="text-display" style="margin-top: 1rem;">WHY AUTOMATE<br>FREIGHT?</h2>
+                <p class="text-body-lg" style="margin-top: 1.5rem;">As Malaysia's logistics hub grows, the administrative burden of K1/K2 forms and Port Klang/PTP documentation has increased. We automate it away.</p>
+            </div>
+            
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <span class="cell-id">01</span>
+                    <h3 class="text-h3">Customs Data Entry</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Automated extraction of data from commercial invoices and packing lists directly into customs software (DagangNet).</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">02</span>
+                    <h3 class="text-h3">Carrier Bookings</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Syncing order data across multiple shipping portals, NinjaVan, Grab, and Lalamove APIs.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">03</span>
+                    <h3 class="text-h3">Status Updates</h3>
+                    <p class="text-body" style="margin-top: 1rem;">24/7 AI-driven tracking updates sent to clients via WhatsApp (most popular in MY) without human intervention.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">04</span>
+                    <h3 class="text-h3">Invoicing & Recon</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Automatic reconciliation of carrier invoices against your internal manifest to spot overcharges in RM.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: var(--space-xl) 0; background: var(--white);">
+        <div class="container">
+            <div style="max-width: 800px;">
+                <h2 class="text-h2" style="margin-bottom: 2rem;">Complex documentation is a bottleneck. We are the filter.</h2>
+                <p class="text-body-lg">For Malaysian 3PLs and freight forwarders, efficiency is the key to profit in a competitive regional market. Our <b>Execution Engine</b> handles the heavy lifting of K1, K2, and DagangNet submissions, allowing your team to focus on moving cargo, not paper.</p>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

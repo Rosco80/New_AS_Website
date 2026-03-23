@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const title = "Make.com Automation Agency Malaysia — Expert Integration";
+const description = "Professional Make.com (formerly Integromat) agency for Malaysian small businesses. Complex workflow design, API integrations, and ongoing optimization. Book a free audit.";
+
+const schemaData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Make.com Automation Agency Malaysia",
+    "description": "Visual workflow automation and API integrations using Make.com for Malaysian businesses.",
+    "provider": { "@type": "Organization", "name": "Autoflow Solutions" },
+    "areaServed": { "@type": "Country", "name": "MY" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does Make.com support Malaysian SST calculations?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. We build custom logic within Make scenarios to handle SST calculations and sync tax-ready data to your local accounting software."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Make.com",
+    "operatingSystem": "All",
+    "applicationCategory": "BusinessApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "MYR"
+    }
+  }
+];
+---
+
+<BaseLayout title={title} description={description} schemaData={schemaData}>
+    <header class="hero" style="min-height: 80vh;">
+        <div class="hero-left">
+            <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Tool Focus: Make.com</span>
+            <h1 class="text-display">MAKE AGENCY<br>MALAYSIA.</h1>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Visual Workflow Automation for Modern MY SMEs</h2>
+            <p class="text-body-lg" style="margin-bottom: 2.5rem;">We turn fragmented apps into a single, automated ecosystem using Make.com. The standard for visual automation in the Malaysian market.</p>
+            <div class="hero-btns" style="display: flex; gap: 1rem;">
+                <a href="/my/services#request" class="btn btn-solid">Request a Make.com Audit (RM)</a>
+                <a href="/tools/ai-self-audit" class="btn btn-neon">Free AI Self Audit</a>
+            </div>
+        </div>
+        <div class="hero-right" style="background-color: #f0f4ff;">
+            <div style="padding: 3rem; width: 100%;">
+                <div class="ui-card" style="position: relative; width: 100%; transform: none; box-shadow: 20px 20px 0 var(--black); background: #fff;">
+                    <div class="card-header">
+                        <span class="label-micro">MAKE_SCENARIO_MY_01</span>
+                        <div class="status" style="width: 8px; height: 8px; background: #6aabff; border-radius: 50%;"></div>
+                    </div>
+                    <div style="margin: 1.5rem 0; display: flex; align-items: center; justify-content: center; position: relative; height: 100px;">
+                        <div style="width: 40px; height: 40px; background: #eee; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">🛒</div>
+                        <div style="flex: 1; height: 2px; background: #ccc; margin: 0 10px; z-index: 1;"></div>
+                        <div style="width: 40px; height: 40px; background: #eee; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">🏗️</div>
+                        <div style="flex: 1; height: 2px; background: #ccc; margin: 0 10px; z-index: 1;"></div>
+                        <div style="width: 40px; height: 40px; background: var(--neon); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; border: 1px solid #000;">💸</div>
+                    </div>
+                    <p class="label-micro" style="text-align: center; color: var(--gray-dark);">Shopee Order -> Warehouse Sync -> Payroll (EPF/SOCSO)</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="density-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="label-micro">The Visual Advantage</span>
+                <h2 class="text-display" style="margin-top: 1rem;">SCALING YOUR<br>MY ECOSYSTEM.</h2>
+                <p class="text-body-lg" style="margin-top: 1.5rem;">Make.com provides the world's most intuitive visual builder for business processes. We provide the expertise to ensure your Malaysian operations utilize its full power.</p>
+            </div>
+            
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <span class="cell-id">01</span>
+                    <h3 class="text-h3">6,000+ Integrations</h3>
+                    <p class="text-body" style="margin-top: 1rem;">From Xero and SQL Account to Slack and Google Workspace — connect all your Malaysian business apps seamlessly.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">02</span>
+                    <h3 class="text-h3">Complex Logic</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Handling conditional branching, error handling, and data mapping for sophisticated Malaysian-specific business rules.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">03</span>
+                    <h3 class="text-h3">Real-time Sync</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Eliminate lag in your MY operations. From stock updates to client notifications via WhatsApp, everything moves at the speed of your business.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">04</span>
+                    <h3 class="text-h3">Transparent ROI</h3>
+                    <p class="text-body" style="margin-top: 1rem;">We build scenarios that pay for themselves within 90 days, focusing on the workflows with the highest manual labor cost in RM.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

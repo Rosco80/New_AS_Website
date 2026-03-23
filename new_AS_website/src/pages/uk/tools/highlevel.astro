@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const title = "HighLevel Automation Agency UK — Lead Capture & CRM Experts";
+const description = "Specialist HighLevel (GHL) automation for UK agencies and SMEs. CRM setup, lead capture pipelines, and automated customer follow-ups. Free audit.";
+
+const schemaData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "HighLevel (GHL) Agency UK",
+    "description": "CRM setup and sales pipeline automation for UK agencies and professional services using HighLevel.",
+    "provider": { "@type": "Organization", "name": "Autoflow Solutions" },
+    "areaServed": { "@type": "Country", "name": "GB" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can I use UK WhatsApp numbers with HighLevel?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we configure HighLevel to integrate with UK-based WhatsApp Business APIs for automated local customer communication."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "HighLevel",
+    "operatingSystem": "All",
+    "applicationCategory": "BusinessApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "GBP"
+    }
+  }
+];
+---
+
+<BaseLayout title={title} description={description} schemaData={schemaData}>
+    <header class="hero" style="min-height: 80vh;">
+        <div class="hero-left">
+            <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Tool Focus: HighLevel</span>
+            <h1 class="text-display">HIGHLEVEL AGENCY<br>UNITED KINGDOM.</h1>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Automated Sales & CRM for UK SMEs</h2>
+            <p class="text-body-lg" style="margin-bottom: 2.5rem;">We turn HighLevel (GHL) into a lead-generating machine for your UK business. Professional setup, custom snapshots, and deep UK-focused automation.</p>
+            <div class="hero-btns" style="display: flex; gap: 1rem;">
+                <a href="/uk/services#request" class="btn btn-solid">Optimize Your GHL (£)</a>
+                <a href="/tools/ai-self-audit" class="btn btn-neon">Free AI Self Audit</a>
+            </div>
+        </div>
+        <div class="hero-right" style="background-color: #f7f0ff;">
+             <div style="padding: 3rem; width: 100%;">
+                <div class="ui-card" style="position: relative; width: 100%; transform: none; box-shadow: 20px 20px 0 var(--black); background: #fff;">
+                    <div class="card-header">
+                        <span class="label-micro">GHL_LEAD_PIPELINE_UK</span>
+                        <div class="status" style="width: 8px; height: 8px; background: #ab6aff; border-radius: 50%;"></div>
+                    </div>
+                    <div style="margin: 1.5rem 0;">
+                        <div style="padding: 0.5rem; background: #f9f9f9; border-left: 2px solid var(--neon); margin-bottom: 0.5rem;">
+                            <p style="font-size: 0.8rem; font-weight: 700;">Stage: Appraisal Booked</p>
+                            <p class="label-micro">Client: Brighton Real Estate</p>
+                        </div>
+                        <p style="font-size: 0.85rem; font-weight: 700; color: green;">⚡ AI Follow-up: SMS Sent (UK Number)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="density-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="label-micro">The Sales Engine</span>
+                <h2 class="text-display" style="margin-top: 1rem;">UNIFYING YOUR<br>UK LEADS.</h2>
+                <p class="text-body-lg" style="margin-top: 1.5rem;">HighLevel is the world's leading all-in-one sales platform. We ensure it's configured for the UK market — from GDPR-compliant forms to UK-based SMS numbers.</p>
+            </div>
+            
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <span class="cell-id">01</span>
+                    <h3 class="text-h3">Pipeline Setup</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Custom-built sales pipelines that mirror your UK business process, from "First Touch" to "Deposit Paid."</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">02</span>
+                    <h3 class="text-h3">AI Booking Bot</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Deploying AI agents inside GHL that handle UK lead inquiries and book appointments directly into your calendar.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">03</span>
+                    <h3 class="text-h3">GDPR Compliance</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Ensuring all contact collection forms and automated campaigns are fully compliant with UK data laws.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">04</span>
+                    <h3 class="text-h3">Reputation Auto</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Automated Google Business Profile review requests to build your UK local SEO authority without manual effort.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

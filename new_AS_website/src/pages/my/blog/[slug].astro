@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { sanityClient } from "sanity:client";
+import { PortableText } from "@portabletext/react";
+
+export const prerender = false;
+
+const { slug } = Astro.params;
+
+const query = `*[_type == "post" && slug.current == $slug][0]`;
+const post = await sanityClient.fetch(query, { slug }).catch(() => null);
+
+if (!post && slug !== 'building-resilient-data-ingestion-pipelines') {
+    return Astro.redirect('/my/blog');
+}
+
+// Fallback content for the demo post if Sanity is not connected
+const fallbackPost = {
+    title: "Building Resilient Data Ingestion Pipelines.",
+    publishedAt: "2024-03-14",
+    excerpt: "A technical deep dive into handling messy PDF data with high accuracy rates.",
+    body: [
+        {
+            _type: 'block',
+            children: [{ _type: 'span', text: "Data ingestion is the silent killer of automation ROI. When you're dealing with millions of legacy PDFs, even a 1% error rate creates a manual bottleneck that negates the speed of AI. In this post, we explore how we built a self-healing pipeline for a Malaysian logistics provider using n8n and custom Python middleware." }]
+        }
+    ]
+};
+
+const currentPost = post || fallbackPost;
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": currentPost.title,
+  "description": currentPost.excerpt || currentPost.title,
+  "datePublished": currentPost.publishedAt || new Date().toISOString(),
+  "author": {
+    "@type": "Organization",
+    "name": "Autoflow Solutions"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Autoflow Solutions",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://autoflow-solutions.com/logo.png"
+    }
+  },
+  "areaServed": "MY"
+};
+---
+
+<BaseLayout 
+    title={`${currentPost.title} — Autoflow Blog (Malaysia)`}
+    description={currentPost.excerpt || currentPost.title}
+    schemaData={blogSchema}
+>
+    <article class="post-container">
+        <header class="post-header">
+            <div class="container">
+                <a href="/my/blog" class="back-link">← Back to Insights</a>
+                <h1 class="text-display" style="font-size: 4rem; margin-top: 2rem;">{currentPost.title}</h1>
+                <div class="post-meta">
+                    <span>{new Date(currentPost.publishedAt || '').toLocaleDateString('en-MY', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                    <span class="dot"></span>
+                    <span>12 min read</span>
+                </div>
+            </div>
+        </header>
+
+        <section class="post-content">
+            <div class="container narrow">
+                {post ? (
+                    <div class="portable-text">
+                        {/* Note: This is a simplification; in a real app you'd use a dedicated component for PortableText */}
+                        <p>{post.excerpt}</p>
+                    </div>
+                ) : (
+                    <div class="fallback-body">
+                        <p class="lead">{fallbackPost.excerpt}</p>
+                        <p>Data ingestion is the silent killer of automation ROI. When you're dealing with millions of legacy PDFs, even a 1% error rate creates a manual bottleneck that negates the speed of AI.</p>
+                        <p>In this post, we explore how we built a self-healing pipeline for a Malaysian logistics provider using n8n and custom Python middleware. The goal was simple: 99.9% accuracy or the system flags it for human review before it ever hits the CRM.</p>
+                        
+                        <h2 class="text-h2">The Bottleneck: Unstructured Chaos</h2>
+                        <p>Most Malaysian SMEs still rely on semi-structured documents. Invoices from different vendors, handwritten notes on delivery orders, and non-standardized export forms. Traditional OCR fails here because it lacks context.</p>
+                        
+                        <div class="code-block-mock">
+                            <code>[LOG] Initializing OCR Layer...<br/>[ERR] Confidence < 85% on Field 'TaxID'<br/>[ACT] Rerouting to Vision-LLM node...</code>
+                        </div>
+
+                        <p>By implementing a "Multi-Stage Verification" logic, we reduced manual reconciliation from 40 hours a week to just 2 hours of edge-case approval.</p>
+                    </div>
+                )}
+            </div>
+        </section>
+    </article>
+
+    <style>
+        .post-container { padding-bottom: var(--space-xl); }
+        .post-header {
+            padding: 120px 0 60px;
+            background: var(--neon);
+            border-bottom: 2px solid var(--black);
+        }
+        .back-link {
+            font-weight: 800;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--black);
+            font-size: 0.9rem;
+        }
+        .post-meta {
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        .dot { width: 6px; height: 6px; background: var(--black); border-radius: 50%; }
+        
+        .post-content { padding: 80px 0; }
+        .container.narrow { max-width: 800px; margin: 0 auto; padding: 0 var(--space-md); }
+        
+        .lead { font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; line-height: 1.3; }
+        p { font-size: 1.15rem; line-height: 1.7; margin-bottom: 1.5rem; color: var(--gray-dark); }
+        
+        .code-block-mock {
+            background: var(--black);
+            color: var(--neon);
+            padding: 2rem;
+            font-family: monospace;
+            border-radius: 8px;
+            margin: 2rem 0;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 768px) {
+            .text-display { font-size: 2.5rem !important; }
+        }
+    </style>
+</BaseLayout>

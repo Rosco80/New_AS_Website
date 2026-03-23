@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Logistics Automation for UK Freight & 3PL Companies";
+const description = "Automate customs documentation, freight forwarding workflows and warehouse operations for UK logistics SMEs. Post-Brexit ready. Book a free audit.";
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "UK Logistics & Freight Automation",
+  "description": "Customs documentation (CDS), manifest automation, and carrier API integrations for UK-based freight forwarders and 3PLs.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Autoflow Solutions"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "GB"
+  },
+  "serviceType": "AI & Workflow Automation"
+};
+---
+
+<BaseLayout title={title} description={description} schemaData={schemaData}>
+    <header class="hero" style="min-height: 80vh;">
+        <div class="hero-left">
+            <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Vertical Focus: Logistics</span>
+            <h1 class="text-display">UK LOGISTICS<br>AUTOMATION.</h1>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Post-Brexit Customs & CDS Workflow Experts</h2>
+            <p class="text-body-lg" style="margin-bottom: 2.5rem;">We help UK freight forwarders, 3PLs, and warehouse operators eliminate manual data entry in customs declarations and transport management.</p>
+            <div class="hero-btns" style="display: flex; gap: 1rem;">
+                <a href="/services#request" class="btn btn-solid">Calculate Your ROI (£)</a>
+                <a href="/tools/ai-self-audit" class="btn btn-neon">Logistics AI Audit</a>
+            </div>
+        </div>
+        <div class="hero-right" style="background-color: #f8f8f8;">
+            <div style="padding: 3rem; width: 100%;">
+                <div class="ui-card" style="position: relative; width: 100%; transform: none; box-shadow: 20px 20px 0 var(--black);">
+                    <div class="card-header">
+                        <span class="label-micro">HMRC_CDS_SYNC_MODULE</span>
+                        <span class="status" style="display: inline-block; width: 8px; height: 8px; background: var(--neon); border-radius: 50%;"></span>
+                    </div>
+                    <div style="margin: 1.5rem 0;">
+                        <div style="margin-bottom: 1rem; padding: 1rem; background: #f0f0f0; border-radius: 4px;">
+                            <p class="label-micro">Incoming Manifest</p>
+                            <p style="font-size: 0.9rem; font-weight: 700;">Dover_Inbound_4492.pdf</p>
+                        </div>
+                        <div style="text-align: center; margin: 1rem 0;">⬇️</div>
+                        <div style="padding: 1rem; background: var(--neon); border-radius: 4px; border: 1px solid var(--black);">
+                            <p class="label-micro">Automated Customs Entry</p>
+                            <p style="font-size: 0.9rem; font-weight: 700;">Entry Created: C88 / SAD</p>
+                        </div>
+                    </div>
+                    <p class="text-body" style="font-size: 0.85rem; color: var(--gray-dark);">14 items extracted. 0 manual edits required. CDS Submission Pending.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="density-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="label-micro">The Opportunity</span>
+                <h2 class="text-display" style="margin-top: 1rem;">WHY AUTOMATE<br>FREIGHT?</h2>
+                <p class="text-body-lg" style="margin-top: 1.5rem;">The UK's transition to the Customs Declaration Service (CDS) and post-Brexit documentation requirements has created a massive administrative burden. We automate it away.</p>
+            </div>
+            
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <span class="cell-id">01</span>
+                    <h3 class="text-h3">Customs Data Entry</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Automated extraction of data from commercial invoices and packing lists directly into customs software.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">02</span>
+                    <h3 class="text-h3">Carrier Bookings</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Syncing order data across multiple shipping portals, Royal Mail Click & Drop, and DPD APIs.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">03</span>
+                    <h3 class="text-h3">Status Updates</h3>
+                    <p class="text-body" style="margin-top: 1rem;">24/7 AI-driven tracking updates sent to clients via WhatsApp or Email without human intervention.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">04</span>
+                    <h3 class="text-h3">Invoicing & Recon</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Automatic reconciliation of carrier invoices against your internal manifest to spot overcharges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: var(--space-xl) 0; background: var(--white);">
+        <div class="container">
+            <div style="max-width: 800px;">
+                <h2 class="text-h2" style="margin-bottom: 2rem;">Post-Brexit Documentation is a bottleneck. We are the filter.</h2>
+                <p class="text-body-lg">For UK 3PLs and freight forwarders, the difference between profit and loss is often the number of "admin hours" per shipment. Our <b>Execution Engine</b> handles the heavy lifting of C88, E2, and commodity code matching, allowing your team to focus on moving cargo, not paper.</p>
+            </div>
+        </div>
+    </section>
+</BaseLayout>
