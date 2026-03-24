@@ -131,10 +131,19 @@
 
     .blueprint-card:hover { border-color: var(--neon); }
 
-    .audit-landing a:not(.btn), 
+    /* High-impact overrides to battle any global style leaking */
+    .audit-landing .btn-neon-large,
+    .audit-landing a.btn-neon-large {
+        background: #c4ef17 !important;
+        color: #050505 !important;
+        text-shadow: none !important;
+    }
+
+    .audit-landing .btn-outline-neon,
     .audit-landing a.btn-outline-neon {
         color: #c4ef17 !important;
         border-color: #c4ef17 !important;
+        background: transparent !important;
     }
 
     .audit-landing a.btn-outline-neon:hover {
@@ -142,8 +151,14 @@
         color: #050505 !important;
     }
 
-    .audit-landing a:visited {
+    .audit-landing a:not(.btn), 
+    .audit-landing a:visited:not(.btn) {
         color: #c4ef17 !important;
+        text-decoration: underline !important;
+    }
+
+    .audit-landing a:hover:not(.btn) {
+        color: #ffffff !important;
     }
 
     .pillar-num {
