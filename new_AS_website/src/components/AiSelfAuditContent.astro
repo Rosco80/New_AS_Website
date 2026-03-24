@@ -90,8 +90,8 @@
 
     .btn-neon-large {
         display: inline-block;
-        background: var(--neon);
-        color: var(--black) !important;
+        background: #c4ef17 !important;
+        color: #050505 !important;
         padding: 20px 48px;
         font-size: 1.2rem;
         font-weight: 900;
@@ -131,17 +131,19 @@
 
     .blueprint-card:hover { border-color: var(--neon); }
 
-    .audit-landing a:not(.btn) {
+    .audit-landing a:not(.btn), 
+    .audit-landing a.btn-outline-neon {
         color: #c4ef17 !important;
-        text-decoration: underline;
+        border-color: #c4ef17 !important;
     }
 
-    .audit-landing a:not(.btn):visited {
-        color: #c4ef17 !important;
+    .audit-landing a.btn-outline-neon:hover {
+        background: #c4ef17 !important;
+        color: #050505 !important;
     }
 
-    .audit-landing a:not(.btn):hover {
-        color: var(--white) !important;
+    .audit-landing a:visited {
+        color: #c4ef17 !important;
     }
 
     .pillar-num {

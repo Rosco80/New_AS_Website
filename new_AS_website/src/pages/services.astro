@@ -258,8 +258,11 @@ const combinedPageSchema = [serviceSchema, faqSchema];
     </section>
 
     <div class="marquee-footer">
-        <div class="marquee-text">
-            READY TO SCALE? • CONTACT SALES • NO VAPORWARE • BUILT TO LAST • READY TO SCALE? • CONTACT SALES • NO VAPORWARE • BUILT TO LAST • READY TO SCALE? • CONTACT SALES • NO VAPORWARE • BUILT TO LAST • READY TO SCALE? • CONTACT SALES • NO VAPORWARE • BUILT TO LAST •
+        <div class="marquee-track">
+            <span>READY TO SCALE? • CONTACT SALES • NO VAPORWARE • BUILT TO LAST • </span>
+            <span>READY TO SCALE? • CONTACT SALES • NO VAPORWARE • BUILT TO LAST • </span>
+            <span>READY TO SCALE? • CONTACT SALES • NO VAPORWARE • BUILT TO LAST • </span>
+            <span>READY TO SCALE? • CONTACT SALES • NO VAPORWARE • BUILT TO LAST • </span>
         </div>
     </div>
 
@@ -474,15 +477,18 @@ const combinedPageSchema = [serviceSchema, faqSchema];
             z-index: 1;
         }
 
-        .marquee-text {
-            display: inline-block;
-            animation: scroll 30s linear infinite;
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: scroll 20s linear infinite;
+        }
+        .marquee-track span {
+            padding-right: 2rem;
             font-weight: 900;
             font-size: 1.5rem;
             text-transform: uppercase;
         }
-
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-25%); } }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         .trust-bar {
             padding: var(--space-xl, 4rem) 0;
