@@ -22,6 +22,16 @@ const { title, description = "AI Automation for SMEs and Professional Services" 
 		<title>{title} | Autoflow Solutions</title>
 		<meta name="description" content={description} />
 		
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-6ETHYCNH3X"></script>
+		<script is:inline>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'G-6ETHYCNH3X');
+		</script>
+
 		<!-- Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

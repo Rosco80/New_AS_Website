@@ -7,8 +7,11 @@ import sanity from '@sanity/astro';
 
 import react from '@astrojs/react';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://www.autoflow-solutions.com',
   output: 'server',
   adapter: vercel(),
   integrations: [sanity({
@@ -16,5 +19,5 @@ export default defineConfig({
     dataset: 'production',
     useCdn: false,
     studioBasePath: '/admin'
-  }), react()],
+  }), react(), sitemap()],
 });
