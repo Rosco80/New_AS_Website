@@ -91,7 +91,7 @@
     .btn-neon-large {
         display: inline-block;
         background: var(--neon);
-        color: var(--black);
+        color: var(--black) !important;
         padding: 20px 48px;
         font-size: 1.2rem;
         font-weight: 900;
@@ -132,12 +132,16 @@
     .blueprint-card:hover { border-color: var(--neon); }
 
     .audit-landing a:not(.btn) {
-        color: #c4ef17;
+        color: #c4ef17 !important;
         text-decoration: underline;
     }
 
+    .audit-landing a:not(.btn):visited {
+        color: #c4ef17 !important;
+    }
+
     .audit-landing a:not(.btn):hover {
-        color: var(--white);
+        color: var(--white) !important;
     }
 
     .pillar-num {
