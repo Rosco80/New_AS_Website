@@ -82,13 +82,33 @@ const isActive = (path) => {
     .nav-menu {
         display: flex;
         align-items: center;
-        gap: var(--space-md);
+        gap: clamp(1rem, 2vw, 2.5rem);
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: clamp(0.5rem, 1.5vw, 1.5rem);
+    }
+
+    .nav-links a {
+        font-size: 0.9rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        white-space: nowrap;
     }
 
     .nav-actions {
         display: flex;
         align-items: center;
         gap: 12px;
+        flex-shrink: 0;
+    }
+
+    .nav-cta {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        white-space: nowrap;
     }
 
     @media (max-width: 1024px) {

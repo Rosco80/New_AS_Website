@@ -1,6 +1,6 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import AiSelfAuditContent from '../components/AiSelfAuditContent.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AiSelfAuditContent from '../../components/AiSelfAuditContent.astro';
 
 const auditSchema = {
   "@context": "https://schema.org",
@@ -21,6 +21,6 @@ const auditSchema = {
 };
 ---
 
-<BaseLayout title="AI Self-Audit | Evaluate Your Automation Readiness" schema={auditSchema}>
+<BaseLayout title="AI Self-Audit | Malay" schema={auditSchema}>
     <AiSelfAuditContent />
 </BaseLayout>
