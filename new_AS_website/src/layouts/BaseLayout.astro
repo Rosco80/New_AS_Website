@@ -1,15 +1,56 @@
 ---
 import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
-import Analytics from '@vercel/analytics/astro';
+import Schema from '../components/Schema.astro';
 import '../styles/variant.css';
 
 interface Props {
 	title: string;
 	description?: string;
+	image?: string;
+	schema?: Record<string, any> | Record<string, any>[];
+	schemaData?: Record<string, any> | Record<string, any>[];
 }
 
-const { title, description = "AI Automation for SMEs and Professional Services" } = Astro.props;
+const { 
+	title, 
+	description = "AI Automation for SMEs and Professional Services. Scale your business, not your payroll with custom AI agents.", 
+	image = "/AS%20logos/logo-square-dark-initials.png",
+	schema,
+	schemaData
+} = Astro.props;
+
+const combinedSchema = schema || schemaData;
+
+const canonicalURL = new URL(Astro.url.pathname, "https://www.autoflow-solutions.com");
+
+const organizationSchema = {
+	"@context": "https://schema.org",
+	"@type": "Organization",
+	"name": "Autoflow Solutions",
+	"url": "https://www.autoflow-solutions.com",
+	"logo": "https://www.autoflow-solutions.com/AS%20logos/logo-square-dark-initials.png",
+	"description": "AI Automation Agency providing custom AI agents and automation pipelines for SMEs and Professional Services.",
+	"sameAs": [
+		"https://www.linkedin.com/company/autoflow-solutions"
+	],
+	"contactPoint": {
+		"@type": "ContactPoint",
+		"contactType": "customer service",
+		"url": "https://www.autoflow-solutions.com/services#request"
+	}
+};
+
+const websiteSchema = {
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	"name": "Autoflow Solutions",
+	"url": "https://www.autoflow-solutions.com",
+	"potentialAction": {
+		"@type": "SearchAction",
+		"target": "https://www.autoflow-solutions.com/search?q={search_term_string}",
+		"query-input": "required name=search_term_string"
+	}
+};
 ---
 
 <!doctype html>
@@ -19,8 +60,32 @@ const { title, description = "AI Automation for SMEs and Professional Services" 
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/png" href="/AS%20logos/logo-square-dark-initials.png" />
 		<meta name="generator" content={Astro.generator} />
+		
+		<!-- Primary Meta Tags -->
 		<title>{title} | Autoflow Solutions</title>
+		<meta name="title" content={`${title} | Autoflow Solutions`} />
 		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:title" content={`${title} | Autoflow Solutions`} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL(image, Astro.url)} />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={Astro.url} />
+		<meta property="twitter:title" content={`${title} | Autoflow Solutions`} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+		<!-- Structured Data -->
+		<Schema item={organizationSchema} />
+		<Schema item={websiteSchema} />
+		{combinedSchema && (Array.isArray(combinedSchema) ? combinedSchema.map(item => <Schema item={item} />) : <Schema item={combinedSchema} />)}
+
 		
 		<!-- Google tag (gtag.js) -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-6ETHYCNH3X"></script>

@@ -38,10 +38,62 @@ const services = [
         statValue: "100% Hands-Off",
         capabilities: ["Multi-Step Reasoning", "Web & Database Scraping", "Autonomous Tool Execution", "Auto-Verification & Correction"]
     }
+const faqs = [
+    {
+        question: "How does the Engagement Engine capture leads 24/7?",
+        answer: "Our AI systems use context-aware, multi-lingual models to engage visitors in real-time, qualifying them and booking appointments directly into your calendar even when your team is offline."
+    },
+    {
+        question: "What makes your 'Digital Workers' different from standard bots?",
+        answer: "Unlike basic bots that just follow scripts, our Execution Engine uses multi-step reasoning and tool execution to perform complex tasks like document extraction, research, and data verification autonomously."
+    },
+    {
+        question: "Can these AI agents integrate with my existing CRM?",
+        answer: "Yes, we specialize in 'API orchestration,' bridging the gap between fragmented software like Salesforce, HubSpot, and HighLevel to ensure data flows automatically without manual entry."
+    }
 ];
+
+const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "AI Automation Services",
+    "description": "Custom AI agents and automation pipelines for SMEs.",
+    "itemListElement": services.map((svc, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+            "@type": "Service",
+            "name": svc.title,
+            "description": svc.description,
+            "provider": {
+                "@type": "Organization",
+                "name": "Autoflow Solutions"
+            },
+            "offers": {
+                "@type": "Offer",
+                "description": svc.price
+            }
+        }
+    }))
+};
+
+const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
+        }
+    }))
+};
+
+const combinedPageSchema = [serviceSchema, faqSchema];
 ---
 
-<BaseLayout title="Our Services">
+<BaseLayout title="Our Services" schema={combinedPageSchema}>
     <div class="cursor-follower" id="cursorFollower">
         <div class="cursor-core"></div>
     </div>
@@ -131,6 +183,23 @@ const services = [
                 <img src="/partners%20logos/vs-code-logo-removebg-preview.png" alt="VS Code" />
                 <img src="/partners%20logos/claude_code-removebg-preview.png" alt="Claude" />
                 <img src="/partners%20logos/ZOHO.svg-removebg-preview.png" alt="Zoho" />
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <span class="label-micro">INTELLIGENCE_BASE</span>
+                <h2 class="text-h2" style="margin-top: 1rem;">Common Questions.</h2>
+            </div>
+            <div class="faq-grid">
+                {faqs.map((faq) => (
+                    <div class="faq-card">
+                        <h4 class="text-h3" style="color: var(--black); margin-bottom: 1rem;">{faq.question}</h4>
+                        <p class="text-body" style="color: var(--gray-dark);">{faq.answer}</p>
+                    </div>
+                ))}
             </div>
         </div>
     </section>
@@ -492,6 +561,29 @@ const services = [
         @keyframes scroll-logos {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); } 
+        }
+
+        .faq-section {
+            padding: var(--space-xl) 0;
+            background: var(--white);
+            border-top: 2px solid var(--black);
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-lg);
+        }
+
+        .faq-card {
+            border: 2px solid var(--black);
+            padding: var(--space-md);
+            background: var(--gray-bg);
+            box-shadow: 8px 8px 0 var(--black);
+        }
+
+        @media (max-width: 1024px) {
+            .faq-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 600px) {
