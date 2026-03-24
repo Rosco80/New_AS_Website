@@ -20,4 +20,9 @@ export default defineConfig({
     useCdn: false,
     studioBasePath: '/admin'
   }), react(), sitemap()],
+  vite: {
+    build: {
+      chunkSizeWarningLimit: 1000
+    }
+  }
 });

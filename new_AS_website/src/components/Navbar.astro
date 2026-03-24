@@ -46,12 +46,13 @@ const isActive = (path) => {
             <div class="nav-links">
                 <a href={localizePath('/services')} class={isActive('/services') ? "active" : ""}>Services</a>
                 <a href={localizePath('/case-studies')} class={isActive('/case-studies') ? "active" : ""}>Case Studies</a>
+                <a href={localizePath('/seo-report')} class={isActive('/seo-report') ? "active" : ""}>SEO Report</a>
                 <a href={localizePath('/resources')} class={isActive('/resources') ? "active" : ""}>Resources</a>
-                <a href={localizePath('/about')} class={isActive('/about') ? "active" : ""}>About</a>
                 <a href={localizePath('/blog')} class={isActive('/blog') ? "active" : ""}>Blog</a>
+                <a href={localizePath('/about')} class={isActive('/about') ? "active" : ""}>About</a>
             </div>
             <div class="nav-actions">
-                <a href="https://ai-self-audit.autoflow-solutions.com/" target="_blank" class="btn btn-solid nav-cta">Start Free AI Audit</a>
+                <a href={localizePath('/ai-self-audit')} class="btn btn-solid nav-cta">Start Free AI Audit</a>
                 <LanguageSwitcher currentPath={currentPath} />
             </div>
         </div>
