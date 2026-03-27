@@ -1,11 +1,11 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import ROICalculator from '../../components/ROICalculator.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ROICalculator from '../../../components/ROICalculator.astro';
 
 const title = "Free Automation ROI Calculator | See Your Savings Before You Build";
 const description = "Enter your labor costs and manual hours. Get a real projection of annual savings, payback period, and hours recovered. Free. No email required.";
 ---
 
 <BaseLayout title={title} description={description}>
-  <ROICalculator defaultCurrency="USD" />
+  <ROICalculator defaultCurrency="GBP" />
 </BaseLayout>

@@ -1,4 +1,11 @@
 ---
-// Redirect to the static HTML which serves the exact original tool
-return Astro.redirect('/tools/automation-roi-calculator.html');
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ROICalculator from '../../../components/ROICalculator.astro';
+
+const title = "Free Automation ROI Calculator | See Your Savings Before You Build";
+const description = "Enter your labor costs and manual hours. Get a real projection of annual savings, payback period, and hours recovered. Free. No email required.";
 ---
+
+<BaseLayout title={title} description={description}>
+  <ROICalculator defaultCurrency="MYR" />
+</BaseLayout>
