@@ -4,39 +4,53 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const services = [
     {
         id: "01",
-        title: "Zero Missed Inquiries & 24/7 Lead Capture",
-        price: "THE ENGAGEMENT ENGINE",
-        description: "Turn late-night website visitors into qualified leads and seamlessly book appointments while your team is offline. Powered by context-aware, multi-lingual AI.",
+        title: "Engagement<br>Engine",
+        price: "£249",
+        setup: "£599",
+        description: "24/7 inquiry capture, qualification, and booking handoff across web and WhatsApp. Never miss a lead again.",
         statLabel: "RESPONSE TIME",
         statValue: "< 3 Seconds",
-        capabilities: ["Auto-Response", "Lead Scoring", "Ticket Routing", "Context Memory"]
+        capabilities: ["WhatsApp & Web Chat", "FAQ Handling", "Lead Qualification", "Missed Inquiry Recovery"]
     },
     {
         id: "02",
-        title: "Put Your Back-Office on Autopilot",
-        price: "THE OPERATIONS ENGINE",
-        description: "Eliminate manual data entry, automate client follow-ups, and connect your fragmented software into one unified workflow. Driven by intelligent API orchestration.",
-        statLabel: "TYPICAL TIME SAVED",
+        title: "Operations<br>Engine",
+        price: "£449",
+        setup: "£1,099",
+        description: "Back-office workflow automation that removes repetitive admin. The commercial center of your autonomous business.",
+        statLabel: "TIME SAVED",
         statValue: "20+ hrs / week",
-        capabilities: ["CRM Syncing", "Webhooks & APIs", "Data Middleware", "Anomaly Detection"]
+        capabilities: ["CRM Sync & Updates", "Onboarding Workflows", "Document Generation", "Internal Notifications"]
     },
     {
         id: "03",
-        title: "The Always-On Front Desk",
-        price: "THE VOICE ENGINE",
-        description: "Deploy natural-sounding voice assistants to handle routine inbound calls, answer FAQs, and qualify prospects without ever putting a customer on hold.",
+        title: "Voice<br>Engine",
+        price: "£549",
+        setup: "£1,249",
+        description: "An always-on AI front desk that answers calls, qualifies inquiries, and routes or books instantly.",
         statLabel: "CALL RESOLUTION",
         statValue: "80% Automated",
-        capabilities: ["Inbound Routing", "Live Booking", "Voice-to-Text Parsing", "FAQ Resolution"]
+        capabilities: ["Inbound Voice Handling", "Live Call Routing", "Appointment Booking", "Call Summary Logging"]
     },
     {
         id: "04",
-        title: "Autonomous Task Execution",
-        price: "THE EXECUTION ENGINE",
-        description: "Deploy intelligent digital workers that don't just answer questions, but actively complete multi-step processes—from deep-dive research to complete complex data entry—acting as an autonomous extension of your team.",
+        title: "Execution<br>Engine",
+        price: "Custom",
+        setup: "£1,249+",
+        description: "Autonomous digital workers that complete multi-step business tasks. Managed retainer available.",
         statLabel: "AUTONOMY RATE",
         statValue: "100% Hands-Off",
-        capabilities: ["Multi-Step Reasoning", "Web & Database Scraping", "Autonomous Tool Execution", "Auto-Verification & Correction"]
+        capabilities: ["Discovery Sprint Included", "Task Research & Data Entry", "Cross-System Actions", "Full Audit Trail"]
+    },
+    {
+        id: "05",
+        title: "UK<br>Enterprise",
+        price: "Contact",
+        setup: "£1,249+",
+        description: "Full-scale autonomous systems for high-volume UK professional services.",
+        statLabel: "SCALE",
+        statValue: "Unlimited",
+        capabilities: ["UK-Based Strategy Lead", "Custom RAG Architectures", "Dedicated Support", "On-Premise Options"]
     }
 ];
 
@@ -158,9 +172,17 @@ const faqSchema = {
                     <div class="service-card">
                         <div class="neon-bar"></div>
                         <div class="service-id-large">{svc.id}</div>
-                        <h2 class="service-title">{svc.title}</h2>
-                        <span class="service-price">{svc.price}</span>
-                        <p style="font-size: 0.85rem; color: var(--gray-dark); margin-bottom: 2rem;">{svc.description}</p>
+                        <h2 class="service-title" set:html={svc.title} />
+                        
+                        <div class="price-container" style="margin-bottom: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--gray-light); min-height: 80px;">
+                            <div style="display: flex; align-items: baseline; gap: 4px;">
+                                <span style="font-size: 2rem; font-weight: 900;">{svc.price}</span>
+                                {svc.price !== "Custom" && svc.price !== "Contact" && <span style="font-size: 0.8rem; font-weight: 700; opacity: 0.6;">/mo</span>}
+                            </div>
+                            {svc.setup && <span style="font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: var(--gray-dark);">+ {svc.setup} Setup</span>}
+                        </div>
+
+                        <p class="service-description">{svc.description}</p>
                         
                         <div class="stat-box">
                             <span class="stat-label">{svc.statLabel}</span>
@@ -341,16 +363,15 @@ const faqSchema = {
             margin-bottom: 1rem; 
             letter-spacing: -0.01em;
             text-transform: uppercase;
+            min-height: 3.5rem;
+            line-height: 1.1;
         }
 
-        .service-price { 
-            font-weight: 800; 
-            font-size: 0.75rem; 
-            color: var(--gray-dark, #333);
-            margin-bottom: var(--space-md, 2rem);
-            display: block;
-            border-top: 1px solid var(--gray-light, #E5E5E5);
-            padding-top: 1rem;
+        .service-description {
+            font-size: 0.85rem; 
+            color: var(--gray-dark); 
+            margin-bottom: 2rem;
+            min-height: 4.5rem;
         }
 
         .stat-box {
