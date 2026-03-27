@@ -5,8 +5,8 @@ const services = [
     {
         id: "01",
         title: "Engagement<br>Engine",
-        price: "$299",
-        setup: "$749",
+        price: "$150",
+        setup: "$899",
         description: "24/7 inquiry capture, qualification, and booking handoff across web and WhatsApp. Never miss a lead again.",
         statLabel: "RESPONSE TIME",
         statValue: "< 3 Seconds",
@@ -15,8 +15,8 @@ const services = [
     {
         id: "02",
         title: "Operations<br>Engine",
-        price: "$549",
-        setup: "$1,399",
+        price: "$170",
+        setup: "$1,699",
         description: "Back-office workflow automation that removes repetitive admin. The commercial center of your autonomous business.",
         statLabel: "TIME SAVED",
         statValue: "20+ hrs / week",
@@ -25,8 +25,8 @@ const services = [
     {
         id: "03",
         title: "Voice<br>Engine",
-        price: "$699",
-        setup: "$1,599",
+        price: "$200",
+        setup: "$1,999",
         description: "An always-on AI front desk that answers calls, qualifies inquiries, and routes or books instantly.",
         statLabel: "CALL RESOLUTION",
         statValue: "80% Automated",
@@ -35,8 +35,8 @@ const services = [
     {
         id: "04",
         title: "Execution<br>Engine",
-        price: "Custom",
-        setup: "$1,599+",
+        price: "$200",
+        setup: "$1,999+",
         description: "Autonomous digital workers that complete multi-step business tasks. Managed retainer available.",
         statLabel: "AUTONOMY RATE",
         statValue: "100% Hands-Off",
@@ -157,7 +157,8 @@ const combinedPageSchema = [serviceSchema, faqSchema];
                                 <span style="font-size: 2rem; font-weight: 900;">{svc.price}</span>
                                 {svc.price !== "Custom" && svc.price !== "Contact" && <span style="font-size: 0.8rem; font-weight: 700; opacity: 0.6;">/mo</span>}
                             </div>
-                            {svc.setup && <span style="font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: var(--gray-dark);">+ {svc.setup} Setup</span>}
+                            {svc.setup && <div style="font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: var(--gray-dark);">+ {svc.setup} Setup</div>}
+                            {svc.price !== "Custom" && svc.price !== "Contact" && <div style="font-size: 0.6rem; color: var(--gray-dark); opacity: 0.6; font-weight: 600; margin-top: 4px;">Retainer for minor fixes & adjustments. API costs borne by client on their own accounts.</div>}
                         </div>
 
                         <p class="service-description">{svc.description}</p>

@@ -5,7 +5,8 @@ const services = [
     {
         id: "01",
         title: "Tanpa Pertanyaan Terlepas & Pengangkapan Prospek 24/7",
-        price: "ENJIN INTERAKSI",
+        price: "RM 300",
+        setup: "RM 3,000",
         description: "Ubah pelawat laman web lewat malam menjadi prospek berkelayakan dan tempah janji temu dengan lancar semasa pasukan anda sedang berehat. Dikuasakan oleh AI pelbagai bahasa yang memahami konteks.",
         statLabel: "MASA MAKLUM BALAS",
         statValue: "< 3 Saat",
@@ -14,7 +15,8 @@ const services = [
     {
         id: "02",
         title: "Automasikan Pejabat Belakang Anda",
-        price: "ENJIN OPERASI",
+        price: "RM 540",
+        setup: "RM 5,400",
         description: "Hapuskan kemasukan data manual, automasikan susulan pelanggan, dan sambungkan perisian anda yang berpecah menjadi satu aliran kerja bersepadu. Dipacu oleh orkestrasi API pintar.",
         statLabel: "BIASA DIJIMATKAN",
         statValue: "20+ jam / seminggu",
@@ -23,7 +25,8 @@ const services = [
     {
         id: "03",
         title: "Kaunter Hadapan Sentiasa Aktif",
-        price: "ENJIN SUARA",
+        price: "RM 600",
+        setup: "RM 6,000",
         description: "Gunakan pembantu suara yang berbunyi semulajadi untuk mengendalikan panggilan masuk rutin, menjawab FAQ, dan melayakkan prospek tanpa perlu pelanggan menunggu.",
         statLabel: "RESOLUSI PANGGILAN",
         statValue: "80% Automatik",
@@ -32,7 +35,8 @@ const services = [
     {
         id: "04",
         title: "Pelaksanaan Tugasan Autonomi",
-        price: "ENJIN PELAKSANAAN",
+        price: "RM 600",
+        setup: "RM 6,000",
         description: "Gunakan pekerja digital pintar yang bukan sekadar menjawab soalan, tetapi aktif menyelesaikan proses pelbagai langkah—daripada penyelidikan mendalam hingga kemasukan data kompleks—bertindak sebagai lanjutan autonomi pasukan anda.",
         statLabel: "KADAR AUTONOMI",
         statValue: "100% Tanpa Tangan",
@@ -134,7 +138,14 @@ const faqSchema = {
                         <div class="neon-bar"></div>
                         <div class="service-id-large">{svc.id}</div>
                         <h2 class="service-title">{svc.title}</h2>
-                        <span class="service-price">{svc.price}</span>
+                        <div class="price-container" style="margin-bottom: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--gray-light); min-height: 80px;">
+                            <div style="display: flex; align-items: baseline; gap: 4px;">
+                                <span style="font-size: 2rem; font-weight: 900;">{svc.price}</span>
+                                {svc.price !== "Custom" && svc.price !== "Hubungi" && <span style="font-size: 0.8rem; font-weight: 700; opacity: 0.6;">/bln</span>}
+                            </div>
+                            {svc.setup && <div style="font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: var(--gray-dark);">+ {svc.setup} Setup</div>}
+                            {svc.price !== "Custom" && svc.price !== "Hubungi" && <div style="font-size: 0.6rem; color: var(--gray-dark); opacity: 0.6; font-weight: 600; margin-top: 4px;">Retainer untuk pembetulan & pelarasan kecil. Kos API ditanggung oleh pelanggan melalui akaun mereka sendiri.</div>}
+                        </div>
                         <p style="font-size: 0.85rem; color: var(--gray-dark); margin-bottom: 2rem;">{svc.description}</p>
                         
                         <div class="stat-box">

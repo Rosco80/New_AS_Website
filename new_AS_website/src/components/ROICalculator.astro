@@ -122,8 +122,9 @@ const { defaultCurrency = 'MYR' } = Astro.props;
                 <span class="tier-summary__value" id="summary-setup">--</span>
               </div>
               <div class="tier-summary__item">
-                <span class="tier-summary__label">MONTHLY</span>
+                <span class="tier-summary__label">MONTHLY RETAINER</span>
                 <span class="tier-summary__value" id="summary-monthly">--</span>
+                <span class="tier-summary__note">For small fixes & adjustments</span>
               </div>
             </div>
 
@@ -245,6 +246,8 @@ const { defaultCurrency = 'MYR' } = Astro.props;
             <span class="metric-tile__context">Return on setup investment</span>
           </div>
         </div>
+
+        <p class="results-opex-note">All system & API costs (OpenAI, WhatsApp, etc.) are borne by the client using their own accounts.</p>
 
         <div class="results-projection">
           <p class="results-projection__label">3-YEAR NET BENEFIT</p>
@@ -423,8 +426,11 @@ const { defaultCurrency = 'MYR' } = Astro.props;
 
   .tier-selector { width: 100%; padding: 12px; border: 2px solid var(--black); font-family: var(--font-display); font-weight: 700; font-size: 1rem; text-transform: uppercase; background: var(--white); border-radius: 4px; margin-bottom: 1rem; }
   .tier-summary { background: var(--grey-100); border: 1px solid var(--grey-200); border-radius: 4px; padding: 1rem; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .tier-summary__label { font-size: 0.6rem; font-weight: 700; color: var(--grey-600); text-transform: uppercase; }
-  .tier-summary__value { font-family: var(--font-display); font-weight: 700; font-size: 1.125rem; color: var(--black); }
+  .tier-summary__label { font-size: 0.6rem; font-weight: 700; color: var(--grey-600); text-transform: uppercase; display: block; }
+  .tier-summary__value { font-family: var(--font-display); font-weight: 700; font-size: 1.125rem; color: var(--black); display: block; }
+  .tier-summary__note { font-size: 0.55rem; color: var(--grey-400); font-weight: 500; display: block; margin-top: 2px; }
+
+  .results-opex-note { font-size: 0.625rem; color: var(--grey-400); text-align: center; margin-bottom: 2rem; padding: 0 1rem; opacity: 0.8; }
 
   /* Assumptions section refined */
   .assumptions-section { margin-top: 1.5rem; border: 1px solid var(--grey-200); border-radius: 6px; overflow: hidden; background: #fff; }
@@ -519,17 +525,17 @@ const { defaultCurrency = 'MYR' } = Astro.props;
   'use strict';
   
   const CURRENCIES = {
-    MYR: { symbol: 'RM ', locale: 'en-MY', salary: { min: 1500, max: 15000, default: 4000, step: 500 }, setup: { min: 2500, max: 50000, default: 4500, step: 500 }, retainer: { min: 990, max: 10000, default: 1750, step: 10 } },
-    USD: { symbol: '$', locale: 'en-US', salary: { min: 2000, max: 12000, default: 4500, step: 500 }, setup: { min: 749, max: 20000, default: 1399, step: 50 }, retainer: { min: 299, max: 5000, default: 549, step: 50 } },
-    GBP: { symbol: '\u00a3', locale: 'en-GB', salary: { min: 1500, max: 8000, default: 2800, step: 250 }, setup: { min: 599, max: 15000, default: 1099, step: 50 }, retainer: { min: 249, max: 4000, default: 449, step: 50 } },
-    EUR: { symbol: '\u20ac', locale: 'de-DE', salary: { min: 1500, max: 8000, default: 2500, step: 250 }, setup: { min: 699, max: 15000, default: 1249, step: 50 }, retainer: { min: 279, max: 4000, default: 499, step: 20 } }
+    MYR: { symbol: 'RM ', locale: 'en-MY', salary: { min: 1500, max: 15000, default: 4000, step: 500 }, setup: { min: 3000, max: 50000, default: 5400, step: 500 }, retainer: { min: 250, max: 10000, default: 540, step: 10 } },
+    USD: { symbol: '$', locale: 'en-US', salary: { min: 2000, max: 12000, default: 4500, step: 500 }, setup: { min: 899, max: 20000, default: 1699, step: 50 }, retainer: { min: 150, max: 5000, default: 170, step: 10 } },
+    GBP: { symbol: '\u00a3', locale: 'en-GB', salary: { min: 1500, max: 8000, default: 2800, step: 250 }, setup: { min: 719, max: 15000, default: 1319, step: 50 }, retainer: { min: 149, max: 4000, default: 200, step: 10 } },
+    EUR: { symbol: '\u20ac', locale: 'de-DE', salary: { min: 1500, max: 8000, default: 2500, step: 250 }, setup: { min: 839, max: 15000, default: 1499, step: 50 }, retainer: { min: 150, max: 4000, default: 150, step: 20 } }
   };
   
   const TIER_PRICES = {
-    MYR: { engagement: { setup: 2500, monthly: 990 }, operations: { setup: 4500, monthly: 1750 }, voice: { setup: 5000, monthly: 2250 }, execution: { setup: 5000, monthly: 3500 } },
-    USD: { engagement: { setup: 749, monthly: 299 }, operations: { setup: 1399, monthly: 549 }, voice: { setup: 1599, monthly: 699 }, execution: { setup: 1599, monthly: 1599 } },
-    GBP: { engagement: { setup: 599, monthly: 249 }, operations: { setup: 1099, monthly: 449 }, voice: { setup: 1249, monthly: 549 }, execution: { setup: 1249, monthly: 1249 } },
-    EUR: { engagement: { setup: 699, monthly: 279 }, operations: { setup: 1249, monthly: 499 }, voice: { setup: 1399, monthly: 599 }, execution: { setup: 1399, monthly: 1399 } }
+    MYR: { engagement: { setup: 3000, monthly: 300 }, operations: { setup: 5400, monthly: 540 }, voice: { setup: 6000, monthly: 600 }, execution: { setup: 6000, monthly: 600 } },
+    USD: { engagement: { setup: 899, monthly: 150 }, operations: { setup: 1699, monthly: 170 }, voice: { setup: 1999, monthly: 200 }, execution: { setup: 1999, monthly: 200 } },
+    GBP: { engagement: { setup: 719, monthly: 149 }, operations: { setup: 1319, monthly: 200 }, voice: { setup: 1499, monthly: 249 }, execution: { setup: 1499, monthly: 249 } },
+    EUR: { engagement: { setup: 839, monthly: 150 }, operations: { setup: 1499, monthly: 150 }, voice: { setup: 1699, monthly: 170 }, execution: { setup: 1699, monthly: 170 } }
   };
 
   let activeCurrency = document.querySelector('.roi-tool-content').dataset.defaultCurrency || 'MYR';
