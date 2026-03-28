@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import Schema from '../components/Schema.astro';
 import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 import '../styles/variant.css';
 
 interface Props {
@@ -115,6 +116,7 @@ const websiteSchema = {
 		<Navbar />
 		<slot />
 		<Analytics />
+		<SpeedInsights />
 		<Footer />
 		<!-- Cal.com embed -->
 		<script is:inline>
