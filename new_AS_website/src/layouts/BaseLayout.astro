@@ -11,14 +11,16 @@ interface Props {
 	image?: string;
 	schema?: Record<string, any> | Record<string, any>[];
 	schemaData?: Record<string, any> | Record<string, any>[];
+	noindex?: boolean;
 }
 
-const { 
-	title, 
-	description = "AI Automation for SMEs and Professional Services. Scale your business, not your payroll with custom AI agents.", 
+const {
+	title,
+	description = "AI Automation for SMEs and Professional Services. Scale your business, not your payroll with custom AI agents.",
 	image = "/AS%20logos/logo-square-dark-initials.png",
 	schema,
-	schemaData
+	schemaData,
+	noindex = false
 } = Astro.props;
 
 const combinedSchema = schema || schemaData;
@@ -68,6 +70,7 @@ const websiteSchema = {
 		<meta name="title" content={`${title} | Autoflow Solutions`} />
 		<meta name="description" content={description} />
 		<link rel="canonical" href={canonicalURL} />
+		{noindex && <meta name="robots" content="noindex, follow" />}
 
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
@@ -105,11 +108,11 @@ const websiteSchema = {
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;700&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet">
 
 		<!-- SEO: Regional Alt Versions -->
-		<link rel="alternate" hreflang="en-MY" href={`https://autoflow-solutions.com/my${Astro.url.pathname.replace(/^\/(my|ms|uk)/, '')}`} />
-		<link rel="alternate" hreflang="ms-MY" href={`https://autoflow-solutions.com/ms${Astro.url.pathname.replace(/^\/(my|ms|uk)/, '')}`} />
-		<link rel="alternate" hreflang="en-GB" href={`https://autoflow-solutions.com/uk${Astro.url.pathname.replace(/^\/(my|ms|uk)/, '')}`} />
-		<link rel="alternate" hreflang="en" href={`https://autoflow-solutions.com${Astro.url.pathname.replace(/^\/(my|ms|uk)/, '')}`} />
-		<link rel="alternate" hreflang="x-default" href={`https://autoflow-solutions.com${Astro.url.pathname.replace(/^\/(my|ms|uk)/, '')}`} />
+		<link rel="alternate" hreflang="en-MY" href={`https://www.autoflow-solutions.com/my${Astro.url.pathname.replace(/^\/(my|ms|uk)/, '')}`} />
+		<link rel="alternate" hreflang="ms-MY" href={`https://www.autoflow-solutions.com/ms${Astro.url.pathname.replace(/^\/(my|ms|uk)/, '')}`} />
+		<link rel="alternate" hreflang="en-GB" href={`https://www.autoflow-solutions.com/uk${Astro.url.pathname.replace(/^\/(my|ms|uk)/, '')}`} />
+		<link rel="alternate" hreflang="en" href={`https://www.autoflow-solutions.com${Astro.url.pathname.replace(/^\/(my|ms|uk)/, '')}`} />
+		<link rel="alternate" hreflang="x-default" href={`https://www.autoflow-solutions.com${Astro.url.pathname.replace(/^\/(my|ms|uk)/, '')}`} />
 	</head>
 	<body>
 		<Navbar />

@@ -4,12 +4,13 @@ import BaseLayout from './BaseLayout.astro';
 interface Props {
     title: string;
     effectiveDate?: string;
+    noindex?: boolean;
 }
 
-const { title, effectiveDate } = Astro.props;
+const { title, effectiveDate, noindex = false } = Astro.props;
 ---
 
-<BaseLayout title={title}>
+<BaseLayout title={title} noindex={noindex}>
     <main class="legal-page">
         <div class="container container-narrow">
             <header class="legal-header">
