@@ -25,14 +25,17 @@ const {
 
 const combinedSchema = schema || schemaData;
 
-const canonicalURL = new URL(Astro.url.pathname, "https://www.autoflow-solutions.com");
+const sanitizedPath = Astro.url.pathname.endsWith('/') && Astro.url.pathname.length > 1 
+	? Astro.url.pathname.slice(0, -1) 
+	: Astro.url.pathname;
+const canonicalURL = new URL(sanitizedPath, "https://autoflow-solutions.com");
 
 const organizationSchema = {
 	"@context": "https://schema.org",
 	"@type": "Organization",
 	"name": "Autoflow Solutions",
-	"url": "https://www.autoflow-solutions.com",
-	"logo": "https://www.autoflow-solutions.com/AS%20logos/logo-square-dark-initials.png",
+	"url": "https://autoflow-solutions.com",
+	"logo": "https://autoflow-solutions.com/AS%20logos/logo-square-dark-initials.png",
 	"description": "AI Automation Agency providing custom AI agents and automation pipelines for SMEs and Professional Services.",
 	"sameAs": [
 		"https://www.linkedin.com/company/autoflow-solutions"
@@ -40,7 +43,7 @@ const organizationSchema = {
 	"contactPoint": {
 		"@type": "ContactPoint",
 		"contactType": "customer service",
-		"url": "https://www.autoflow-solutions.com/services#request"
+		"url": "https://autoflow-solutions.com/services#request"
 	}
 };
 
@@ -48,10 +51,10 @@ const websiteSchema = {
 	"@context": "https://schema.org",
 	"@type": "WebSite",
 	"name": "Autoflow Solutions",
-	"url": "https://www.autoflow-solutions.com",
+	"url": "https://autoflow-solutions.com",
 	"potentialAction": {
 		"@type": "SearchAction",
-		"target": "https://www.autoflow-solutions.com/search?q={search_term_string}",
+		"target": "https://autoflow-solutions.com/search?q={search_term_string}",
 		"query-input": "required name=search_term_string"
 	}
 };
@@ -74,14 +77,14 @@ const websiteSchema = {
 
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content={Astro.url} />
+		<meta property="og:url" content={canonicalURL} />
 		<meta property="og:title" content={`${title} | Autoflow Solutions`} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={new URL(image, Astro.url)} />
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content={Astro.url} />
+		<meta property="twitter:url" content={canonicalURL} />
 		<meta property="twitter:title" content={`${title} | Autoflow Solutions`} />
 		<meta property="twitter:description" content={description} />
 		<meta property="twitter:image" content={new URL(image, Astro.url)} />
@@ -108,11 +111,11 @@ const websiteSchema = {
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;700&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet">
 
 		<!-- SEO: Regional Alt Versions -->
-		<link rel="alternate" hreflang="en-MY" href={`https://www.autoflow-solutions.com/my${Astro.url.pathname.replace(/^\/(my|ms|uk)/, '')}`} />
-		<link rel="alternate" hreflang="ms-MY" href={`https://www.autoflow-solutions.com/ms${Astro.url.pathname.replace(/^\/(my|ms|uk)/, '')}`} />
-		<link rel="alternate" hreflang="en-GB" href={`https://www.autoflow-solutions.com/uk${Astro.url.pathname.replace(/^\/(my|ms|uk)/, '')}`} />
-		<link rel="alternate" hreflang="en" href={`https://www.autoflow-solutions.com${Astro.url.pathname.replace(/^\/(my|ms|uk)/, '')}`} />
-		<link rel="alternate" hreflang="x-default" href={`https://www.autoflow-solutions.com${Astro.url.pathname.replace(/^\/(my|ms|uk)/, '')}`} />
+		<link rel="alternate" hreflang="en-MY" href={`https://autoflow-solutions.com/my${sanitizedPath.replace(/^\/(my|ms|uk)/, '')}`} />
+		<link rel="alternate" hreflang="ms-MY" href={`https://autoflow-solutions.com/ms${sanitizedPath.replace(/^\/(my|ms|uk)/, '')}`} />
+		<link rel="alternate" hreflang="en-GB" href={`https://autoflow-solutions.com/uk${sanitizedPath.replace(/^\/(my|ms|uk)/, '')}`} />
+		<link rel="alternate" hreflang="en" href={`https://autoflow-solutions.com${sanitizedPath.replace(/^\/(my|ms|uk)/, '')}`} />
+		<link rel="alternate" hreflang="x-default" href={`https://autoflow-solutions.com${sanitizedPath.replace(/^\/(my|ms|uk)/, '')}`} />
 	</head>
 	<body>
 		<Navbar />

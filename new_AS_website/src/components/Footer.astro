@@ -13,8 +13,10 @@ const langPrefix = getLangPrefix(currentPath);
 const isMalay = langPrefix === '/ms';
 
 const localizePath = (path) => {
+    if (path === '/') return langPrefix || '/';
     if (path.startsWith(langPrefix) && langPrefix !== '') return path;
-    return `${langPrefix}${path.startsWith('/') ? path : '/' + path}`;
+    const result = `${langPrefix}${path.startsWith('/') ? path : '/' + path}`;
+    return result.endsWith('/') && result.length > 1 ? result.slice(0, -1) : result;
 };
 
 const labels = {

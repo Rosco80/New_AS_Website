@@ -11,7 +11,8 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.autoflow-solutions.com',
+  site: 'https://autoflow-solutions.com',
+  trailingSlash: 'never',
   output: 'server',
   adapter: vercel(),
   integrations: [sanity({
