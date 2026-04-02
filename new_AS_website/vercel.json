@@ -6,6 +6,41 @@
       "permanent": true
     },
     {
+      "source": "/tag/(.*)",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/category/(.*)",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/ai-automation-explained-a-beginners-guide-for-smes/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/using-ai-and-automation-to-help-with-real-estate-market-ups-and-downs-a-guide-for-small-businesses/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/ai-customer-service-for-smes/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/auto-proposal-invoice-system/",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/ai-powered-email-monitoring-follow-up-automation/",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
       "source": "/legal-automation/",
       "destination": "/legal-automation",
       "permanent": true
@@ -14,11 +49,6 @@
       "source": "/uk/legal-automation/",
       "destination": "/legal-automation",
       "permanent": true
-    },
-    {
-      "source": "/my/legal-automation/",
-      "destination": "/my/legal-automation",
-      "permanent": false
     }
   ]
 }
