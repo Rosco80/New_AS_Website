@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "E-Commerce Automation — Amazon, Shopify & Multi-channel Scaling";
+const description = "Automate orders, returns, shipping syncs and customer follow-ups for e-commerce businesses. Amazon, Shopify, WooCommerce. Free audit.";
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "E-Commerce & Retail Automation",
+  "description": "Amazon, Shopify, and shipping API integrations. Automated returns and multi-channel inventory management for retailers.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Autoflow Solutions"
+  },
+  "serviceType": "E-Commerce AI Automation"
+};
+---
+
+<BaseLayout title={title} description={description} schemaData={schemaData}>
+    <header class="hero" style="min-height: 80vh;">
+        <div class="hero-left">
+            <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Vertical Focus: E-Commerce</span>
+            <h1 class="text-display">E-COMMERCE<br>AUTOMATION.</h1>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Amazon & Shopify Scaling Experts</h2>
+            <p class="text-body-lg" style="margin-bottom: 2.5rem;">We help online sellers automate their heavy-lifting. From shipping API syncs to automated returns handling and multi-channel scaling.</p>
+            <div class="hero-btns" style="display: flex; gap: 1rem;">
+                <a href="/services#request" class="btn btn-solid">Calculate Your Savings</a>
+                <a href="/ai-self-audit" class="btn btn-neon">Free AI Self Audit</a>
+            </div>
+        </div>
+        <div class="hero-right" style="background-color: #fff9f0;">
+            <div style="padding: 3rem; width: 100%;">
+                <div class="ui-card" style="position: relative; width: 100%; transform: none; box-shadow: 20px 20px 0 var(--black); background: #fff;">
+                    <div class="card-header">
+                        <span class="label-micro">RETURNS_MANAGER_v2</span>
+                        <span class="status" style="display: inline-block; width: 8px; height: 8px; background: #ff9900; border-radius: 50%;"></span>
+                    </div>
+                    <div style="margin: 1.5rem 0;">
+                        <div style="padding: 0.75rem; background: #fff; border: 1px dashed #ccc; margin-bottom: 1rem;">
+                            <p class="label-micro">Return Request #ORD-8821</p>
+                            <p style="font-size: 0.85rem;">Reason: Wrong size (Large required)</p>
+                        </div>
+                        <div style="text-align: center; color: var(--neon); font-size: 1.2rem;">⚡</div>
+                        <div style="padding: 0.75rem; background: var(--black); color: var(--white); border-radius: 4px;">
+                            <p class="label-micro" style="color: var(--gray-light);">Action Taken</p>
+                            <p style="font-size: 0.85rem;">Shipping Label Generated & Emailed</p>
+                            <p style="font-size: 0.85rem;">Storefront Inventory Flagged</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="density-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="label-micro">The Scaled Market</span>
+                <h2 class="text-display" style="margin-top: 1rem;">AMAZON &<br>SHOPIFY SYNC.</h2>
+                <p class="text-body-lg" style="margin-top: 1.5rem;">E-commerce has high expectations for delivery speed and return ease. We provide the technical backbone to compete with the giants through smart automation.</p>
+            </div>
+            
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <span class="cell-id">01</span>
+                    <h3 class="text-h3">Returns Automation</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Automated handling of the return window. Label generation, warehouse alerts, and refund triggers.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">02</span>
+                    <h3 class="text-h3">Shipping API Sync</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Directly syncing storefront orders with shipping carriers for zero-touch label printing.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">03</span>
+                    <h3 class="text-h3">Inventory Recon</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Multi-channel inventory syncing (Amazon, eBay, Shopify) to prevent overselling across stock.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">04</span>
+                    <h3 class="text-h3">Accounting Sync</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Automatically pushing sales data and tax details to your accounting software for easy filing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

@@ -1,0 +1,24 @@
+{
+  "redirects": [
+    {
+      "source": "/author/(.*)",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/legal-automation/",
+      "destination": "/legal-automation",
+      "permanent": true
+    },
+    {
+      "source": "/uk/legal-automation/",
+      "destination": "/legal-automation",
+      "permanent": true
+    },
+    {
+      "source": "/my/legal-automation/",
+      "destination": "/my/legal-automation",
+      "permanent": false
+    }
+  ]
+}

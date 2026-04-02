@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Professional Services Automation — Accountancy, Legal & Consulting";
+const description = "Automate your accountancy, legal or consulting firm. Cloud integration, standardized workflows, client onboarding and reporting. Free audit.";
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Professional Services Automation",
+  "description": "Standardized automation for accountants, consultants, and agencies. Automated onboarding and management reporting.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Autoflow Solutions"
+  },
+  "serviceType": "Professional Services Automation"
+};
+---
+
+<BaseLayout title={title} description={description} schemaData={schemaData}>
+    <header class="hero" style="min-height: 80vh;">
+        <div class="hero-left">
+            <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Vertical Focus: Prof Services</span>
+            <h1 class="text-display">BUSINESS<br>AUTOMATION.</h1>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Onboarding, CRM & Professional Workflow Experts</h2>
+            <p class="text-body-lg" style="margin-bottom: 2.5rem;">We help accountants, consultants, and agencies automate their client onboarding and primary compliance workflows.</p>
+            <div class="hero-btns" style="display: flex; gap: 1rem;">
+                <a href="/services#request" class="btn btn-solid">Get an Estimate</a>
+                <a href="/ai-self-audit" class="btn btn-neon">Free AI Self Audit</a>
+            </div>
+        </div>
+        <div class="hero-right" style="background-color: #f5f5f5;">
+            <div style="padding: 3rem; width: 100%;">
+                <div class="ui-card" style="position: relative; width: 100%; transform: none; box-shadow: 20px 20px 0 var(--black); background: #fff;">
+                    <div class="card-header">
+                        <span class="label-micro">SYNC_MANAGER</span>
+                        <span class="status" style="display: inline-block; width: 8px; height: 8px; background: #33b5e5; border-radius: 50%;"></span>
+                    </div>
+                    <div style="margin: 1.5rem 0; font-family: monospace; font-size: 0.8rem;">
+                        <p style="color: green;">> [SYSTEM] Initiating Data Workflow...</p>
+                        <p style="color: #666;">> Checking API Authorization token: OK</p>
+                        <p style="color: #666;">> Pulling Revenue Data from CRM/Accounting...</p>
+                        <div style="margin: 0.5rem 0; padding: 0.5rem; background: #eee;">
+                            Total: £44,921.00 | WIP: £12,486.83
+                        </div>
+                        <p style="color: green;">> Draft Report Prepared for Review.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="density-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="label-micro">The Scalability Factor</span>
+                <h2 class="text-display" style="margin-top: 1rem;">OPERATIONAL<br>LEVERAGE.</h2>
+                <p class="text-body-lg" style="margin-top: 1.5rem;">For professional services, the bottleneck is always human bandwidth. We build the digital infrastructure that handles repetitive admin, allowing your experts to focus on billable advisory work.</p>
+            </div>
+            
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <span class="cell-id">01</span>
+                    <h3 class="text-h3">Client Onboarding</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Automated client sequences — from initial inquiry to signed engagement letter and software setup.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">02</span>
+                    <h3 class="text-h3">CRM & Account Sync</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Depth-level integration for automated data entry alerts and consolidated management reporting pulls.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">03</span>
+                    <h3 class="text-h3">Automated Reminders</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Automated multi-channel invoice chasers (Email/SMS) and project deadline alerts that stop only when tasks are marked 'Complete'.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">04</span>
+                    <h3 class="text-h3">Compliance & Reporting</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Streamlining the digital record-keeping process to ensure your firm is compliant without the overhead of manual data checking.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>
