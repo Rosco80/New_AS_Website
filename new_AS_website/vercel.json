@@ -1,6 +1,30 @@
 {
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "MY"
+        }
+      ],
+      "destination": "/my",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "GB"
+        }
+      ],
+      "destination": "/uk",
+      "permanent": false
+    },
+    {
       "source": "/author/(.*)",
       "destination": "/about",
       "permanent": true

@@ -19,11 +19,12 @@ export default defineConfig({
     projectId: '9ujde8sq',
     dataset: 'production',
     useCdn: false,
-    studioBasePath: '/admin'
+    studioBasePath: '/admin',
+    studioRouterHistory: 'hash'
   }), react(), sitemap()],
   vite: {
     build: {
-      chunkSizeWarningLimit: 1000,
+      chunkSizeWarningLimit: 2000,
       rollupOptions: {
         output: {
           manualChunks(id) {
@@ -31,9 +32,7 @@ export default defineConfig({
               if (id.includes('sanity') || id.includes('@sanity')) {
                 return 'vendor-sanity';
               }
-              if (id.includes('react') || id.includes('react-dom')) {
-                return 'vendor-react';
-              }
+              // Keep other things (including React) together to avoid circular dependencies
               return 'vendor';
             }
           }
