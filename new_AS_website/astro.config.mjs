@@ -24,20 +24,7 @@ export default defineConfig({
   }), react(), sitemap()],
   vite: {
     build: {
-      chunkSizeWarningLimit: 2000,
-      rollupOptions: {
-        output: {
-          manualChunks(id) {
-            if (id.includes('node_modules')) {
-              if (id.includes('sanity') || id.includes('@sanity')) {
-                return 'vendor-sanity';
-              }
-              // Keep other things (including React) together to avoid circular dependencies
-              return 'vendor';
-            }
-          }
-        }
-      }
+      chunkSizeWarningLimit: 2000
     }
   }
 });
