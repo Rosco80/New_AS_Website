@@ -223,7 +223,7 @@ nav {
     border-right: 2px solid var(--black);
 }
 
-.hero-left .label-micro { border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md); }
+.hero-left .label-micro { display: inline-block; margin-bottom: var(--space-md); }
 
 .hero-left p {
     margin-top: var(--space-md);
