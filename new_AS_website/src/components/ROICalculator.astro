@@ -221,7 +221,7 @@ const { defaultCurrency = 'MYR' } = Astro.props;
         <div id="enterprise-overlay" class="enterprise-overlay hidden">
           <h2 class="enterprise-overlay__title">CUSTOM QUOTE REQUIRED</h2>
           <p class="enterprise-overlay__body">Enterprise deployments process 10k+ interactions monthly. These require dedicated RAG architectures and custom SLAs.</p>
-          <a href="https://autoflow-solutions.com/book" class="btn-primary" style="max-width: 240px;">SCHEDULE ARCHITECT CALL</a>
+          <button data-cal-link="autoflow-solutions/book-a-discovery-call" data-cal-config='{"layout":"month_view"}' class="btn-primary" style="max-width: 240px; border: none; margin: 0 auto;">SCHEDULE ARCHITECT CALL</button>
         </div>
 
         <div id="results-live-region" aria-live="polite" aria-atomic="false" class="visually-hidden"></div>
@@ -292,7 +292,7 @@ const { defaultCurrency = 'MYR' } = Astro.props;
         <div class="results-cta">
           <h2 class="results-cta__heading">BUILD THIS PIPELINE</h2>
           <p class="results-cta__body">Your free strategy call is 30 minutes. We map out exactly where to start and what the build looks like for your business.</p>
-          <a href="https://autoflow-solutions.com/book" class="btn-primary">BOOK YOUR FREE CALL</a>
+          <button data-cal-link="autoflow-solutions/book-a-discovery-call" data-cal-config='{"layout":"month_view"}' class="btn-primary" style="border: none;">BOOK STRATEGY CALL</button>
           <p class="results-cta__trust">No pitch deck. No obligation. Just the numbers.</p>
         </div>
 
@@ -319,7 +319,7 @@ const { defaultCurrency = 'MYR' } = Astro.props;
     <div class="site-container">
       <div class="trust-strip__inner">
         <h2 class="trust-strip__headline">YOUR OPS ARE EITHER WORKING FOR YOU OR COSTING YOU.</h2>
-        <a href="https://ai-self-audit.autoflow-solutions.com/" class="trust-strip__cta">START YOUR FREE AI AUDIT</a>
+        <a href="/ai-self-audit" class="trust-strip__cta">START YOUR FREE AI AUDIT</a>
       </div>
     </div>
   </div>

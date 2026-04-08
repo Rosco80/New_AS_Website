@@ -4,53 +4,33 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const services = [
     {
         id: "01",
-        title: "Engagement<br>Engine",
+        title: "Lead<br>Handling",
         price: "RM 300",
         setup: "RM 3,000",
-        description: "24/7 inquiry capture, qualification, and booking handoff across web and WhatsApp. Never miss a lead again.",
+        description: "Capture, qualify, and route inquiries from WhatsApp, web chat, and forms. Never miss a lead again.",
         statLabel: "RESPONSE TIME",
         statValue: "< 3 Seconds",
         capabilities: ["WhatsApp & Web Chat", "FAQ Handling", "Lead Qualification", "Missed Inquiry Recovery"]
     },
     {
         id: "02",
-        title: "Operations<br>Engine",
+        title: "Workflow<br>Automation",
         price: "RM 540",
         setup: "RM 5,400",
-        description: "Back-office workflow automation that removes repetitive admin. The commercial center of your autonomous business.",
+        description: "Back-office workflows that sync CRMs, trigger onboarding, and handle internal alerts.",
         statLabel: "TIME SAVED",
         statValue: "20+ hrs / week",
         capabilities: ["CRM Sync & Updates", "Onboarding Workflows", "Document Generation", "Internal Notifications"]
     },
     {
         id: "03",
-        title: "Voice<br>Engine",
+        title: "AI Task<br>Execution",
         price: "RM 600",
-        setup: "RM 6,000",
-        description: "An always-on AI front desk that answers calls, qualifies inquiries, and routes or books instantly.",
-        statLabel: "CALL RESOLUTION",
-        statValue: "80% Automated",
-        capabilities: ["Inbound Voice Handling", "Live Call Routing", "Appointment Booking", "Call Summary Logging"]
-    },
-    {
-        id: "04",
-        title: "Execution<br>Engine",
-        price: "RM 600",
-        setup: "RM 6,000",
-        description: "Autonomous digital workers that complete multi-step business tasks. Managed retainer available.",
+        setup: "RM 6,000+",
+        description: "Autonomous workers for voice answering, repetitive research, and cross-system actions.",
         statLabel: "AUTONOMY RATE",
         statValue: "100% Hands-Off",
-        capabilities: ["Discovery Sprint Included", "Task Research & Data Entry", "Cross-System Actions", "Full Audit Trail"]
-    },
-    {
-        id: "05",
-        title: "Managed<br>Enterprise",
-        price: "Contact",
-        setup: "RM 5,000+",
-        description: "Organization-wide autonomous architecture for scale. For businesses processing 10k+ interactions monthly.",
-        statLabel: "SCALE",
-        statValue: "Unlimited",
-        capabilities: ["Local AI Strategy Lead", "Custom RAG Architectures", "Dedicated Account Manager", "Custom SLAs"]
+        capabilities: ["Voice Call Handling", "Task Research & Data Entry", "Cross-System Actions", "Full Audit Trail"]
     }
 ];
 
@@ -134,13 +114,29 @@ const faqSchema = {
     <header class="services-hero">
         <div class="container">
             <span class="label-micro" style="margin-bottom: 1rem;">OUR ARSENAL</span>
-            <h1 class="text-display" style="margin-bottom: 2rem;">APPLIED<br>LEVERAGE.</h1>
-            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--neon);">Done-for-You AI Automation and Agent Deployment for Malaysian Businesses</h2>
-            <p class="text-body-lg" style="max-width: 600px;">We don't sell software. We install systems that replace manual overhead with autonomous reliability.</p>
+            <h1 class="text-display" style="margin-bottom: 2rem;">SOLUTION<br>ARCHITECTURE.</h1>
+            <p class="text-body-lg" style="max-width: 600px;">We replace broken processes with autonomous systems that capture leads, eliminate admin, and scale your output.</p>
         </div>
     </header>
 
-    <section class="services-list">
+    <section class="density-section" style="background-color: var(--black); color: var(--white); padding: 4rem 0;">
+        <div class="container">
+            <div class="grid-2" style="gap: 4rem;">
+                <div>
+                    <h3 class="text-h3" style="color: var(--neon); margin-bottom: 1rem;">The Problem & Cost of Inaction</h3>
+                    <p class="text-body" style="color: var(--gray-light); margin-bottom: 1rem;">When leads aren't responded to immediately, they move to a competitor. When data isn't synced, staff spend hours manually copying information instead of doing high-value work.</p>
+                    <p class="text-body" style="color: var(--gray-light);">The cost? Wasted marketing spend, bloated payrolls, and a ceiling on your growth.</p>
+                </div>
+                <div>
+                    <h3 class="text-h3" style="color: var(--neon); margin-bottom: 1rem;">Who It's For & Expected Outcomes</h3>
+                    <p class="text-body" style="color: var(--gray-light); margin-bottom: 1rem;">Our systems are built for <strong>Malaysian Professional Service SMEs</strong> (accounting, legal, consulting, clinics) who rely on high-value conversations and clean data.</p>
+                    <p class="text-body" style="color: var(--gray-light);">You can expect less overhead, an always-accurate CRM, and 24/7 lead handling.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-list" style="padding-top: 4rem;">
         <div class="container">
             <div class="services-grid">
                 {services.map((svc) => (
@@ -213,9 +209,16 @@ const faqSchema = {
     <section id="request" class="request-section">
         <div class="container request-container">
             <div>
-                <span style="color: var(--neon); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 2rem; display: block; letter-spacing: 1px;">Get Started</span>
-                <h2 style="font-size: 4rem; line-height: 1; font-weight: 900; margin-bottom: 2rem; letter-spacing: -2px;">Request<br>Service Build.</h2>
-                <p class="text-body-lg" style="color: var(--gray-light); font-weight: 500; font-size: 1.1rem; max-width: 450px;">Fill out the brief. Our engineering team will review your current tech stack and provide a implementation roadmap within 48 hours.</p>
+                <span style="color: var(--neon); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 2rem; display: block; letter-spacing: 1px;">Next Steps</span>
+                <h2 style="font-size: 4rem; line-height: 1; font-weight: 900; margin-bottom: 2rem; letter-spacing: -2px;">Calculate<br>Your ROI.</h2>
+                <p class="text-body-lg" style="color: var(--gray-light); font-weight: 500; font-size: 1.1rem; max-width: 450px; margin-bottom: 2.5rem;">Before jumping into a build, figure out exactly how much time and money automation will save you. Or take our free AI capability audit.</p>
+                
+                <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 350px;">
+                    <a href="/my/tools/automation-roi-calculator" class="btn btn-solid" style="background-color: var(--neon); color: var(--black);">Calculate ROI</a>
+                    <a href="/my/ai-self-audit" class="btn btn-outline" style="border-color: var(--white); color: var(--white);">Start Free AI Audit</a>
+                </div>
+                
+                <p class="text-body" style="color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-top: 3rem;">Already know what you need? Fill out the build brief and our engineers will provide a roadmap.</p>
             </div>
             
             <div class="form-card">

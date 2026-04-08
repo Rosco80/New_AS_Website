@@ -4,43 +4,33 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const services = [
     {
         id: "01",
-        title: "Tanpa Pertanyaan Terlepas & Pengangkapan Prospek 24/7",
+        title: "Pengendalian<br>Prospek",
         price: "RM 300",
         setup: "RM 3,000",
-        description: "Ubah pelawat laman web lewat malam menjadi prospek berkelayakan dan tempah janji temu dengan lancar semasa pasukan anda sedang berehat. Dikuasakan oleh AI pelbagai bahasa yang memahami konteks.",
+        description: "Tangkap, layakkan, dan halakan pertanyaan daripada WhatsApp, sembang web, dan borang. Jangan terlepas satu prospek pun.",
         statLabel: "MASA MAKLUM BALAS",
         statValue: "< 3 Saat",
-        capabilities: ["Respons Automatik", "Pemarkahan Prospek", "Penghalaan Tiket", "Memori Konteks"]
+        capabilities: ["WhatsApp & Sembang Web", "Respons FAQ", "Kelayakan Prospek", "Pemulihan Pertanyaan Terlepas"]
     },
     {
         id: "02",
-        title: "Automasikan Pejabat Belakang Anda",
+        title: "Automasi<br>Aliran Kerja",
         price: "RM 540",
         setup: "RM 5,400",
-        description: "Hapuskan kemasukan data manual, automasikan susulan pelanggan, dan sambungkan perisian anda yang berpecah menjadi satu aliran kerja bersepadu. Dipacu oleh orkestrasi API pintar.",
+        description: "Aliran kerja pejabat belakang yang menyegerakkan CRM, mencetus onboarding, dan mengendalikan makluman dalaman.",
         statLabel: "BIASA DIJIMATKAN",
         statValue: "20+ jam / seminggu",
-        capabilities: ["Penyelarasan CRM", "Webhook & API", "Middleware Data", "Pengesanan Anomali"]
+        capabilities: ["Penyelarasan CRM", "Aliran Kerja Onboarding", "Penjanaan Dokumen", "Makluman Dalaman"]
     },
     {
         id: "03",
-        title: "Kaunter Hadapan Sentiasa Aktif",
+        title: "Pelaksanaan<br>Tugasan AI",
         price: "RM 600",
-        setup: "RM 6,000",
-        description: "Gunakan pembantu suara yang berbunyi semulajadi untuk mengendalikan panggilan masuk rutin, menjawab FAQ, dan melayakkan prospek tanpa perlu pelanggan menunggu.",
-        statLabel: "RESOLUSI PANGGILAN",
-        statValue: "80% Automatik",
-        capabilities: ["Penghalaan Masuk", "Tempahan Langsung", "Pengekstrakan Suara-ke-Teks", "Resolusi FAQ"]
-    },
-    {
-        id: "04",
-        title: "Pelaksanaan Tugasan Autonomi",
-        price: "RM 600",
-        setup: "RM 6,000",
-        description: "Gunakan pekerja digital pintar yang bukan sekadar menjawab soalan, tetapi aktif menyelesaikan proses pelbagai langkah—daripada penyelidikan mendalam hingga kemasukan data kompleks—bertindak sebagai lanjutan autonomi pasukan anda.",
+        setup: "RM 6,000+",
+        description: "Pekerja autonomi untuk menjawab panggilan suara, penyelidikan berulang, dan tindakan rentas sistem.",
         statLabel: "KADAR AUTONOMI",
         statValue: "100% Tanpa Tangan",
-        capabilities: ["Penaakulan Pelbagai Langkah", "Scraping Web & Pangkalan Data", "Pelaksanaan Alat Autonomi", "Pengesahan & Pembetulan Auto"]
+        capabilities: ["Pengendalian Panggilan Suara", "Penyelidikan & Kemasukan Data", "Tindakan Rentas Sistem", "Jejak Audit Penuh"]
     }
 ];
 
@@ -124,13 +114,29 @@ const faqSchema = {
     <header class="services-hero">
         <div class="container">
             <span class="label-micro" style="margin-bottom: 1rem;">ARSENIL KAMI</span>
-            <h1 class="text-display" style="margin-bottom: 2rem;">LEVERAJ<br>GUNAAN.</h1>
-            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--neon);">Automasi AI dan Penggunaan Ejen Siap-Sedia untuk Perniagaan Malaysia</h2>
-            <p class="text-body-lg" style="max-width: 600px;">Kami tidak menjual perisian. Kami memasang sistem yang menggantikan beban kerja manual dengan kebolehpercayaan autonomi.</p>
+            <h1 class="text-display" style="margin-bottom: 2rem;">SENI BINA<br>PENYELESAIAN.</h1>
+            <p class="text-body-lg" style="max-width: 600px;">Kami menggantikan proses yang rosak dengan sistem autonomi yang menangkap prospek, menghapuskan beban kerja admin, dan meningkatkan skala perniagaan anda.</p>
         </div>
     </header>
 
-    <section class="services-list">
+    <section class="density-section" style="background-color: var(--black); color: var(--white); padding: 4rem 0;">
+        <div class="container">
+            <div class="grid-2" style="gap: 4rem;">
+                <div>
+                    <h3 class="text-h3" style="color: var(--neon); margin-bottom: 1rem;">Masalah & Kos Tiada Tindakan</h3>
+                    <p class="text-body" style="color: var(--gray-light); margin-bottom: 1rem;">Apabila prospek tidak dijawab dengan serta-merta, mereka beralih ke pesaing. Apabila data tidak disegerakkan, kakitangan membuang masa menyalin maklumat secara manual dan bukan melakukan kerja bernilai tinggi.</p>
+                    <p class="text-body" style="color: var(--gray-light);">Kosnya? Pembaziran bajet pemasaran, kos gaji meningkat, dan had pada pertumbuhan anda.</p>
+                </div>
+                <div>
+                    <h3 class="text-h3" style="color: var(--neon); margin-bottom: 1rem;">Untuk Siapa & Hasil Jangkaan</h3>
+                    <p class="text-body" style="color: var(--gray-light); margin-bottom: 1rem;">Sistem kami dibina untuk <strong>PKS Perkhidmatan Profesional</strong> (perakaunan, guaman, perundingan, klinik) yang bergantung pada perbualan bernilai tinggi dan data bersih.</p>
+                    <p class="text-body" style="color: var(--gray-light);">Anda boleh jangkakan pengurangan beban operasi, CRM yang sentiasa tepat, dan pengendalian prospek 24/7.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-list" style="padding-top: 4rem;">
         <div class="container">
             <div class="services-grid">
                 {services.map((svc) => (
@@ -199,9 +205,16 @@ const faqSchema = {
     <section id="request" class="request-section">
         <div class="container request-container">
             <div>
-                <span style="color: var(--neon); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 2rem; display: block; letter-spacing: 1px;">Mula Sekarang</span>
-                <h2 style="font-size: 4rem; line-height: 1; font-weight: 900; margin-bottom: 2rem; letter-spacing: -2px;">Mohon<br>Bina Perkhidmatan.</h2>
-                <p class="text-body-lg" style="color: var(--gray-light); font-weight: 500; font-size: 1.1rem; max-width: 450px;">Isi ringkasan ini. Pasukan jurutera kami akan menyemak teknologi sedia ada anda dan memberikan pelan pelaksanaan dalam masa 48 jam.</p>
+                <span style="color: var(--neon); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 2rem; display: block; letter-spacing: 1px;">Langkah Seterusnya</span>
+                <h2 style="font-size: 4rem; line-height: 1; font-weight: 900; margin-bottom: 2rem; letter-spacing: -2px;">Kira<br>ROI Anda.</h2>
+                <p class="text-body-lg" style="color: var(--gray-light); font-weight: 500; font-size: 1.1rem; max-width: 450px; margin-bottom: 2.5rem;">Sebelum menyasarkan pembinaan, ketahui dengan tepat berapa banyak masa dan wang yang akan dijimatkan. Atau mulakan audit keupayaan AI percuma kami.</p>
+                
+                <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 350px;">
+                    <a href="/ms/tools/automation-roi-calculator" class="btn btn-solid" style="background-color: var(--neon); color: var(--black);">Kira ROI</a>
+                    <a href="/ms/ai-self-audit" class="btn btn-outline" style="border-color: var(--white); color: var(--white);">Mula Audit AI Percuma</a>
+                </div>
+                
+                <p class="text-body" style="color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-top: 3rem;">Sudah tahu apa yang anda perlukan? Isi borang ringkasan dan jurutera kami akan memberikan pelan.</p>
             </div>
             
             <div class="form-card">
