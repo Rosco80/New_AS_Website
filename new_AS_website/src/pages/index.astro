@@ -2,6 +2,29 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
+<script>
+  // Client-side geo-redirect — only runs in the browser.
+  // Googlebot ignores JS, so the homepage remains fully indexable.
+  (function () {
+    // Don't redirect if user has already visited (prevents redirect loops)
+    if (sessionStorage.getItem('geo-redirected')) return;
+
+    fetch('https://ipapi.co/json/')
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        var country = data && data.country_code;
+        if (country === 'MY') {
+          sessionStorage.setItem('geo-redirected', '1');
+          window.location.replace('/my');
+        } else if (country === 'GB') {
+          sessionStorage.setItem('geo-redirected', '1');
+          window.location.replace('/uk');
+        }
+      })
+      .catch(function () { /* silently fail — user stays on global page */ });
+  })();
+</script>
+
 <BaseLayout title="Home">
     <header class="hero">
         <div class="hero-left">
