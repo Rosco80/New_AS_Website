@@ -269,8 +269,29 @@ const combinedPageSchema = [serviceSchema, faqSchema];
                             <input type="url" name="website" placeholder="https://yourcompany.com" required>
                         </div>
                         <div class="input-group">
+                            <label>How big is your team?</label>
+                            <select name="team_size" required>
+                                <option value="">Select team size</option>
+                                <option value="Solo / Just me">Solo / Just me</option>
+                                <option value="2-10">2–10</option>
+                                <option value="11-50">11–50</option>
+                                <option value="50+">50+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>When are you looking to start?</label>
+                            <select name="timeline" required>
+                                <option value="">Select timeline</option>
+                                <option value="ASAP">ASAP — this is costing us now</option>
+                                <option value="1-3 months">Within 1–3 months</option>
+                                <option value="Exploring">Just exploring for now</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
                             <label>Current Tech Stack</label>
-                            <input type="text" name="tech_stack" placeholder="e.g. Salesforce, Shopify, Excel..." required>
+                            <input type="text" name="tech_stack" placeholder="e.g. Salesforce, Shopify, Excel...">
                         </div>
                     </div>
                     <div class="input-group">
@@ -307,6 +328,8 @@ const combinedPageSchema = [serviceSchema, faqSchema];
                         full_name:     form.full_name.value,
                         email:         form.email.value,
                         website:       form.website.value,
+                        team_size:     form.team_size.value,
+                        timeline:      form.timeline.value,
                         tech_stack:    form.tech_stack.value,
                         bottleneck:    form.bottleneck.value,
                         source_page:   window.location.pathname,

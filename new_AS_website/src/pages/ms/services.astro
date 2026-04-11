@@ -246,8 +246,29 @@ const faqSchema = {
                             <input type="url" name="website" placeholder="https://syarikatanda.com" required>
                         </div>
                         <div class="input-group">
+                            <label>Berapa ramai ahli pasukan anda?</label>
+                            <select name="team_size" required>
+                                <option value="">Pilih saiz pasukan</option>
+                                <option value="Solo / Just me">Seorang / Saya sahaja</option>
+                                <option value="2-10">2–10</option>
+                                <option value="11-50">11–50</option>
+                                <option value="50+">50+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>Bila anda ingin bermula?</label>
+                            <select name="timeline" required>
+                                <option value="">Pilih masa</option>
+                                <option value="ASAP">Segera — ini sedang menjejaskan kami</option>
+                                <option value="1-3 months">Dalam 1–3 bulan</option>
+                                <option value="Exploring">Meneroka buat masa ini</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
                             <label>Teknologi Sedia Ada</label>
-                            <input type="text" name="tech_stack" placeholder="cth: Salesforce, Shopify, Excel..." required>
+                            <input type="text" name="tech_stack" placeholder="cth: Salesforce, Shopify, Excel...">
                         </div>
                     </div>
                     <div class="input-group">
@@ -284,6 +305,8 @@ const faqSchema = {
                         full_name:     form.full_name.value,
                         email:         form.email.value,
                         website:       form.website.value,
+                        team_size:     form.team_size.value,
+                        timeline:      form.timeline.value,
                         tech_stack:    form.tech_stack.value,
                         bottleneck:    form.bottleneck.value,
                         source_page:   window.location.pathname,
