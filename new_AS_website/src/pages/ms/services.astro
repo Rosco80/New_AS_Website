@@ -218,7 +218,7 @@ const faqSchema = {
             </div>
             
             <div class="form-card">
-                <form action="https://formspree.io/f/mqeyoabe" method="POST">
+                <form id="build-brief-form" novalidate>
                     <div class="input-group">
                         <label>Enjin Sasaran</label>
                         <select name="target_engine" required>
@@ -255,8 +255,70 @@ const faqSchema = {
                         <textarea name="bottleneck" rows="3" placeholder="Huraikan tugasan manual yang anda mahu jurutera kami automasikan..." required></textarea>
                     </div>
                     <button type="submit" class="btn-submit-pill">Mulakan Penilaian</button>
+                    <div id="form-status" style="display:none; margin-top:1rem; padding:1rem; border-radius:8px; text-align:center; font-size:0.9rem;"></div>
                 </form>
             </div>
+
+            <script>
+            (function() {
+                const N8N_WEBHOOK = 'https://n8n.soryle.space/webhook-test/lead-qualify';
+                const FORMSPREE   = 'https://formspree.io/f/mqeyoabe';
+
+                document.getElementById('build-brief-form').addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    const form   = e.target;
+                    const btn    = form.querySelector('button[type="submit"]');
+                    const status = document.getElementById('form-status');
+
+                    if (!form.checkValidity()) {
+                        form.reportValidity();
+                        return;
+                    }
+
+                    btn.disabled    = true;
+                    btn.textContent = 'Menghantar…';
+                    status.style.display = 'none';
+
+                    const data = {
+                        target_engine: form.target_engine.value,
+                        full_name:     form.full_name.value,
+                        email:         form.email.value,
+                        website:       form.website.value,
+                        tech_stack:    form.tech_stack.value,
+                        bottleneck:    form.bottleneck.value,
+                        source_page:   window.location.pathname,
+                        locale:        'ms',
+                        submitted_at:  new Date().toISOString()
+                    };
+
+                    const formData = new FormData(form);
+
+                    try {
+                        await Promise.all([
+                            fetch(N8N_WEBHOOK, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify(data)
+                            }),
+                            fetch(FORMSPREE, {
+                                method: 'POST',
+                                headers: { 'Accept': 'application/json' },
+                                body: formData
+                            })
+                        ]);
+                        form.reset();
+                        btn.textContent = 'Dihantar!';
+                        status.style.cssText = 'display:block; background:rgba(212,255,0,0.1); border:1px solid #D4FF00; color:#D4FF00; margin-top:1rem; padding:1rem; border-radius:8px; text-align:center; font-size:0.9rem;';
+                        status.textContent = "Brifing diterima. Kami akan semak dan menghubungi anda tidak lama lagi.";
+                    } catch (err) {
+                        btn.disabled    = false;
+                        btn.textContent = 'Mulakan Penilaian';
+                        status.style.cssText = 'display:block; background:rgba(255,80,80,0.1); border:1px solid #ff5050; color:#ff5050; margin-top:1rem; padding:1rem; border-radius:8px; text-align:center; font-size:0.9rem;';
+                        status.textContent = 'Ralat berlaku. Sila cuba lagi atau hubungi kami terus melalui emel.';
+                    }
+                });
+            })();
+            </script>
         </div>
     </section>
 

@@ -222,8 +222,7 @@ const faqSchema = {
             </div>
             
             <div class="form-card">
-                <!-- IMPORTANT: Currently the form submits nowhere. Add your Formspree/Netlify/API endpoint to the action attribute to collect leads! -->
-                <form action="https://formspree.io/f/mqeyoabe" method="POST">
+                <form id="build-brief-form" novalidate>
                     <div class="input-group">
                         <label>Target Engine</label>
                         <select name="target_engine" required>
@@ -260,8 +259,70 @@ const faqSchema = {
                         <textarea name="bottleneck" rows="3" placeholder="Describe the manual task you want our engineers to kill..." required></textarea>
                     </div>
                     <button type="submit" class="btn-submit-pill">Initialize Assessment</button>
+                    <div id="form-status" style="display:none; margin-top:1rem; padding:1rem; border-radius:8px; text-align:center; font-size:0.9rem;"></div>
                 </form>
             </div>
+
+            <script>
+            (function() {
+                const N8N_WEBHOOK = 'https://n8n.soryle.space/webhook-test/lead-qualify';
+                const FORMSPREE   = 'https://formspree.io/f/mqeyoabe';
+
+                document.getElementById('build-brief-form').addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    const form   = e.target;
+                    const btn    = form.querySelector('button[type="submit"]');
+                    const status = document.getElementById('form-status');
+
+                    if (!form.checkValidity()) {
+                        form.reportValidity();
+                        return;
+                    }
+
+                    btn.disabled    = true;
+                    btn.textContent = 'Sending…';
+                    status.style.display = 'none';
+
+                    const data = {
+                        target_engine: form.target_engine.value,
+                        full_name:     form.full_name.value,
+                        email:         form.email.value,
+                        website:       form.website.value,
+                        tech_stack:    form.tech_stack.value,
+                        bottleneck:    form.bottleneck.value,
+                        source_page:   window.location.pathname,
+                        locale:        'my',
+                        submitted_at:  new Date().toISOString()
+                    };
+
+                    const formData = new FormData(form);
+
+                    try {
+                        await Promise.all([
+                            fetch(N8N_WEBHOOK, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify(data)
+                            }),
+                            fetch(FORMSPREE, {
+                                method: 'POST',
+                                headers: { 'Accept': 'application/json' },
+                                body: formData
+                            })
+                        ]);
+                        form.reset();
+                        btn.textContent = 'Sent!';
+                        status.style.cssText = 'display:block; background:rgba(212,255,0,0.1); border:1px solid #D4FF00; color:#D4FF00; margin-top:1rem; padding:1rem; border-radius:8px; text-align:center; font-size:0.9rem;';
+                        status.textContent = "Brief received. We'll review and be in touch shortly.";
+                    } catch (err) {
+                        btn.disabled    = false;
+                        btn.textContent = 'Initialize Assessment';
+                        status.style.cssText = 'display:block; background:rgba(255,80,80,0.1); border:1px solid #ff5050; color:#ff5050; margin-top:1rem; padding:1rem; border-radius:8px; text-align:center; font-size:0.9rem;';
+                        status.textContent = 'Something went wrong. Please try again or email us directly.';
+                    }
+                });
+            })();
+            </script>
         </div>
     </section>
 
