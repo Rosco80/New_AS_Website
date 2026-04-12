@@ -145,7 +145,7 @@ h1, h2, h3, h4 {
     color: var(--black);
     border: 2px solid var(--neon);
 }
-.btn-neon:hover { background-color: transparent; border-color: var(--black); }
+.btn-neon:hover { background-color: transparent; border-color: var(--neon); color: var(--neon); }
 
 
 .logo {
