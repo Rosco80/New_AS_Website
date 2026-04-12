@@ -95,23 +95,28 @@ const websiteSchema = {
 		{combinedSchema && (Array.isArray(combinedSchema) ? combinedSchema.map(item => <Schema item={item} />) : <Schema item={combinedSchema} />)}
 
 		
-		<!-- Google tag (gtag.js) — cookieless to prevent REQUEST_HEADER_TOO_LARGE -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-6ETHYCNH3X"></script>
+		<!-- Google Fonts — async to avoid render-blocking -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;700&family=Barlow+Condensed:wght@600;700;900&display=swap" media="print" onload="this.media='all'">
+		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;700&family=Barlow+Condensed:wght@600;700;900&display=swap"></noscript>
+
+		<!-- Google tag (gtag.js) — deferred after load, cookieless -->
 		<script is:inline>
 		  window.dataLayer = window.dataLayer || [];
 		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-
-		  gtag('config', 'G-6ETHYCNH3X', {
-		    client_storage: 'none',
-		    anonymize_ip: true
+		  window.addEventListener('load', function() {
+		    var s = document.createElement('script');
+		    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-6ETHYCNH3X';
+		    s.async = true;
+		    document.head.appendChild(s);
+		    gtag('js', new Date());
+		    gtag('config', 'G-6ETHYCNH3X', {
+		      client_storage: 'none',
+		      anonymize_ip: true
+		    });
 		  });
 		</script>
-
-		<!-- Google Fonts -->
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;700&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet">
 
 		<!-- SEO: Regional Alt Versions -->
 		<link rel="alternate" hreflang="en-MY" href={`https://autoflow-solutions.com/my${sanitizedPath.replace(/^\/(my|ms|uk)/, '')}`} />
