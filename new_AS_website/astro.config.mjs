@@ -13,12 +13,12 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://autoflow-solutions.com',
   trailingSlash: 'never',
-  output: 'static',
+  output: 'server',
   adapter: vercel(),
   integrations: [sanity({
     projectId: '9ujde8sq',
     dataset: 'production',
-    useCdn: false,
+    useCdn: true,
     studioBasePath: '/admin',
     studioRouterHistory: 'hash'
   }), react(), sitemap()],
