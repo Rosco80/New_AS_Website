@@ -1,0 +1,206 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const title = "AI Task Execution Service Malaysia — Autonomous Workers for Research, Voice & Data Entry";
+const description = "Deploy autonomous AI workers that handle voice calls, repetitive research, data entry, and cross-system actions with a full audit trail. 100% hands-off. Built for Malaysian SMEs.";
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "AI Agent Deployment and Task Automation",
+  "description": "Autonomous AI workers for Malaysian SMEs — voice call handling, web research, data entry, and cross-system actions with full audit trail.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Autoflow Solutions"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "MY"
+  },
+  "serviceType": "AI Agent Deployment and Task Automation",
+  "offers": {
+    "@type": "Offer",
+    "price": "600",
+    "priceCurrency": "MYR",
+    "description": "RM 600/mo + RM 6,000+ setup"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What kinds of tasks can be fully automated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Voice answering, web research, data entry across systems, document processing, and scheduled cross-platform actions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there an audit trail for what the AI does?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Every action is logged with a full audit trail — what ran, when, and what the output was."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is this different from a chatbot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A chatbot responds to inputs. AI task execution proactively completes multi-step workflows without human initiation."
+      }
+    }
+  ]
+};
+
+const schemaData = [serviceSchema, faqSchema];
+---
+
+<BaseLayout title={title} description={description} schemaData={schemaData}>
+    <header class="hero" style="min-height: 80vh;">
+        <div class="hero-left">
+            <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Service Offer</span>
+            <h1 class="text-display">AI TASK<br>EXECUTION.</h1>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Autonomous AI Workers for Malaysian Businesses</h2>
+            <p class="text-body-lg" style="margin-bottom: 2.5rem;">Voice calls answered. Research done. Data entered. Systems updated. All by AI agents running autonomously — with a full audit trail so you see exactly what ran and when.</p>
+            <div class="hero-btns" style="display: flex; gap: 1rem;">
+                <a href="/my/services#request" class="btn btn-solid">Send Build Brief</a>
+                <a href="https://ai-self-audit.autoflow-solutions.com/" class="btn btn-neon">Free AI Audit</a>
+            </div>
+        </div>
+        <div class="hero-right" style="background-color: #f8f8f8;">
+            <div style="padding: 3rem; width: 100%;">
+                <div class="ui-card" style="position: relative; width: 100%; transform: none; box-shadow: 20px 20px 0 var(--black);">
+                    <div class="card-header">
+                        <span class="label-micro">AI_WORKER_AGENT_MY</span>
+                        <span class="status" style="display: inline-block; width: 8px; height: 8px; background: var(--neon); border-radius: 50%;"></span>
+                    </div>
+                    <div style="margin: 1.5rem 0; font-family: monospace; font-size: 0.8rem;">
+                        <p style="color: var(--gray-dark);">[09:14] Task received: Research competitor pricing</p>
+                        <p style="color: var(--gray-dark);">[09:14] Browsing 6 sources...</p>
+                        <p style="color: var(--gray-dark);">[09:15] Extracting structured data...</p>
+                        <p style="color: green;">[09:15] Sheet updated. Summary emailed. ✓</p>
+                    </div>
+                    <p class="text-body" style="font-size: 0.85rem; color: var(--gray-dark);">Full audit log stored. 0 human hours used.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="density-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="label-micro">What It Does</span>
+                <h2 class="text-display" style="margin-top: 1rem;">HANDS-OFF<br>EXECUTION.</h2>
+                <p class="text-body-lg" style="margin-top: 1.5rem;">AI Task Execution goes beyond chat. These are autonomous agents that take actions: they call, they research, they enter data, they update systems — proactively, on schedule or on trigger, with no human initiation needed.</p>
+            </div>
+
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <span class="cell-id">01</span>
+                    <h3 class="text-h3">Voice Call Handling</h3>
+                    <p class="text-body" style="margin-top: 1rem;">AI voice agents that answer inbound calls in English, Bahasa Malaysia, or Mandarin — collect information, and route or escalate based on intent.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">02</span>
+                    <h3 class="text-h3">Research & Data Entry</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Agents that browse, extract, structure, and enter data into your systems on a schedule. Competitor monitoring, lead enrichment, market tracking — all automated.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">03</span>
+                    <h3 class="text-h3">Cross-System Actions</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Multi-step workflows that touch multiple platforms in sequence — read from one system, process, write to another. No API limitation too complex.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">04</span>
+                    <h3 class="text-h3">Full Audit Trail</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Every action logged: what task ran, what data was used, what the output was, and when it completed. Full visibility without manual oversight.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: var(--space-xl) 0; background: var(--white);">
+        <div class="container">
+            <h2 class="text-h2" style="margin-bottom: 2rem;">Industries We Deploy For</h2>
+            <p class="text-body-lg" style="max-width: 800px;">AI Task Execution is built for Malaysian businesses with high-volume repetitive work — logistics companies processing manifests, clinics handling appointment confirmations, agencies running competitor research, and professional service firms managing data across multiple platforms.</p>
+        </div>
+    </section>
+
+    <section style="padding: var(--space-xl) 0; background: #f8f8f8;">
+        <div class="container">
+            <h2 class="text-h2" style="margin-bottom: 2rem;">Tech Stack</h2>
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <h3 class="text-h3">Agent Orchestration</h3>
+                    <p class="text-body" style="margin-top: 1rem;"><a href="/my/tools/n8n">n8n</a> for complex multi-step agent pipelines. Custom agent frameworks for tasks requiring browser control and multi-system access.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <h3 class="text-h3">Voice AI</h3>
+                    <p class="text-body" style="margin-top: 1rem;"><a href="/my/tools/voiceflow">Voiceflow</a> for conversation flow design. Multilingual voice synthesis and transcription supporting English, BM, and Mandarin.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <h3 class="text-h3">AI Models</h3>
+                    <p class="text-body" style="margin-top: 1rem;">GPT-4 class models for reasoning tasks. Smaller, faster models for high-frequency classification and extraction tasks.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <h3 class="text-h3">Data & Storage</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Google Sheets, Airtable, PostgreSQL, or your existing database. All outputs structured and queryable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: var(--space-xl) 0; background: var(--white);">
+        <div class="container">
+            <div style="max-width: 600px;">
+                <h2 class="text-h2" style="margin-bottom: 2rem;">Pricing</h2>
+                <div style="padding: 2rem; border: 2px solid var(--black); border-radius: var(--radius-md);">
+                    <p class="label-micro">AI TASK EXECUTION — MALAYSIA</p>
+                    <p style="font-size: 2rem; font-weight: 900; margin: 1rem 0;">RM 600<span style="font-size: 1rem; font-weight: 400;">/mo</span></p>
+                    <p style="font-size: 1rem; color: var(--gray-dark); margin-bottom: 1.5rem;">+ RM 6,000+ one-time setup (complexity-dependent)</p>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 1.5rem;">
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">Custom autonomous agent build</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">Voice, research, or data entry deployment</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">Cross-system action pipeline</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">Full audit trail and logging</li>
+                        <li style="padding: 0.5rem 0;">Ongoing monitoring and performance tuning</li>
+                    </ul>
+                    <a href="/my/services#request" class="btn btn-solid" style="display: inline-block;">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: var(--space-xl) 0; background: #f8f8f8;">
+        <div class="container">
+            <h2 class="text-h2" style="margin-bottom: 2rem;">Frequently Asked Questions</h2>
+            <div style="max-width: 800px;">
+                <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #eee;">
+                    <h3 class="text-h3">What kinds of tasks can be fully automated?</h3>
+                    <p class="text-body" style="margin-top: 0.75rem;">Voice answering, web research, data entry across systems, document processing, and scheduled cross-platform actions.</p>
+                </div>
+                <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #eee;">
+                    <h3 class="text-h3">Is there an audit trail for what the AI does?</h3>
+                    <p class="text-body" style="margin-top: 0.75rem;">Yes. Every action is logged with a full audit trail — what ran, when, and what the output was.</p>
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 class="text-h3">How is this different from a chatbot?</h3>
+                    <p class="text-body" style="margin-top: 0.75rem;">A chatbot responds to inputs. AI task execution proactively completes multi-step workflows without human initiation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: var(--space-xl) 0; background: var(--white);">
+        <div class="container">
+            <p class="text-body" style="color: var(--gray-dark);">
+                Related services: <a href="/my/services/lead-handling">Lead Handling</a> · <a href="/my/services/workflow-automation">Workflow Automation</a> · <a href="/my/services">All Services</a>
+            </p>
+        </div>
+    </section>
+</BaseLayout>

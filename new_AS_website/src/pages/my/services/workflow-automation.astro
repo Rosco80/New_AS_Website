@@ -1,0 +1,218 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const title = "Workflow Automation Service Malaysia — CRM Sync, Onboarding & Back-Office";
+const description = "Back-office workflows that sync CRMs, trigger onboarding sequences, generate documents, and handle internal alerts. 20+ hours saved weekly. Done-for-you for Malaysian SMEs.";
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Business Process and Workflow Automation",
+  "description": "Done-for-you back-office automation for Malaysian SMEs: CRM sync, client onboarding, document generation, and internal notifications.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Autoflow Solutions"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "MY"
+  },
+  "serviceType": "Business Process and Workflow Automation",
+  "offers": {
+    "@type": "Offer",
+    "price": "540",
+    "priceCurrency": "MYR",
+    "description": "RM 540/mo + RM 5,400 setup"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which CRMs do you integrate with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HighLevel, Zoho CRM, HubSpot, and custom setups — full configuration included."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can this automate our client onboarding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Onboarding sequence automation is one of the most common deployments — contract delivery, welcome flows, task triggers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many hours per week does this typically save?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most SMEs report 20+ hours saved weekly once back-office workflows are automated."
+      }
+    }
+  ]
+};
+
+const schemaData = [serviceSchema, faqSchema];
+---
+
+<BaseLayout title={title} description={description} schemaData={schemaData}>
+    <header class="hero" style="min-height: 80vh;">
+        <div class="hero-left">
+            <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Service Offer</span>
+            <h1 class="text-display">WORKFLOW<br>AUTOMATION.</h1>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Done-for-You Back-Office Automation for Malaysian SMEs</h2>
+            <p class="text-body-lg" style="margin-bottom: 2.5rem;">CRM sync, onboarding sequences, document generation, and internal alerts — all running automatically so your team focuses on delivery, not admin.</p>
+            <div class="hero-btns" style="display: flex; gap: 1rem;">
+                <a href="/my/services#request" class="btn btn-solid">Send Build Brief</a>
+                <a href="https://ai-self-audit.autoflow-solutions.com/" class="btn btn-neon">Free AI Audit</a>
+            </div>
+        </div>
+        <div class="hero-right" style="background-color: #f8f8f8;">
+            <div style="padding: 3rem; width: 100%;">
+                <div class="ui-card" style="position: relative; width: 100%; transform: none; box-shadow: 20px 20px 0 var(--black);">
+                    <div class="card-header">
+                        <span class="label-micro">ONBOARDING_TRIGGER_MY</span>
+                        <span class="status" style="display: inline-block; width: 8px; height: 8px; background: var(--neon); border-radius: 50%;"></span>
+                    </div>
+                    <div style="margin: 1.5rem 0;">
+                        <div style="font-size: 0.85rem; padding: 4px 0; display: flex; justify-content: space-between; border-bottom: 1px solid #eee;">
+                            <span>Deal marked Won in CRM</span>
+                            <span style="color: green;">✓</span>
+                        </div>
+                        <div style="font-size: 0.85rem; padding: 4px 0; display: flex; justify-content: space-between; border-bottom: 1px solid #eee;">
+                            <span>Contract generated + sent</span>
+                            <span style="color: green;">✓</span>
+                        </div>
+                        <div style="font-size: 0.85rem; padding: 4px 0; display: flex; justify-content: space-between; border-bottom: 1px solid #eee;">
+                            <span>Welcome email delivered</span>
+                            <span style="color: green;">✓</span>
+                        </div>
+                        <div style="font-size: 0.85rem; padding: 4px 0; display: flex; justify-content: space-between;">
+                            <span>Project task created in ClickUp</span>
+                            <span style="color: blue;">⚡ Running</span>
+                        </div>
+                    </div>
+                    <p class="text-body" style="font-size: 0.85rem; color: var(--gray-dark);">0 manual steps. Triggered automatically.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="density-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="label-micro">What It Handles</span>
+                <h2 class="text-display" style="margin-top: 1rem;">20+ HOURS<br>BACK PER WEEK.</h2>
+                <p class="text-body-lg" style="margin-top: 1.5rem;">Manual back-office work is the tax every Malaysian SME pays. CRM updates, onboarding emails, document sending, internal alerts — all repetitive, all automatable, all consuming your team's time.</p>
+            </div>
+
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <span class="cell-id">01</span>
+                    <h3 class="text-h3">CRM Sync</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Bi-directional data sync between your CRM and other tools. Every deal stage change, contact update, or form submission lands in the right place automatically.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">02</span>
+                    <h3 class="text-h3">Onboarding Workflows</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Contract delivery, welcome sequences, intake form collection, and project setup — all triggered the moment a deal closes, zero manual steps.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">03</span>
+                    <h3 class="text-h3">Document Generation</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Proposals, invoices, NDAs, and reports generated from templates using live CRM data. No copy-paste, no formatting errors.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">04</span>
+                    <h3 class="text-h3">Internal Notifications</h3>
+                    <p class="text-body" style="margin-top: 1rem;">WhatsApp, email, or Slack alerts triggered by business events — payment received, task overdue, contract signed. Your team stays informed without checking dashboards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: var(--space-xl) 0; background: var(--white);">
+        <div class="container">
+            <h2 class="text-h2" style="margin-bottom: 2rem;">Industries We Deploy For</h2>
+            <p class="text-body-lg" style="max-width: 800px;">Workflow Automation is the backbone for Malaysian accounting firms, consulting practices, marketing agencies, legal firms, and any professional service business running more than 10 active clients at a time.</p>
+        </div>
+    </section>
+
+    <section style="padding: var(--space-xl) 0; background: #f8f8f8;">
+        <div class="container">
+            <h2 class="text-h2" style="margin-bottom: 2rem;">Tech Stack</h2>
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <h3 class="text-h3">Automation Platform</h3>
+                    <p class="text-body" style="margin-top: 1rem;"><a href="/my/tools/n8n">n8n</a> or <a href="/my/tools/make">Make.com</a> for workflow orchestration — chosen based on your complexity and hosting requirements.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <h3 class="text-h3">CRM</h3>
+                    <p class="text-body" style="margin-top: 1rem;"><a href="/my/tools/highlevel">HighLevel</a>, <a href="/my/tools/zoho">Zoho CRM</a>, HubSpot, or custom CRM setups — full API integration and configuration.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <h3 class="text-h3">Document Tools</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Google Docs, PandaDoc, or DocuSign for templated document generation and e-signature workflows.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <h3 class="text-h3">Project Management</h3>
+                    <p class="text-body" style="margin-top: 1rem;">ClickUp, Asana, Notion, or Monday.com — tasks created automatically from CRM triggers and form submissions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: var(--space-xl) 0; background: var(--white);">
+        <div class="container">
+            <div style="max-width: 600px;">
+                <h2 class="text-h2" style="margin-bottom: 2rem;">Pricing</h2>
+                <div style="padding: 2rem; border: 2px solid var(--black); border-radius: var(--radius-md);">
+                    <p class="label-micro">WORKFLOW AUTOMATION — MALAYSIA</p>
+                    <p style="font-size: 2rem; font-weight: 900; margin: 1rem 0;">RM 540<span style="font-size: 1rem; font-weight: 400;">/mo</span></p>
+                    <p style="font-size: 1rem; color: var(--gray-dark); margin-bottom: 1.5rem;">+ RM 5,400 one-time setup</p>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 1.5rem;">
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">CRM integration and full configuration</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">Client onboarding sequence automation</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">Document generation workflows</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">Internal notification system</li>
+                        <li style="padding: 0.5rem 0;">Ongoing monitoring and optimization</li>
+                    </ul>
+                    <a href="/my/services#request" class="btn btn-solid" style="display: inline-block;">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: var(--space-xl) 0; background: #f8f8f8;">
+        <div class="container">
+            <h2 class="text-h2" style="margin-bottom: 2rem;">Frequently Asked Questions</h2>
+            <div style="max-width: 800px;">
+                <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #eee;">
+                    <h3 class="text-h3">Which CRMs do you integrate with?</h3>
+                    <p class="text-body" style="margin-top: 0.75rem;">HighLevel, Zoho CRM, HubSpot, and custom setups — full configuration included.</p>
+                </div>
+                <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #eee;">
+                    <h3 class="text-h3">Can this automate our client onboarding?</h3>
+                    <p class="text-body" style="margin-top: 0.75rem;">Yes. Onboarding sequence automation is one of the most common deployments — contract delivery, welcome flows, task triggers.</p>
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 class="text-h3">How many hours per week does this typically save?</h3>
+                    <p class="text-body" style="margin-top: 0.75rem;">Most SMEs report 20+ hours saved weekly once back-office workflows are automated.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: var(--space-xl) 0; background: var(--white);">
+        <div class="container">
+            <p class="text-body" style="color: var(--gray-dark);">
+                Related services: <a href="/my/services/lead-handling">Lead Handling</a> · <a href="/my/services/ai-task-execution">AI Task Execution</a> · <a href="/my/services">All Services</a>
+            </p>
+        </div>
+    </section>
+</BaseLayout>
