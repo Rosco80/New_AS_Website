@@ -1,20 +1,53 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const title = "Legal Automation — Conveyancing & Document Workflows";
-const description = "Automate conveyancing admin, legal document drafting and data workflows for solicitors and law firms. Compliant & efficient. Free audit.";
+const title = "Legal Document Automation — AI for Law Firms";
+const description = "Help law firms automate contract review, document management, and client intake using private LLMs. Compliant AI implementation. Free audit.";
 
-const schemaData = {
+const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Legal & Law Firm Automation",
-  "description": "Compliant automation for solicitors. Conveyancing workflows, document drafting, and data compliance automation.",
+  "description": "Private LLM-powered contract review, conveyancing workflows, document drafting, client intake automation, and data compliance for law firms.",
   "provider": {
     "@type": "Organization",
     "name": "Autoflow Solutions"
   },
   "serviceType": "Legal Workflow Automation"
 };
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do you use private LLMs for legal document work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. For law firms, we deploy private LLM instances so client data never passes through shared public AI infrastructure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this compliant with data protection regulations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Compliance is built into every legal automation deployment — data residency, access controls, and audit trails included."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What types of documents can be automated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Contracts, conveyancing documents, client intake forms, NDAs, and standard legal correspondence."
+      }
+    }
+  ]
+};
+
+const schemaData = [serviceSchema, faqSchema];
 ---
 
 <BaseLayout title={title} description={description} schemaData={schemaData}>
@@ -22,7 +55,7 @@ const schemaData = {
         <div class="hero-left">
             <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Vertical Focus: Legal</span>
             <h1 class="text-display">LEGAL<br>AUTOMATION.</h1>
-            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Conveyancing & Document Workflow Specialists</h2>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">AI Automation for Law Firms and Legal Practices</h2>
             <p class="text-body-lg" style="margin-bottom: 2.5rem;">We help solicitors and law firms automate the repetitive admin of conveyancing and compliance.</p>
             <div class="hero-btns" style="display: flex; gap: 1rem;">
                 <a href="/services#request" class="btn btn-solid">Request a Firm Audit</a>

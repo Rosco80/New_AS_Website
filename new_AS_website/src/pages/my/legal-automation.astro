@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const title = "Legal Automation for Malaysian Law Firms — Conveyancing & Documentation";
-const description = "Automate conveyancing admin, legal document drafting and PDPA compliance for Malaysian firms. Legal Profession Act conscious. Free audit.";
+const title = "Legal Document Automation Malaysia — AI for Law Firms";
+const description = "Help Malaysian law firms automate contract review, document management, and client intake using private LLMs. PDPA-compliant AI implementation. Free audit.";
 
-const schemaData = {
+const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Malaysia Legal & Law Firm Automation",
@@ -19,6 +19,39 @@ const schemaData = {
   },
   "serviceType": "Legal Workflow Automation"
 };
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do you use private LLMs for legal document work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. For law firms, we deploy private LLM instances so client data never passes through shared public AI infrastructure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this PDPA compliant?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PDPA compliance is built into every legal automation deployment — data residency, access controls, and audit trails included."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What types of documents can be automated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Contracts, conveyancing documents, client intake forms, NDAs, and standard legal correspondence."
+      }
+    }
+  ]
+};
+
+const schemaData = [serviceSchema, faqSchema];
 ---
 
 <BaseLayout title={title} description={description} schemaData={schemaData}>
@@ -26,7 +59,7 @@ const schemaData = {
         <div class="hero-left">
             <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Vertical Focus: Legal</span>
             <h1 class="text-display">MALAYSIA LEGAL<br>AUTOMATION.</h1>
-            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Conveyancing & Document Workflow Specialists</h2>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">AI Automation for Law Firms and Legal Practices in Malaysia</h2>
             <p class="text-body-lg" style="margin-bottom: 2.5rem;">We help Malaysian solicitors and law firms automate the repetitive admin of conveyancing, corporate drafting, and PDPA compliance.</p>
             <div class="hero-btns" style="display: flex; gap: 1rem;">
                 <a href="/my/services#request" class="btn btn-solid">Request a Firm Audit (RM)</a>

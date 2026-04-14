@@ -46,13 +46,28 @@
       "permanent": true
     },
     {
-      "source": "/legal-automation/",
-      "destination": "/legal-automation",
+      "source": "/tools/n8n",
+      "destination": "/my/tools/n8n",
       "permanent": true
     },
     {
-      "source": "/uk/legal-automation/",
-      "destination": "/legal-automation",
+      "source": "/tools/highlevel",
+      "destination": "/my/tools/highlevel",
+      "permanent": true
+    },
+    {
+      "source": "/tools/make",
+      "destination": "/my/tools/make",
+      "permanent": true
+    },
+    {
+      "source": "/tools/voiceflow",
+      "destination": "/my/tools/voiceflow",
+      "permanent": true
+    },
+    {
+      "source": "/tools/zoho",
+      "destination": "/my/tools/zoho",
       "permanent": true
     },
     {

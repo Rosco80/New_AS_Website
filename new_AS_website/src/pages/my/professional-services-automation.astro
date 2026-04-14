@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const title = "Professional Services Automation Malaysia — SMEs, Agencies & Consulting";
-const description = "Automate your Malaysian accountancy, consulting or agency business. Client onboarding, multi-lingual reporting, and back-office sync. Free audit.";
+const title = "Professional Services Automation Malaysia — CRM, Billing & Onboarding";
+const description = "Automate CRM follow-ups, client onboarding, invoice processing, and reporting for accounting firms, consultancies, and service businesses in Malaysia. Free audit.";
 
-const schemaData = {
+const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Malaysia Professional Services Automation",
@@ -19,6 +19,39 @@ const schemaData = {
   },
   "serviceType": "Professional Services Automation"
 };
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which CRM platforms do you integrate with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We work with HighLevel, Zoho CRM, HubSpot, and custom CRM setups — done-for-you configuration and automation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you automate our invoice processing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Automated invoice generation, delivery, and follow-up reminders are a standard operations automation build."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does onboarding automation take to set up?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A standard client onboarding flow goes live in 2–4 weeks depending on complexity."
+      }
+    }
+  ]
+};
+
+const schemaData = [serviceSchema, faqSchema];
 ---
 
 <BaseLayout title={title} description={description} schemaData={schemaData}>
@@ -26,7 +59,7 @@ const schemaData = {
         <div class="hero-left">
             <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Vertical Focus: Prof Services</span>
             <h1 class="text-display">MALAYSIA BUSINESS<br>AUTOMATION.</h1>
-            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Scaling Professional Workflows in SEA</h2>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">AI Automation for Professional Services Firms in Malaysia</h2>
             <p class="text-body-lg" style="margin-bottom: 2.5rem;">We help Malaysian consultants, agencies, and SMEs automate their client onboarding and daily operational workflows.</p>
             <div class="hero-btns" style="display: flex; gap: 1rem;">
                 <a href="/my/services#request" class="btn btn-solid">Get an Estimate (RM)</a>

@@ -1,0 +1,207 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "AI Lead Handling Service — 24/7 WhatsApp & Web Chat Automation";
+const description = "Capture, qualify, and route every inquiry from WhatsApp, web chat, and forms in under 3 seconds. Done-for-you AI lead handling for professional service SMEs.";
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "AI Lead Handling and Chatbot Automation",
+  "description": "24/7 AI lead capture, qualification, and routing from WhatsApp, web chat, and forms. Done-for-you for professional service SMEs.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Autoflow Solutions"
+  },
+  "serviceType": "AI Lead Handling and Chatbot Automation",
+  "offers": {
+    "@type": "Offer",
+    "price": "150",
+    "priceCurrency": "USD",
+    "description": "$150/mo + $899 setup"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What channels does Lead Handling cover?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WhatsApp Business API, web chat widgets, and form submissions — all routed and qualified automatically."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How fast does it respond to inquiries?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Under 3 seconds, 24/7, including outside business hours."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can it qualify leads before passing them to my team?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The AI asks pre-set qualification questions and only escalates hot leads to your CRM or team."
+      }
+    }
+  ]
+};
+
+const schemaData = [serviceSchema, faqSchema];
+---
+
+<BaseLayout title={title} description={description} schemaData={schemaData}>
+    <header class="hero" style="min-height: 80vh;">
+        <div class="hero-left">
+            <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Service Offer</span>
+            <h1 class="text-display">LEAD HANDLING.</h1>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">AI-Powered Lead Capture and Qualification for SMEs</h2>
+            <p class="text-body-lg" style="margin-bottom: 2.5rem;">Every inquiry answered in under 3 seconds. Every lead qualified and routed to your CRM before your competitor even picks up the phone.</p>
+            <div class="hero-btns" style="display: flex; gap: 1rem;">
+                <a href="/services#request" class="btn btn-solid">Send Build Brief</a>
+                <a href="https://ai-self-audit.autoflow-solutions.com/" class="btn btn-neon">Free AI Audit</a>
+            </div>
+        </div>
+        <div class="hero-right" style="background-color: #f8f8f8;">
+            <div style="padding: 3rem; width: 100%;">
+                <div class="ui-card" style="position: relative; width: 100%; transform: none; box-shadow: 20px 20px 0 var(--black);">
+                    <div class="card-header">
+                        <span class="label-micro">LEAD_QUALIFY_AGENT</span>
+                        <span class="status" style="display: inline-block; width: 8px; height: 8px; background: var(--neon); border-radius: 50%;"></span>
+                    </div>
+                    <div style="margin: 1.5rem 0;">
+                        <div style="padding: 0.75rem; background: #f0f0f0; border-radius: 4px; margin-bottom: 0.75rem;">
+                            <p class="label-micro">Incoming: WhatsApp Inquiry</p>
+                            <p style="font-size: 0.85rem; font-weight: 700;">"Hi, I need a quote for your services"</p>
+                        </div>
+                        <div style="text-align: center; margin: 0.5rem 0; font-size: 0.8rem; color: var(--gray-dark);">⚡ 2.1s response</div>
+                        <div style="padding: 0.75rem; background: var(--neon); border-radius: 4px; border: 1px solid var(--black);">
+                            <p class="label-micro">AI Response + Qualification</p>
+                            <p style="font-size: 0.85rem;">Budget confirmed. Hot lead routed to CRM.</p>
+                        </div>
+                    </div>
+                    <p class="text-body" style="font-size: 0.85rem; color: var(--gray-dark);">0 missed inquiries. 24/7 coverage.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="density-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="label-micro">How It Works</span>
+                <h2 class="text-display" style="margin-top: 1rem;">NEVER MISS<br>A LEAD.</h2>
+                <p class="text-body-lg" style="margin-top: 1.5rem;">Most SMEs lose 40–60% of leads to slow response times. Our Lead Handling system catches every inquiry, qualifies it automatically, and pushes it to the right place before a competitor responds.</p>
+            </div>
+
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <span class="cell-id">01</span>
+                    <h3 class="text-h3">WhatsApp & Web Chat</h3>
+                    <p class="text-body" style="margin-top: 1rem;">AI agents deployed on WhatsApp Business API and your website chat widget. Respond to every inquiry in under 3 seconds, around the clock.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">02</span>
+                    <h3 class="text-h3">FAQ Handling</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Trained on your services, pricing, and policies. Handles the 80% of questions your team answers repeatedly — no human required.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">03</span>
+                    <h3 class="text-h3">Lead Qualification</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Pre-set qualification questions filter out time-wasters. Only leads that meet your criteria get escalated to your team or CRM.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <span class="cell-id">04</span>
+                    <h3 class="text-h3">Missed Inquiry Recovery</h3>
+                    <p class="text-body" style="margin-top: 1rem;">Automated follow-up sequences re-engage anyone who dropped off mid-conversation, recovering leads that would otherwise be lost.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: var(--space-xl) 0; background: var(--white);">
+        <div class="container">
+            <h2 class="text-h2" style="margin-bottom: 2rem;">Industries We Deploy For</h2>
+            <p class="text-body-lg" style="max-width: 800px;">Lead Handling is built for any professional service business where speed-to-response determines whether you win or lose the deal — clinics, law firms, consultancies, agencies, real estate, financial services.</p>
+        </div>
+    </section>
+
+    <section style="padding: var(--space-xl) 0; background: #f8f8f8;">
+        <div class="container">
+            <h2 class="text-h2" style="margin-bottom: 2rem;">Tech Stack</h2>
+            <div class="blueprint-grid">
+                <div class="blueprint-cell">
+                    <h3 class="text-h3">Conversation AI</h3>
+                    <p class="text-body" style="margin-top: 1rem;"><a href="/my/tools/voiceflow">Voiceflow</a> for multi-step conversation flows. GPT-4 class models for natural language understanding.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <h3 class="text-h3">CRM Integration</h3>
+                    <p class="text-body" style="margin-top: 1rem;"><a href="/my/tools/highlevel">HighLevel</a>, Zoho CRM, HubSpot — lead data pushed automatically on qualification.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <h3 class="text-h3">Channels</h3>
+                    <p class="text-body" style="margin-top: 1rem;">WhatsApp Business API, website chat embed, Facebook Messenger, Instagram DM, form webhooks.</p>
+                </div>
+                <div class="blueprint-cell">
+                    <h3 class="text-h3">Orchestration</h3>
+                    <p class="text-body" style="margin-top: 1rem;">n8n or Make.com for routing logic, notifications, and CRM sync automation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: var(--space-xl) 0; background: var(--white);">
+        <div class="container">
+            <div style="max-width: 600px;">
+                <h2 class="text-h2" style="margin-bottom: 2rem;">Pricing</h2>
+                <div style="padding: 2rem; border: 2px solid var(--black); border-radius: var(--radius-md);">
+                    <p class="label-micro">LEAD HANDLING</p>
+                    <p style="font-size: 2rem; font-weight: 900; margin: 1rem 0;">$150<span style="font-size: 1rem; font-weight: 400;">/mo</span></p>
+                    <p style="font-size: 1rem; color: var(--gray-dark); margin-bottom: 1.5rem;">+ $899 one-time setup</p>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 1.5rem;">
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">WhatsApp Business API + web chat deployment</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">Custom qualification flow built for your business</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">CRM integration included</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">Missed inquiry recovery sequences</li>
+                        <li style="padding: 0.5rem 0;">Ongoing monitoring and optimization</li>
+                    </ul>
+                    <a href="/services#request" class="btn btn-solid" style="display: inline-block;">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: var(--space-xl) 0; background: #f8f8f8;">
+        <div class="container">
+            <h2 class="text-h2" style="margin-bottom: 2rem;">Frequently Asked Questions</h2>
+            <div style="max-width: 800px;">
+                <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #eee;">
+                    <h3 class="text-h3">What channels does Lead Handling cover?</h3>
+                    <p class="text-body" style="margin-top: 0.75rem;">WhatsApp Business API, web chat widgets, and form submissions — all routed and qualified automatically.</p>
+                </div>
+                <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #eee;">
+                    <h3 class="text-h3">How fast does it respond to inquiries?</h3>
+                    <p class="text-body" style="margin-top: 0.75rem;">Under 3 seconds, 24/7, including outside business hours.</p>
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 class="text-h3">Can it qualify leads before passing them to my team?</h3>
+                    <p class="text-body" style="margin-top: 0.75rem;">Yes. The AI asks pre-set qualification questions and only escalates hot leads to your CRM or team.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: var(--space-xl) 0; background: var(--white);">
+        <div class="container">
+            <p class="text-body" style="color: var(--gray-dark);">
+                Related services: <a href="/services/workflow-automation">Workflow Automation</a> · <a href="/services/ai-task-execution">AI Task Execution</a> · <a href="/services">All Services</a>
+            </p>
+        </div>
+    </section>
+</BaseLayout>

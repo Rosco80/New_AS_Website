@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const title = "Logistics Automation for Malaysian Freight & 3PL Companies";
-const description = "Automate customs documentation, freight forwarding workflows and warehouse operations for Malaysian logistics SMEs. Royal Malaysian Customs (RMCD) ready. Book a free audit.";
+const title = "Logistics Automation Malaysia — AI for Freight & Warehousing";
+const description = "Reduce manual data entry in freight forwarding by up to 85% with OCR, AI agents, and automated workflows. Built for Malaysian 3PLs and logistics operators. Free AI audit.";
 
-const schemaData = {
+const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Malaysia Logistics & Freight Automation",
@@ -19,6 +19,39 @@ const schemaData = {
   },
   "serviceType": "AI & Workflow Automation"
 };
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does logistics automation take to implement?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most freight and 3PL builds go live in 4–6 weeks, starting with the highest-impact workflow — typically invoice OCR or shipment status updates."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can your systems integrate with our existing TMS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We build API integrations with major TMS platforms as well as custom ERP systems."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my logistics data secure?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "All pipelines are built with data encryption in transit and at rest. We align with PDPA requirements for Malaysian businesses."
+      }
+    }
+  ]
+};
+
+const schemaData = [serviceSchema, faqSchema];
 ---
 
 <BaseLayout title={title} description={description} schemaData={schemaData}>
@@ -26,7 +59,7 @@ const schemaData = {
         <div class="hero-left">
             <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Vertical Focus: Logistics</span>
             <h1 class="text-display">MALAYSIA LOGISTICS<br>AUTOMATION.</h1>
-            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Customs & K1/K2 Workflow Experts</h2>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">AI Automation for Logistics Companies in Malaysia</h2>
             <p class="text-body-lg" style="margin-bottom: 2.5rem;">We help Malaysian freight forwarders, 3PLs, and warehouse operators eliminate manual data entry in customs declarations and transport management.</p>
             <div class="hero-btns" style="display: flex; gap: 1rem;">
                 <a href="/my/services#request" class="btn btn-solid">Send Build Brief</a>

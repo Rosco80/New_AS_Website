@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const title = "E-Commerce Automation Agency Malaysia — Shopee, Lazada & Shopify";
-const description = "Automate orders, returns, and customer follow-ups for Malaysian e-commerce businesses. Shopee, Lazada, TikTok Shop, Shopify. Free audit.";
+const title = "E-Commerce Automation Malaysia — Shopify, Lazada & Shopee Agency";
+const description = "Sync Shopify, Lazada, and Shopee inventory in real-time. Automate order fulfillment and customer follow-ups. Done-for-you e-commerce automation for Malaysian sellers.";
 
-const schemaData = {
+const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Malaysia E-Commerce & Retail Automation",
@@ -19,6 +19,39 @@ const schemaData = {
   },
   "serviceType": "E-Commerce AI Automation"
 };
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do you support Lazada and Shopee integrations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Lazada and Shopee are our primary Malaysian e-commerce integrations alongside Shopify and WooCommerce."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you automate WhatsApp order notifications?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. WhatsApp Business API automation is one of our core deployment types for Malaysian e-commerce operators."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does inventory sync work across platforms?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We build real-time sync pipelines that update stock levels across all channels the moment an order is placed on any platform."
+      }
+    }
+  ]
+};
+
+const schemaData = [serviceSchema, faqSchema];
 ---
 
 <BaseLayout title={title} description={description} schemaData={schemaData}>
@@ -26,7 +59,7 @@ const schemaData = {
         <div class="hero-left">
             <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Vertical Focus: E-Commerce</span>
             <h1 class="text-display">MALAYSIA E-COMMERCE<br>AUTOMATION.</h1>
-            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Shopee, Lazada & TikTok Shop Scaling Experts</h2>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">E-Commerce Automation for Malaysian Online Sellers</h2>
             <p class="text-body-lg" style="margin-bottom: 2.5rem;">We help Malaysia's top online sellers automate their heavy-lifting. From multi-channel inventory syncs to automated customer support on WhatsApp.</p>
             <div class="hero-btns" style="display: flex; gap: 1rem;">
                 <a href="/my/services#request" class="btn btn-solid">Calculate Your Savings (RM)</a>

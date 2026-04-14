@@ -1,20 +1,53 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const title = "E-Commerce Automation — Amazon, Shopify & Multi-channel Scaling";
-const description = "Automate orders, returns, shipping syncs and customer follow-ups for e-commerce businesses. Amazon, Shopify, WooCommerce. Free audit.";
+const title = "E-Commerce Automation — Shopify, Multi-Channel & Marketplace Agency";
+const description = "Sync inventory across Shopify and marketplaces in real-time. Automate order fulfillment and customer follow-ups. Done-for-you e-commerce automation.";
 
-const schemaData = {
+const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "E-Commerce & Retail Automation",
-  "description": "Amazon, Shopify, and shipping API integrations. Automated returns and multi-channel inventory management for retailers.",
+  "description": "Multi-channel inventory sync, order fulfillment automation, abandoned cart recovery, and customer follow-up automation for online sellers.",
   "provider": {
     "@type": "Organization",
     "name": "Autoflow Solutions"
   },
   "serviceType": "E-Commerce AI Automation"
 };
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which marketplaces and platforms do you support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We support Shopify, WooCommerce, Amazon, and regional marketplaces. We build real-time inventory sync pipelines that update stock levels across all channels when an order is placed on any platform."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you automate customer order notifications via WhatsApp?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. WhatsApp Business API automation for order updates and customer follow-ups is one of our core e-commerce deployment types."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does inventory sync work across platforms?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We build real-time sync pipelines that update stock levels across all connected channels the moment an order is placed on any platform, eliminating overselling."
+      }
+    }
+  ]
+};
+
+const schemaData = [serviceSchema, faqSchema];
 ---
 
 <BaseLayout title={title} description={description} schemaData={schemaData}>
@@ -22,7 +55,7 @@ const schemaData = {
         <div class="hero-left">
             <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Vertical Focus: E-Commerce</span>
             <h1 class="text-display">E-COMMERCE<br>AUTOMATION.</h1>
-            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Amazon & Shopify Scaling Experts</h2>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">E-Commerce Automation for Online Sellers</h2>
             <p class="text-body-lg" style="margin-bottom: 2.5rem;">We help online sellers automate their heavy-lifting. From shipping API syncs to automated returns handling and multi-channel scaling.</p>
             <div class="hero-btns" style="display: flex; gap: 1rem;">
                 <a href="/services#request" class="btn btn-solid">Calculate Your Savings</a>

@@ -1,20 +1,53 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const title = "Private Clinic Automation — GP, Dental & Specialist Practices";
-const description = "AI automation for private clinics and healthcare SMEs. Appointment booking, admin workflows, and patient journey support. Start with a free audit.";
+const title = "Healthcare Automation — AI for Clinics & Medical Practices";
+const description = "Automate appointment booking, patient follow-ups, and admin workflows for clinics and healthcare providers. Compliant AI implementation. Free audit.";
 
-const schemaData = {
+const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Private Healthcare & Clinic Automation",
-  "description": "Compliant admin workflows, AI reception, and patient journey automation for medical and dental practices.",
+  "name": "Healthcare & Clinic Automation",
+  "description": "Compliant admin workflows, AI reception, appointment booking automation, and patient journey automation for medical and dental practices.",
   "provider": {
     "@type": "Organization",
     "name": "Autoflow Solutions"
   },
   "serviceType": "Healthcare AI Automation"
 };
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are your systems compliant with healthcare data regulations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We build healthcare automation with data compliance as a baseline requirement — data handling protocols, access controls, and audit trails included."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can the appointment booking AI handle multiple languages?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We deploy multilingual AI for clinics serving patients across different languages, including English, Malay, and Mandarin where needed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How quickly can a clinic go live?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Appointment automation and patient follow-up flows typically go live in 3–5 weeks."
+      }
+    }
+  ]
+};
+
+const schemaData = [serviceSchema, faqSchema];
 ---
 
 <BaseLayout title={title} description={description} schemaData={schemaData}>
@@ -22,7 +55,7 @@ const schemaData = {
         <div class="hero-left">
             <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill); margin-bottom: var(--space-md);">Vertical Focus: Healthcare</span>
             <h1 class="text-display">PRIVATE CLINIC<br>AUTOMATION.</h1>
-            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">Compliant AI & Admin Workflows</h2>
+            <h2 class="text-h2" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--black); line-height: 1.2;">AI Automation for Healthcare Providers and Clinics</h2>
             <p class="text-body-lg" style="margin-bottom: 2.5rem;">We help private medical practices, dental clinics, and cosmetic specialists reduce no-shows and automate patient administration through smart AI.</p>
             <div class="hero-btns" style="display: flex; gap: 1rem;">
                 <a href="/services#request" class="btn btn-solid">Request a Clinic Audit</a>

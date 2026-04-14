@@ -5,6 +5,7 @@ const services = [
     {
         id: "01",
         title: "Lead<br>Handling",
+        url: "/services/lead-handling",
         price: "$150",
         setup: "$899",
         description: "Capture, qualify, and route inquiries from WhatsApp, web chat, and forms. Never miss a lead again.",
@@ -15,6 +16,7 @@ const services = [
     {
         id: "02",
         title: "Workflow<br>Automation",
+        url: "/services/workflow-automation",
         price: "$170",
         setup: "$1,699",
         description: "Back-office workflows that sync CRMs, trigger onboarding, and handle internal alerts.",
@@ -25,6 +27,7 @@ const services = [
     {
         id: "03",
         title: "AI Task<br>Execution",
+        url: "/services/ai-task-execution",
         price: "$200",
         setup: "$1,999+",
         description: "Autonomous workers for voice answering, repetitive research, and cross-system actions.",
@@ -88,7 +91,11 @@ const faqSchema = {
 const combinedPageSchema = [serviceSchema, faqSchema];
 ---
 
-<BaseLayout title="Our Services" schema={combinedPageSchema}>
+<BaseLayout
+  title="AI Automation Services — Custom AI Agents & Workflows"
+  description="Done-for-you AI automation services for SMEs. Lead handling, workflow automation, and AI task execution — built and deployed for you."
+  schema={combinedPageSchema}
+>
     <div class="cursor-follower" id="cursorFollower">
         <div class="cursor-core"></div>
     </div>
@@ -147,7 +154,7 @@ const combinedPageSchema = [serviceSchema, faqSchema];
                     <div class="service-card">
                         <div class="neon-bar"></div>
                         <div class="service-id-large">{svc.id}</div>
-                        <h2 class="service-title" set:html={svc.title} />
+                        <h2 class="service-title"><a href={svc.url} style="color: inherit; text-decoration: none;" set:html={svc.title} /></h2>
                         
                         <div class="price-container" style="margin-bottom: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--gray-light); min-height: 80px;">
                             <div style="display: flex; align-items: baseline; gap: 4px;">

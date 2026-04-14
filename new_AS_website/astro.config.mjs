@@ -21,7 +21,9 @@ export default defineConfig({
     useCdn: true,
     studioBasePath: '/admin',
     studioRouterHistory: 'hash'
-  }), react(), sitemap()],
+  }), react(), sitemap({
+    filter: (page) => !page.includes('/admin')
+  })],
   vite: {
     build: {
       chunkSizeWarningLimit: 2000
