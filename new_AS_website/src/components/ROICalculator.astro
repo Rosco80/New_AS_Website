@@ -407,6 +407,11 @@ const { defaultCurrency = 'MYR' } = Astro.props;
   .currency-btn { padding: 6px 12px; border: 1px solid var(--grey-200); border-radius: 4px; font-size: 0.75rem; font-weight: 600; background: #fff; color: var(--grey-600); transition: all 0.2s; cursor: pointer; }
   .currency-btn.active { background: var(--black); color: var(--white); border-color: var(--black); }
 
+  .progress-block { margin-bottom: 1.5rem; }
+  .progress-bar-track { width: 100%; height: 6px; background: var(--grey-200); border-radius: 999px; overflow: hidden; }
+  .progress-bar-fill { width: var(--progress-pct, 0%); height: 100%; background: var(--chartreuse); transition: width var(--t); }
+  .progress-label { margin-top: 0.5rem; font-size: 0.7rem; font-weight: 700; color: var(--grey-600); text-transform: uppercase; letter-spacing: 0.04em; }
+
   .input-card { background: var(--white); border: 1px solid var(--grey-200); border-radius: 6px; padding: 1.25rem; margin-bottom: 0; }
   .input-card + .input-card { border-top: none; border-radius: 0; }
   .input-card:last-of-type { border-radius: 0 0 6px 6px; }
@@ -541,6 +546,7 @@ const { defaultCurrency = 'MYR' } = Astro.props;
   let activeCurrency = document.querySelector('.roi-tool-content').dataset.defaultCurrency || 'MYR';
   const STATIC_DEFAULTS = { 'staff-count': 5, 'repetitive-hours': 10, 'automation-rate': 70, 'error-reduction': 40, 'revenue-impact': 5 };
   const MONEY_SLIDERS = ['avg-salary', 'setup-fee', 'monthly-retainer'];
+  const PROGRESS_FIELDS = ['staff-count', 'avg-salary', 'repetitive-hours', 'automation-rate', 'error-reduction'];
 
   function get(id) { return document.getElementById(id); }
   function gv(id)  { return parseFloat(get(id)?.value) || 0; }
@@ -573,6 +579,16 @@ const { defaultCurrency = 'MYR' } = Astro.props;
       get(`bar-year${i+1}`).style.setProperty('--bar-height', (Math.max(5, (r[y]/maxV)*100)) + '%');
       get(`result-year${i+1}`).textContent = fmt(r[y], true);
     });
+
+    const badge = get('badge-strong-roi');
+    const roiTile = get('roi-tile');
+    const strongRoi = r.roi >= 100 && r.payback <= 12;
+    badge?.classList.toggle('hidden', !strongRoi);
+    roiTile?.setAttribute('data-roi-tier', r.roi >= 100 ? 'strong' : r.roi >= 0 ? 'ok' : 'weak');
+    const liveRegion = get('results-live-region');
+    if (liveRegion) {
+      liveRegion.textContent = 'Annual savings ' + fmt(r.netAnnual) + ', payback ' + (r.payback === Infinity ? 'not available' : Math.ceil(r.payback) + ' months') + ', ROI ' + Math.round(r.roi) + ' percent.';
+    }
   }
 
   function updateSlider(id) {
@@ -580,6 +596,22 @@ const { defaultCurrency = 'MYR' } = Astro.props;
     const pct = ((el.value - el.min) / (el.max - el.min)) * 100;
     el.style.setProperty('--slider-pct', pct + '%');
     const dis = get(id + '-display'); if (dis) dis.textContent = (MONEY_SLIDERS.indexOf(id) !== -1) ? fmt(parseFloat(el.value)) : el.value;
+  }
+
+  function defaultFor(id) {
+    if (id === 'avg-salary') return CURRENCIES[activeCurrency].salary.default;
+    return STATIC_DEFAULTS[id];
+  }
+
+  function updateProgress() {
+    const adjusted = PROGRESS_FIELDS.filter(id => gv(id) !== defaultFor(id)).length;
+    const pct = (adjusted / PROGRESS_FIELDS.length) * 100;
+    const bar = get('progress-bar');
+    const fill = get('progress-fill');
+    const label = get('progress-label');
+    if (bar) bar.setAttribute('aria-valuenow', String(Math.round(pct)));
+    if (fill) fill.style.setProperty('--progress-pct', pct + '%');
+    if (label) label.textContent = adjusted + ' of ' + PROGRESS_FIELDS.length + ' fields adjusted';
   }
 
   function applyTierSelection() {
@@ -595,6 +627,7 @@ const { defaultCurrency = 'MYR' } = Astro.props;
       get('summary-setup').textContent = fmt(p.setup); get('summary-monthly').textContent = fmt(p.monthly) + '/mo';
       updateSlider('setup-fee'); updateSlider('monthly-retainer');
     }
+    updateProgress();
     recalc();
   }
 
@@ -605,9 +638,55 @@ const { defaultCurrency = 'MYR' } = Astro.props;
     document.querySelectorAll('.currency-btn').forEach(b => b.classList.toggle('active', b.dataset.currency === code));
     applyTierSelection();
     updateSlider('avg-salary');
+    updateProgress();
   }
 
-  function recalc() { updateUI(calc()); }
+  function recalc() { updateUI(calc()); updateProgress(); }
+
+  function resetCalculator() {
+    const defaultCurrency = document.querySelector('.roi-tool-content').dataset.defaultCurrency || 'MYR';
+    Object.keys(STATIC_DEFAULTS).forEach(id => {
+      const el = get(id);
+      if (el) el.value = STATIC_DEFAULTS[id];
+    });
+    const tier = get('engine-tier');
+    if (tier) tier.value = 'operations';
+    const assumptionsToggle = get('assumptions-toggle');
+    const assumptionsBody = get('assumptions-body');
+    assumptionsToggle?.setAttribute('aria-expanded', 'false');
+    assumptionsBody?.classList.remove('is-open');
+    setCurrency(defaultCurrency);
+    ['staff-count', 'avg-salary', 'repetitive-hours', 'automation-rate', 'error-reduction', 'revenue-impact', 'setup-fee', 'monthly-retainer'].forEach(updateSlider);
+    updateProgress();
+    recalc();
+  }
+
+  async function shareResults() {
+    const label = get('share-btn-label');
+    const shareUrl = window.location.origin + window.location.pathname + '#results-panel';
+    const original = label?.textContent || 'SHARE';
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(shareUrl);
+      } else {
+        const textArea = document.createElement('textarea');
+        textArea.value = shareUrl;
+        textArea.setAttribute('readonly', '');
+        textArea.style.position = 'fixed';
+        textArea.style.opacity = '0';
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+      }
+      if (label) label.textContent = 'COPIED';
+    } catch (error) {
+      if (label) label.textContent = 'COPY FAILED';
+    } finally {
+      window.setTimeout(() => { if (label) label.textContent = original; }, 2000);
+    }
+  }
 
   function init() {
     ['staff-count', 'avg-salary', 'repetitive-hours', 'automation-rate', 'error-reduction', 'revenue-impact', 'setup-fee', 'monthly-retainer'].forEach(id => {
@@ -619,6 +698,8 @@ const { defaultCurrency = 'MYR' } = Astro.props;
       const open = this.getAttribute('aria-expanded') === 'true';
       this.setAttribute('aria-expanded', !open); get('assumptions-body').classList.toggle('is-open', !open);
     });
+    get('reset-btn')?.addEventListener('click', resetCalculator);
+    get('share-btn')?.addEventListener('click', shareResults);
     setCurrency(activeCurrency);
   }
 

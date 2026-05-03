@@ -1,0 +1,203 @@
+---
+interface Props {
+  locale?: 'en' | 'en-MY' | 'ms-MY' | 'en-GB';
+  body?: string;
+}
+
+const { locale = 'en', body } = Astro.props;
+
+const copy = {
+  'ms-MY': {
+    heading: "Jangan terlepas kemas kini.",
+    body: body || "Dapatkan pecahan automasi dan taktik pelaksanaan AI untuk PKS.",
+    placeholder: "Masukkan emel perniagaan anda",
+    button: "Langgan",
+    joining: "Menghantar...",
+    success: "Anda sudah disenaraikan. Kami akan berhubung.",
+    error: "Langganan gagal. Sila cuba lagi.",
+    trust: "Sertai pemilik dan operator PKS lain."
+  },
+  'en-GB': {
+    heading: "Don't miss a sprint.",
+    body: body || "Get our bi-weekly breakdown of automation wins and UK AI implementation tactics.",
+    placeholder: "Enter your business email",
+    button: "Subscribe Now",
+    joining: "Joining...",
+    success: "You're on the list. Talk soon.",
+    error: "Subscription failed. Please try again.",
+    trust: "Join SME owners and operators."
+  },
+  'en-MY': {
+    heading: "Don't miss a sprint.",
+    body: body || "Get our bi-weekly breakdown of automation wins and AI implementation tactics.",
+    placeholder: "Enter your business email",
+    button: "Subscribe Now",
+    joining: "Joining...",
+    success: "You're on the list. Talk soon.",
+    error: "Subscription failed. Please try again.",
+    trust: "Join SME owners and operators."
+  },
+  en: {
+    heading: "Don't miss a sprint.",
+    body: body || "Get our bi-weekly breakdown of automation wins and AI implementation tactics.",
+    placeholder: "Enter your business email",
+    button: "Subscribe Now",
+    joining: "Joining...",
+    success: "You're on the list. Talk soon.",
+    error: "Subscription failed. Please try again.",
+    trust: "Join SME owners and operators."
+  }
+};
+
+const text = copy[locale];
+---
+
+<section class="newsletter-section" data-newsletter-locale={locale}>
+  <div class="container">
+    <h2 class="text-h2">{text.heading}</h2>
+    <p class="newsletter-copy">{text.body}</p>
+    <form class="newsletter-form" data-newsletter-form novalidate>
+      <input type="email" name="email" placeholder={text.placeholder} required />
+      <button type="submit" class="btn btn-solid-accent" data-default-label={text.button} data-joining-label={text.joining}>
+        {text.button}
+      </button>
+    </form>
+    <p class="newsletter-status" data-newsletter-status aria-live="polite"></p>
+    <p class="newsletter-trust">{text.trust}</p>
+  </div>
+</section>
+
+<style>
+  .newsletter-section {
+    background: var(--neon, #D4FF00);
+    padding: var(--space-xl, 8rem) 0;
+    text-align: center;
+    border-top: 2px solid var(--black, #050505);
+    border-bottom: 2px solid var(--black, #050505);
+  }
+
+  .newsletter-copy {
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-top: 10px;
+  }
+
+  .newsletter-form {
+    max-width: 600px;
+    margin: var(--space-md, 2rem) auto 0;
+    display: flex;
+    gap: 10px;
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border: 2px solid var(--black, #050505);
+    border-radius: var(--radius-pill, 99px);
+    font-family: var(--font-sans, inherit);
+    font-weight: 600;
+    outline: none;
+  }
+
+  .newsletter-status {
+    display: none;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    padding: 1rem;
+    border-radius: var(--radius-pill, 99px);
+    font-weight: 800;
+  }
+
+  .newsletter-status.is-success {
+    display: block;
+    background: var(--black, #050505);
+    color: var(--neon, #D4FF00);
+  }
+
+  .newsletter-status.is-error {
+    display: block;
+    background: rgba(5, 5, 5, 0.08);
+    color: var(--black, #050505);
+    border: 2px solid var(--black, #050505);
+  }
+
+  .newsletter-trust {
+    font-size: 0.8rem;
+    margin-top: 1.5rem;
+    font-weight: 600;
+  }
+
+  .btn-solid-accent {
+    background: var(--black, #050505);
+    color: var(--white, #fff);
+    white-space: nowrap;
+  }
+
+  .btn-solid-accent:hover {
+    background: var(--white, #fff);
+    color: var(--black, #050505);
+  }
+
+  @media (max-width: 640px) {
+    .newsletter-form {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-newsletter-form]').forEach((form) => {
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const newsletterForm = event.currentTarget;
+        if (!(newsletterForm instanceof HTMLFormElement)) return;
+        if (!newsletterForm.reportValidity()) return;
+
+        const section = newsletterForm.closest('[data-newsletter-locale]');
+        const input = newsletterForm.querySelector('input[name="email"]');
+        const button = newsletterForm.querySelector('button[type="submit"]');
+        const status = section?.querySelector('[data-newsletter-status]');
+
+        if (!(input instanceof HTMLInputElement) || !(button instanceof HTMLButtonElement) || !(status instanceof HTMLElement)) return;
+
+        const defaultLabel = button.dataset.defaultLabel || button.textContent || 'Subscribe Now';
+        const joiningLabel = button.dataset.joiningLabel || 'Joining...';
+        const locale = section?.getAttribute('data-newsletter-locale') || 'en';
+        const successText = locale === 'ms-MY' ? 'Anda sudah disenaraikan. Kami akan berhubung.' : "You're on the list. Talk soon.";
+        const errorText = locale === 'ms-MY' ? 'Langganan gagal. Sila cuba lagi.' : 'Subscription failed. Please try again.';
+
+        button.disabled = true;
+        button.textContent = joiningLabel;
+        status.className = 'newsletter-status';
+        status.textContent = '';
+
+        try {
+          const response = await fetch('/api/newsletter', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email: input.value,
+              source_page: window.location.pathname,
+              locale,
+              submitted_at: new Date().toISOString()
+            })
+          });
+
+          if (!response.ok) throw new Error('Newsletter request failed');
+
+          newsletterForm.reset();
+          status.textContent = successText;
+          status.classList.add('is-success');
+        } catch (error) {
+          status.textContent = errorText;
+          status.classList.add('is-error');
+        } finally {
+          button.disabled = false;
+          button.textContent = defaultLabel;
+        }
+      });
+    });
+  });
+</script>

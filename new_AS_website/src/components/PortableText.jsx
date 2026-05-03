@@ -22,7 +22,7 @@ const components = {
     link: ({value, children}) => {
       const target = (value?.href || '').startsWith('http') ? '_blank' : undefined
       return (
-        <a href={value?.href} target={target} rel={target === '_blank' ? 'noindex nofollow' : undefined} style={{color: 'var(--black)', textDecoration: 'underline', textDecorationThickness: '2px', textDecorationColor: 'var(--neon)', fontWeight: '700'}}>
+        <a href={value?.href} target={target} rel={target === '_blank' ? 'noopener noreferrer nofollow' : undefined} style={{color: 'var(--black)', textDecoration: 'underline', textDecorationThickness: '2px', textDecorationColor: 'var(--neon)', fontWeight: '700'}}>
           {children}
         </a>
       )

@@ -30,6 +30,79 @@ const sanitizedPath = Astro.url.pathname.endsWith('/') && Astro.url.pathname.len
 	: Astro.url.pathname;
 const canonicalURL = new URL(sanitizedPath, "https://autoflow-solutions.com");
 
+const getLocale = (path: string) => {
+	if (path.startsWith('/ms')) return 'ms';
+	if (path.startsWith('/my')) return 'my';
+	if (path.startsWith('/uk')) return 'uk';
+	return 'default';
+};
+
+const htmlLangByLocale = {
+	default: 'en',
+	my: 'en-MY',
+	ms: 'ms-MY',
+	uk: 'en-GB'
+};
+
+const currentLocale = getLocale(sanitizedPath);
+const htmlLang = htmlLangByLocale[currentLocale];
+const basePath = sanitizedPath.replace(/^\/(my|ms|uk)(?=\/|$)/, '') || '/';
+
+const routeMap = {
+	default: new Set([
+		'/', '/about', '/ai-self-audit', '/blog', '/careers', '/case-studies',
+		'/cookies', '/disclaimer', '/ecommerce-automation', '/healthcare-automation',
+		'/legal-automation', '/logistics-automation', '/privacy', '/process',
+		'/professional-services-automation', '/resources', '/seo-report', '/services',
+		'/terms', '/tools/automation-roi-calculator', '/services/ai-task-execution',
+		'/services/lead-handling', '/services/workflow-automation'
+	]),
+	my: new Set([
+		'/', '/about', '/ai-self-audit', '/blog', '/careers', '/case-studies',
+		'/cookies', '/disclaimer', '/ecommerce-automation', '/healthcare-automation',
+		'/legal-automation', '/logistics-automation', '/privacy', '/process',
+		'/professional-services-automation', '/resources', '/seo-report', '/services',
+		'/terms', '/tools/automation-roi-calculator', '/services/ai-task-execution',
+		'/services/lead-handling', '/services/workflow-automation', '/tools/highlevel',
+		'/tools/make', '/tools/n8n', '/tools/voiceflow', '/tools/zoho'
+	]),
+	ms: new Set([
+		'/', '/about', '/ai-self-audit', '/blog', '/careers', '/case-studies',
+		'/cookies', '/disclaimer', '/ecommerce-automation', '/healthcare-automation',
+		'/legal-automation', '/logistics-automation', '/privacy', '/process',
+		'/professional-services-automation', '/resources', '/seo-report', '/services',
+		'/terms', '/tools/automation-roi-calculator', '/tools/highlevel', '/tools/make',
+		'/tools/n8n', '/tools/voiceflow', '/tools/zoho'
+	]),
+	uk: new Set([
+		'/', '/about', '/ai-self-audit', '/blog', '/careers', '/case-studies',
+		'/cookies', '/disclaimer', '/ecommerce-automation', '/healthcare-automation',
+		'/legal-automation', '/logistics-automation', '/privacy', '/process',
+		'/professional-services-automation', '/resources', '/seo-report', '/services',
+		'/terms', '/tools/automation-roi-calculator', '/services/ai-task-execution',
+		'/services/lead-handling', '/services/workflow-automation', '/tools/highlevel',
+		'/tools/make', '/tools/n8n', '/tools/voiceflow', '/tools/zoho'
+	])
+};
+
+const localeUrl = (locale: keyof typeof routeMap, path: string) => {
+	if (locale === 'default') return `https://autoflow-solutions.com${path === '/' ? '' : path}`;
+	return `https://autoflow-solutions.com/${locale}${path === '/' ? '' : path}`;
+};
+
+const alternateLinks = ([
+	{ locale: 'my', hreflang: 'en-MY' },
+	{ locale: 'ms', hreflang: 'ms-MY' },
+	{ locale: 'uk', hreflang: 'en-GB' },
+	{ locale: 'default', hreflang: 'en' }
+] as const)
+	.filter(({ locale }) => routeMap[locale].has(basePath))
+	.map(({ locale, hreflang }) => ({ hreflang, href: localeUrl(locale, basePath) }));
+
+const defaultAlternate = routeMap.default.has(basePath)
+	? localeUrl('default', basePath)
+	: undefined;
+
 const organizationSchema = {
 	"@context": "https://schema.org",
 	"@type": "Organization",
@@ -51,17 +124,12 @@ const websiteSchema = {
 	"@context": "https://schema.org",
 	"@type": "WebSite",
 	"name": "Autoflow Solutions",
-	"url": "https://autoflow-solutions.com",
-	"potentialAction": {
-		"@type": "SearchAction",
-		"target": "https://autoflow-solutions.com/search?q={search_term_string}",
-		"query-input": "required name=search_term_string"
-	}
+	"url": "https://autoflow-solutions.com"
 };
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={htmlLang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -119,11 +187,8 @@ const websiteSchema = {
 		</script>
 
 		<!-- SEO: Regional Alt Versions -->
-		<link rel="alternate" hreflang="en-MY" href={`https://autoflow-solutions.com/my${sanitizedPath.replace(/^\/(my|ms|uk)/, '')}`} />
-		<link rel="alternate" hreflang="ms-MY" href={`https://autoflow-solutions.com/ms${sanitizedPath.replace(/^\/(my|ms|uk)/, '')}`} />
-		<link rel="alternate" hreflang="en-GB" href={`https://autoflow-solutions.com/uk${sanitizedPath.replace(/^\/(my|ms|uk)/, '')}`} />
-		<link rel="alternate" hreflang="en" href={`https://autoflow-solutions.com${sanitizedPath.replace(/^\/(my|ms|uk)/, '')}`} />
-		<link rel="alternate" hreflang="x-default" href={`https://autoflow-solutions.com${sanitizedPath.replace(/^\/(my|ms|uk)/, '')}`} />
+		{alternateLinks.map(({ hreflang, href }) => <link rel="alternate" hreflang={hreflang} href={href} />)}
+		{defaultAlternate && <link rel="alternate" hreflang="x-default" href={defaultAlternate} />}
 	</head>
 	<body>
 		<Navbar />

@@ -9,6 +9,7 @@ const categories = [
 ];
 
 import { sanityClient } from "sanity:client";
+import NewsletterCTA from './NewsletterCTA.astro';
 
 // If you forget to set a "Publish Date" in the CMS, this fallback guarantees the newest created post is ALWAYS at the top.
 const query = `*[_type == "post"] | order(coalesce(publishedAt, _createdAt) desc)`;
@@ -54,6 +55,8 @@ const fallbackPosts = [
     }
 ];
 
+const slugify = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
 const posts = sanityPosts.length > 0 ? sanityPosts.map((post: any) => ({
     title: post.title,
     description: post.excerpt || "",
@@ -62,7 +65,7 @@ const posts = sanityPosts.length > 0 ? sanityPosts.map((post: any) => ({
     type: post.visualType || "box",
     visualText: post.visualText || "",
     slug: post.slug?.current || ""
-})) : fallbackPosts.map(p => ({ ...p, slug: p.title.toLowerCase().replace(/[^a-z0-9]+/g, '-') }));
+})) : fallbackPosts.map(p => ({ ...p, slug: slugify(p.title) }));
 
 const featuredPost = posts[0] || {};
 const gridPosts = posts.slice(1);
@@ -143,17 +146,7 @@ const gridPosts = posts.slice(1);
     </div>
 </section>
 
-<section class="newsletter-section">
-    <div class="container">
-        <h2 class="text-h2">Don't miss a sprint.</h2>
-        <p style="font-weight: 600; font-size: 1.25rem; margin-top: 10px;">Get our bi-weekly breakdown of automation wins and AI implementation tactics.</p>
-        <form class="newsletter-form">
-            <input type="email" placeholder="Enter your business email">
-            <button type="submit" class="btn btn-solid-accent">Subscribe Now</button>
-        </form>
-        <p style="font-size: 0.8rem; margin-top: 1.5rem; font-weight: 600;">Join 2,400+ SME owners and operators.</p>
-    </div>
-</section>
+<NewsletterCTA />
 
 <style>
     .blog-header {
@@ -284,49 +277,10 @@ const gridPosts = posts.slice(1);
         border-right: none;
     }
 
-    .newsletter-section {
-        background: var(--neon, #D4FF00);
-        padding: var(--space-xl) 0;
-        text-align: center;
-        border-bottom: 2px solid var(--black, #050505);
-    }
-
-    .newsletter-form {
-        max-width: 600px;
-        margin: var(--space-md) auto 0;
-        display: flex;
-        gap: 10px;
-    }
-
-    @media (max-width: 640px) {
-        .newsletter-form {
-            flex-direction: column;
-        }
-    }
-
-    .newsletter-form input {
-        flex: 1;
-        padding: 1rem 1.5rem;
-        border: 2px solid var(--black, #050505);
-        border-radius: var(--radius-pill);
-        font-family: var(--font-sans);
-        font-weight: 600;
-        outline: none;
-    }
-
-    .btn-solid-accent {
-        background: var(--black, #050505);
-        color: var(--white, #fff);
-        white-space: nowrap;
-    }
-
-    .btn-solid-accent:hover {
-        background: var(--white, #fff);
-        color: var(--black, #050505);
-    }
 </style>
 
 <script>
+    // @ts-nocheck
     document.addEventListener('DOMContentLoaded', () => {
         const filters = document.querySelectorAll('.cat-chip');
         const cards = document.querySelectorAll('.article-card[data-post-category]');

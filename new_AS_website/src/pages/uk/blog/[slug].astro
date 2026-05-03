@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PortableText from '../../../components/PortableText.jsx';
+import NewsletterCTA from '../../../components/NewsletterCTA.astro';
 import { sanityClient } from "sanity:client";
 
 export const prerender = false;
@@ -11,7 +12,6 @@ if (!slug) {
     return Astro.redirect('/404');
 }
 
-// Fetch live from Sanity based on the slug in the URL
 const query = `*[_type == "post" && slug.current == $slug][0]`;
 const post = await sanityClient.fetch(query, { slug }).catch(() => null);
 
@@ -35,8 +35,10 @@ const fallbackPosts = [
 
 let finalPost = post;
 
+const slugify = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
 if (!finalPost) {
-    const matchedFallback = fallbackPosts.find((p) => p.title.toLowerCase().replace(/[^a-z0-9]+/g, '-') === slug);
+    const matchedFallback = fallbackPosts.find((p) => slugify(p.title) === slug);
     if (matchedFallback) {
         finalPost = { title: matchedFallback.title, publishedAt: matchedFallback.date, body: matchedFallback.body };
     }
@@ -63,7 +65,7 @@ const blogPostingSchema = {
     "name": "Autoflow Solutions",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://autoflow-solutions.com/logo.png"
+      "url": "https://autoflow-solutions.com/AS%20logos/logo-square-dark-initials-removebg-preview.webp"
     }
   },
   "areaServed": "GB"
@@ -91,52 +93,5 @@ const blogPostingSchema = {
         </div>
     </article>
 
-    <section class="newsletter-section" style="background: var(--neon, #D4FF00); padding: var(--space-xl, 8rem) 0; text-align: center; border-top: 2px solid var(--black, #050505); border-bottom: 2px solid var(--black, #050505);">
-        <div class="container">
-            <h2 class="text-h2">Don't miss a sprint.</h2>
-            <p style="font-weight: 600; font-size: 1.25rem; margin-top: 10px;">Get our bi-weekly breakdown of automation wins and UK AI implementation tactics.</p>
-            <form id="newsletter-form" style="max-width: 600px; margin: var(--space-md, 2rem) auto 0; display: flex; gap: 10px;">
-                <input type="email" name="email" placeholder="Enter your business email" required style="flex: 1; padding: 1rem 1.5rem; border: 2px solid var(--black, #050505); border-radius: 99px; font-weight: 600; outline: none; font-family: inherit;">
-                <button type="submit" style="background: var(--black, #050505); color: var(--white, #fff); padding: 1rem 2rem; border-radius: 99px; font-weight: 800; border: none; cursor: pointer; white-space: nowrap;">Subscribe Now</button>
-            </form>
-            <div id="newsletter-success" style="display: none; max-width: 600px; margin: 2rem auto 0; background: var(--black); color: var(--neon); padding: 1rem; border-radius: 99px; font-weight: 800;">
-                ✓ You're on the list! Talk soon.
-            </div>
-        </div>
-    </section>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const newsletterForm = document.getElementById('newsletter-form') as HTMLFormElement;
-            const newsletterSuccess = document.getElementById('newsletter-success');
-            
-            if (newsletterForm) {
-                newsletterForm.addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    const formData = new FormData(newsletterForm);
-                    const submitBtn = newsletterForm.querySelector('button');
-                    if (submitBtn) {
-                        submitBtn.textContent = 'Joining...';
-                        submitBtn.disabled = true;
-                    }
-                    
-                    try {
-                        await fetch('https://script.google.com/macros/s/AKfycbywia_SFpTLhBUb8fs3T-lXHaGN-9Ht-iSvReQiaVWpTfVAqMJHWMHDvGKk3gtQALf9sQ/exec', {
-                            method: 'POST',
-                            body: formData,
-                            mode: 'no-cors'
-                        });
-                        
-                        newsletterForm.style.display = 'none';
-                        if (newsletterSuccess) newsletterSuccess.style.display = 'block';
-                    } catch (error) {
-                        console.error('Newsletter Error:', error);
-                        if (submitBtn) {
-                            submitBtn.textContent = 'Subscribe Now';
-                            submitBtn.disabled = false;
-                        }
-                    }
-                });
-            }
-        });
-    </script>
+    <NewsletterCTA locale="en-GB" />
 </BaseLayout>

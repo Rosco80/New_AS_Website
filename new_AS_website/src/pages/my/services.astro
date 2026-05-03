@@ -285,6 +285,7 @@ const faqSchema = {
             </div>
 
             <script>
+            // @ts-nocheck
             (function() {
                 const N8N_WEBHOOK = 'https://n8n.soryle.space/webhook/form-sumission';
                 const FORMSPREE   = 'https://formspree.io/f/mqeyoabe';
@@ -321,7 +322,7 @@ const faqSchema = {
                     const formData = new FormData(form);
 
                     try {
-                        await Promise.all([
+                        const responses = await Promise.all([
                             fetch(N8N_WEBHOOK, {
                                 method: 'POST',
                                 headers: { 'Content-Type': 'application/json' },
@@ -333,6 +334,11 @@ const faqSchema = {
                                 body: formData
                             })
                         ]);
+
+                        if (!responses.every((response) => response.ok)) {
+                            throw new Error('One or more form destinations rejected the submission.');
+                        }
+
                         form.reset();
                         btn.textContent = 'Sent!';
                         status.style.cssText = 'display:block; background:rgba(212,255,0,0.1); border:1px solid #D4FF00; color:#D4FF00; margin-top:1rem; padding:1rem; border-radius:8px; text-align:center; font-size:0.9rem;';
