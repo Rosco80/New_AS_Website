@@ -126,17 +126,35 @@ const websiteSchema = {
 	"name": "Autoflow Solutions",
 	"url": "https://autoflow-solutions.com"
 };
+
+// Inter ships on every page. Outfit + Barlow Condensed are only used on
+// services / case-studies — gated here so other pages don't pay for them.
+const needsExtraFonts = /^(?:\/(?:my|ms|uk))?\/(?:services|case-studies)(?:\/|$)/.test(basePath);
+const fontFamilies = needsExtraFonts
+	? 'family=Inter:wght@400;500;600;800;900&family=Outfit:wght@400;700&family=Barlow+Condensed:wght@600;700;900'
+	: 'family=Inter:wght@400;500;600;800;900';
+const fontsHref = `https://fonts.googleapis.com/css2?${fontFamilies}&display=swap`;
 ---
 
 <!doctype html>
 <html lang={htmlLang}>
 	<head>
-		<!-- LogRocket -->
-		<script src="https://cdn.logr-in.com/LogRocket.min.js" crossorigin="anonymous" is:inline></script>
-		<script is:inline>window.LogRocket && window.LogRocket.init('ukbgwa/as-website');</script>
+		<!-- LogRocket — async; init fires once the SDK is downloaded so it never blocks parsing. -->
+		<script is:inline>
+		  (function () {
+		    var s = document.createElement('script');
+		    s.src = 'https://cdn.logr-in.com/LogRocket.min.js';
+		    s.crossOrigin = 'anonymous';
+		    s.async = true;
+		    s.onload = function () {
+		      if (window.LogRocket) window.LogRocket.init('ukbgwa/as-website');
+		    };
+		    document.head.appendChild(s);
+		  })();
+		</script>
 
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/webp" href="/AS%20logos/logo-square-dark-initials-removebg-preview.webp" />
 		<meta name="generator" content={Astro.generator} />
 		
@@ -167,11 +185,11 @@ const websiteSchema = {
 		{combinedSchema && (Array.isArray(combinedSchema) ? combinedSchema.map(item => <Schema item={item} />) : <Schema item={combinedSchema} />)}
 
 		
-		<!-- Google Fonts — async to avoid render-blocking -->
+		<!-- Google Fonts — async to avoid render-blocking; Outfit + Barlow only ship on the routes that use them. -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;700&family=Barlow+Condensed:wght@600;700;900&display=swap" media="print" onload="this.media='all'">
-		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;700&family=Barlow+Condensed:wght@600;700;900&display=swap"></noscript>
+		<link rel="stylesheet" href={fontsHref} media="print" onload="this.media='all'">
+		<noscript><link rel="stylesheet" href={fontsHref}></noscript>
 
 		<!-- Google tag (gtag.js) — deferred after load, cookieless -->
 		<script is:inline>

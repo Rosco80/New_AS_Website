@@ -1,0 +1,10 @@
+{
+  "files": [
+    "new_AS_website/src/layouts/BaseLayout.astro",
+    "new_AS_website/src/layouts/Layout.astro",
+    "new_AS_website/src/layouts/LegalLayout.astro"
+  ],
+  "insertBefore": "</body>",
+  "commentSyntax": "html",
+  "cspChecked": true
+}

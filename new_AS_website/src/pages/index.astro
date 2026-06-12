@@ -1,45 +1,37 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Edge geo-redirect, replacing the previous client-side ipapi.co fetch.
+//   - Zero client-side cost; runs at Vercel's edge from request headers.
+//   - Bots are excluded so the canonical homepage stays fully indexable.
+//   - Same-origin referer is honored so the language-switcher "global" link
+//     does not bounce visitors back to their locale.
+const userAgent = Astro.request.headers.get('user-agent') || '';
+const isBot = /bot|crawl|spider|googlebot|bingbot|baiduspider|yandex|duckduck|slurp|facebookexternalhit/i.test(userAgent);
+const referer = Astro.request.headers.get('referer') || '';
+const sameOriginReferer = referer.includes(Astro.url.host);
+const country = (Astro.request.headers.get('x-vercel-ip-country') || '').toUpperCase();
+
+if (!isBot && !sameOriginReferer) {
+  if (country === 'MY') return Astro.redirect('/my', 302);
+  if (country === 'GB') return Astro.redirect('/uk', 302);
+}
 ---
 
-<script>
-  // Client-side geo-redirect — only runs in the browser.
-  // Googlebot ignores JS, so the homepage remains fully indexable.
-  (function () {
-    // Don't redirect if user has already visited (prevents redirect loops)
-    if (sessionStorage.getItem('geo-redirected')) return;
-
-    fetch('https://ipapi.co/json/')
-      .then(function (res) { return res.json(); })
-      .then(function (data) {
-        var country = data && data.country_code;
-        if (country === 'MY') {
-          sessionStorage.setItem('geo-redirected', '1');
-          window.location.replace('/my');
-        } else if (country === 'GB') {
-          sessionStorage.setItem('geo-redirected', '1');
-          window.location.replace('/uk');
-        }
-      })
-      .catch(function () { /* silently fail — user stays on global page */ });
-  })();
-</script>
-
 <BaseLayout
-  title="AI Automation Agency — Done-for-You AI Workflows"
+  title="AI Automation Agency | Done-for-You AI Workflows"
   description="Autoflow Solutions is a done-for-you AI automation agency for SMEs. We build AI agents, chatbots, and workflow automation so you scale without adding headcount."
 >
     <header class="hero">
         <div class="hero-left">
             <span class="label-micro" style="border: 1px solid var(--black); padding: 4px 8px; border-radius: var(--radius-pill);">For SME Owners</span>
-            <h1 class="text-display">Turn More Inquiries Into Booked Clients<br>With AI-Powered Follow-Up.</h1>
-            <h2 class="text-h3" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">AI Automation Agency for Growing SMEs</h2>
+            <h1 class="text-display">Turn More Inquiries Into Booked Clients With AI-Powered Follow-Up.</h1>
+            <p class="text-h3" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">AI Automation Agency for Growing SMEs</p>
             <p class="text-body-lg">Automate lead capture, qualification, CRM updates, and missed inquiry recovery for professional service SMEs.</p>
             <div style="display: flex; gap: 1rem;">
                 <a href="https://ai-self-audit.autoflow-solutions.com/" class="btn btn-solid">Start Free AI Self Audit</a>
                 <a href="/tools/automation-roi-calculator" class="btn btn-outline">Calculate Your Automation ROI</a>
             </div>
-            <p class="label-micro" style="margin-top: 1rem;">Built for SMEs that want faster response times, less admin, and cleaner operations.</p>
         </div>
         <div class="hero-right">
             <div class="cluster-wrapper">
@@ -60,7 +52,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <div class="ui-card card-2">
                     <div class="card-header">
                         <span class="label-micro">Process 02: Routing</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
                     </div>
                     <h3 class="text-h3" style="margin-bottom: 8px;">CRM Sync</h3>
                     <p class="text-body" style="font-size: 0.85rem; margin-bottom: 12px;">Data maps directly to Salesforce/HubSpot without human entry.</p>
@@ -71,10 +63,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 </div>
 
                 <div class="ui-card card-3">
-                    <svg class="doodle-arrow" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 50 C 50 10, 150 10, 190 50" stroke="black" stroke-width="4" stroke-linecap="round"></path>
-                        <path d="M170 30 L 195 55 L 160 70" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
-                        <text x="70" y="20" font-family="'Gloria Hallelujah', cursive, sans-serif" font-size="18" fill="black" transform="rotate(-10 70 20)">You save 40hrs/wk!</text>
+                    <svg class="doodle-arrow" role="img" aria-label="Annotation: You save 20+ hours a week" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 50 C 50 10, 150 10, 190 50" stroke="#050505" stroke-width="4" stroke-linecap="round"></path>
+                        <path d="M170 30 L 195 55 L 160 70" stroke="#050505" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <text x="60" y="20" font-family="'Gloria Hallelujah', cursive, sans-serif" font-size="18" fill="#050505" transform="rotate(-10 60 20)">You save 20+ hrs/wk!</text>
                     </svg>
 
                     <div class="card-header">
@@ -99,12 +91,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
     </div>
 
-    <section class="density-section" style="background-color: var(--gray-light); padding-top: 4rem; padding-bottom: 4rem; margin-top: 2rem;">
+    <section class="density-section density-section--gray">
         <div class="container">
             <div class="section-header" style="text-align: center; margin-bottom: 2rem;">
                 <h2 class="text-h2">Where SME teams lose time and revenue.</h2>
             </div>
-            <ul style="max-width: 600px; margin: 0 auto; list-style: disc; padding-left: 2rem; font-size: 1.1rem; line-height: 1.6;">
+            <ul class="brand-list">
                 <li>Leads sit too long without follow-up</li>
                 <li>Staff answer the same questions repeatedly</li>
                 <li>Customer details never make it into the CRM properly</li>
@@ -125,16 +117,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="blueprint-cell">
                 <span class="cell-id">CAP.01</span>
                 <div class="icon-box">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--neon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--neon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                 </div>
                 <h4 class="text-h3" style="margin-bottom: 0.5rem;">Lead Handling</h4>
                 <p class="text-body" style="font-size: 0.9rem;">Capture, qualify, and route inquiries from WhatsApp, web chat, and forms.</p>
             </div>
             
-            <div class="blueprint-cell">
+            <div class="blueprint-cell blueprint-cell--featured">
                 <span class="cell-id">CAP.02</span>
                 <div class="icon-box">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--neon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--neon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
                 </div>
                 <h4 class="text-h3" style="margin-bottom: 0.5rem;">Workflow Automation</h4>
                 <p class="text-body" style="font-size: 0.9rem;">Sync CRMs, trigger onboarding, generate documents, and alert the right people.</p>
@@ -143,7 +135,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="blueprint-cell">
                 <span class="cell-id">CAP.03</span>
                 <div class="icon-box">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--neon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="15" x2="23" y2="15"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="15" x2="4" y2="15"></line></svg>
+                    <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--neon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="15" x2="23" y2="15"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="15" x2="4" y2="15"></line></svg>
                 </div>
                 <h4 class="text-h3" style="margin-bottom: 0.5rem;">AI Task Execution</h4>
                 <p class="text-body" style="font-size: 0.9rem;">Use AI workers to handle repetitive research, updates, summaries, and cross-system actions.</p>
@@ -151,41 +143,68 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
     </section>
 
-    <section class="density-section" style="background-color: var(--gray-light); padding-top: 4rem; padding-bottom: 4rem;">
+    <section class="density-section density-section--gray">
         <div class="container">
             <div class="section-header" style="text-align: center; margin-bottom: 2rem;">
                 <h2 class="text-h2">What this should improve.</h2>
+                <p class="text-body-lg">Outcomes SMEs see once the system is in place.</p>
             </div>
-            <ul style="max-width: 600px; margin: 0 auto; list-style: disc; padding-left: 2rem; font-size: 1.1rem; line-height: 1.6;">
-                <li>Faster response times</li>
-                <li>Fewer missed leads</li>
-                <li>Lower admin workload</li>
-                <li>Cleaner handoffs</li>
-                <li>More consistent follow-up</li>
-            </ul>
+            <div class="outcome-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); border-top: 1px solid var(--black); border-bottom: 1px solid var(--black); background-color: var(--white);">
+                <div class="stat-cell">
+                    <span class="stat-figure">40%</span>
+                    <span class="stat-label">Fewer no-shows on booked appointments</span>
+                    <span class="stat-source">After-hours follow-up automation</span>
+                </div>
+                <div class="stat-cell">
+                    <span class="stat-figure"><mark>20+</mark></span>
+                    <span class="stat-label">Hours/week given back to the team</span>
+                    <span class="stat-source">Lead capture, CRM sync, routing</span>
+                </div>
+                <div class="stat-cell">
+                    <span class="stat-figure">&lt;3s</span>
+                    <span class="stat-label">Response time on inbound inquiries</span>
+                    <span class="stat-source">WhatsApp, web chat, forms</span>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="density-section" style="padding-top: 4rem; padding-bottom: 4rem;">
+    <section class="density-section">
         <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 2rem;">
+            <div class="section-header" style="text-align: center; margin-bottom: var(--space-md);">
                 <h2 class="text-h2">How we work.</h2>
             </div>
-            <ol style="max-width: 600px; margin: 0 auto; padding-left: 2rem; font-size: 1.1rem; line-height: 1.6;">
-                <li style="margin-bottom: 0.5rem;"><strong>Audit your current process</strong></li>
-                <li style="margin-bottom: 0.5rem;"><strong>Design the right automation flow</strong></li>
-                <li style="margin-bottom: 0.5rem;"><strong>Build, test, and launch</strong></li>
-                <li style="margin-bottom: 0.5rem;"><strong>Monitor and improve</strong></li>
-            </ol>
+        </div>
+        <div class="process-strip">
+            <div class="step-cell">
+                <span class="step-num" aria-hidden="true">01</span>
+                <h4 class="text-h3" style="margin-bottom: 0.5rem;">Audit your current process</h4>
+                <p class="text-body" style="font-size: 0.9rem;">We map every manual step and rank the highest-ROI fixes first.</p>
+            </div>
+            <div class="step-cell">
+                <span class="step-num" aria-hidden="true">02</span>
+                <h4 class="text-h3" style="margin-bottom: 0.5rem;">Design the right automation flow</h4>
+                <p class="text-body" style="font-size: 0.9rem;">Architecture, integrations, and success metrics, locked before any code.</p>
+            </div>
+            <div class="step-cell">
+                <span class="step-num" aria-hidden="true">03</span>
+                <h4 class="text-h3" style="margin-bottom: 0.5rem;">Build, test, and launch</h4>
+                <p class="text-body" style="font-size: 0.9rem;">Shipped inside your stack. Dry-run on real data. Rollback path included.</p>
+            </div>
+            <div class="step-cell">
+                <span class="step-num" aria-hidden="true">04</span>
+                <h4 class="text-h3" style="margin-bottom: 0.5rem;">Monitor and improve</h4>
+                <p class="text-body" style="font-size: 0.9rem;">Weekly health checks, tuned thresholds, ownership stays with you.</p>
+            </div>
         </div>
     </section>
 
-    <section class="density-section" style="background-color: var(--black); color: var(--white); padding-top: 4rem; padding-bottom: 4rem; text-align: center;">
+    <section class="density-section density-section--inverse">
         <div class="container">
-            <h2 class="text-h2" style="margin-bottom: 2rem; color: var(--white);">See where automation will pay off first</h2>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="https://ai-self-audit.autoflow-solutions.com/" class="btn btn-solid" style="background-color: var(--neon); color: var(--black);">Start Free AI Self Audit</a>
-                <a href="/tools/automation-roi-calculator" class="btn btn-outline" style="border-color: var(--white); color: var(--white);">Calculate Your Automation ROI</a>
+            <h2 class="text-h2" style="margin-bottom: 2rem;">See where automation will pay off first</h2>
+            <div class="cta-stripe-actions">
+                <a href="https://ai-self-audit.autoflow-solutions.com/" class="btn btn-neon">Start Free AI Self Audit</a>
+                <a href="/tools/automation-roi-calculator" class="btn btn-outline-light">Calculate Your Automation ROI</a>
             </div>
         </div>
     </section>

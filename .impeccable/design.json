@@ -1,0 +1,290 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-12T00:00:00.000Z",
+  "title": "Design System: Autoflow Solutions",
+  "extensions": {
+    "colorMeta": {
+      "highlighter-lime": {
+        "role": "primary",
+        "displayName": "Highlighter Lime",
+        "canonical": "oklch(91.6% 0.22 122)",
+        "tonalRamp": [
+          "oklch(15% 0.05 122)",
+          "oklch(26% 0.08 122)",
+          "oklch(38% 0.12 122)",
+          "oklch(50% 0.15 122)",
+          "oklch(62% 0.18 122)",
+          "oklch(74% 0.20 122)",
+          "oklch(85% 0.22 122)",
+          "oklch(95% 0.18 122)"
+        ]
+      },
+      "press-black": {
+        "role": "neutral",
+        "displayName": "Press Black",
+        "canonical": "oklch(11.5% 0 0)",
+        "tonalRamp": [
+          "oklch(11.5% 0 0)",
+          "oklch(20% 0 0)",
+          "oklch(28% 0 0)",
+          "oklch(40% 0 0)",
+          "oklch(52% 0 0)",
+          "oklch(66% 0 0)",
+          "oklch(80% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "paper-white": {
+        "role": "neutral",
+        "displayName": "Paper White",
+        "canonical": "oklch(100% 0 0)",
+        "tonalRamp": [
+          "oklch(70% 0 0)",
+          "oklch(78% 0 0)",
+          "oklch(85% 0 0)",
+          "oklch(90% 0 0)",
+          "oklch(94% 0 0)",
+          "oklch(97% 0 0)",
+          "oklch(99% 0 0)",
+          "oklch(100% 0 0)"
+        ]
+      },
+      "gray-dark": {
+        "role": "neutral",
+        "displayName": "Operator Gray",
+        "canonical": "oklch(36% 0 0)",
+        "tonalRamp": [
+          "oklch(12% 0 0)",
+          "oklch(20% 0 0)",
+          "oklch(28% 0 0)",
+          "oklch(36% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(65% 0 0)",
+          "oklch(80% 0 0)",
+          "oklch(92% 0 0)"
+        ]
+      },
+      "gray-light": {
+        "role": "neutral",
+        "displayName": "Blueprint Rule",
+        "canonical": "oklch(91% 0 0)",
+        "tonalRamp": [
+          "oklch(65% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(78% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(88% 0 0)",
+          "oklch(91% 0 0)",
+          "oklch(95% 0 0)",
+          "oklch(98% 0 0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headlines and footer brand stamp. Inter 900, uppercase, tracked tight at -0.03em. Caps at 6rem except the footer signature at 12rem."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section heads inside content. Same weight discipline as Display, smaller scale. Sentence case."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card titles and sub-section heads. Inter 800."
+      },
+      "body-lg": {
+        "displayName": "Body Large",
+        "purpose": "Lead paragraphs under a Headline. Used once per section to summarize."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Standard paragraphs. Cap at 65-75ch."
+      },
+      "label": {
+        "displayName": "Label / Kicker",
+        "purpose": "Status chips, card headers (Process 01: Ingestion), hero pill (For SME Owners), footer column heads. Named system, never used as eyebrow scaffold above every section."
+      }
+    },
+    "shadows": [
+      {
+        "name": "block-stamp",
+        "value": "12px 12px 0 rgba(0,0,0,0.1)",
+        "purpose": "Default declarative shadow for UI cards in hero cluster. Offset, no blur. Letterpress logic."
+      },
+      {
+        "name": "block-stamp-lifted",
+        "value": "16px 16px 0 rgba(0,0,0,0.15)",
+        "purpose": "Hover state of UI cards. Same stamp pressed harder."
+      },
+      {
+        "name": "block-stamp-solid",
+        "value": "12px 12px 0 #050505",
+        "purpose": "When a card is the page focus, the shadow becomes a solid color signal flag. Used under card-3 (the highlighter-lime card)."
+      },
+      {
+        "name": "block-stamp-neon",
+        "value": "15px 15px 0 #c4ef17",
+        "purpose": "Featured pricing card. Press Black surface, Highlighter Lime declarative shadow. The only place lime appears as a shadow color."
+      },
+      {
+        "name": "cursor-glow",
+        "value": "radial-gradient(circle, rgba(196,239,23,0.35) 0%, rgba(196,239,23,0.1) 40%, transparent 70%) with filter: blur(30px)",
+        "purpose": "Ambient cursor follower. The only place blur is permitted. Must respect prefers-reduced-motion."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-quart",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Standard state-change easing. Buttons, hover transitions, focus rings."
+      },
+      {
+        "name": "ease-hover-card",
+        "value": "ease",
+        "purpose": "Card hover lifts (transform 0.3s ease). Distinct from button ease."
+      },
+      {
+        "name": "marquee-linear",
+        "value": "linear 20s infinite",
+        "purpose": "Production-floor marquee scroll. Constant velocity is the point."
+      },
+      {
+        "name": "pulse-cursor-outer",
+        "value": "ease-in-out 4s infinite",
+        "purpose": "Cursor-follower outer ring pulse. Slow and ambient."
+      },
+      {
+        "name": "pulse-cursor-core",
+        "value": "ease-in-out 2s infinite",
+        "purpose": "Cursor-follower inner core pulse. Faster cadence inside the outer ring."
+      }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "600px" },
+      { "name": "tablet", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Solid Button",
+      "kind": "button",
+      "refersTo": "button-solid",
+      "description": "Primary CTA. Press Black surface that inverts to Paper White on hover.",
+      "html": "<a href=\"#\" class=\"ds-btn-solid\">Start Free AI Self Audit</a>",
+      "css": ".ds-btn-solid { display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2rem; border-radius: 999px; font-family: Inter, system-ui, sans-serif; font-weight: 600; font-size: 1rem; text-decoration: none; background-color: #050505; color: #FFFFFF; border: 2px solid #050505; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; } .ds-btn-solid:hover { background-color: transparent; color: #050505; } .ds-btn-solid:focus-visible { outline: 2px solid #050505; outline-offset: 4px; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary CTA. Often paired with Solid as the 'or' option.",
+      "html": "<a href=\"#\" class=\"ds-btn-outline\">Calculate Your Automation ROI</a>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2rem; border-radius: 999px; font-family: Inter, system-ui, sans-serif; font-weight: 600; font-size: 1rem; text-decoration: none; background-color: transparent; color: #050505; border: 2px solid #050505; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; } .ds-btn-outline:hover { background-color: #050505; color: #FFFFFF; } .ds-btn-outline:focus-visible { outline: 2px solid #050505; outline-offset: 4px; }"
+    },
+    {
+      "name": "Neon Button",
+      "kind": "button",
+      "refersTo": "button-neon",
+      "description": "Highest-emphasis CTA. Reserved for Press Black surfaces (footer, inverted hero).",
+      "html": "<a href=\"#\" class=\"ds-btn-neon\">Book Your Friction Audit</a>",
+      "css": ".ds-btn-neon { display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2rem; border-radius: 999px; font-family: Inter, system-ui, sans-serif; font-weight: 600; font-size: 1rem; text-decoration: none; background-color: #c4ef17; color: #050505; border: 2px solid #c4ef17; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; } .ds-btn-neon:hover { background-color: transparent; color: #c4ef17; border-color: #c4ef17; } .ds-btn-neon:focus-visible { outline: 2px solid #c4ef17; outline-offset: 4px; }"
+    },
+    {
+      "name": "Label / Kicker",
+      "kind": "chip",
+      "refersTo": "label",
+      "description": "Status chip and card-header process name. Tracked-out tiny caps; the engineering-spec voice.",
+      "html": "<span class=\"ds-label\">Process 01: Ingestion</span>",
+      "css": ".ds-label { display: inline-block; font-family: Inter, system-ui, sans-serif; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: #333333; padding: 4px 8px; border: 1px solid #050505; border-radius: 999px; }"
+    },
+    {
+      "name": "UI Card (declarative)",
+      "kind": "card",
+      "refersTo": "ui-card",
+      "description": "Hero cluster card. Hard border, offset block shadow, slight rotation. Hero pattern only — do not repeat in section grammar.",
+      "html": "<div class=\"ds-ui-card\"><div class=\"ds-ui-card__header\"><span class=\"ds-label\">Process 01: Ingestion</span><span class=\"ds-ui-card__status\"></span></div><h3 class=\"ds-ui-card__title\">Invoice Extraction</h3><p class=\"ds-ui-card__body\">AI reads incoming PDFs, extracts line items, and flags discrepancies instantly.</p><div class=\"ds-ui-card__bar\"><div class=\"ds-ui-card__bar-fill\"></div></div><span class=\"ds-ui-card__caption\">100% Automated</span></div>",
+      "css": ".ds-ui-card { background: #FFFFFF; border: 2px solid #050505; padding: 2rem; box-shadow: 12px 12px 0 rgba(0,0,0,0.1); transform: rotate(-4deg); width: 320px; font-family: Inter, system-ui, sans-serif; color: #050505; transition: transform 0.3s ease, box-shadow 0.3s ease; } .ds-ui-card:hover { transform: scale(1.02) translateY(-5px) rotate(-4deg); box-shadow: 16px 16px 0 rgba(0,0,0,0.15); } .ds-ui-card__header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid #E5E5E5; padding-bottom: 8px; } .ds-ui-card__status { display: inline-block; width: 8px; height: 8px; background: #c4ef17; border-radius: 50%; box-shadow: 0 0 0 2px #050505; } .ds-ui-card__title { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.01em; line-height: 1.05; margin: 0 0 8px; } .ds-ui-card__body { font-size: 0.85rem; line-height: 1.5; color: #333333; margin: 0 0 16px; } .ds-ui-card__bar { background: #E5E5E5; height: 4px; border-radius: 2px; width: 100%; margin-bottom: 4px; } .ds-ui-card__bar-fill { background: #050505; height: 100%; width: 100%; border-radius: 2px; } .ds-ui-card__caption { display: inline-block; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: #050505; } .ds-label { display: inline-block; font-family: Inter, system-ui, sans-serif; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: #333333; }"
+    },
+    {
+      "name": "Pricing Card — Featured",
+      "kind": "card",
+      "refersTo": "pricing-card-featured",
+      "description": "Featured pricing tier. Press Black surface, Highlighter Lime offset shadow, lime tier-badge top-right.",
+      "html": "<article class=\"ds-pricing-card ds-pricing-card--featured\"><span class=\"ds-tier-badge\">Best Value</span><span class=\"ds-pricing__tier-label\">Operations Engine</span><div class=\"ds-pricing__price-block\"><span class=\"ds-pricing__monthly\">$170<span class=\"ds-pricing__period\">/mo</span></span><span class=\"ds-pricing__setup\">+ $1,699 SETUP</span></div><ul class=\"ds-pricing__features\"><li class=\"ds-pricing__feature\">20+ hours/week saved</li><li class=\"ds-pricing__feature\">CRM sync, no manual entry</li><li class=\"ds-pricing__feature\">Ongoing tuning included</li></ul><a href=\"#\" class=\"ds-btn-neon\" style=\"width:100%;\">Get Started</a></article>",
+      "css": ".ds-pricing-card { background: #FFFFFF; color: #050505; border: 3px solid #050505; padding: 3rem 2rem; position: relative; display: flex; flex-direction: column; transition: transform 0.3s ease; font-family: Inter, system-ui, sans-serif; max-width: 360px; } .ds-pricing-card:hover { transform: translateY(-10px); } .ds-pricing-card--featured { background: #050505; color: #FFFFFF; box-shadow: 15px 15px 0 #c4ef17; } .ds-tier-badge { position: absolute; top: -15px; right: 20px; background: #c4ef17; color: #050505; padding: 4px 12px; font-weight: 900; font-size: 0.75rem; border: 2px solid #050505; text-transform: uppercase; letter-spacing: 0.05em; } .ds-pricing__tier-label { display: block; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: #E5E5E5; margin-bottom: 1rem; } .ds-pricing__price-block { margin: 1rem 0 2rem; padding: 1.5rem 0; border-top: 1px solid #333333; border-bottom: 1px solid #333333; } .ds-pricing__monthly { font-size: 3.5rem; font-weight: 900; line-height: 1; display: block; letter-spacing: -0.03em; color: #c4ef17; } .ds-pricing__period { font-size: 1rem; font-weight: 600; opacity: 0.6; color: #FFFFFF; } .ds-pricing__setup { display: block; font-size: 0.85rem; font-weight: 700; margin-top: 0.5rem; color: #E5E5E5; text-transform: uppercase; letter-spacing: 0.05em; } .ds-pricing__features { list-style: none; padding: 0; margin: 0 0 2rem; flex-grow: 1; } .ds-pricing__feature { padding: 12px 0; border-bottom: 1px solid #333333; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 8px; color: #E5E5E5; } .ds-pricing__feature::before { content: \"→\"; color: #c4ef17; font-weight: 900; } .ds-btn-neon { display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2rem; border-radius: 999px; font-weight: 600; font-size: 1rem; text-decoration: none; background-color: #c4ef17; color: #050505; border: 2px solid #c4ef17; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-neon:hover { background-color: transparent; color: #c4ef17; }"
+    },
+    {
+      "name": "Marquee Band",
+      "kind": "custom",
+      "refersTo": "marquee",
+      "description": "Production-floor scrolling brand band. Highlighter Lime canvas, Press Black uppercase text. Once per page.",
+      "html": "<div class=\"ds-marquee\"><div class=\"ds-marquee__content\">NO JARGON • JUST ROI • BUILT FOR SMES • NO JARGON • JUST ROI • BUILT FOR SMES • NO JARGON • JUST ROI • BUILT FOR SMES • NO JARGON • JUST ROI • BUILT FOR SMES • </div></div>",
+      "css": ".ds-marquee { background-color: #c4ef17; color: #050505; padding: 1rem 0; overflow: hidden; white-space: nowrap; border-bottom: 2px solid #050505; display: flex; align-items: center; font-family: Inter, system-ui, sans-serif; } .ds-marquee__content { display: inline-block; animation: ds-marquee-scroll 20s linear infinite; font-weight: 900; text-transform: uppercase; font-size: 1.25rem; letter-spacing: 0.05em; } @keyframes ds-marquee-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } } @media (prefers-reduced-motion: reduce) { .ds-marquee__content { animation: none; transform: translateX(0); } }"
+    },
+    {
+      "name": "Navigation Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Primary nav link with Highlighter Lime active underline.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav__link ds-nav__link--active\" href=\"#\">Services</a><a class=\"ds-nav__link\" href=\"#\">Case Studies</a><a class=\"ds-nav__link\" href=\"#\">Resources</a><a class=\"ds-nav__link\" href=\"#\">Blog</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 2rem; align-items: center; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); padding: 1rem 2rem; border-bottom: 1px solid #E5E5E5; font-family: Inter, system-ui, sans-serif; } .ds-nav__link { text-decoration: none; color: #050505; font-weight: 600; font-size: 0.9rem; padding: 4px 0; border-bottom: 2px solid transparent; transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1); } .ds-nav__link:hover { border-bottom-color: rgba(196,239,23,0.4); } .ds-nav__link--active { border-bottom-color: #c4ef17; } .ds-nav__link:focus-visible { outline: 2px solid #050505; outline-offset: 4px; border-bottom-color: #c4ef17; }"
+    },
+    {
+      "name": "Blueprint Cell",
+      "kind": "custom",
+      "refersTo": "blueprint-cell",
+      "description": "Schematic process cell. Wireframe-thin, monospace cell-ID corner marker, black icon box.",
+      "html": "<div class=\"ds-blueprint-cell\"><span class=\"ds-blueprint-cell__id\">01</span><div class=\"ds-blueprint-cell__icon\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"22 12 18 12 15 21 9 3 6 12 2 12\"></polyline></svg></div><h3 class=\"ds-blueprint-cell__title\">Audit your workflow</h3><p class=\"ds-blueprint-cell__body\">Map every manual task, scope automation candidates, rank by ROI.</p></div>",
+      "css": ".ds-blueprint-cell { padding: 4rem 2rem; border-right: 1px solid #E5E5E5; position: relative; background: #FFFFFF; font-family: Inter, system-ui, sans-serif; color: #050505; transition: background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1); } .ds-blueprint-cell:hover { background-color: #fafafa; } .ds-blueprint-cell__id { position: absolute; top: 1rem; right: 1rem; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.75rem; color: #E5E5E5; font-weight: 700; } .ds-blueprint-cell__icon { width: 48px; height: 48px; background: #050505; border-radius: 4px; margin-bottom: 2rem; display: flex; align-items: center; justify-content: center; } .ds-blueprint-cell__title { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.01em; line-height: 1.2; margin: 0 0 1rem; } .ds-blueprint-cell__body { font-size: 1rem; line-height: 1.5; color: #333333; margin: 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Operator's Blueprint",
+    "overview": "This is the visual language of a founder-led automation agency. The whole system reads like a spec sheet annotated by the engineer who built it: blueprint grid backgrounds, monospace process IDs, hand-drawn doodle arrows over rotated UI-card mockups, hard 2-3px black borders, and 12px 12px 0 offset block shadows that don't blur. It is the opposite of the cream-paper editorial SaaS landing page and the opposite of the purple-gradient AI hero. It is the look of a team that ships systems, not a team that pitches them. The palette is binary: near-black ink on paper-white surface, with #c4ef17 Highlighter Lime as the single emphatic accent. There are no soft drop-shadows, no glassmorphism, no gradients. Depth is declared, not simulated — the offset shadow is a stamp, not a sunbeam. Typography is Inter at 900 weight, tracked tight (-0.03em) and set in ALL CAPS at display sizes. Motion is purposeful: a quartic ease-out for state changes, a slow linear marquee for the brand band, and one ambient cursor-follower glow that pulses behind the hero. Nothing is decorative for its own sake.",
+    "keyCharacteristics": [
+      "Binary palette, single accent. Press Black + Paper White + Highlighter Lime. No tertiary color anywhere.",
+      "Declarative shadows. Offset block, zero blur. Letterpress logic, not depth simulation.",
+      "Hard borders are structure. 2-3px Press Black borders define every container. The border IS the card.",
+      "Display type at 900, tracked tight. Inter, uppercase, -0.03em, line-height 1.05.",
+      "Pill buttons are the only soft shape. Everything else is hard-cornered.",
+      "Workshop annotation as voice. Hand-drawn arrows, monospace process IDs, conversational marquees."
+    ],
+    "rules": [
+      { "name": "The Single Accent Rule", "body": "Highlighter Lime is the only chromatic color in the system. There is no secondary accent, no warning red, no info blue. If a state needs to be communicated, communicate it with Press Black weight, border, or copy — not by introducing a new hue.", "section": "colors" },
+      { "name": "The Spotlight Rule", "body": "Highlighter Lime never carries small body text on Paper White. Its WCAG contrast against white at body sizes is below AA. Use it at display weight, on solid button surfaces with Press Black text, or as a fill on inverted (Press Black) backgrounds.", "section": "colors" },
+      { "name": "The Canonical Lime Rule", "body": "The brand neon is #c4ef17. The current variant.css sets --neon: #D4FF00, which is a yellower drift. Fix the token to #c4ef17 so every implementation matches. One lime, one hex, project-wide.", "section": "colors" },
+      { "name": "The Two-Weight Spread Rule", "body": "Inter is used at 400, 500, 800, and 900. Never 300, never 700. The brand voice depends on a hard gap between body weight and display weight; mid-weights muddy it.", "section": "typography" },
+      { "name": "The Uppercase Discipline Rule", "body": "Display and Label tiers are uppercase. Headline, Title, Body-LG, and Body are sentence case. Do not mix.", "section": "typography" },
+      { "name": "The 6rem Ceiling Rule", "body": "Display headlines max at 6rem. The only exception is the footer brand stamp at clamp(4rem, 10vw, 12rem) in Highlighter Lime — used exactly once per page, as a signature.", "section": "typography" },
+      { "name": "The Declarative Shadow Rule", "body": "Offset, no blur. The shadow's job is to declare presence (this is a solid object on a page), not to simulate light falling on it. If a shadow has a blur-radius other than the cursor-follower's 30px, it is a drift; remove it.", "section": "elevation" },
+      { "name": "The Border IS the Card Rule", "body": "A 2-3px Press Black border defines every card, pricing tier, and content container. The shadow is the second voice; the border is the first. A card with no border is incomplete, even if it has a shadow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use #c4ef17 as the canonical neon. Fix the --neon: #D4FF00 token in new_AS_website/src/styles/variant.css to match.",
+      "Do keep Highlighter Lime to <=10% of any given screen. Its rarity is the point.",
+      "Do use 2-3px Press Black borders on every card, pricing tier, and container. The border is the structure.",
+      "Do use offset block shadows (Npx Npx 0) with zero blur. Letterpress logic.",
+      "Do set display type uppercase, Inter 900, letter-spacing -0.03em. Stay at or under the 6rem ceiling everywhere except the footer brand stamp.",
+      "Do keep Body line length 65-75ch.",
+      "Do use the → glyph as the brand's bullet wherever a list calls for one.",
+      "Do respect prefers-reduced-motion: reduce for the cursor-follower glow, the marquee, the hover lifts, and any future scroll-driven choreography.",
+      "Do ship real client names, real numbers, real quotes wherever possible. Specificity is the brand's competitive advantage."
+    ],
+    "donts": [
+      "Don't introduce a second accent color. No info blue, no warning red, no secondary purple. The Single Accent Rule is the brand.",
+      "Don't use Highlighter Lime as body text on Paper White. It fails WCAG AA at body sizes.",
+      "Don't soften a shadow. No blur-radius, no rgba(0,0,0,0.05) haze under cards. Offset block, zero blur, or nothing. The one exception is the cursor-follower glow.",
+      "Don't ship a purple-pink gradient hero, a hero-metric template (giant number + tiny label + gradient accent), or a transform-your-business headline. That is the generic SaaS register PRODUCT.md explicitly rejects.",
+      "Don't drift into enterprise corporate navy + cool gray. Autoflow is a founder's automation team, not a vendor with a procurement portal.",
+      "Don't translate the brand into cream / sand / paper-warm editorial minimalism. That is the 2026 saturated AI default. Paper White is #FFFFFF.",
+      "Don't repeat the rotated UI-card cluster outside the hero. It is a hero pattern, not a section grammar.",
+      "Don't put a tiny tracked uppercase Label above every section as scaffolding.",
+      "Don't add another monospace usage. Mono is reserved for process IDs and API_REQ / SUCCESS technical chips.",
+      "Don't use hype copy: revolutionary, disruptive, transform, chatbot, AI experiment, pilot, beta. Don't use jargon (LLM, RAG, transformer, embeddings) outside explicitly technical pages.",
+      "Don't gate content visibility on a class-triggered reveal animation.",
+      "Don't mix uppercase tiers: an all-caps Title is the saturated AI tell; a sentence-case Display is timid.",
+      "Don't introduce mid-weights (300, 700) into Inter."
+    ]
+  }
+}

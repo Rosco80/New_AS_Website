@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&display=swap');
-
 :root {
-    --neon: #D4FF00;
+    --neon: #c4ef17;
     --black: #050505;
     --white: #FFFFFF;
     --gray-dark: #333333;
@@ -83,6 +81,11 @@ h1, h2, h3, h4 {
     font-weight: 900;
     letter-spacing: -0.03em;
     line-height: 1.05;
+    text-wrap: balance;
+}
+
+p {
+    text-wrap: pretty;
 }
 
 .text-display { font-size: clamp(3rem, 6vw, 6rem); text-transform: uppercase; }
@@ -145,7 +148,28 @@ h1, h2, h3, h4 {
     color: var(--black);
     border: 2px solid var(--neon);
 }
-.btn-neon:hover { background-color: transparent; border-color: var(--neon); color: var(--neon); }
+/* Inverse-flip hover: bg becomes Press Black, text becomes Highlighter Lime.
+   High contrast both ways; lime text never lands on white at body sizes. */
+.btn-neon:hover { background-color: var(--black); color: var(--neon); border-color: var(--black); }
+
+/* Light variant for dark-surface CTAs. Inverts to white bg + black text on hover. */
+.btn-outline-light {
+    background-color: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+.btn-outline-light:hover { background-color: var(--white); color: var(--black); }
+
+.btn:focus-visible {
+    outline: 2px solid var(--black);
+    outline-offset: 4px;
+}
+.btn-neon:focus-visible {
+    outline-color: var(--black);
+}
+.btn-outline-light:focus-visible {
+    outline-color: var(--white);
+}
 
 
 .logo {
@@ -203,7 +227,13 @@ nav {
 }
 
 .nav-links a.active {
-    border-bottom-color: #c4ef17;
+    border-bottom-color: var(--neon);
+}
+
+.nav-links a:focus-visible {
+    outline: 2px solid var(--black);
+    outline-offset: 4px;
+    border-bottom-color: var(--neon);
 }
 
 
@@ -315,6 +345,127 @@ nav {
     border-bottom: 2px solid var(--black);
 }
 
+/* Section surface variants — replace inline style="background-color: ..." patterns. */
+.density-section--gray {
+    background-color: var(--gray-light);
+    padding: var(--space-lg) 0;
+}
+
+.density-section--inverse {
+    background-color: var(--black);
+    color: var(--white);
+    padding: var(--space-lg) 0;
+    text-align: center;
+}
+
+.density-section--inverse h1,
+.density-section--inverse h2,
+.density-section--inverse h3,
+.density-section--inverse h4 {
+    color: var(--white);
+}
+
+.cta-stripe-actions {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--space-md);
+}
+
+/* Brand list — replaces disc-bulleted <ul> with the brand's `→` glyph. */
+.brand-list {
+    max-width: 640px;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+.brand-list li {
+    padding-left: 2rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+.brand-list li::before {
+    content: "→";
+    color: var(--neon);
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    text-shadow: 0 0 0 var(--black);
+    -webkit-text-stroke: 0.5px var(--black);
+}
+
+/* Outcome metrics in a blueprint cell. Numbers carry the section. */
+.stat-cell {
+    padding: var(--space-lg) var(--space-md);
+    border-right: 1px solid var(--gray-light);
+    text-align: left;
+}
+.stat-cell:last-child { border-right: none; }
+.stat-cell .stat-figure {
+    display: block;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: var(--space-xs);
+}
+.stat-cell .stat-figure mark {
+    background: var(--neon);
+    color: var(--black);
+    padding: 0 0.15em;
+}
+.stat-cell .stat-label {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--gray-dark);
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+}
+.stat-cell .stat-source {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gray-dark);
+}
+@media (max-width: 1024px) {
+    .stat-cell { border-right: none; border-bottom: 1px solid var(--gray-light); }
+    .stat-cell:last-child { border-bottom: none; }
+}
+
+/* Numbered process strip — horizontal step sequence, distinct layout family from the
+   icon-led blueprint-grid. Big neon numerals lead each step, ride the brand voice. */
+.process-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    border-top: 1px solid var(--black);
+    border-bottom: 1px solid var(--black);
+}
+.step-cell {
+    padding: var(--space-lg) var(--space-md);
+    border-right: 1px solid var(--gray-light);
+    position: relative;
+}
+.step-cell:last-child { border-right: none; }
+.step-cell .step-num {
+    display: block;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--neon);
+    -webkit-text-stroke: 1.5px var(--black);
+    margin-bottom: var(--space-sm);
+}
+@media (max-width: 1024px) {
+    .step-cell { border-right: none; border-bottom: 1px solid var(--gray-light); }
+    .step-cell:last-child { border-bottom: none; }
+}
+
 .section-header {
     max-width: 800px;
     margin-bottom: var(--space-xl);
@@ -323,7 +474,7 @@ nav {
 
 .blueprint-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     border-top: 1px solid var(--black);
     border-bottom: 1px solid var(--black);
 }
@@ -335,6 +486,11 @@ nav {
 }
 .blueprint-cell:last-child { border-right: none; }
 .blueprint-cell:hover { background-color: #fafafa; }
+
+/* Featured (central) blueprint cell — soft neon wash spotlights the pillar capability.
+   Used once per blueprint-grid to break the all-white-on-white bento monotony. */
+.blueprint-cell--featured { background-color: rgba(196, 239, 23, 0.10); }
+.blueprint-cell--featured:hover { background-color: rgba(196, 239, 23, 0.16); }
 
 .cell-id {
     position: absolute;
@@ -423,11 +579,110 @@ footer {
 }
 
 
+/* Pricing — top-level rules. Previously nested inside the 600px media
+   query, which meant they only rendered on mobile. */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.pricing-card {
+    border: var(--border-heavy);
+    padding: 3rem 2rem;
+    background: var(--white);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.pricing-card:hover { transform: translateY(-10px); }
+
+.pricing-card.featured {
+    background: var(--black);
+    color: var(--white);
+    box-shadow: 15px 15px 0 var(--neon);
+}
+
+.pricing-card.featured .price-monthly { color: var(--neon); }
+.pricing-card.featured .price-setup { color: var(--gray-light); }
+.pricing-card.featured .feature-item { color: var(--gray-light); border-bottom-color: var(--gray-dark); }
+
+.tier-badge {
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    background: var(--neon);
+    color: var(--black);
+    padding: 4px 12px;
+    font-weight: 900;
+    font-size: 0.75rem;
+    border: 2px solid var(--black);
+    text-transform: uppercase;
+}
+
+.price-block {
+    margin: 2rem 0;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--gray-light);
+    border-bottom: 1px solid var(--gray-light);
+}
+
+.pricing-card.featured .price-block {
+    border-color: var(--gray-dark);
+}
+
+.price-monthly {
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1;
+    display: block;
+}
+
+.price-period {
+    font-size: 1rem;
+    font-weight: 600;
+    opacity: 0.6;
+}
+
+.price-setup {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-top: 0.5rem;
+    color: var(--gray-dark);
+    text-transform: uppercase;
+}
+
+.feature-list {
+    list-style: none;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+
+.feature-item {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--gray-light);
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.feature-item::before {
+    content: "→";
+    color: var(--neon);
+    font-weight: 900;
+}
+
+
 @media (max-width: 1024px) {
     .hero { grid-template-columns: 1fr; }
     .hero-left { border-right: none; border-bottom: 2px solid var(--black); padding: var(--space-xl) var(--space-md); }
     .hero-right { min-height: 400px; }
-    .blueprint-grid { grid-template-columns: repeat(2, 1fr); }
     .blueprint-cell { border-bottom: 1px solid var(--gray-light); }
     .blueprint-cell:nth-child(even) { border-right: none; }
     .footer-top { flex-direction: column; align-items: flex-start; gap: var(--space-lg); }
@@ -441,107 +696,35 @@ footer {
     .hero { padding-top: 60px; min-height: auto; }
     .hero-left { padding: var(--space-lg) var(--space-md); }
     .btn { padding: 0.8rem 1.5rem; font-size: 0.9rem; }
-    .blueprint-grid { grid-template-columns: 1fr; }
     .blueprint-cell { border-right: none; padding: var(--space-md); }
-    /* Fix: center cards on mobile instead of anchoring to top-left */
+    /* Center the hero cluster on mobile instead of anchoring it to top-left. */
     .hero-right { padding: var(--space-lg) var(--space-md); justify-content: center; overflow: hidden; }
     .cluster-wrapper { transform: scale(0.65); transform-origin: center center; width: min(420px, 100%); height: min(420px, 100%); }
     .footer-huge-text { font-size: clamp(3rem, 15vw, 5rem); }
-    /* Pricing Table Elements */
-    .pricing-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-top: 4rem;
+    .pricing-card { padding: 2rem 1.5rem; }
+    .price-monthly { font-size: 2.75rem; }
+}
+
+/* Accessibility: honor prefers-reduced-motion across the system. */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        animation-delay: 0ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
-
-    .pricing-card {
-        border: var(--border-heavy);
-        padding: 3rem 2rem;
-        background: var(--white);
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        transition: transform 0.3s ease;
+    /* The marquee scroll has no purpose at all if it cannot move — pin it
+       so the brand copy stays readable instead of stuck mid-animation. */
+    .marquee-content {
+        animation: none !important;
+        transform: translateX(0) !important;
     }
-
-    .pricing-card:hover { transform: translateY(-10px); }
-
-    .pricing-card.featured {
-        background: var(--black);
-        color: var(--white);
-        box-shadow: 15px 15px 0 var(--neon);
-    }
-
-    .pricing-card.featured .price-monthly { color: var(--neon); }
-    .pricing-card.featured .price-setup { color: var(--gray-light); }
-    .pricing-card.featured .feature-item { color: var(--gray-light); border-bottom-color: var(--gray-dark); }
-
-    .tier-badge {
-        position: absolute;
-        top: -15px;
-        right: 20px;
-        background: var(--neon);
-        color: var(--black);
-        padding: 4px 12px;
-        font-weight: 900;
-        font-size: 0.75rem;
-        border: 2px solid var(--black);
-        text-transform: uppercase;
-    }
-
-    .price-block {
-        margin: 2rem 0;
-        padding: 1.5rem 0;
-        border-top: 1px solid var(--gray-light);
-        border-bottom: 1px solid var(--gray-light);
-    }
-
-    .pricing-card.featured .price-block {
-        border-color: var(--gray-dark);
-    }
-
-    .price-monthly {
-        font-size: 3.5rem;
-        font-weight: 900;
-        line-height: 1;
-        display: block;
-    }
-
-    .price-period {
-        font-size: 1rem;
-        font-weight: 600;
-        opacity: 0.6;
-    }
-
-    .price-setup {
-        display: block;
-        font-size: 0.85rem;
-        font-weight: 700;
-        margin-top: 0.5rem;
-        color: var(--gray-dark);
-        text-transform: uppercase;
-    }
-
-    .feature-list {
-        list-style: none;
-        margin-bottom: 2rem;
-        flex-grow: 1;
-    }
-
-    .feature-item {
-        padding: 12px 0;
-        border-bottom: 1px solid var(--gray-light);
-        font-size: 0.9rem;
-        font-weight: 600;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    .feature-item::before {
-        content: "→";
-        color: var(--neon);
-        font-weight: 900;
+    /* Cursor-follower has nothing to communicate without motion — hide it. */
+    .cursor-follower,
+    .cursor-core {
+        display: none !important;
     }
 }
