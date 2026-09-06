@@ -1,0 +1,658 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export const prerender = true;
+
+// Portfolio case studies, told in Autoflow's voice. Every claim traces to the
+// client build. No business or ad-performance metric is asserted unless it was
+// measured. Real screenshots are dropped into public/case-studies/<slug>/ as
+// they are supplied; until then a study leans on its architecture diagram.
+export function getStaticPaths() {
+  const studies = {
+  'yap-chan-kor': {
+    tag: 'Connected AI System',
+    client: 'Yap Chan Kor',
+    country: 'Malaysia',
+    headline: 'One connected system: an AI ad dashboard, a WhatsApp chatbot, and the clinic CRM.',
+    summary:
+      'A four-branch pain-treatment clinic ran its ads, its patient chats, and its clinic operations in three separate places, with no line from ad spend to a booked patient. Autoflow built the connected system: an AI marketing dashboard, an AI WhatsApp chatbot, and a clinic CRM that share one attribution spine.',
+    role:
+      'Autoflow Solutions designed and built the full system end to end: discovery, architecture, all three applications, the automation layer that connects them, migration off the clinic’s old software, and deployment.',
+    scope: ['3-part AI system', '4 branches', 'EN / MS / ZH', 'Ads-to-CRM attribution'],
+    stack: ['Next.js + Modal (dashboard)', 'ManyChat + Make.com (bot)', 'React + Supabase (CRM)', 'Python (e-invoicing)'],
+    system: {
+      caption: 'Campaigns bring patients in. The chatbot books them. The CRM records what happens, tagged back to the campaign that paid for it.',
+      nodes: [
+        { label: 'AI Marketing Dashboard', sub: 'AdsPulse: Google + Meta in one place, an AI planner, and a guardrailed executor.' },
+        { label: 'AI WhatsApp Chatbot', sub: 'ManyChat + Make.com over a retrieval knowledge base. Answers, captures, books.' },
+        { label: 'Clinic CRM', sub: 'Supabase PWA: patient records, clinical capture, invoicing, reporting.' },
+      ],
+    },
+    challenge: [
+      'Yap Chan Kor is a Malaysian pain-treatment clinic chain across four branches (Ampang, Old Klang Road, Shah Alam, Subang Jaya), serving patients in English, Malay, and Chinese.',
+      'Three things ran in three separate places. Ad spend lived in Google and Meta. Patient conversations lived in WhatsApp. Clinic operations lived in an off-the-shelf system the clinic could not shape. Nothing connected them, so no one could draw a line from a ringgit of ad spend to a booked, paying patient.',
+    ],
+    constraints: [
+      'The build had to connect three tools that normally never talk: two ad platforms, a WhatsApp bot, and a clinic database.',
+      'It is the system of record for both care and money across four branches, so reliability came before features.',
+      'Patients speak three languages, so the bot, the CRM, and the patient guides all had to work in English, Malay, and Chinese.',
+      'An AI touching live ad accounts and patient data needed hard guardrails, not blind trust.',
+    ],
+    decisions: [
+      {
+        h: 'One attribution spine across all three tools',
+        p: 'We tied every step together. An ad click carries its campaign tags into the WhatsApp chat, the chatbot books the patient, and the booking lands in the CRM still tagged to the campaign that paid for it. For the first time the clinic can see which ad produced which patient.',
+      },
+      {
+        h: 'The chatbot touches the CRM only through a locked-down contract',
+        p: 'The bot reads and writes patient data through a small set of server-side functions, never the database directly. A returning-patient lookup needs both phone and full name and never echoes stored details back, so the chat cannot be used to fish for who is a patient.',
+      },
+      {
+        h: 'A guardrail layer between the AI and the live ad accounts',
+        p: 'The dashboard’s AI proposes changes, but every recommendation is graded eligible, manual-only, or suppressed before anything reaches the live Google or Meta account. Entity IDs are validated and changes can be rolled back, so the AI can optimise without spending money by mistake.',
+      },
+    ],
+    deliverables: [
+      'AI marketing dashboard (AdsPulse): Google and Meta ads in one place, an AI planner that ranks optimisations, and a guardrailed executor that applies approved changes through the ad APIs.',
+      'AI WhatsApp chatbot (ManyChat + Make.com) backed by a retrieval knowledge base: answers pain-condition questions, captures and attributes ad leads, looks up returning patients, and books, reschedules, or cancels appointments.',
+      'Clinic CRM (Supabase PWA) replacing the old system across four branches: patient records, scheduling, clinical session capture with pain scores and a body diagram, invoicing, and reporting.',
+      'Multilingual marketing website (Next.js) in English, Malay, and Chinese, with dedicated ad landing pages.',
+      'Malaysia LHDN e-invoicing service and a full data migration off the incumbent clinic system.',
+      'Trilingual new-patient recovery guides, delivered automatically by the chatbot after a patient’s first plan.',
+    ],
+    evidence: [
+      {
+        src: '/case-studies/yap-chan-kor/dashboard-overview.png',
+        alt: 'The AdsPulse marketing dashboard overview: unified spend, blended CPA, conversions, and an AI alert.',
+        caption:
+          'The marketing dashboard (AdsPulse) pulls Google and Meta into one command centre. The image shows the live account overview: unified spend, blended CPA, conversions, and an AI alert flagging campaigns that need attention.',
+        wide: true,
+      },
+      {
+        src: '/case-studies/yap-chan-kor/dashboard-recommendations.png',
+        alt: 'The recommendations engine grading AI suggestions, several marked manual required.',
+        caption:
+          'The AI proposes changes, but a guardrail decides what is safe. The image shows the recommendations engine grading each action, with several marked "manual required" rather than applied automatically.',
+        wide: true,
+      },
+      {
+        src: '/case-studies/yap-chan-kor/agent-make-scenario.png',
+        alt: 'The Make.com scenario canvas for the YCK WhatsApp chatbot, wired to ManyChat and the CRM.',
+        caption:
+          'The WhatsApp chatbot runs on a Make.com scenario wired into ManyChat and the CRM. The image shows the live automation: the router and modules that answer questions, capture leads, and write bookings back to the clinic database.',
+        wide: true,
+      },
+      {
+        src: '/case-studies/yap-chan-kor/crm-today.png',
+        alt: 'The clinic CRM daily view on a phone: appointments, arrivals, collections, and sessions needing documentation.',
+        caption:
+          'The clinic CRM, installed as an app on staff phones. The image shows the daily view: appointments, arrivals, collections, and sessions still needing documentation, across all four branches.',
+        portrait: true,
+      },
+      {
+        src: '/case-studies/yap-chan-kor/crm-patient.png',
+        alt: 'A CRM patient profile showing condition, sessions remaining, outstanding balance, and booking actions.',
+        caption:
+          'One patient record holds care and money together. The image shows a patient profile with condition, sessions remaining, outstanding balance, and booking, on a test record.',
+        portrait: true,
+      },
+      {
+        src: '/case-studies/yap-chan-kor/crm-attribution.png',
+        alt: 'The CRM campaign report grouping leads and attendance by originating source and campaign.',
+        caption:
+          'The attribution spine made visible. The image shows the CRM’s campaign report: leads and attendance grouped by the originating source and campaign, so ad spend ties back to real patients.',
+        portrait: true,
+      },
+    ],
+  },
+
+  'raci-kenya': {
+    tag: 'Operations Platform',
+    client: 'Rent A Car in Kenya',
+    country: 'Kenya',
+    headline: 'Two apps, one backend: a booking front end and the ops system that runs the fleet.',
+    summary:
+      'A Nairobi safari 4x4 hire business needed to take bookings and payments from international tourists and run the whole operation behind them. Autoflow built the multilingual booking site and the back-office platform on one shared backend.',
+    role:
+      'Autoflow Solutions built this end to end: architecture, the full-stack build across both apps, the payments integration, and the security hardening.',
+    scope: ['Booking site + back office', '5 languages', 'M-Pesa + card', 'Quote to invoice'],
+    stack: ['React + Vite (PWA)', 'Supabase / Postgres', 'Pesapal (M-Pesa + card)', 'Edge functions'],
+    challenge: [
+      'Rent A Car in Kenya rents self-drive and chauffeur-driven 4x4s for safaris out of Nairobi and Nanyuki, mostly to international tourists planning a trip from abroad.',
+      'They needed two things at once: a customer-facing site that could take booking requests and payments in the way overseas visitors and local customers actually pay, and an internal system to run the whole operation behind it, from quote to booking to payment to invoice to vehicle maintenance.',
+    ],
+    constraints: [
+      'Customers pay from two worlds: international cards from abroad and M-Pesa locally. Payments had to cover both.',
+      'Prices are money. The system had to be safe against a customer tampering with a total in the browser.',
+      'Inbound tourists arrive in several languages, so the booking site is built in five: English, French, German, Spanish, and Italian.',
+      'A small team runs the fleet day to day, so the back office had to cover the full lifecycle rather than just bookings.',
+    ],
+    decisions: [
+      {
+        h: 'Take payment the way Kenya actually pays',
+        p: 'Bookings run on Pesapal, covering both local M-Pesa and international cards. Payment is confirmed server-to-server through a webhook, so a booking only flips to paid when the money has truly landed, and an invoice drafts itself the moment it is paid in full.',
+      },
+      {
+        h: 'Never trust a price from the browser',
+        p: 'Every quote and booking total is recomputed on the server before payment, so a customer cannot edit a total client-side and pay less than the real price. This was a deliberate security decision, enforced through the whole payment flow.',
+      },
+      {
+        h: 'Build the back office that keeps a fleet on the road',
+        p: 'Not just bookings, but the full lifecycle: quotes, VAT invoicing, per-vehicle records, maintenance and defect (snag) tracking, plus an automated daily operations digest and weekly finance brief so the owner sees the numbers without pulling them.',
+      },
+    ],
+    deliverables: [
+      'Five-language customer booking site: booking requests, status lookup, my-bookings, payment return, tour packages, group inquiries, and a blog.',
+      'Back-office operations app: bookings, fleet and vehicle records, a quotation calculator, VAT invoicing, pricing admin, maintenance, defect (snag) tracking, and reporting.',
+      'Pesapal payments (M-Pesa and card) with server-to-server confirmation and an invoice drafted automatically once a booking is paid in full.',
+      'Automated daily operations and weekly finance emails, plus calendar and review syncing and web-push notifications.',
+      'Role-based access with server-side user provisioning.',
+    ],
+    evidence: [
+      {
+        src: '/case-studies/raci-kenya/landing-hero.png',
+        alt: 'The Rent A Car in Kenya landing hero with a check-availability call to action.',
+        caption:
+          'The customer booking site. The image shows the live landing hero, where a visitor checks availability and starts a booking in one of five languages.',
+        wide: true,
+      },
+      {
+        src: '/case-studies/raci-kenya/booking-wizard.png',
+        alt: 'The multi-step booking request with a live price summary and deposit split.',
+        caption:
+          'The booking request flow. The image shows the multi-step request with a live price summary and deposit split, and the note that sub-48h requests skip Pesapal checkout and are handled by staff.',
+        wide: true,
+      },
+      {
+        src: '/case-studies/raci-kenya/admin-dashboard.png',
+        alt: 'The back-office dashboard showing fleet status across two branches.',
+        caption:
+          'The back office, opened to the fleet. The image shows the ops dashboard: total, available, on-hire, and grounded vehicles, split across the Nairobi and Nanyuki branches.',
+        wide: true,
+      },
+      {
+        src: '/case-studies/raci-kenya/snags.png',
+        alt: 'The snags board tracking vehicle defects by severity.',
+        caption:
+          'Every defect is tracked, not remembered. The image shows the snags board for one vehicle, each issue graded by severity with assign and resolve actions.',
+        wide: true,
+      },
+      {
+        src: '/case-studies/raci-kenya/maintenance.png',
+        alt: 'The maintenance log for one vehicle with mileage and work performed.',
+        caption:
+          'Service history per vehicle. The image shows the maintenance log for one car: current mileage, last service, and the work performed.',
+        wide: true,
+      },
+      {
+        src: '/case-studies/raci-kenya/reports.png',
+        alt: 'Scheduled daily operations digest and weekly finance brief settings.',
+        caption:
+          'The reporting runs itself. The image shows the scheduled daily operations digest and weekly finance brief, delivered to the team on a set schedule.',
+        wide: true,
+      },
+    ],
+  },
+
+  'stem-agro': {
+    tag: 'Farm Intelligence',
+    client: 'STEM Agro',
+    country: 'Agri-tech',
+    headline: 'Turning fragmented farm data into pest and disease decisions a manager can trust.',
+    summary:
+      'STEM Agro’s farm data lived in spreadsheets, WhatsApp, and PDFs. Autoflow built the platform that runs the whole decision loop: scouts capture in the greenhouse, deterministic code counts the pests, and farm managers get heatmaps, an explainable Farm Health Score, agronomy interpretation, and clear next-step recommendations. The AI assembles the report; it never invents the numbers. The foundation and field app are delivered and client-accepted, with the intelligence layer going into its live pilot.',
+    role:
+      'Autoflow Solutions built the platform end to end: architecture, the offline scout app, the computer-vision counting pipeline with human review, the multi-tenant backend on Google Cloud, and the farm-manager intelligence dashboards.',
+    scope: ['Capture to recommend', 'CV + human review', 'Multi-tenant', 'M1 + M2 accepted'],
+    stack: ['React + Vite (PWA)', 'FastAPI + Python CV', 'Cloud SQL + PostGIS', 'Google Cloud Run'],
+    system: {
+      caption: 'The AI assembles the report from verified numbers. It never invents the figures, so a manager can act on it rather than second-guess it.',
+      nodes: [
+        { label: 'Capture', sub: 'Offline scout app: QR scan, one photo, full observations, GPS.' },
+        { label: 'Count + review', sub: 'Deterministic CV counts pests; low-confidence goes to human review.' },
+        { label: 'Score + map', sub: 'Heatmaps, trends, and an explainable Farm Health Score, down to the line.' },
+        { label: 'Interpret + recommend', sub: 'Agronomy interpretation and clear next-step actions, with the evidence.' },
+      ],
+    },
+    challenge: [
+      'STEM Agro is building a farm-intelligence platform for commercial greenhouse growers. The data that should drive agronomy decisions, sticky-trap pest counts, scout observations, soil and sap readings, Brix, EC and pH, today lives scattered across Excel, WhatsApp, and PDFs.',
+      'A farm manager carries every call alone, with no reliable second opinion. The job was to run the full loop on real farms, capture, count, validate, map, score, and recommend, so the manager acts on objective numbers instead of a hunch, and never on an AI’s guess.',
+    ],
+    constraints: [
+      'Scouts work in greenhouses where connectivity is poor or absent, so capture has to work fully offline and never lose a reading.',
+      'A wrong count leads to a wrong spray, so the numbers had to be trustworthy, not an AI’s best guess.',
+      'It is multi-tenant from day one, built to scale from the pilot farms to hundreds without a redesign.',
+      'Managers needed interpretation, not just storage: what a reading means and what to do next.',
+    ],
+    decisions: [
+      {
+        h: 'A data engine that does not guess',
+        p: 'The counts, scores, and trends are produced by deterministic Python, which gives the same answer every time. The AI is only the orchestrator that assembles the report from those verified numbers. It never invents a figure, so a manager is never quietly pointed at the wrong spray.',
+      },
+      {
+        h: 'Low-confidence counts go to a human, not a manager',
+        p: 'Every trap photo gets a pest count with a confidence score. Anything below the threshold routes to an AI Review Centre where a person confirms it before it reaches a farm manager, and that correction feeds back into the model.',
+      },
+      {
+        h: 'Model the farm as a digital twin, isolated per tenant',
+        p: 'Every trap, reading, and score is tied to its exact place: farm, site, greenhouse, bay, side, and line, down to the crop, in a spatial database. Row-level security means a user physically cannot query another farm’s data.',
+      },
+    ],
+    deliverables: [
+      'An offline-first scout app: QR scan to the exact trap, single-photo capture, structured observations (pest and disease, severity, life stage, beneficials, GPS), with a durable sync queue that never loses or double-uploads a capture.',
+      'A computer-vision counting pipeline (thrips, whitefly, aphid) with confidence scoring, and an AI Review Centre where low-confidence counts are confirmed by a human.',
+      'A farm-manager dashboard: layered per-pest and per-disease heatmaps you can zoom from farm to bay and line, trends, and an explainable Farm Health Score that drills down to the greenhouse driving it.',
+      'An agronomy-interpretation layer: it reads the lab’s DRIS report and computes sap nutrient balance, root-zone EC and pH against target ranges, and crop-physiology scores, on agronomist-signed-off norms.',
+      'A recommendation engine (issue, location, likely cause, risk, next action, with the evidence) and automated alerts: a daily review digest for the admin, and a high-pressure brief to the manager carrying the day’s Farm Health Score.',
+      'A multi-tenant FastAPI backend on Google Cloud, isolated per farm with row-level security.',
+    ],
+    evidence: [
+      {
+        src: '/case-studies/stem-agro/site-hero.png',
+        alt: 'The STEM Agro platform landing page.',
+        caption:
+          'The public platform site. The image shows the STEM Agro landing, where a farm registers and logs in.',
+        wide: true,
+      },
+      {
+        src: '/case-studies/stem-agro/solution-modules.png',
+        alt: 'The platform overview showing six integrated intelligence modules.',
+        caption:
+          'One platform, six intelligence modules. The image shows the offer laid out: sticky-trap, scout, pest and agronomy intelligence, an executive dashboard, and an AI recommendation engine.',
+        wide: true,
+      },
+      {
+        src: '/case-studies/stem-agro/scout-rounds-synced.png',
+        alt: 'The scout app showing assigned rounds with a capture-status banner reading all saved work is synced.',
+        caption:
+          'The scout app, designed around trust in sync. The image shows the assigned-rounds screen with the capture-status banner confirming all saved work is synced, so the scout always knows nothing is stuck.',
+        portrait: true,
+      },
+      {
+        src: '/case-studies/stem-agro/trap-capture.png',
+        alt: 'The single-photo trap capture screen with a framing guide over a yellow sticky trap.',
+        caption:
+          'Field capture kept to one deliberate photo. The image shows the capture screen with a framing guide over a sticky trap and a usable-quality check before the photo is accepted.',
+        portrait: true,
+      },
+      {
+        src: '/case-studies/stem-agro/scouting-console.png',
+        alt: 'The agronomy console showing scouting rounds on production data.',
+        caption:
+          'The agronomy console, on production data. The image shows scouting rounds assigned to a scout, each snapshotted for reliable offline work and an audit trail.',
+        wide: true,
+      },
+      {
+        src: '/case-studies/stem-agro/vision-benchmark.png',
+        alt: 'The vision benchmark screen listing seven monitored pests for expert confirmation.',
+        caption:
+          'The counting foundation, kept honest. The image shows the vision benchmark, where an expert confirms what each of the seven monitored pests looks like on a card before any AI count is trusted.',
+        wide: true,
+      },
+    ],
+  },
+  };
+
+  return Object.keys(studies).map((slug) => ({ params: { slug }, props: { cs: studies[slug] } }));
+}
+
+const { cs } = Astro.props;
+
+const heroImage = cs.evidence?.[0]?.src;
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: `${cs.client} case study`,
+  headline: cs.headline,
+  about: cs.summary,
+  creator: { '@type': 'Organization', name: 'Autoflow Solutions' },
+};
+---
+
+<BaseLayout title={`${cs.client} Case Study`} description={cs.summary} image={heroImage} schema={pageSchema}>
+  <article>
+    <header class="cs-header">
+      <div class="container">
+        <a href="/case-studies" class="cs-back">&larr; All case studies</a>
+        <span class="cs-tag">{cs.tag}</span>
+        <div class="cs-client-row">
+          <span class="cs-client">{cs.client} <span class="cs-country">/ {cs.country}</span></span>
+        </div>
+        <h1 class="cs-headline">{cs.headline}</h1>
+        <p class="cs-summary">{cs.summary}</p>
+        <div class="cs-meta">
+          <div class="cs-meta-block">
+            <span class="cs-meta-label">Scope</span>
+            <ul class="cs-chips">{cs.scope.map((s) => <li>{s}</li>)}</ul>
+          </div>
+          <div class="cs-meta-block">
+            <span class="cs-meta-label">Stack</span>
+            <ul class="cs-chips">{cs.stack.map((s) => <li>{s}</li>)}</ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container cs-body">
+      <section class="cs-section">
+        <h2 class="cs-h2">The challenge</h2>
+        {cs.challenge.map((p) => <p class="cs-p">{p}</p>)}
+      </section>
+
+      {cs.system && (
+        <section class="cs-section">
+          <h2 class="cs-h2">How the pieces connect</h2>
+          <div class="cs-system">
+            {cs.system.nodes.map((n, i) => (
+              <>
+                <div class="cs-node">
+                  <span class="cs-node-label">{n.label}</span>
+                  <span class="cs-node-sub">{n.sub}</span>
+                </div>
+                {i < cs.system.nodes.length - 1 && <span class="cs-node-arrow" aria-hidden="true">&harr;</span>}
+              </>
+            ))}
+          </div>
+          <p class="cs-system-caption">{cs.system.caption}</p>
+        </section>
+      )}
+
+      <section class="cs-section">
+        <h2 class="cs-h2">Autoflow&rsquo;s role</h2>
+        <p class="cs-p">{cs.role}</p>
+      </section>
+
+      <section class="cs-section">
+        <h2 class="cs-h2">Constraints</h2>
+        <ul class="cs-list">{cs.constraints.map((c) => <li>{c}</li>)}</ul>
+      </section>
+
+      <section class="cs-section">
+        <h2 class="cs-h2">How we built it</h2>
+        <ol class="cs-decisions">
+          {cs.decisions.map((d, i) => (
+            <li class="cs-decision">
+              <span class="cs-decision-num">{String(i + 1).padStart(2, '0')}</span>
+              <div>
+                <h3 class="cs-decision-h">{d.h}</h3>
+                <p class="cs-p">{d.p}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section class="cs-section">
+        <h2 class="cs-h2">What we delivered</h2>
+        <ul class="cs-list">{cs.deliverables.map((d) => <li>{d}</li>)}</ul>
+      </section>
+
+      {cs.evidence && cs.evidence.length > 0 && (
+        <section class="cs-section">
+          <h2 class="cs-h2">Evidence</h2>
+          <div class="cs-evidence">
+            {cs.evidence.map((e) => (
+              <figure class={`cs-figure${e.portrait ? ' portrait' : ''}${e.wide ? ' wide' : ''}`}>
+                <img src={e.src} alt={e.alt} loading="lazy" />
+                <figcaption>{e.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
+
+    <section class="cs-cta">
+      <h2>Want a system your business actually owns?</h2>
+      <p>Tell us what breaks or slows you down. If a build makes sense, we will tell you. If it does not, we will tell you that too.</p>
+      <div class="cs-cta-buttons">
+        <button
+          data-cal-link="autoflow-solutions/book-a-discovery-call"
+          data-cal-config='{"layout":"month_view"}'
+          class="btn btn-solid"
+        >Book a Strategy Call</button>
+        <a href="/case-studies" class="btn btn-outline">See other work</a>
+      </div>
+    </section>
+  </article>
+
+  <style>
+    .cs-header {
+      padding: 11rem 0 4rem;
+      background-color: #f4f4f4;
+      border-bottom: var(--border-heavy, 3px solid #000);
+      position: relative;
+    }
+    .cs-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(#d0d0d0 1px, transparent 1px);
+      background-size: 15px 15px;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    .cs-header > .container { position: relative; z-index: 1; }
+    .cs-back {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.95rem;
+      color: var(--black, #000);
+      text-decoration: none;
+      margin-bottom: 2rem;
+      border-bottom: 2px solid transparent;
+    }
+    .cs-back:hover, .cs-back:focus-visible { border-bottom-color: var(--black, #000); }
+    .cs-tag {
+      display: inline-block;
+      background: var(--black, #000);
+      color: var(--white, #fff);
+      padding: 0.5rem 1.1rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+    }
+    .cs-client-row { display: flex; align-items: center; gap: 1rem; margin: 1.75rem 0 1.5rem; }
+    .cs-client {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      font-size: 1.3rem;
+    }
+    .cs-country { opacity: 0.55; }
+    .cs-headline {
+      font-family: 'Barlow Condensed', sans-serif;
+      text-transform: uppercase;
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      font-size: clamp(2.6rem, 6vw, 5.5rem);
+      max-width: 18ch;
+      margin-bottom: 1.75rem;
+    }
+    .cs-summary { font-size: 1.3rem; font-weight: 500; line-height: 1.5; max-width: 60ch; }
+    .cs-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(10, 10, 10, 0.2);
+    }
+    .cs-meta-label {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      opacity: 0.6;
+      margin-bottom: 0.75rem;
+    }
+    .cs-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; margin: 0; }
+    .cs-chips li {
+      border: 2px solid var(--black, #000);
+      padding: 0.3rem 0.8rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.02em;
+    }
+
+    .cs-body { padding: 4rem 4vw; max-width: 900px; }
+    .cs-section { margin-bottom: 3.5rem; }
+    .cs-h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      text-transform: uppercase;
+      font-weight: 900;
+      font-size: 2.4rem;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      border-bottom: 4px solid var(--neon, #c4ef17);
+      padding-bottom: 0.25rem;
+    }
+    .cs-p { font-size: 1.15rem; line-height: 1.65; margin-bottom: 1.15rem; max-width: 68ch; }
+    .cs-list { list-style: none; padding: 0; margin: 0; max-width: 70ch; }
+    .cs-list li {
+      position: relative;
+      padding-left: 1.75rem;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .cs-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 0.7rem;
+      height: 0.7rem;
+      background: var(--neon, #c4ef17);
+      border: 2px solid var(--black, #000);
+    }
+
+    /* System architecture diagram */
+    .cs-system {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      flex-wrap: nowrap;
+    }
+    .cs-node {
+      flex: 1;
+      border: var(--border-heavy, 3px solid #000);
+      background: #fff;
+      padding: 1.5rem 1.35rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .cs-node:nth-child(3) { background: var(--neon, #c4ef17); }
+    .cs-node-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      text-transform: uppercase;
+      font-weight: 900;
+      font-size: 1.35rem;
+      line-height: 1;
+    }
+    .cs-node-sub { font-size: 0.98rem; line-height: 1.45; font-weight: 500; }
+    .cs-node-arrow {
+      align-self: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 2rem;
+      padding: 0 0.6rem;
+      flex-shrink: 0;
+    }
+    .cs-system-caption {
+      margin-top: 1.5rem;
+      font-size: 1.15rem;
+      line-height: 1.55;
+      font-weight: 600;
+      max-width: 70ch;
+      border-left: 4px solid var(--neon, #c4ef17);
+      padding-left: 1rem;
+    }
+
+    .cs-decisions { list-style: none; padding: 0; margin: 0; }
+    .cs-decision {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.75rem 0;
+      border-top: var(--border-heavy, 3px solid #000);
+    }
+    .cs-decision:last-child { border-bottom: var(--border-heavy, 3px solid #000); }
+    .cs-decision-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 2.5rem;
+      line-height: 1;
+      color: var(--black, #000);
+      opacity: 0.85;
+      flex-shrink: 0;
+    }
+    .cs-decision-h {
+      font-family: 'Barlow Condensed', sans-serif;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 1.4rem;
+      line-height: 1.1;
+      margin-bottom: 0.6rem;
+    }
+
+    .cs-evidence { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; }
+    .cs-figure { border: var(--border-heavy, 3px solid #000); margin: 0; background: #fff; display: flex; flex-direction: column; }
+    .cs-figure img { width: 100%; height: auto; display: block; border-bottom: var(--border-heavy, 3px solid #000); }
+    .cs-figure.portrait img { max-height: 620px; object-fit: contain; background: #f4f4f4; }
+    .cs-figure.wide { grid-column: 1 / -1; }
+    .cs-figure.wide img { max-height: 760px; object-fit: contain; background: #f4f4f4; }
+    .cs-figure figcaption {
+      padding: 1.1rem 1.25rem;
+      font-size: 0.98rem;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    .cs-cta {
+      padding: 7vw 4vw;
+      text-align: center;
+      border-top: var(--border-heavy, 3px solid #000);
+      background: var(--black, #050505);
+      color: var(--white, #fff);
+    }
+    .cs-cta h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      text-transform: uppercase;
+      font-weight: 900;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 0.95;
+      margin-bottom: 1.25rem;
+    }
+    .cs-cta p { font-size: 1.15rem; line-height: 1.6; max-width: 56ch; margin: 0 auto 2.25rem; opacity: 0.85; }
+    .cs-cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .cs-cta .btn-outline { color: var(--white, #fff); border-color: var(--white, #fff); }
+
+    @media (max-width: 780px) {
+      .cs-system { flex-direction: column; }
+      .cs-node-arrow { transform: rotate(90deg); padding: 0.5rem 0; }
+      .cs-node:nth-child(3) { background: var(--neon, #c4ef17); }
+    }
+
+    @media (max-width: 600px) {
+      .cs-header { padding: 8rem 0 3rem; }
+      .cs-body { padding: 2.5rem var(--space-md, 1.25rem); }
+      .cs-decision { flex-direction: column; gap: 0.5rem; }
+      .cs-decision-num { font-size: 2rem; }
+      .cs-meta { gap: 1.75rem; }
+    }
+  </style>
+</BaseLayout>

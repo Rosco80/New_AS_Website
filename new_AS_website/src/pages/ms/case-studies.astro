@@ -1,45 +1,31 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+// Proof-first: real client builds only. Each card links to a full case study.
+// Chips describe delivered scope, not unmeasured business metrics.
 const cases = [
     {
-        tag: "Ops Pemasaran",
+        slug: "yap-chan-kor",
+        tag: "Sistem Klinik",
         client: "Yap Chan Kor (MY)",
-        headline: "Mengurangkan masa pengoptimuman kempen sebanyak 94% dengan analisis data autonomi.",
-        image: "/case-1.png",
-        stats: [
-            { label: "Sebelum", value: "3 Jam", bottomLabel: "Usaha Manual Mingguan", opacity: true },
-            { label: "Selepas", value: "10 Minit", bottomLabel: "Usaha Mingguan Dikuasakan AI" }
-        ]
+        headline: "Menggantikan perisian klinik siap-pakai dengan sistem milik klinik sendiri.",
+        image: "/case-studies/yap-chan-kor/patient-guide-en.png",
+        points: ["4 cawangan", "Web + apl klinik", "EN / MS / ZH", "Sedia e-invois"]
     },
     {
-        tag: "Operasi",
-        client: "WePatrol (UK)",
-        headline: "Menghapuskan kerja kertas yang berserakan dan menjimatkan 40 jam sebulan dengan bot AI WhatsApp.",
-        image: "/case-2.png",
-        stats: [
-            { label: "Sebelum", value: "Tinggi", bottomLabel: "Ralat & Kelewatan Admin", opacity: true },
-            { label: "Selepas", value: "40 Jam", bottomLabel: "Dijimatkan Setiap Bulan" }
-        ]
+        slug: "raci-kenya",
+        tag: "Platform Operasi",
+        client: "Rent A Car in Kenya (KE)",
+        headline: "Laman tempahan lima bahasa dan platform operasi yang menguruskan armada.",
+        image: "/case-studies/raci-kenya/landing-hero-mobile.png",
+        points: ["Laman tempahan + pejabat belakang", "5 bahasa", "M-Pesa + kad", "Sebut harga ke invois"]
     },
     {
-        tag: "Khidmat Pelanggan",
-        client: "Le Gourmandin (MY)",
-        headline: "Menangkap ribuan hasil yang terlepas dengan ejen tempahan suara dan teks 24/7.",
-        image: "/case-3.png",
-        stats: [
-            { label: "Sebelum", value: "Terlepas", bottomLabel: "Panggilan Waktu Puncak Tak Berjawab", opacity: true },
-            { label: "Selepas", value: "+20%", bottomLabel: "Peningkatan Tempahan" }
-        ]
-    },
-    {
-        tag: "Automasi Perusahaan",
-        client: "Studio Giovanni Carnevale (IT)",
-        headline: "Menggantikan aliran kerja yang rapuh dengan ejen AI berdikari yang tidak pernah gagal.",
-        image: "/case-4.png",
-        stats: [
-            { label: "Sebelum", value: "12%", bottomLabel: "Kejayaan Automasi Tradisional", opacity: true },
-            { label: "Selepas", value: "100%", bottomLabel: "Penyelesaian Tugasan Autonomi" }
-        ]
+        slug: "stem-agro",
+        tag: "Perisikan Ladang",
+        client: "STEM Agro",
+        headline: "Platform perisikan ladang yang mengira perosak dan memberitahu pengurus langkah seterusnya.",
+        image: "/case-studies/stem-agro/scout-rounds-synced.png",
+        points: ["Tangkap hingga cadang", "CV + semakan manusia", "Berbilang penyewa", "M1 + M2 diterima"]
     }
 ];
 ---
@@ -50,36 +36,29 @@ const cases = [
             <h1 class="header-title">
                 PENGGUNAAN <br>
                 <span class="graphic-box">TERBUKTI</span> <br>
-                <span class="graphic-box fill">HASIL // 01-04</span>
+                <span class="graphic-box fill">HASIL // 01-03</span>
             </h1>
             <p style="max-width: 550px; font-size: 1.35rem; font-weight: 500; line-height: 1.5;">
-                Peningkatan kecekapan sebenar daripada syarikat sebenar. Bukan sekadar teori, tetapi sistem yang bekerja 24/7 tanpa perlu berehat.
+                Sistem sebenar, dibina dan dihantar untuk perniagaan sebenar. Setiap satu boleh dibuka dan dibaca, bukan sekadar slaid. Klik mana-mana kad untuk kisah penuh.
             </p>
         </div>
     </header>
 
     <main class="case-grid">
         {cases.map((cs) => (
-            <article class="case-study">
-                <div class="case-image-container">
-                    <span class="case-tag">{cs.tag}</span>
-                    <img src={cs.image} class="case-image" alt={cs.client}>
-                    <div class="case-overlay"></div>
-                </div>
+            <a class="case-study" href={`/case-studies/${cs.slug}`} aria-label={`Baca kajian kes ${cs.client}`}>
                 <div class="case-content">
+                    <span class="case-tag">{cs.tag}</span>
                     <div class="case-client">Pelanggan: {cs.client}</div>
                     <h3 class="case-headline">{cs.headline}</h3>
-                    <div class="stats-grid">
-                        {cs.stats.map((stat) => (
-                            <div class="stat-item">
-                                <span class="stat-label">{stat.label}</span>
-                                <span class="stat-value" style={stat.opacity ? "opacity: 0.5;" : ""}>{stat.value}</span>
-                                <span class="stat-label">{stat.bottomLabel}</span>
-                            </div>
+                    <ul class="points-grid">
+                        {cs.points.map((point) => (
+                            <li class="point-item">{point}</li>
                         ))}
-                    </div>
+                    </ul>
+                    <span class="case-cta">Baca kajian kes &rarr;</span>
                 </div>
-            </article>
+            </a>
         ))}
     </main>
 
@@ -152,6 +131,18 @@ const cases = [
             border-bottom: var(--border-heavy, 3px solid #000);
             display: flex;
             flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.2s ease;
+        }
+
+        .case-study:hover, .case-study:focus-visible {
+            background: var(--neon, #c4ef17);
+        }
+
+        .case-study:focus-visible {
+            outline: 3px solid var(--black, #000);
+            outline-offset: -3px;
         }
 
         .case-study:nth-child(even) {
@@ -189,9 +180,7 @@ const cases = [
         }
 
         .case-tag {
-            position: absolute;
-            top: 2rem;
-            left: 2rem;
+            align-self: flex-start;
             background: var(--black, #000);
             color: var(--white, #fff);
             padding: 0.6rem 1.2rem;
@@ -200,7 +189,7 @@ const cases = [
             text-transform: uppercase;
             font-size: 0.9rem;
             letter-spacing: 0.05em;
-            z-index: 5;
+            margin-bottom: 1.5rem;
         }
 
         .case-content {
@@ -231,37 +220,35 @@ const cases = [
             font-weight: 700;
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 2.5rem;
-            margin-top: auto;
-            border-top: 1px solid rgba(10, 10, 10, 0.2);
-            padding-top: 2.5rem;
-        }
-
-        .stat-item {
+        .points-grid {
+            list-style: none;
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            padding: 2.5rem 0 0;
+            margin: auto 0 0;
+            border-top: 1px solid rgba(10, 10, 10, 0.2);
         }
 
-        .stat-value {
+        .point-item {
+            border: 2px solid var(--black, #000);
+            padding: 0.35rem 0.85rem;
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: 4.5rem;
-            font-weight: 900;
-            color: var(--black, #000);
-            line-height: 0.85;
+            font-weight: 600;
             text-transform: uppercase;
-        }
-
-        .stat-label {
-            font-family: 'Barlow Condensed', sans-serif;
-            text-transform: uppercase;
-            font-weight: 700;
             font-size: 0.9rem;
-            margin-top: 0.75rem;
-            letter-spacing: 0.08em;
-            opacity: 0.8;
+            letter-spacing: 0.02em;
+            background: var(--white, #fff);
+        }
+
+        .case-cta {
+            display: inline-block;
+            margin-top: 2rem;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 1.05rem;
         }
 
         @media (max-width: 1024px) {
@@ -275,8 +262,7 @@ const cases = [
             .case-image-container { height: 300px; }
             .case-content { padding: 2rem var(--space-md); }
             .case-headline { font-size: 2.2rem; margin-bottom: 1.5rem; }
-            .stats-grid { grid-template-columns: 1fr; gap: 1.5rem; padding-top: 1.5rem; }
-            .stat-value { font-size: 3.5rem; }
+            .points-grid { padding-top: 1.5rem; }
             
             section h2 { font-size: 2.8rem !important; margin-bottom: 2rem !important; }
         }

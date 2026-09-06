@@ -1,45 +1,31 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+// Proof-first: real client builds only. Each card links to a full case study.
+// Chips describe delivered scope, not unmeasured business metrics.
 const cases = [
     {
-        tag: "Marketing Ops",
+        slug: "yap-chan-kor",
+        tag: "Clinic Systems",
         client: "Yap Chan Kor (MY)",
-        headline: "Cutting campaign optimization time by 94% with autonomous data analysis.",
-        image: "/case-1.png",
-        stats: [
-            { label: "Before", value: "3 Hrs", bottomLabel: "Weekly Manual Effort", opacity: true },
-            { label: "After", value: "10 Min", bottomLabel: "AI-Powered Weekly Effort" }
-        ]
+        headline: "Replacing an off-the-shelf clinic SaaS with a system the clinic owns.",
+        image: "/case-studies/yap-chan-kor/patient-guide-en.png",
+        points: ["4 branches", "Web + clinic app", "EN / MS / ZH", "e-invoicing ready"]
     },
     {
-        tag: "Operations",
-        client: "WePatrol (UK)",
-        headline: "Eliminating messy paperwork and saving 40 hours a month with a WhatsApp AI bot.",
-        image: "/case-2.png",
-        stats: [
-            { label: "Before", value: "High", bottomLabel: "Errors & Admin Delays", opacity: true },
-            { label: "After", value: "40 Hrs", bottomLabel: "Saved Every Month" }
-        ]
+        slug: "raci-kenya",
+        tag: "Operations Platform",
+        client: "Rent A Car in Kenya (KE)",
+        headline: "A five-language booking site and the ops platform that runs the fleet.",
+        image: "/case-studies/raci-kenya/landing-hero-mobile.png",
+        points: ["Booking site + back office", "5 languages", "M-Pesa + card", "Quote to invoice"]
     },
     {
-        tag: "Customer Service",
-        client: "Le Gourmandin (MY)",
-        headline: "Capturing thousands in lost revenue with a 24/7 voice and text booking agent.",
-        image: "/case-3.png",
-        stats: [
-            { label: "Before", value: "Lost", bottomLabel: "Unanswered Peak Calls", opacity: true },
-            { label: "After", value: "+20%", bottomLabel: "Increase in Reservations" }
-        ]
-    },
-    {
-        tag: "Enterprise Automation",
-        client: "Studio Giovanni Carnevale (IT)",
-        headline: "Replacing fragile workflows with self-healing AI agents that never break.",
-        image: "/case-4.png",
-        stats: [
-            { label: "Before", value: "12%", bottomLabel: "Legacy Automation Success", opacity: true },
-            { label: "After", value: "100%", bottomLabel: "Autonomous Task Completion" }
-        ]
+        slug: "stem-agro",
+        tag: "Farm Intelligence",
+        client: "STEM Agro",
+        headline: "A farm-intelligence platform that counts pests and tells managers what to do next.",
+        image: "/case-studies/stem-agro/scout-rounds-synced.png",
+        points: ["Capture to recommend", "CV + human review", "Multi-tenant", "M1 + M2 accepted"]
     }
 ];
 ---
@@ -50,36 +36,29 @@ const cases = [
             <h1 class="header-title">
                 PROVEN <br>
                 <span class="graphic-box">DEPLOYMENTS</span> <br>
-                <span class="graphic-box fill">RESULTS // 01-04</span>
+                <span class="graphic-box fill">RESULTS // 01-03</span>
             </h1>
             <p style="max-width: 550px; font-size: 1.35rem; font-weight: 500; line-height: 1.5;">
-                Real efficiency gains from real companies. No theories, just systems that work 24/7 without needing a coffee break.
+                Real systems, built and shipped for real businesses. Each one is a full build you can open and read, not a slide. Click any card for the whole story.
             </p>
         </div>
     </header>
 
     <main class="case-grid">
         {cases.map((cs) => (
-            <article class="case-study">
-                <div class="case-image-container">
-                    <span class="case-tag">{cs.tag}</span>
-                    <img src={cs.image} class="case-image" alt={cs.client}>
-                    <div class="case-overlay"></div>
-                </div>
+            <a class="case-study" href={`/case-studies/${cs.slug}`} aria-label={`Read the ${cs.client} case study`}>
                 <div class="case-content">
+                    <span class="case-tag">{cs.tag}</span>
                     <div class="case-client">Client: {cs.client}</div>
                     <h3 class="case-headline">{cs.headline}</h3>
-                    <div class="stats-grid">
-                        {cs.stats.map((stat) => (
-                            <div class="stat-item">
-                                <span class="stat-label">{stat.label}</span>
-                                <span class="stat-value" style={stat.opacity ? "opacity: 0.5;" : ""}>{stat.value}</span>
-                                <span class="stat-label">{stat.bottomLabel}</span>
-                            </div>
+                    <ul class="points-grid">
+                        {cs.points.map((point) => (
+                            <li class="point-item">{point}</li>
                         ))}
-                    </div>
+                    </ul>
+                    <span class="case-cta">Read the case study &rarr;</span>
                 </div>
-            </article>
+            </a>
         ))}
     </main>
 
@@ -152,6 +131,18 @@ const cases = [
             border-bottom: var(--border-heavy, 3px solid #000);
             display: flex;
             flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.2s ease;
+        }
+
+        .case-study:hover, .case-study:focus-visible {
+            background: var(--neon, #c4ef17);
+        }
+
+        .case-study:focus-visible {
+            outline: 3px solid var(--black, #000);
+            outline-offset: -3px;
         }
 
         .case-study:nth-child(even) {
@@ -189,9 +180,7 @@ const cases = [
         }
 
         .case-tag {
-            position: absolute;
-            top: 2rem;
-            left: 2rem;
+            align-self: flex-start;
             background: var(--black, #000);
             color: var(--white, #fff);
             padding: 0.6rem 1.2rem;
@@ -200,7 +189,7 @@ const cases = [
             text-transform: uppercase;
             font-size: 0.9rem;
             letter-spacing: 0.05em;
-            z-index: 5;
+            margin-bottom: 1.5rem;
         }
 
         .case-content {
@@ -231,37 +220,35 @@ const cases = [
             font-weight: 700;
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 2.5rem;
-            margin-top: auto;
-            border-top: 1px solid rgba(10, 10, 10, 0.2);
-            padding-top: 2.5rem;
-        }
-
-        .stat-item {
+        .points-grid {
+            list-style: none;
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            padding: 2.5rem 0 0;
+            margin: auto 0 0;
+            border-top: 1px solid rgba(10, 10, 10, 0.2);
         }
 
-        .stat-value {
+        .point-item {
+            border: 2px solid var(--black, #000);
+            padding: 0.35rem 0.85rem;
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: 4.5rem;
-            font-weight: 900;
-            color: var(--black, #000);
-            line-height: 0.85;
+            font-weight: 600;
             text-transform: uppercase;
-        }
-
-        .stat-label {
-            font-family: 'Barlow Condensed', sans-serif;
-            text-transform: uppercase;
-            font-weight: 700;
             font-size: 0.9rem;
-            margin-top: 0.75rem;
-            letter-spacing: 0.08em;
-            opacity: 0.8;
+            letter-spacing: 0.02em;
+            background: var(--white, #fff);
+        }
+
+        .case-cta {
+            display: inline-block;
+            margin-top: 2rem;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 1.05rem;
         }
 
         @media (max-width: 1024px) {
@@ -275,8 +262,7 @@ const cases = [
             .case-image-container { height: 300px; }
             .case-content { padding: 2rem var(--space-md); }
             .case-headline { font-size: 2.2rem; margin-bottom: 1.5rem; }
-            .stats-grid { grid-template-columns: 1fr; gap: 1.5rem; padding-top: 1.5rem; }
-            .stat-value { font-size: 3.5rem; }
+            .points-grid { padding-top: 1.5rem; }
             
             section h2 { font-size: 2.8rem !important; margin-bottom: 2rem !important; }
         }
