@@ -1,8 +1,9 @@
----
+﻿---
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import Schema from '../components/Schema.astro';
 import Analytics from '@vercel/analytics/astro';
+import PostHog from '../components/PostHog.astro';
 import '../styles/variant.css';
 
 interface Props {
@@ -128,7 +129,7 @@ const websiteSchema = {
 };
 
 // Inter ships on every page. Outfit + Barlow Condensed are only used on
-// services / case-studies — gated here so other pages don't pay for them.
+// services / case-studies â€” gated here so other pages don't pay for them.
 const needsExtraFonts = /^(?:\/(?:my|ms|uk))?\/(?:services|case-studies)(?:\/|$)/.test(basePath);
 const fontFamilies = needsExtraFonts
 	? 'family=Inter:wght@400;500;600;800;900&family=Outfit:wght@400;700&family=Barlow+Condensed:wght@600;700;900'
@@ -139,7 +140,8 @@ const fontsHref = `https://fonts.googleapis.com/css2?${fontFamilies}&display=swa
 <!doctype html>
 <html lang={htmlLang}>
 	<head>
-		<!-- LogRocket — async; init fires once the SDK is downloaded so it never blocks parsing. -->
+\t\t<PostHog />
+		<!-- LogRocket â€” async; init fires once the SDK is downloaded so it never blocks parsing. -->
 		<script is:inline>
 		  (function () {
 		    var s = document.createElement('script');
@@ -185,13 +187,13 @@ const fontsHref = `https://fonts.googleapis.com/css2?${fontFamilies}&display=swa
 		{combinedSchema && (Array.isArray(combinedSchema) ? combinedSchema.map(item => <Schema item={item} />) : <Schema item={combinedSchema} />)}
 
 		
-		<!-- Google Fonts — async to avoid render-blocking; Outfit + Barlow only ship on the routes that use them. -->
+		<!-- Google Fonts â€” async to avoid render-blocking; Outfit + Barlow only ship on the routes that use them. -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link rel="stylesheet" href={fontsHref} media="print" onload="this.media='all'">
 		<noscript><link rel="stylesheet" href={fontsHref}></noscript>
 
-		<!-- Google tag (gtag.js) — deferred after load, cookieless -->
+		<!-- Google tag (gtag.js) â€” deferred after load, cookieless -->
 		<script is:inline>
 		  window.dataLayer = window.dataLayer || [];
 		  function gtag(){dataLayer.push(arguments);}
@@ -217,7 +219,7 @@ const fontsHref = `https://fonts.googleapis.com/css2?${fontFamilies}&display=swa
 		<slot />
 		<Analytics />
 		<Footer />
-		<!-- Cal.com embed — lazy loaded on first interaction to avoid cookie bloat -->
+		<!-- Cal.com embed â€” lazy loaded on first interaction to avoid cookie bloat -->
 		<script is:inline>
 			(function() {
 				if (!document.querySelector('[data-cal-link]')) return;
@@ -228,6 +230,17 @@ const fontsHref = `https://fonts.googleapis.com/css2?${fontFamilies}&display=swa
 					(function (C, A, L) { var p = function (a, ar) { a.q.push(ar); }; var d = C.document; C.Cal = C.Cal || function () { var cal = C.Cal; var ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { var api = function () { p(api, arguments); }; var namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = cal.ns[namespace] || api) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
 					Cal("init", {origin:"https://cal.com"});
 					Cal("ui", {"styles":{"branding":{"brandColor":"#000000"}},"hideEventTypeDetails":false,"layout":"month_view"});
+					Cal("on", {
+						action: "bookingSuccessful",
+						callback: function(e) {
+							if (window.posthog) {
+								window.posthog.capture("conversion_completed", {
+									conversion_type: "cal_booking",
+									event_data: e && e.detail ? e.detail.data : null
+								});
+							}
+						}
+					});
 				}
 				var events = ['scroll', 'mousemove', 'touchstart', 'keydown'];
 				function onFirstInteraction() {
@@ -239,3 +252,4 @@ const fontsHref = `https://fonts.googleapis.com/css2?${fontFamilies}&display=swa
 		</script>
 	</body>
 </html>
+

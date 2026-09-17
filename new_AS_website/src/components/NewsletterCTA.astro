@@ -1,4 +1,4 @@
----
+﻿---
 interface Props {
   locale?: 'en' | 'en-MY' | 'ms-MY' | 'en-GB';
   body?: string;
@@ -190,6 +190,13 @@ const text = copy[locale];
           newsletterForm.reset();
           status.textContent = successText;
           status.classList.add('is-success');
+          const ph = (window as any).posthog;
+          if (ph) {
+            ph.capture('conversion_completed', {
+              conversion_type: 'newsletter_signup',
+              locale: locale
+            });
+          }
         } catch (error) {
           status.textContent = errorText;
           status.classList.add('is-error');
@@ -201,3 +208,5 @@ const text = copy[locale];
     });
   });
 </script>
+
+
