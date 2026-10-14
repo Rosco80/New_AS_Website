@@ -291,6 +291,209 @@ export function getStaticPaths() {
       },
     ],
   },
+
+  'genera': {
+    tag: 'Growth Automation',
+    client: 'Genera Software',
+    country: 'United Kingdom',
+    headline: 'From demo request to active trial, without anyone having to chase.',
+    summary:
+      'Genera had a working product for UK dog-care businesses and no engine around it to turn a website visitor into an active, paying user. Autoflow built the full path on the tools Genera already used, Make.com, Brevo, and Cal.com: demo request, booked call, trial, and a 31-day onboarding that reacts to what each business actually does in the app.',
+    role:
+      'Autoflow Solutions designed and built the funnel end to end: the journey and CRM design, every Make.com scenario, the Brevo pipeline, segmentation, and email journeys, the 15-email onboarding sequence, and the product-event spec Genera’s developer built against.',
+    scope: ['Demo to trial', '10 Make scenarios', '15-email onboarding', 'Product-event triggers'],
+    stack: ['Make.com (orchestration)', 'Brevo (CRM + journeys)', 'Cal.com (booking)', 'Claude API (welcome copy)'],
+    system: {
+      caption: 'Every follow-up checks first. The moment someone registers, they drop out of the chase and into onboarding, so nobody gets nagged about something they have already done.',
+      nodes: [
+        { label: 'Capture', sub: 'Website form into Brevo: contact, segment flags, a pipeline deal, and a personalised welcome.' },
+        { label: 'Book + follow up', sub: 'Cal.com bookings move the deal. Non-bookers get one reminder, then Day 3 and Day 7 emails.' },
+        { label: 'Demo to trial', sub: 'One click from the team after the call decides the path: trial invite, personal follow-up, or a polite exit.' },
+        { label: 'Onboard + react', sub: '15 emails over 31 days, matched to how the business runs and adjusted to what the user does in the app.' },
+      ],
+    },
+    challenge: [
+      'Genera is UK software for dog daycares, dog walkers, groomers, and boarders: bookings, customer records, invoicing, and payments in one place. It is founder-led, with a small team.',
+      'The product worked. What was missing was everything around it. Without a system, every step depended on someone remembering: spotting a new demo request, chasing a prospect who never booked, deciding what happens after a call, and checking in on a trial user before they quietly went cold.',
+    ],
+    constraints: [
+      'A small, founder-led team, so the funnel had to run on its own and pull a person in only where a human call beats an email.',
+      'Genera’s customers run very different businesses. A solo walker who does collections needs different setup help from a daycare with staff, so one generic sequence would miss most of them.',
+      'Automated follow-up is only friendly when it is right. Chasing someone who has already signed up costs more trust than it wins.',
+      'Built on the tools Genera already pays for, within the limits of their existing Brevo plan, with no new platform to adopt.',
+    ],
+    decisions: [
+      {
+        h: 'Segment at the form, not after',
+        p: 'The application form asks the questions that shape everything later: team or solo, whether they do collections, and which services they offer. Make turns the answers into flags on the Brevo contact, so every email after that, from the welcome to the setup guide, is picked for how that business actually runs. Four setup paths, one sequence to maintain.',
+      },
+      {
+        h: 'Track what users do, not what they say',
+        p: 'Genera’s app sends four product events to a Make webhook: payments connected, first customer added, first booking taken, and branding finished. Each one sets a flag in Brevo, and the onboarding reacts. No payments by day six triggers a payments nudge, no bookings by day ten triggers a first-booking push, and the end-of-trial checklist only lists what is still left to do.',
+      },
+      {
+        h: 'One click hands the call outcome back to the system',
+        p: 'When a demo call ends, the team gets an email with a Yes and a No button. Yes starts the trial path: an invite, then a personal alert to the team if the prospect still has not registered. No sends a short, no-hard-feelings email with one-click reasons that land in a sheet, then parks the contact for a check-in about three months later.',
+      },
+      {
+        h: 'Failure paths designed in, not discovered later',
+        p: 'The AI-written welcome paragraph has a fallback, so the email still goes out if the model call fails. The 24-hour reminder deletes its own record once sent, so a prospect gets one reminder, never five. Someone who requests a demo twice gets a "good to hear from you again" email with their answers updated, instead of a silent error.',
+      },
+    ],
+    deliverables: [
+      'Application intake: the website form creates the Brevo contact with its segment flags and a deal on a seven-stage sales pipeline, then sends a welcome email with a paragraph written by Claude from the prospect’s own biggest challenge and a pre-filled booking link.',
+      'Booking follow-up: a Cal.com booking updates the contact and the deal and stops the reminders. Prospects who have not booked get one 24-hour reminder, then Day 3 and Day 7 emails, then move to a longer-term list.',
+      'A post-call decision layer: a one-click Yes/No email to the team when a demo ends, a staged trial-invite path with a personal alert if a "yes" never registers, and a polite exit path that logs the reason to a Google Sheet.',
+      'Trial registration: sign-ups from the Genera app land in Brevo, start onboarding, and stamp a 30-day trial end date that the emails count down to.',
+      'A 15-email, 31-day onboarding sequence split into four setup paths (team or solo, with or without collections), each opening with its matching setup guide attached.',
+      'Product-event tracking: four in-app actions feed Brevo and drive payment and first-booking rescue emails, plus an end-of-trial checklist that only shows what is left.',
+      'A long-term "not now" path: one check-in about three months later for anyone who was not ready yet.',
+    ],
+    evidence: [
+      {
+        src: '/case-studies/genera/make-intake.png',
+        alt: 'The Make.com intake scenario: form webhook, Brevo contact check, a router for new and returning requests, Claude, email, and pipeline steps.',
+        caption:
+          'Every application is handled the moment it arrives. The image shows the live Make.com intake scenario: Brevo checks whether the person is new, returning requests get their own reply, and new ones get a contact, a Claude-written welcome, a tracking record, and a pipeline deal, with fallbacks if the AI or Brevo step fails.',
+        wide: true,
+      },
+      {
+        src: '/case-studies/genera/brevo-nurture.png',
+        alt: 'The Brevo Day 3 and Day 7 nurture automation, with a check before each email that exits anyone who has started onboarding.',
+        caption:
+          'Prospects who have not booked get followed up, and anyone who has already started gets left alone. The image shows the Day 3 and Day 7 nurture in Brevo: before each email, a split checks whether the person has started onboarding and exits them if so. Everyone else gets a real customer story on Day 3 and an easy way back in on Day 7.',
+        wide: true,
+      },
+      {
+        src: '/case-studies/genera/make-call-outcome.png',
+        alt: 'The Make.com scenario behind the post-call Yes and No buttons, with a yes branch and a timed no branch.',
+        caption:
+          'One click from the team after a demo call drives what happens next. The image shows the Make.com scenario behind the Yes and No buttons. Yes records the outcome and starts the trial path. No records it, waits, checks the prospect still has not registered, then sends a feedback request and moves them to the "not now" list.',
+        wide: true,
+      },
+      {
+        src: '/case-studies/genera/brevo-onboarding.png',
+        alt: 'The Brevo 15-email onboarding automation splitting by team or solo, then by collections, into four setup paths.',
+        caption:
+          'One onboarding automation, four setup paths. The image shows the start of the 15-email sequence in Brevo: a webhook stamps the trial end date, two splits sort the business by team or solo and by collections, each path gets its own setup guide, and all four then join one shared run of emails.',
+        wide: true,
+      },
+      {
+        src: '/case-studies/genera/make-product-events.png',
+        alt: 'The Make.com scenario receiving Genera product events and routing them to four Brevo contact updates.',
+        caption:
+          'What a user does in the app is fed straight into the email system. The image shows the Make.com scenario that receives Genera’s product events, confirms receipt, and routes each one to its flag on the Brevo contact: payment connected, first booking, first customer, and branding done.',
+        wide: true,
+      },
+      {
+        src: '/case-studies/genera/brevo-adaptive.png',
+        alt: 'The Brevo missing-payment automation: wait six days, then exit if payments are connected or send a nudge if not.',
+        caption:
+          'The onboarding reacts to what has not happened yet. The image shows the missing-payment follow-up in Brevo: six days in, anyone who has connected payments exits quietly, and everyone else gets a short nudge on choosing how owners pay them.',
+        wide: true,
+      },
+    ],
+  },
+
+  'accounting-back-office': {
+    tag: 'Back-Office Automation',
+    client: 'Accounting practice',
+    country: 'Italy',
+    headline: 'An accounting back office that reads the paperwork, files it, and reminds clients on time.',
+    summary:
+      'An Italian accounting practice spent its days keying tax forms, receipts, and bank statements by hand and chasing clients before payment deadlines. Autoflow built the back office that does it instead: documents are read and checked automatically, logged to the practice’s sheets, filed in Drive, and every client gets their tax payment reminder, with the right amount and form attached, on time.',
+    role:
+      'Autoflow Solutions designed and built the full set of automations: the document-reading pipelines, the approval and filing flow, the scheduled client reminders, and the conversions into the formats the practice’s accounting tools need.',
+    scope: ['Tax-form pipeline', 'Client reminders', 'VAT receipts', 'Statements to CSV'],
+    stack: ['Make.com (orchestration)', 'PDF.co (document parsing)', 'OpenAI + Gemini (extraction)', 'Google Sheets + Drive'],
+    system: {
+      caption: 'People approve and handle exceptions. Everything repetitive, the reading, the typing, the filing, and the reminding, runs on its own.',
+      nodes: [
+        { label: 'Read', sub: 'Tax forms, receipts, and statements are parsed and the figures extracted by AI.' },
+        { label: 'Record', sub: 'Data lands in the practice’s Google Sheets, checked against what is already there.' },
+        { label: 'Approve + file', sub: 'Staff mark each form approved or rejected; the PDF moves to the right Drive folder.' },
+        { label: 'Remind', sub: 'Clients get the amount due and their forms by email at 10 days, under 10 days, and 1 day.' },
+      ],
+    },
+    challenge: [
+      'The practice handles tax payments, VAT, and bookkeeping for companies and individuals. A large share of that work is the same steps on repeat: open a PDF, find the figures, type them into a sheet, file the document, and email the client before the deadline.',
+      'Done by hand, it kept two people busy, and every manual step was a chance to mistype an amount or send a reminder late. With tax payments, a late or wrong reminder is not a small slip: it lands on the client.',
+    ],
+    constraints: [
+      'Italian F24 tax forms come in more than one layout and belong to either a company or a person, so the extraction had to tell them apart rather than assume one format.',
+      'Amounts sent to clients had to be exactly right, including when one client has several forms due on the same date.',
+      'The practice already worked in Google Sheets and Drive, so the build had to fit their existing files and folders rather than move them to a new system.',
+      'A person still decides what is approved. The automation does the work around that decision, not the decision itself.',
+    ],
+    decisions: [
+      {
+        h: 'Teach the extraction the real document, not a generic one',
+        p: 'Each F24 is first sorted by layout, one page or two, and then by who it belongs to, a company or a person. Each combination has its own extraction prompt written around Italian tax-form structure, and the result is checked against the sheet first so the same form is never recorded twice.',
+      },
+      {
+        h: 'One reminder per client, with the total already worked out',
+        p: 'When a client has several forms due on the same date, the reminder adds them up, formats the total, and attaches every PDF to a single email. Reminders go out on a fixed schedule at 10 days, under 10 days, and 1 day before the deadline, and each send is recorded so nothing goes twice.',
+      },
+      {
+        h: 'Missing data stops the line and tells someone',
+        p: 'If a client has no email address on file, the reminder does not fail silently. The practice’s admin gets an alert naming the form and the deadline, so a person can step in before the date passes.',
+      },
+    ],
+    deliverables: [
+      'F24 tax-form pipeline: PDFs are read with PDF.co, the taxpayer, amounts, and due date extracted with OpenAI, checked for duplicates, logged to Google Sheets, and handed on to a Google Apps Script step.',
+      'An approve-or-reject flow: marking a form in the sheet moves the PDF to the matching Drive folder and updates its record.',
+      'Scheduled client reminders at 10 days, under 10 days, and 1 day before each payment date, with the total due and the forms attached, and an admin alert when a client email is missing.',
+      'VAT receipt processing for two client businesses: receipts dropped in Drive are read, sorted, and logged for VAT automatically.',
+      'Bank statements to CSV: statement PDFs are read with Gemini and converted into clean CSV files ready for import.',
+      'Document conversions: Meta ad invoices turned into XML, and a scanner that reads case documents with OCR (optical character recognition) and logs their type.',
+    ],
+    // Client-reported outcomes, supplied by Andrea from the practice.
+    results: {
+      items: [
+        { value: '2 fewer', label: 'people needed for work the team used to do by hand' },
+        { value: '35%', label: 'fewer errors, with no mistakes in reminder sends or tax amounts' },
+        { value: '0', label: 'late reminders to clients' },
+      ],
+      note: 'Figures reported by the practice after the system replaced its manual process.',
+    },
+    evidence: [
+      {
+        src: '/case-studies/accounting-back-office/f24-extraction.png',
+        alt: 'The Make.com F24 extraction scenario, splitting by one-page or two-page forms and then by company or person.',
+        caption:
+          'Every F24 is read the way it is actually laid out. The image shows the Make.com extraction scenario: a duplicate check first, then a split by one-page or two-page form, then by company or person, each with its own AI extraction before the data is logged to the sheet.',
+        wide: true,
+      },
+      {
+        src: '/case-studies/accounting-back-office/f24-tracking-sheet.png',
+        alt: 'The F24 tracking sheet with due dates, amounts, approval status, and sent-email ticks. Client details are hidden.',
+        caption:
+          'The practice works from one sheet the automation fills in. The image shows the F24 tracking sheet: due date, amount, approval status, and a tick once the client email has gone out. Client names, tax codes, and notes are hidden.',
+        wide: true,
+      },
+      {
+        src: '/case-studies/accounting-back-office/f24-reminders.png',
+        alt: 'The Make.com reminder scenario that totals amounts per client, attaches the forms, and emails the client or alerts the admin.',
+        caption:
+          'One reminder per client, with the sum already done. The image shows the scheduled reminder scenario: it finds forms due, adds up each client’s total, attaches every PDF, emails one or two client addresses, records the send, and alerts the admin if an address is missing.',
+        wide: true,
+      },
+      {
+        src: '/case-studies/accounting-back-office/vat-receipts.png',
+        alt: 'The Make.com VAT receipts scenario: Drive folder watch, PDF conversion, AI extraction, filing, and Google Sheets logging.',
+        caption:
+          'Receipts for VAT log themselves. The image shows the scenario for one client business: new receipts in Drive are converted, read by AI, filed into the right monthly folder, and added to that month’s sheet, with retries if a step fails.',
+        wide: true,
+      },
+      {
+        src: '/case-studies/accounting-back-office/bank-statement-csv.png',
+        alt: 'The Make.com bank statement scenario converting a PDF statement into a CSV file in Drive.',
+        caption:
+          'Bank statements become import-ready files. The image shows the scenario that splits a statement PDF, has Gemini extract the transactions, cleans them with code, and saves a CSV back to Drive.',
+        wide: true,
+      },
+    ],
+  },
   };
 
   return Object.keys(studies).map((slug) => ({ params: { slug }, props: { cs: studies[slug] } }));
@@ -386,6 +589,21 @@ const pageSchema = {
         <h2 class="cs-h2">What we delivered</h2>
         <ul class="cs-list">{cs.deliverables.map((d) => <li>{d}</li>)}</ul>
       </section>
+
+      {cs.results && (
+        <section class="cs-section">
+          <h2 class="cs-h2">The results</h2>
+          <div class="cs-results">
+            {cs.results.items.map((r) => (
+              <div class="cs-result">
+                <span class="cs-result-value">{r.value}</span>
+                <span class="cs-result-label">{r.label}</span>
+              </div>
+            ))}
+          </div>
+          <p class="cs-results-note">{cs.results.note}</p>
+        </section>
+      )}
 
       {cs.evidence && cs.evidence.length > 0 && (
         <section class="cs-section">
@@ -608,6 +826,25 @@ const pageSchema = {
       line-height: 1.1;
       margin-bottom: 0.6rem;
     }
+
+    .cs-results { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; }
+    .cs-result {
+      border: var(--border-heavy, 3px solid #000);
+      background: #fff;
+      padding: 1.5rem 1.35rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .cs-result:first-child { background: var(--neon, #c4ef17); }
+    .cs-result-value {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 3.2rem;
+      line-height: 0.9;
+    }
+    .cs-result-label { font-size: 1rem; line-height: 1.45; font-weight: 600; }
+    .cs-results-note { margin-top: 1.25rem; font-size: 0.95rem; line-height: 1.5; opacity: 0.7; max-width: 68ch; }
 
     .cs-evidence { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; }
     .cs-figure { border: var(--border-heavy, 3px solid #000); margin: 0; background: #fff; display: flex; flex-direction: column; }
