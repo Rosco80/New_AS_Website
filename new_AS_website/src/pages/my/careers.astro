@@ -3,19 +3,76 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const positions = [
     {
-        title: "AI Solutions Engineer",
-        focus: "LLM Orchestration & RAG Pipelines",
-        description: "Building production-grade AI agents that don't just chat, but execute complex business workflows with 99% reliability."
+        title: "AI Automation Engineer",
+        engagement: "Contract · Project-based · Remote",
+        hook: "You turn manual chaos into systems that run themselves.",
+        bullets: [
+            "Build workflows and AI agents in Make.com, n8n and custom APIs",
+            "Connect CRMs, WhatsApp, payments and the tools SMEs actually use",
+            "Ship reliable automations that survive real-world data"
+        ],
+        subject: "Application - AI Automation Engineer",
+        isOpen: false
     },
     {
-        title: "Automation Architect",
-        focus: "Make.com / Zapier / Custom API Middleware",
-        description: "The glue that holds everything together. Designing high-throughput data pipelines that eliminate manual entry across the stack."
+        title: "Full-Stack Developer",
+        engagement: "Contract · Project-based · Remote",
+        hook: "For when no-code hits its limits.",
+        bullets: [
+            "Build custom apps, dashboards and client portals",
+            "Design APIs, databases and integrations that scale",
+            "Work alongside our automation team on end-to-end builds"
+        ],
+        subject: "Application - Full-Stack Developer",
+        isOpen: false
     },
     {
-        title: "Growth & Strategy lead",
-        focus: "SME Operations & ROI Analysis",
-        description: "Translating business friction into technical requirements. You aren't selling tools; you're selling reclaimed time."
+        title: "AI Implementation Specialist",
+        engagement: "Contract · Part-time · Remote",
+        hook: "The bridge between what a business needs and what we build.",
+        bullets: [
+            "Run discovery sessions and map a client's real workflows",
+            "Turn business friction into clear technical requirements",
+            "Onboard teams and make sure new systems actually get used"
+        ],
+        subject: "Application - AI Implementation Specialist",
+        isOpen: false
+    },
+    {
+        title: "Business Development & Sales",
+        engagement: "Commission · Part-time · Full-time",
+        hook: "Open the door, have the conversation, close the deal.",
+        bullets: [
+            "Find and qualify SMEs ready for AI and automation",
+            "Run discovery calls and translate pain points into proposals",
+            "Build partnerships that bring in long-term clients"
+        ],
+        subject: "Application - Business Development & Sales",
+        isOpen: false
+    },
+    {
+        title: "Growth Marketer",
+        engagement: "Contract · Part-time · Remote",
+        hook: "Make sure the right businesses find us first.",
+        bullets: [
+            "Create LinkedIn content, case studies and campaigns",
+            "Drive SEO, paid ads and workshop sign-ups",
+            "Measure what works and double down on it"
+        ],
+        subject: "Application - Growth Marketer",
+        isOpen: false
+    },
+    {
+        title: "Open Application",
+        engagement: "Any engagement · Remote",
+        hook: "Don’t see your role? Pitch us.",
+        bullets: [
+            "Tell us what you’re great at and how it helps SMEs work smarter",
+            "Designers, data people, project managers, chatbot builders: we want to hear from you",
+            "Show us your best work and we’ll find where it fits"
+        ],
+        subject: "Application - Open Application",
+        isOpen: true
     }
 ];
 ---
@@ -61,35 +118,55 @@ const positions = [
         <!-- Positions Section -->
         <section class="positions-section">
             <div class="container">
-                <div style="margin-bottom: var(--space-xl);">
+                <div class="positions-header">
                     <span class="label-micro" style="color: var(--neon);">THE SQUAD</span>
-                    <h2 class="text-h2" style="color: var(--white); margin-top: 1rem;">Who We Look For.</h2>
-                    <p class="text-body" style="color: var(--gray-light); max-width: 600px; margin-top: 1rem;">
-                        Even when we aren't actively filling a seat, we are always looking for the top 1% of automation talent. If you live and breathe efficiency, we want to know you.
+                    <h2 class="text-h2" style="color: var(--white); margin-top: 1rem;">Build the leverage.</h2>
+                    <p class="text-body-lg" style="color: var(--gray-light); max-width: 720px; margin-top: 1rem;">
+                        We're always looking for people who ship. Pick the track that fits you and send us your CV, portfolio or your best build. We keep every profile in our talent network and reach out when a project matches.
                     </p>
                 </div>
 
                 <div class="positions-grid">
                     {positions.map((p) => (
-                        <div class="position-card">
-                            <span class="label-micro" style="color: var(--neon);">{p.focus}</span>
-                            <h3 class="text-h3" style="color: var(--white); margin: 1rem 0;">{p.title}</h3>
-                            <p class="text-body" style="color: var(--gray-light);">{p.description}</p>
+                        <div class={`position-card ${p.isOpen ? 'card-open' : ''}`}>
+                            <div class="card-top">
+                                <span class="engagement-pill">{p.engagement}</span>
+                                <h3 class="card-title">{p.title}</h3>
+                                <p class="card-hook">{p.hook}</p>
+                            </div>
+
+                            <ul class="card-bullets">
+                                {p.bullets.map((b) => (
+                                    <li>{b}</li>
+                                ))}
+                            </ul>
+
+                            <div class="card-action">
+                                <a 
+                                    href={`mailto:career@autoflow-solutions.com?subject=${encodeURIComponent(p.subject)}`}
+                                    class={`btn btn-card ${p.isOpen ? 'btn-neon' : 'btn-card-standard'}`}
+                                >
+                                    Apply via Email &rarr;
+                                </a>
+                                <div class="email-fallback">
+                                    <span class="fallback-line">or write to: <code class="fallback-email">career@autoflow-solutions.com</code></span>
+                                    <span class="fallback-subject">(Subject: {p.subject})</span>
+                                </div>
+                            </div>
                         </div>
                     ))}
                 </div>
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section class="apply-section">
+        <!-- Talent Network Manifesto Section -->
+        <section class="manifesto-section">
             <div class="container">
-                <div class="apply-box">
-                    <h2 class="text-h2">Future-Proof Your Career.</h2>
-                    <p class="text-body-lg" style="margin: 2rem 0;">
-                        Think you have what it takes to join the Autoflow Solutions roster? Send your resume, portfolio, or a link to your most impressive automation build to our inbox.
+                <div class="manifesto-box">
+                    <span class="label-micro manifesto-badge">TALENT NETWORK</span>
+                    <p class="manifesto-text">
+                        This is a talent network, not a list of open vacancies. We review every profile and reach out when a project fits.
                     </p>
-                    <a href="mailto:info@autoflow-solutions.com" class="btn btn-black">info@autoflow-solutions.com</a>
                 </div>
             </div>
         </section>
@@ -182,36 +259,211 @@ const positions = [
         background: var(--black);
     }
 
+    .positions-header {
+        margin-bottom: var(--space-xl);
+    }
+
     .positions-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: var(--space-lg);
+        gap: 2rem;
     }
 
     .position-card {
         border: 1px solid var(--gray-dark);
-        padding: var(--space-lg);
-        transition: border-color 0.3s ease;
+        padding: 2.25rem 2rem;
+        background: rgba(255, 255, 255, 0.02);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        border-radius: var(--radius-sm);
     }
 
     .position-card:hover {
         border-color: var(--neon);
+        transform: translateY(-4px);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4), 0 0 20px rgba(196, 239, 23, 0.1);
     }
 
-    .apply-section {
-        padding: var(--space-xl) 0;
-        background-color: var(--neon);
+    /* Open Application Card (Inverted / Distinct Accent) */
+    .position-card.card-open {
+        border: 2px dashed var(--neon);
+        background: linear-gradient(180deg, rgba(196, 239, 23, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    }
+
+    .position-card.card-open:hover {
+        border-style: solid;
+        border-color: var(--neon);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4), 0 0 30px rgba(196, 239, 23, 0.25);
+    }
+
+    .card-top {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .engagement-pill {
+        font-family: monospace;
+        font-size: 0.75rem;
+        color: var(--neon);
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+    .card-open .engagement-pill {
+        color: var(--black);
+        background: var(--neon);
+        display: inline-block;
+        align-self: flex-start;
+        padding: 0.2rem 0.5rem;
+        border-radius: 2px;
+    }
+
+    .card-title {
+        color: var(--white);
+        font-size: 1.4rem;
+        font-weight: 800;
+        line-height: 1.25;
+        margin: 0;
+    }
+
+    .card-hook {
+        color: #d1d5db;
+        font-size: 0.95rem;
+        font-style: italic;
+        line-height: 1.45;
+        margin: 0;
+    }
+
+    .card-bullets {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 2rem 0;
+        flex-grow: 1;
+    }
+
+    .card-bullets li {
+        color: var(--gray-light);
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 0.75rem;
+        padding-left: 1.25rem;
+        position: relative;
+    }
+
+    .card-bullets li::before {
+        content: '>';
+        position: absolute;
+        left: 0;
+        color: var(--neon);
+        font-weight: 900;
+        font-family: monospace;
+    }
+
+    .card-action {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+        margin-top: auto;
+    }
+
+    .btn-card {
+        width: 100%;
         text-align: center;
+        padding: 0.85rem 1rem;
+        font-size: 0.95rem;
+        font-weight: 700;
+        border-radius: var(--radius-sm);
+        text-decoration: none;
     }
 
-    .apply-box {
-        max-width: 800px;
+    .btn-card-standard {
+        background: transparent;
+        color: var(--white);
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        transition: all 0.2s ease;
+    }
+
+    .btn-card-standard:hover {
+        background: var(--white);
+        color: var(--black);
+        border-color: var(--white);
+    }
+
+    .email-fallback {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.25rem;
+        font-size: 0.75rem;
+    }
+
+    .fallback-line {
+        color: #9ca3af;
+    }
+
+    .fallback-email {
+        font-family: monospace;
+        color: var(--neon);
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        user-select: all;
+    }
+
+    .fallback-subject {
+        color: #9ca3af;
+        font-size: 0.7rem;
+    }
+
+    /* Manifesto section replacing bottom apply-section */
+    .manifesto-section {
+        padding: var(--space-xl) 0;
+        background: var(--black);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .manifesto-box {
+        max-width: 820px;
         margin: 0 auto;
+        text-align: center;
+        padding: 2.5rem 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: var(--radius-sm);
+    }
+
+    .manifesto-badge {
+        color: var(--neon);
+        letter-spacing: 0.15em;
+        margin-bottom: 1rem;
+        display: inline-block;
+    }
+
+    .manifesto-text {
+        color: var(--white);
+        font-size: 1.2rem;
+        font-weight: 500;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    @media (max-width: 1100px) {
+        .positions-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
     }
 
     @media (max-width: 768px) {
         .grid-2 { grid-template-columns: 1fr; }
         .positions-grid { grid-template-columns: 1fr; }
         .careers-hero { padding-top: 120px; }
+        .position-card { padding: 1.75rem; }
     }
 </style>
