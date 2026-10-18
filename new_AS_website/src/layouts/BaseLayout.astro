@@ -1,9 +1,10 @@
-﻿---
+---
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import Schema from '../components/Schema.astro';
 import Analytics from '@vercel/analytics/astro';
 import PostHog from '../components/PostHog.astro';
+import ChatWidget from '../components/chat/ChatWidget';
 import '../styles/variant.css';
 
 interface Props {
@@ -222,6 +223,7 @@ const fontsHref = `https://fonts.googleapis.com/css2?${fontFamilies}&display=swa
 		<slot />
 		<Analytics />
 		<Footer />
+		<ChatWidget client:idle />
 		<!-- Cal.com embed â€” lazy loaded on first interaction to avoid cookie bloat -->
 		<script is:inline>
 			(function() {

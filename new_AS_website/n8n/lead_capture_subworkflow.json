@@ -1,0 +1,108 @@
+{
+  "name": "Autoflow Solutions - Lead Capture Sub-Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "email",
+              "type": "string"
+            },
+            {
+              "name": "company",
+              "type": "string"
+            },
+            {
+              "name": "message",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "id": "11111111-2222-3333-4444-555555555555",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "base": {
+          "__rl": true,
+          "value": "YOUR_AIRTABLE_BASE_ID",
+          "mode": "id"
+        },
+        "table": {
+          "__rl": true,
+          "value": "Website Inquiries",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $json.name }}",
+            "Email": "={{ $json.email }}",
+            "Company": "={{ $json.company || 'Not Provided' }}",
+            "Inquiry": "={{ $json.message }}",
+            "Status": "New Inbound Lead",
+            "Source": "Website AI Chatbot"
+          }
+        }
+      },
+      "id": "22222222-3333-4444-5555-666666666666",
+      "name": "Airtable Lead Record",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        500,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "notifications@autoflow-solutions.com",
+        "toEmail": "team@autoflow-solutions.com",
+        "subject": "=🔥 New Inbound Lead: {{ $json.name }} ({{ $json.company || 'Direct Inquiry' }})",
+        "html": "=<div style=\"font-family: sans-serif; padding: 20px; border-left: 4px solid #c4ef17; background-color: #050505; color: #ffffff;\">\n  <h2 style=\"color: #c4ef17; margin-top: 0;\">New Chatbot Lead Captured</h2>\n  <p><strong>Name:</strong> {{ $json.name }}</p>\n  <p><strong>Email:</strong> <a href=\"mailto:{{ $json.email }}\" style=\"color: #c4ef17;\">{{ $json.email }}</a></p>\n  <p><strong>Company:</strong> {{ $json.company || 'N/A' }}</p>\n  <p><strong>Needs / Message:</strong></p>\n  <blockquote style=\"background: #111; padding: 12px; border-radius: 6px; color: #ddd;\">{{ $json.message }}</blockquote>\n  <p style=\"font-size: 12px; color: #888;\">Captured by Autoflow Solutions AI Showcase Assistant.</p>\n</div>"
+      },
+      "id": "33333333-4444-5555-6666-777777777777",
+      "name": "Send Email Alert",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        500,
+        400
+      ]
+    }
+  ],
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Airtable Lead Record",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send Email Alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
