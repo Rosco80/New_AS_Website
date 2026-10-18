@@ -8,7 +8,7 @@ import './chat.css';
 // Configurable n8n endpoint: defaults to env var, with fallback to local proxy/direct endpoint
 const N8N_WEBHOOK_URL = 
   (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.PUBLIC_N8N_CHAT_WEBHOOK_URL) ||
-  'https://n8n.autoflow-solutions.com/webhook/chat';
+  'https://n8n.soryletech.tech/webhook/chat';
 
 const INITIAL_GREETING: ChatMessage = {
   id: 'greeting_v2',
