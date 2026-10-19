@@ -440,6 +440,15 @@
     font-size: 16px;
   }
 
+  /* Dark backdrop over the whole layout viewport, so the page doesn't show
+     through the iOS keyboard's translucent edges and autofill bar */
+  html.af-chat-open .af-chat-root::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-color: #080808;
+  }
+
   /* Stop the page behind the full-screen chat from scrolling */
   html.af-chat-open,
   html.af-chat-open body {
