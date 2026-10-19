@@ -11,7 +11,8 @@ export const ChatInputBar: React.FC<ChatInputBarProps> = ({ onSendMessage, disab
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (isOpen) {
+    // Autofocus on desktop only: on phones it pops the keyboard (and zoom) the moment the chat opens
+    if (isOpen && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
       setTimeout(() => inputRef.current?.focus(), 150);
     }
   }, [isOpen]);

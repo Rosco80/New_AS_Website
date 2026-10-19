@@ -13,7 +13,7 @@ const N8N_WEBHOOK_URL =
 const INITIAL_GREETING: ChatMessage = {
   id: 'greeting_v2',
   sender: 'bot',
-  text: "👋 Hey there! Welcome to **Autoflow Solutions**.\n\nWe build custom AI systems and automated workflows for growing businesses—so you can scale operations without adding headcount.\n\nWhat would you like to explore today?",
+  text: "👋 Hey there! Welcome to **Autoflow Solutions**.\n\nWe build custom AI systems and automated workflows for growing businesses, so you can scale operations without adding headcount.\n\nWhat would you like to explore today?",
   timestamp: ''
 };
 
@@ -77,6 +77,30 @@ export default function ChatWidget() {
 
     return () => clearTimeout(timer);
   }, []);
+
+  // Mobile: while the full-screen chat is open, lock the page behind it and
+  // keep the window sized to the visible area (above the on-screen keyboard)
+  useEffect(() => {
+    if (typeof window === 'undefined' || !isOpen) return;
+    const root = document.documentElement;
+    const vv = window.visualViewport;
+    const sync = () => {
+      if (!vv) return;
+      root.style.setProperty('--af-vvh', `${vv.height}px`);
+      root.style.setProperty('--af-vvt', `${vv.offsetTop}px`);
+    };
+    root.classList.add('af-chat-open');
+    sync();
+    vv?.addEventListener('resize', sync);
+    vv?.addEventListener('scroll', sync);
+    return () => {
+      root.classList.remove('af-chat-open');
+      root.style.removeProperty('--af-vvh');
+      root.style.removeProperty('--af-vvt');
+      vv?.removeEventListener('resize', sync);
+      vv?.removeEventListener('scroll', sync);
+    };
+  }, [isOpen]);
 
   // Save history on change
   useEffect(() => {

@@ -56,6 +56,10 @@ function renderFormattedText(text: string) {
     });
 
     const isBullet = line.trim().startsWith('- ') || line.trim().startsWith('* ');
+    // Drop the markdown marker so bullets don't render as "• - item"
+    if (isBullet && typeof renderedParts[0]?.[0] === 'string') {
+      renderedParts[0][0] = (renderedParts[0][0] as string).replace(/^\s*[-*]\s+/, '');
+    }
 
     return (
       <span key={lineIdx} style={{ display: 'block', marginBottom: lineIdx === lines.length - 1 ? 0 : '4px' }}>
@@ -70,14 +74,16 @@ function renderFormattedText(text: string) {
 }
 
 export const ChatMessageList: React.FC<ChatMessageListProps> = ({ messages, isLoading }) => {
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
 
+  // Scroll only the message list; scrollIntoView can also drag the page on iOS Safari
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const el = listRef.current;
+    el?.scrollTo({ top: el.scrollHeight, behavior: 'smooth' });
   }, [messages, isLoading]);
 
   return (
-    <div className="af-chat-messages" role="log" aria-live="polite">
+    <div ref={listRef} className="af-chat-messages" role="log" aria-live="polite">
       {messages.map((msg) => (
         <div key={msg.id} className={`af-chat-bubble-row ${msg.sender}`}>
           <div className="af-chat-bubble">
@@ -92,8 +98,6 @@ export const ChatMessageList: React.FC<ChatMessageListProps> = ({ messages, isLo
           <ChatTypingIndicator />
         </div>
       )}
-
-      <div ref={bottomRef} />
     </div>
   );
 };

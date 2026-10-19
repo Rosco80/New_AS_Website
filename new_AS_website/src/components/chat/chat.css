@@ -395,6 +395,11 @@
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
+@keyframes afFadeOnly {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 @keyframes afBubbleFade {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
@@ -412,17 +417,33 @@
     right: 16px;
   }
 
+  /* Pinned to the visible area (above the keyboard); values set by ChatWidget */
   .af-chat-window {
     position: fixed;
-    bottom: 0;
+    top: var(--af-vvt, 0);
+    bottom: auto;
     right: 0;
     left: 0;
-    width: 100vw;
-    max-width: 100vw;
-    height: 100dvh;
-    max-height: 100dvh;
+    width: auto;
+    max-width: none;
+    height: var(--af-vvh, 100dvh);
+    max-height: none;
     border-radius: 0;
     border: none;
+    overscroll-behavior: none;
+    touch-action: manipulation;
+    animation: afFadeOnly 0.2s ease forwards;
+  }
+
+  /* 16px stops iOS Safari zooming the page when the input is focused */
+  .af-chat-input-bar input {
+    font-size: 16px;
+  }
+
+  /* Stop the page behind the full-screen chat from scrolling */
+  html.af-chat-open,
+  html.af-chat-open body {
+    overflow: hidden;
   }
 
   .af-chat-launcher-tooltip {
