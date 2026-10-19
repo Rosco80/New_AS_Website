@@ -433,6 +433,9 @@
     overscroll-behavior: none;
     touch-action: manipulation;
     animation: afFadeOnly 0.2s ease forwards;
+    /* Paint dark well past the window's edges: covers the strip behind the iOS
+       keyboard/autofill bar however Safari positions the visual viewport */
+    box-shadow: 0 0 0 100vh #080808;
   }
 
   /* 16px stops iOS Safari zooming the page when the input is focused */
@@ -445,7 +448,10 @@
   html.af-chat-open .af-chat-root::before {
     content: '';
     position: fixed;
-    inset: 0;
+    top: -100vh;
+    bottom: -100vh;
+    left: 0;
+    right: 0;
     background-color: #080808;
   }
 
