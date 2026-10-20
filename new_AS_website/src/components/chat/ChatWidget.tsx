@@ -203,7 +203,7 @@ export default function ChatWidget() {
       const errorMessage: ChatMessage = {
         id: 'err_' + Date.now().toString(),
         sender: 'bot',
-        text: "⚠️ **Connection Notice:** Unable to reach the Autoflow Solutions assistant at this moment. You can also reach our engineering team directly via [Book a Strategy Call](https://cal.com/autoflow-solutions/book-a-discovery-call) or start our [Free AI Self Audit](https://ai-self-audit.autoflow-solutions.com/).",
+        text: "⚠️ **Connection Notice:** Unable to reach the Autoflow Solutions assistant at this moment. You can also reach our engineering team directly via [Book a Strategy Call](https://cal.com/autoflow-solutions/book-a-discovery-call) or start our [Free AI Self Audit](/self-audit).",
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
       setMessages((prev) => [...prev, errorMessage]);
