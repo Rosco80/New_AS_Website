@@ -287,8 +287,7 @@ const faqSchema = {
             <script>
             // @ts-nocheck
             (function() {
-                const N8N_WEBHOOK = 'https://n8n.soryle.space/webhook/form-sumission';
-                const FORMSPREE   = 'https://formspree.io/f/mqeyoabe';
+                const FORMSPREE = 'https://formspree.io/f/mqeyoabe';
 
                 document.getElementById('build-brief-form').addEventListener('submit', async function(e) {
                     e.preventDefault();
@@ -301,42 +300,40 @@ const faqSchema = {
                         return;
                     }
 
-                    btn.disabled    = true;
+                    btn.disabled   = true;
                     btn.textContent = 'Sending…';
                     status.style.display = 'none';
 
-                    const data = {
-                        target_engine: form.target_engine.value,
-                        full_name:     form.full_name.value,
-                        email:         form.email.value,
-                        website:       form.website.value,
-                        team_size:     form.team_size.value,
-                        timeline:      form.timeline.value,
-                        tech_stack:    form.tech_stack.value,
-                        bottleneck:    form.bottleneck.value,
-                        source_page:   window.location.pathname,
-                        locale:        'my',
-                        submitted_at:  new Date().toISOString()
-                    };
-
                     const formData = new FormData(form);
+                    formData.append('source_page', window.location.pathname);
+                    formData.append('locale', 'my');
+                    formData.append('submitted_at', new Date().toISOString());
 
                     try {
-                        const responses = await Promise.all([
-                            fetch(N8N_WEBHOOK, {
-                                method: 'POST',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify(data)
-                            }),
-                            fetch(FORMSPREE, {
-                                method: 'POST',
-                                headers: { 'Accept': 'application/json' },
-                                body: formData
-                            })
-                        ]);
+                        const response = await fetch(FORMSPREE, {
+                            method: 'POST',
+                            headers: { 'Accept': 'application/json' },
+                            body: formData
+                        });
 
-                        if (!responses.every((response) => response.ok)) {
-                            throw new Error('One or more form destinations rejected the submission.');
+                        if (!response.ok) {
+                            const resData = await response.json().catch(() => ({}));
+                            let errorMsg = 'Something went wrong. Please try again or email us directly.';
+
+                            if (Array.isArray(resData.errors) && resData.errors.length > 0) {
+                                const freemailError = resData.errors.find(
+                                    err => err.code === 'BLOCKED_FREEMAIL' || (err.message && err.message.toLowerCase().includes('work email'))
+                                );
+                                if (freemailError) {
+                                    errorMsg = 'Please use a work email address (free email providers like Gmail or Yahoo are not accepted).';
+                                } else if (resData.errors[0].message) {
+                                    errorMsg = resData.errors[0].message;
+                                }
+                            } else if (resData.error) {
+                                errorMsg = resData.error;
+                            }
+
+                            throw new Error(errorMsg);
                         }
 
                         form.reset();
@@ -347,7 +344,7 @@ const faqSchema = {
                         btn.disabled    = false;
                         btn.textContent = 'Initialize Assessment';
                         status.style.cssText = 'display:block; background:rgba(255,80,80,0.1); border:1px solid #ff5050; color:#ff5050; margin-top:1rem; padding:1rem; border-radius:8px; text-align:center; font-size:0.9rem;';
-                        status.textContent = 'Something went wrong. Please try again or email us directly.';
+                        status.textContent = err.message || 'Something went wrong. Please try again or email us directly.';
                     }
                 });
             })();

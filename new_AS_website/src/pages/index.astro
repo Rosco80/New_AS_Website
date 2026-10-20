@@ -1,21 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-// Edge geo-redirect, replacing the previous client-side ipapi.co fetch.
-//   - Zero client-side cost; runs at Vercel's edge from request headers.
-//   - Bots are excluded so the canonical homepage stays fully indexable.
-//   - Same-origin referer is honored so the language-switcher "global" link
-//     does not bounce visitors back to their locale.
-const userAgent = Astro.request.headers.get('user-agent') || '';
-const isBot = /bot|crawl|spider|googlebot|bingbot|baiduspider|yandex|duckduck|slurp|facebookexternalhit/i.test(userAgent);
-const referer = Astro.request.headers.get('referer') || '';
-const sameOriginReferer = referer.includes(Astro.url.host);
-const country = (Astro.request.headers.get('x-vercel-ip-country') || '').toUpperCase();
-
-if (!isBot && !sameOriginReferer) {
-  if (country === 'MY') return Astro.redirect('/my', 302);
-  if (country === 'GB') return Astro.redirect('/uk', 302);
-}
 ---
 
 <BaseLayout
