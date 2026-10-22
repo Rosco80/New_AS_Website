@@ -1,6 +1,56 @@
 {
   "redirects": [
     {
+      "source": "/consultation",
+      "destination": "/self-audit/consultation",
+      "permanent": false
+    },
+    {
+      "source": "/my/consultation",
+      "destination": "/self-audit/consultation",
+      "permanent": false
+    },
+    {
+      "source": "/uk/consultation",
+      "destination": "/self-audit/consultation",
+      "permanent": false
+    },
+    {
+      "source": "/ms/consultation",
+      "destination": "/self-audit/consultation",
+      "permanent": false
+    },
+    {
+      "source": "/my/self-audit",
+      "destination": "/self-audit",
+      "permanent": false
+    },
+    {
+      "source": "/my/self-audit/:path*",
+      "destination": "/self-audit/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/uk/self-audit",
+      "destination": "/self-audit",
+      "permanent": false
+    },
+    {
+      "source": "/uk/self-audit/:path*",
+      "destination": "/self-audit/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/ms/self-audit",
+      "destination": "/self-audit",
+      "permanent": false
+    },
+    {
+      "source": "/ms/self-audit/:path*",
+      "destination": "/self-audit/:path*",
+      "permanent": false
+    },
+    {
       "source": "/author/(.*)",
       "destination": "/about",
       "permanent": true
