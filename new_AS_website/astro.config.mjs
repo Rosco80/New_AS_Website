@@ -24,7 +24,21 @@ export default defineConfig({
   }), react(), sitemap({
     filter: (page) => !page.includes('/admin')
   })],
-  vite: {
+    vite: {
+    server: {
+      proxy: {
+        '/ingest/static': {
+          target: 'https://us-assets.i.posthog.com',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/ingest\/static/, '/static')
+        },
+        '/ingest': {
+          target: 'https://us.i.posthog.com',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/ingest/, '')
+        }
+      }
+    },
     build: {
       chunkSizeWarningLimit: 2000
     }

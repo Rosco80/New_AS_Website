@@ -16,6 +16,8 @@ export const onRequest = defineMiddleware(async (context, next) => {
     pathname.startsWith('/consultation') ||
     pathname.includes('/self-audit') ||
     pathname.includes('/consultation') ||
+    pathname.startsWith('/ingest') ||
+    pathname.includes('/ingest') ||
     pathname.includes('.')
   ) {
     return next();
