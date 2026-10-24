@@ -1,7 +1,7 @@
 ﻿---
 // PostHog analytics snippet with Session Replay & Full Event Telemetry
 const posthogKey = import.meta.env.PUBLIC_POSTHOG_KEY || 'phc_tZEysUqymcjUVCcKcvioofdps25FiPhMAjXQy9pddsnB';
-const posthogHost = import.meta.env.PUBLIC_POSTHOG_HOST || '/ingest';
+const posthogHost = import.meta.env.PUBLIC_POSTHOG_HOST || 'https://posthog.autoflow-solutions.com';
 ---
 
 <script is:inline define:vars={{ posthogKey, posthogHost }}>
